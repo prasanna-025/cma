@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PlacementOS — ₹15+ LPA Dashboard</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+<!-- SVG Gradient Defs -->
+<svg style="position:absolute;width:0;height:0" aria-hidden="true">
+  <defs>
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6c63ff"/>
+      <stop offset="100%" style="stop-color:#00d4aa"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <span class="logo-icon">⚡</span>
+    <span class="logo-text">PlacementOS</span>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="#" class="nav-item active" data-section="dashboard"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+    <a href="#" class="nav-item" data-section="dsa"><i class="fas fa-code"></i><span>DSA Tracker</span></a>
+    <a href="#" class="nav-item" data-section="subjects"><i class="fas fa-book"></i><span>Core Subjects</span></a>
+    <a href="#" class="nav-item" data-section="communication"><i class="fas fa-comments"></i><span>Communication</span></a>
+    <a href="#" class="nav-item" data-section="softskills"><i class="fas fa-brain"></i><span>Soft Skills</span></a>
+    <a href="#" class="nav-item" data-section="projects"><i class="fas fa-folder-open"></i><span>Projects</span></a>
+    <a href="#" class="nav-item" data-section="placement"><i class="fas fa-briefcase"></i><span>Placement</span></a>
+    <a href="#" class="nav-item" data-section="analytics"><i class="fas fa-chart-line"></i><span>Analytics</span></a>
+  </nav>
+  <div class="sidebar-bottom">
+    <div class="xp-bar-wrap">
+      <div class="xp-label">
+        <span>⚔️ Level <span id="sb-level">1</span></span>
+        <span id="sb-xp">0 XP</span>
+      </div>
+      <div class="xp-bar"><div class="xp-fill" id="sb-xp-fill"></div></div>
+      <div class="xp-next" id="sb-xp-next">100 XP to next level</div>
+    </div>
+  </div>
+</aside>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+  <div class="topbar-title" id="topbar-title">Dashboard</div>
+  <div class="topbar-right">
+    <div class="streak-badge"><i class="fas fa-fire"></i><span id="top-streak">0</span> day streak</div>
+    <div class="date-chip" id="date-chip"></div>
+    <button class="reset-btn" onclick="confirmReset()" title="Reset all data"><i class="fas fa-rotate-right"></i></button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main-content">
+
+  <!-- ===== DASHBOARD ===== -->
+  <section class="section active" id="section-dashboard">
+    <div class="section-header">
+      <h1 id="greeting">Good morning, Coder 👋</h1>
+      <p>Your ₹15+ LPA journey — every rep counts. Let's get to work.</p>
+    </div>
+
+    <!-- Readiness Banner -->
+    <div class="readiness-banner">
+      <div class="readiness-ring-wrap">
+        <svg class="ring-svg" viewBox="0 0 120 120">
+          <circle class="ring-bg" cx="60" cy="60" r="52"/>
+          <circle class="ring-fg" id="readiness-ring" cx="60" cy="60" r="52"
+                  stroke-dasharray="326.7" stroke-dashoffset="326.7" stroke="url(#ringGrad)"/>
+        </svg>
+        <div class="ring-label">
+          <span id="readiness-pct">0%</span>
+          <small>Ready</small>
+        </div>
+      </div>
+      <div class="readiness-info">
+        <div class="readiness-title">Placement Readiness</div>
+        <div class="readiness-sub">Based on DSA, hours, subjects, projects, resume &amp; mocks</div>
+        <div class="readiness-stats">
+          <div class="r-stat"><span id="r-dsa">0</span><label>DSA Solved</label></div>
+          <div class="r-stat"><span id="r-hours">0h</span><label>Study Hours</label></div>
+          <div class="r-stat"><span id="r-streak">0</span><label>Day Streak</label></div>
+          <div class="r-stat"><span id="r-xp">0</span><label>Total XP</label></div>
+          <div class="r-stat"><span id="r-projects">0</span><label>Projects</label></div>
+          <div class="r-stat"><span id="r-mocks">0</span><label>Mocks Done</label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 1 -->
+    <div class="cards-row">
+      <!-- Hours Logger -->
+      <div class="card">
+        <div class="card-header"><i class="fas fa-clock"></i> Log Study Hours</div>
+        <div class="hours-log-form">
+          <input type="number" id="hours-input" class="inp" placeholder="Hours e.g. 2.5" min="0.5" max="16" step="0.5"/>
+          <button class="btn btn-primary" onclick="logHours()"><i class="fas fa-plus"></i> Log</button>
+        </div>
+        <div class="hours-display">
+          <div class="hours-stat"><div id="hours-today">0h</div><small>Today</small></div>
+          <div class="hours-stat"><div id="hours-week">0h</div><small>This Week</small></div>
+          <div class="hours-stat"><div id="hours-total">0h</div><small>All Time</small></div>
+        </div>
+      </div>
+
+      <!-- Daily Checklist -->
+      <div class="card">
+        <div class="card-header"><i class="fas fa-calendar-check"></i> Daily Checklist</div>
+        <div id="daily-checklist">
+          <label class="check-item"><input type="checkbox" data-key="daily-dsa" onchange="toggleDaily(this)"><span>✅ 5 DSA Problems</span></label>
+          <label class="check-item"><input type="checkbox" data-key="daily-subject" onchange="toggleDaily(this)"><span>📚 1 Subject Topic</span></label>
+          <label class="check-item"><input type="checkbox" data-key="daily-project" onchange="toggleDaily(this)"><span>🚀 Project Work</span></label>
+          <label class="check-item"><input type="checkbox" data-key="daily-mock" onchange="toggleDaily(this)"><span>🎤 Mock Interview</span></label>
+          <label class="check-item"><input type="checkbox" data-key="daily-reading" onchange="toggleDaily(this)"><span>📖 Read 20 mins</span></label>
+        </div>
+        <div class="daily-pct-row">
+          <span id="daily-pct-label">0 / 5 done</span>
+          <div class="mini-bar"><div id="daily-fill" class="mini-fill"></div></div>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="card">
+        <div class="card-header"><i class="fas fa-medal"></i> Achievements</div>
+        <div class="badges-grid" id="badges-grid"></div>
+      </div>
+    </div>
+
+    <!-- Weekly Activity -->
+    <div class="card full-card">
+      <div class="card-header"><i class="fas fa-calendar-week"></i> Weekly Activity — Hours Logged</div>
+      <div class="week-grid" id="week-grid"></div>
+      <div class="week-legend">
+        <span class="wl-item"><span class="wl-dot" style="background:var(--bg3)"></span>No activity</span>
+        <span class="wl-item"><span class="wl-dot" style="background:rgba(108,99,255,.3)"></span>1–2h</span>
+        <span class="wl-item"><span class="wl-dot" style="background:rgba(108,99,255,.6)"></span>3–4h</span>
+        <span class="wl-item"><span class="wl-dot" style="background:var(--accent)"></span>5h+</span>
+      </div>
+    </div>
+
+    <!-- Quick DSA today -->
+    <div class="card full-card">
+      <div class="card-header"><i class="fas fa-bolt"></i> Today's DSA Progress
+        <span class="dsa-today-chip" id="dash-dsa-today">0 / 5</span>
+      </div>
+      <div class="dsa-quick-bar">
+        <div class="dsa-quick-fill" id="dash-dsa-fill"></div>
+      </div>
+      <div id="dash-dsa-recent" style="margin-top:12px"></div>
+    </div>
+  </section>
+
+  <!-- ===== DSA TRACKER ===== -->
+  <section class="section" id="section-dsa">
+    <div class="section-header">
+      <h1>DSA Tracker</h1>
+      <p>Daily target: 5 problems · Consistency builds skill.</p>
+    </div>
+
+    <!-- Daily Target Ring -->
+    <div class="dsa-target-banner">
+      <div class="target-ring-wrap">
+        <svg class="ring-svg sm" viewBox="0 0 80 80">
+          <circle class="ring-bg" cx="40" cy="40" r="32"/>
+          <circle class="ring-fg" id="dsa-daily-ring" cx="40" cy="40" r="32"
+                  stroke-dasharray="201" stroke-dashoffset="201" stroke="url(#ringGrad)"/>
+        </svg>
+        <div class="ring-label sm">
+          <span id="dsa-today-count">0</span>
+          <small>/5</small>
+        </div>
+      </div>
+      <div class="target-info">
+        <h3>Today's Target</h3>
+        <p id="dsa-motivation-line">Start strong — solve your first problem!</p>
+        <div class="dsa-stats-row">
+          <div class="dsa-stat-chip">Total: <b id="dsa-total-display">0</b></div>
+          <div class="dsa-stat-chip easy">Easy: <b id="dsa-easy-count">0</b></div>
+          <div class="dsa-stat-chip med">Medium: <b id="dsa-med-count">0</b></div>
+          <div class="dsa-stat-chip hard">Hard: <b id="dsa-hard-count">0</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards-row">
+      <!-- Add Problem Form -->
+      <div class="card" style="flex:1.2">
+        <div class="card-header"><i class="fas fa-plus-circle"></i> Add Problem</div>
+        <div class="form-grid">
+          <input type="text" id="prob-name" class="inp" placeholder="Problem title e.g. Two Sum" style="grid-column:1/-1"/>
+          <select id="prob-cat" class="inp">
+            <option value="Arrays">🔢 Arrays</option>
+            <option value="Strings">🔤 Strings</option>
+            <option value="Trees">🌳 Trees</option>
+            <option value="Graphs">🕸️ Graphs</option>
+            <option value="DP">🧠 Dynamic Programming</option>
+            <option value="Sorting">📊 Sorting</option>
+            <option value="Linked List">🔗 Linked List</option>
+            <option value="Binary Search">🔍 Binary Search</option>
+            <option value="Stack/Queue">📚 Stack/Queue</option>
+            <option value="Greedy">💰 Greedy</option>
+            <option value="Math">➕ Math</option>
+            <option value="Backtracking">↩️ Backtracking</option>
+          </select>
+          <select id="prob-diff" class="inp">
+            <option value="Easy">🟢 Easy</option>
+            <option value="Medium">🟡 Medium</option>
+            <option value="Hard">🔴 Hard</option>
+          </select>
+          <select id="prob-platform" class="inp">
+            <option value="LeetCode">LeetCode</option>
+            <option value="GFG">GeeksForGeeks</option>
+            <option value="Codeforces">Codeforces</option>
+            <option value="HackerRank">HackerRank</option>
+            <option value="Other">Other</option>
+          </select>
+          <input type="url" id="prob-link" class="inp" placeholder="Problem URL (optional)"/>
+          <textarea id="prob-notes" class="inp" rows="2" placeholder="Notes / approach (optional)" style="grid-column:1/-1;resize:none"></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="addProblem()" style="margin-top:12px;width:100%">
+          <i class="fas fa-check"></i> Mark as Solved
+        </button>
+      </div>
+
+      <!-- Category Progress -->
+      <div class="card" style="flex:2">
+        <div class="card-header"><i class="fas fa-layer-group"></i> Category Breakdown</div>
+        <div id="dsa-cat-bars"></div>
+      </div>
+    </div>
+
+    <!-- Problem List -->
+    <div class="card full-card">
+      <div class="card-header">
+        <span><i class="fas fa-list-ul"></i> Solved Problems (<span id="prob-count">0</span>)</span>
+        <div class="filter-chips" id="dsa-filter-chips">
+          <span class="chip active" data-filter="All" onclick="filterDSA(this)">All</span>
+          <span class="chip" data-filter="Arrays" onclick="filterDSA(this)">Arrays</span>
+          <span class="chip" data-filter="Strings" onclick="filterDSA(this)">Strings</span>
+          <span class="chip" data-filter="Trees" onclick="filterDSA(this)">Trees</span>
+          <span class="chip" data-filter="Graphs" onclick="filterDSA(this)">Graphs</span>
+          <span class="chip" data-filter="DP" onclick="filterDSA(this)">DP</span>
+          <span class="chip" data-filter="Easy" onclick="filterDSA(this)">🟢 Easy</span>
+          <span class="chip" data-filter="Medium" onclick="filterDSA(this)">🟡 Medium</span>
+          <span class="chip" data-filter="Hard" onclick="filterDSA(this)">🔴 Hard</span>
+        </div>
+      </div>
+      <div class="problem-list" id="problem-list"></div>
+    </div>
+  </section>
+
+  <!-- ===== SUBJECTS ===== -->
+  <section class="section" id="section-subjects">
+    <div class="section-header">
+      <h1>Core Subjects</h1>
+      <p>DBMS · OS · Computer Networks · OOP — every placement interview tests these.</p>
+    </div>
+    <div class="subjects-overview" id="subjects-overview"></div>
+    <div class="subjects-grid" id="subjects-grid"></div>
+  </section>
+
+  <!-- ===== COMMUNICATION ===== -->
+  <section class="section" id="section-communication">
+    <div class="section-header">
+      <h1>Communication Skills</h1>
+      <p>The soft skill that wins offers — sharpen it daily.</p>
+    </div>
+    <div class="skill-overview-row" id="comm-overview"></div>
+    <div class="skill-trackers" id="comm-trackers"></div>
+  </section>
+
+  <!-- ===== SOFT SKILLS ===== -->
+  <section class="section" id="section-softskills">
+    <div class="section-header">
+      <h1>Soft Skills</h1>
+      <p>40% of hiring is this. Build the person, not just the programmer.</p>
+    </div>
+    <div class="skill-overview-row" id="soft-overview"></div>
+    <div class="skill-trackers" id="soft-trackers"></div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="section" id="section-projects">
+    <div class="section-header">
+      <h1>Projects</h1>
+      <p>Show, don't just tell. Each project is proof of your skills.</p>
+    </div>
+
+    <div class="card" style="max-width:620px;margin-bottom:20px">
+      <div class="card-header"><i class="fas fa-plus-circle"></i> Add New Project</div>
+      <div class="form-grid">
+        <input type="text" id="proj-name" class="inp" placeholder="Project name e.g. Chat Application" style="grid-column:1/-1"/>
+        <input type="text" id="proj-tech" class="inp" placeholder="Tech stack e.g. React, Node.js, MongoDB" style="grid-column:1/-1"/>
+        <input type="url" id="proj-github" class="inp" placeholder="GitHub URL"/>
+        <input type="url" id="proj-live" class="inp" placeholder="Live demo URL (optional)"/>
+        <select id="proj-status" class="inp">
+          <option>Planning</option>
+          <option>In Progress</option>
+          <option>Completed</option>
+          <option>Deployed</option>
+        </select>
+        <input type="number" id="proj-pct" class="inp" placeholder="Completion % (0–100)" min="0" max="100"/>
+        <textarea id="proj-desc" class="inp" rows="2" placeholder="Brief description" style="grid-column:1/-1;resize:none"></textarea>
+      </div>
+      <button class="btn btn-primary" onclick="addProject()" style="margin-top:12px;width:100%">
+        <i class="fas fa-rocket"></i> Add Project
+      </button>
+    </div>
+
+    <div class="projects-list" id="projects-list"></div>
+  </section>
+
+  <!-- ===== PLACEMENT ===== -->
+  <section class="section" id="section-placement">
+    <div class="section-header">
+      <h1>Placement Tracker</h1>
+      <p>Resume · LinkedIn · Mock Interviews · Company Applications</p>
+    </div>
+
+    <div class="placement-readiness-bar">
+      <div class="plr-label"><span>Placement Readiness Score</span><span id="plr-pct">0%</span></div>
+      <div class="prog-bar" style="height:10px"><div class="prog-fill" id="plr-bar"></div></div>
+    </div>
+
+    <div class="cards-row">
+      <!-- Resume -->
+      <div class="card">
+        <div class="card-header">
+          <span><i class="fas fa-file-alt"></i> Resume</span>
+          <span class="mini-pct" id="resume-pct">0%</span>
+        </div>
+        <div class="placement-items">
+          <label class="check-item"><input type="checkbox" data-key="resume-made" onchange="togglePlacement(this)"><span>Resume Created</span></label>
+          <label class="check-item"><input type="checkbox" data-key="resume-ats" onchange="togglePlacement(this)"><span>ATS Optimised</span></label>
+          <label class="check-item"><input type="checkbox" data-key="resume-reviewed" onchange="togglePlacement(this)"><span>Peer Reviewed</span></label>
+          <label class="check-item"><input type="checkbox" data-key="resume-1page" onchange="togglePlacement(this)"><span>1-Page Rule ✓</span></label>
+          <label class="check-item"><input type="checkbox" data-key="resume-links" onchange="togglePlacement(this)"><span>GitHub / LeetCode Links</span></label>
+          <label class="check-item"><input type="checkbox" data-key="resume-action" onchange="togglePlacement(this)"><span>Action Verbs Used</span></label>
+        </div>
+      </div>
+
+      <!-- LinkedIn -->
+      <div class="card">
+        <div class="card-header">
+          <span><i class="fab fa-linkedin"></i> LinkedIn</span>
+          <span class="mini-pct" id="li-pct">0%</span>
+        </div>
+        <div class="placement-items">
+          <label class="check-item"><input type="checkbox" data-key="li-photo" onchange="togglePlacement(this)"><span>Profile Photo</span></label>
+          <label class="check-item"><input type="checkbox" data-key="li-headline" onchange="togglePlacement(this)"><span>Strong Headline</span></label>
+          <label class="check-item"><input type="checkbox" data-key="li-about" onchange="togglePlacement(this)"><span>About Section</span></label>
+          <label class="check-item"><input type="checkbox" data-key="li-500" onchange="togglePlacement(this)"><span>500+ Connections</span></label>
+          <label class="check-item"><input type="checkbox" data-key="li-skills" onchange="togglePlacement(this)"><span>Skills Endorsed</span></label>
+          <label class="check-item"><input type="checkbox" data-key="li-projects" onchange="togglePlacement(this)"><span>Projects Listed</span></label>
+        </div>
+      </div>
+
+      <!-- Mock Interviews -->
+      <div class="card">
+        <div class="card-header"><i class="fas fa-user-tie"></i> Mock Interviews</div>
+        <div class="mock-counter">
+          <button class="counter-btn" onclick="changeMock(-1)">−</button>
+          <div class="counter-display">
+            <span id="mock-count">0</span>
+            <small>Mocks Done</small>
+          </div>
+          <button class="counter-btn" onclick="changeMock(1)">+</button>
+        </div>
+        <div style="margin-top:14px">
+          <div class="progress-label"><span>Target: 20 mocks</span><span id="mock-pct">0%</span></div>
+          <div class="prog-bar"><div class="prog-fill" id="mock-bar"></div></div>
+        </div>
+        <div class="mock-tips" id="mock-tip"></div>
+      </div>
+
+      <!-- Applications -->
+      <div class="card">
+        <div class="card-header"><i class="fas fa-paper-plane"></i> Applications</div>
+        <div class="mock-counter">
+          <button class="counter-btn" onclick="changeApp(-1)">−</button>
+          <div class="counter-display">
+            <span id="app-count">0</span>
+            <small>Applied</small>
+          </div>
+          <button class="counter-btn" onclick="changeApp(1)">+</button>
+        </div>
+        <div style="margin-top:14px">
+          <input type="text" id="app-company" class="inp" placeholder="Company name"/>
+          <select id="app-status" class="inp" style="margin-top:8px">
+            <option>Applied</option>
+            <option>OA Received</option>
+            <option>Interview Scheduled</option>
+            <option>Offer</option>
+            <option>Rejected</option>
+          </select>
+          <input type="text" id="app-role" class="inp" style="margin-top:8px" placeholder="Role e.g. SDE-1"/>
+          <button class="btn btn-sm" onclick="addApplication()" style="margin-top:8px;width:100%">
+            <i class="fas fa-plus"></i> Track Company
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pipeline -->
+    <div class="card full-card">
+      <div class="card-header">
+        <span><i class="fas fa-stream"></i> Company Pipeline</span>
+        <div class="pipeline-filter-chips">
+          <span class="chip active" data-pf="All" onclick="filterPipeline(this)">All</span>
+          <span class="chip" data-pf="Applied" onclick="filterPipeline(this)">Applied</span>
+          <span class="chip" data-pf="OA Received" onclick="filterPipeline(this)">OA</span>
+          <span class="chip" data-pf="Interview Scheduled" onclick="filterPipeline(this)">Interview</span>
+          <span class="chip" data-pf="Offer" onclick="filterPipeline(this)">Offer 🎉</span>
+          <span class="chip" data-pf="Rejected" onclick="filterPipeline(this)">Rejected</span>
+        </div>
+      </div>
+      <div class="company-pipeline" id="company-pipeline"></div>
+    </div>
+  </section>
+
+  <!-- ===== ANALYTICS ===== -->
+  <section class="section" id="section-analytics">
+    <div class="section-header">
+      <h1>Analytics</h1>
+      <p>Data doesn't lie — see your growth in numbers.</p>
+    </div>
+
+    <!-- Summary cards -->
+    <div class="analytics-summary" id="analytics-summary"></div>
+
+    <div class="cards-row">
+      <div class="card" style="flex:1">
+        <div class="card-header"><i class="fas fa-chart-bar"></i> DSA by Category</div>
+        <div class="bar-chart" id="cat-chart"></div>
+      </div>
+      <div class="card" style="flex:1">
+        <div class="card-header"><i class="fas fa-graduation-cap"></i> Subject Completion</div>
+        <div class="bar-chart" id="subj-chart"></div>
+      </div>
+    </div>
+
+    <div class="cards-row">
+      <div class="card" style="flex:1">
+        <div class="card-header"><i class="fas fa-fire"></i> DSA Difficulty Split</div>
+        <div class="diff-split" id="diff-split"></div>
+      </div>
+      <div class="card" style="flex:1">
+        <div class="card-header"><i class="fas fa-tasks"></i> Placement Checklist Score</div>
+        <div class="placement-score-chart" id="placement-score-chart"></div>
+      </div>
+    </div>
+
+    <div class="card full-card">
+      <div class="card-header"><i class="fas fa-chart-area"></i> Study Hours — Last 14 Days</div>
+      <div class="line-chart-wrap" id="hours-chart"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- CONFIRM MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-icon">⚠️</div>
+    <h3>Reset All Data?</h3>
+    <p>This will permanently delete everything — DSA problems, hours, projects, and all progress. This cannot be undone.</p>
+    <div class="modal-btns">
+      <button class="btn btn-danger-solid" onclick="doReset()">Yes, Reset Everything</button>
+      <button class="btn btn-sm" onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
