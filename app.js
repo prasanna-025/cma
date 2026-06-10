@@ -36,6 +36,14 @@ const COMM_SKILLS = ['Reading Comprehension', 'Speaking Fluency', 'Vocabulary Bu
 const SOFT_SKILLS = ['Confidence', 'Presentation', 'Leadership', 'Teamwork', 'Time Management', 'Problem Solving', 'Adaptability', 'Critical Thinking'];
 
 const DSA_CATS = ['Arrays', 'Strings', 'Trees', 'Graphs', 'DP', 'Sorting', 'Linked List', 'Binary Search', 'Stack/Queue', 'Greedy'];
+const DASH_QUOTES = [
+  { q: "Ever tried. Ever failed. No matter. Try again. Fail again. Fail better.", a: "Samuel Beckett" },
+  { q: "Never give up. Today is hard, tomorrow will be worse, but the day after tomorrow will be sunshine.", a: "Jack Ma" },
+  { q: "The only way to do great work is to love what you do. And if you don't love it yet, code until you do.", a: "Steve Jobs (adapted)" },
+  { q: "An investment in yourself pays the best interest. Every hour studying DSA is compounding.", a: "Benjamin Franklin (adapted)" },
+  { q: "First, solve the problem. Then, write the code.", a: "John Johnson" },
+  { q: "Success is the sum of small efforts, repeated day in and day out. One problem at a time.", a: "Robert Collier" }
+];
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const TODAY_KEY = new Date().toISOString().slice(0, 10);
 
@@ -60,6 +68,7 @@ window.addEventListener('DOMContentLoaded', () => {
   setupMobileMenu();
   setDateChip();
   renderAll();
+  initDashQuoteRotator();
 });
 
 function renderAll() {
@@ -786,4 +795,32 @@ function toast(msg, type = 'success') {
     t.className = `toast ${type} show`;
     setTimeout(() => t.classList.remove('show'), 3000);
   }
+}
+
+// ── DASHBOARD MOTIVATION ROTATOR ──
+function initDashQuoteRotator() {
+  const quoteEl = document.getElementById('dash-quote');
+  const authorEl = document.getElementById('dash-quote-author');
+  if (!quoteEl || !authorEl) return;
+
+  let idx = Math.floor(Math.random() * DASH_QUOTES.length);
+  
+  function updateQuote() {
+    quoteEl.style.opacity = '0';
+    authorEl.style.opacity = '0';
+    setTimeout(() => {
+      idx = (idx + 1) % DASH_QUOTES.length;
+      quoteEl.textContent = `"${DASH_QUOTES[idx].q}"`;
+      authorEl.textContent = `— ${DASH_QUOTES[idx].a}`;
+      quoteEl.style.opacity = '1';
+      authorEl.style.opacity = '1';
+    }, 500);
+  }
+
+  // Set initial quote
+  quoteEl.textContent = `"${DASH_QUOTES[idx].q}"`;
+  authorEl.textContent = `— ${DASH_QUOTES[idx].a}`;
+
+  // Rotate every 10 seconds
+  setInterval(updateQuote, 10000);
 }
