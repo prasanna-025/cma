@@ -322,6 +322,8 @@
     <a href="index.html" class="nav-item" data-section="projects"><i class="fas fa-rocket"></i><span>Projects</span></a>
     <a href="index.html" class="nav-item" data-section="placement"><i class="fas fa-briefcase"></i><span>Placement</span></a>
     <a href="index.html" class="nav-item" data-section="analytics"><i class="fas fa-chart-line"></i><span>Analytics</span></a>
+    <a href="focus-todo.html" class="nav-item"><i class="fas fa-hourglass-half"></i><span>Focus Timer</span></a>
+    <a href="motivation.html" class="nav-item"><i class="fas fa-fire"></i><span>Grind Motivation</span></a>
   </nav>
 </aside>
 
@@ -427,64 +429,166 @@
 <script src="dsa_problems.js" defer></script>
 <script>
 // Initialize page - delay to ensure dsa_problems.js loads first
+let S = {
+  dsa: [], projects: [], applications: [],
+  hours: {}, dailyChecks: {}, placementChecks: {},
+  skills: {}, subjects: {},
+  streak: 0, lastActive: null,
+  xp: 0, level: 1,
+  mocks: 0, apps: 0,
+  weekHours: {}
+};
+
+function loadState() {
+  const saved = localStorage.getItem('placementOS_v2');
+  if (saved) {
+    Object.assign(S, JSON.parse(saved));
+  } else {
+    // New profile, populate initial solved problems from dsaProblems
+    dsaProblems.forEach(p => {
+      if (p.solved) {
+        S.dsa.push({
+          id: Date.now() + Math.random(),
+          name: p.name,
+          cat: mapTopicToCategory(p.topic),
+          diff: mapTopicToDifficulty(p.topic),
+          link: p.link || "",
+          date: new Date().toISOString().slice(0, 10)
+        });
+      }
+    });
+    saveState();
+  }
+  
+  // Sync in-memory dsaProblems status
+  dsaProblems.forEach(p => {
+    p.solved = S.dsa.some(solvedProb => solvedProb.name === p.name);
+  });
+}
+
+function saveState() {
+  localStorage.setItem('placementOS_v2', JSON.stringify(S));
+}
+
+const DSA_CATS = ['Arrays', 'Strings', 'Trees', 'Graphs', 'DP', 'Sorting', 'Linked List', 'Binary Search', 'Stack/Queue', 'Greedy'];
+
+function mapTopicToCategory(topic) {
+  if (!topic) return 'Arrays';
+  const t = topic.toLowerCase();
+  if (t.includes('string')) return 'Strings';
+  if (t.includes('tree') || t.includes('traversal')) return 'Trees';
+  if (t.includes('graph') || t.includes('disjoint') || t.includes('island')) return 'Graphs';
+  if (t.includes('dp') || t.includes('dynamic') || t.includes('knapsack') || t.includes('stocks') || t.includes('mcm')) return 'DP';
+  if (t.includes('sort') || t.includes('merge')) return 'Sorting';
+  if (t.includes('linked list') || t.includes('ll') || t.includes('dll') || t.includes('circular ll')) return 'Linked List';
+  if (t.includes('binary search') || t.includes('bs') || t.includes('rotated') || t.includes('search') || t.includes('biotonic') || t.includes('matrix')) return 'Binary Search';
+  if (t.includes('stack') || t.includes('queue') || t.includes('heap') || t.includes('priority')) return 'Stack/Queue';
+  if (t.includes('greedy')) return 'Greedy';
+  return 'Arrays';
+}
+
+function mapTopicToDifficulty(topic) {
+  if (!topic) return 'Easy';
+  const t = topic.toLowerCase();
+  if (t.includes('basic') || t.includes('basics')) return 'Easy';
+  if (t.includes('dp') || t.includes('hard') || t.includes('advanced') || t.includes('application')) return 'Hard';
+  return 'Medium';
+}
+
 function initPage() {
   if (typeof dsaProblems !== 'undefined') {
-    loadProblems();
+    loadState();
     populateTopicFilters();
-    updateStats();
+    setupFilters();
+    renderProblems();
   } else {
-    // Retry if not loaded yet
     setTimeout(initPage, 100);
   }
 }
 
 document.addEventListener('DOMContentLoaded', initPage);
 
-function loadProblems() {
+function renderProblems() {
   const problemsList = document.getElementById('problemsList');
-  let currentTopic = '';
+  problemsList.innerHTML = '';
   
+  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+  const selectedTopics = Array.from(document.querySelectorAll('#topicFilters input:checked')).map(el => el.id.replace('topic-', ''));
+  const filterAll = document.getElementById('filterAll').checked;
+  const filterSolved = document.getElementById('filterSolved').checked;
+  const filterUnsolved = document.getElementById('filterUnsolved').checked;
+  
+  const showBasic = document.getElementById('diffBasic').checked;
+  const showIntermediate = document.getElementById('diffIntermediate').checked;
+  const showAdvanced = document.getElementById('diffAdvanced').checked;
+
+  let currentTopic = '';
+
   dsaProblems.forEach(problem => {
-    // Add category header if topic changed
-    if (currentTopic !== problem.topic) {
-      currentTopic = problem.topic;
-      const header = document.createElement('div');
-      header.className = 'category-header';
-      header.textContent = `📍 ${problem.topic}`;
-      problemsList.appendChild(header);
+    const difficulty = mapTopicToDifficulty(problem.topic);
+    
+    // Check filters
+    let show = true;
+    if (!selectedTopics.includes(problem.topic)) show = false;
+    
+    if (!filterAll) {
+      if (filterSolved && !problem.solved) show = false;
+      if (filterUnsolved && problem.solved) show = false;
+    }
+    
+    if (difficulty === 'Easy' && !showBasic) show = false;
+    if (difficulty === 'Medium' && !showIntermediate) show = false;
+    if (difficulty === 'Hard' && !showAdvanced) show = false;
+    
+    if (searchTerm && !problem.name.toLowerCase().includes(searchTerm) && !problem.topic.toLowerCase().includes(searchTerm)) {
+      show = false;
     }
 
-    // Create problem row
-    const row = document.createElement('div');
-    row.className = `problem-row ${problem.solved ? 'solved' : ''}`;
-    row.dataset.topic = problem.topic;
-    row.dataset.difficulty = problem.difficulty;
-    row.dataset.solved = problem.solved;
+    if (show) {
+      // Add header if topic changed
+      if (currentTopic !== problem.topic) {
+        currentTopic = problem.topic;
+        const header = document.createElement('div');
+        header.className = 'category-header';
+        header.textContent = `📍 ${problem.topic}`;
+        problemsList.appendChild(header);
+      }
 
-    row.innerHTML = `
-      <div class="problem-checkbox">
-        <input type="checkbox" ${problem.solved ? 'checked' : ''} 
-               onchange="toggleProblemSolved('${problem.name}', this.checked)">
-      </div>
-      <div class="problem-name">
-        <a href="${problem.link || '#'}" target="_blank">
-          ${problem.name} ${problem.link ? '<i class="fas fa-external-link-alt"></i>' : ''}
-        </a>
-      </div>
-      <div class="problem-links">
-        ${problem.link ? `<a href="${problem.link}" target="_blank" class="problem-link-btn">Solve</a>` : ''}
-      </div>
-      <div class="solved-badge ${problem.solved ? '' : 'unsolved'}">
-        ${problem.solved ? '✅ Solved' : '⏳ Todo'}
-      </div>
-    `;
-    
-    problemsList.appendChild(row);
+      // Create problem row
+      const row = document.createElement('div');
+      row.className = `problem-row ${problem.solved ? 'solved' : ''}`;
+      row.dataset.topic = problem.topic;
+      row.dataset.difficulty = difficulty;
+      row.dataset.solved = problem.solved;
+
+      row.innerHTML = `
+        <div class="problem-checkbox">
+          <input type="checkbox" ${problem.solved ? 'checked' : ''} 
+                 onchange="toggleProblemSolved('${problem.name.replace(/'/g, "\\'")}', this.checked)">
+        </div>
+        <div class="problem-name">
+          <a href="${problem.link || '#'}" target="_blank">
+            ${problem.name} ${problem.link ? '<i class="fas fa-external-link-alt"></i>' : ''}
+          </a>
+        </div>
+        <div class="problem-links">
+          ${problem.link ? `<a href="${problem.link}" target="_blank" class="problem-link-btn">Solve</a>` : ''}
+        </div>
+        <div class="solved-badge ${problem.solved ? '' : 'unsolved'}">
+          ${problem.solved ? '✅ Solved' : '⏳ Todo'}
+        </div>
+      `;
+      
+      problemsList.appendChild(row);
+    }
   });
+
+  updateStats();
 }
 
 function populateTopicFilters() {
   const topicFilters = document.getElementById('topicFilters');
+  topicFilters.innerHTML = '';
   const topics = [...new Set(dsaProblems.map(p => p.topic))];
   
   topics.forEach(topic => {
@@ -498,46 +602,71 @@ function populateTopicFilters() {
   });
 }
 
-function filterProblems() {
-  const rows = document.querySelectorAll('.problem-row');
-  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-  const selectedTopics = Array.from(document.querySelectorAll('#topicFilters input:checked')).map(el => el.id.replace('topic-', ''));
-  const filterAll = document.getElementById('filterAll').checked;
-  const filterSolved = document.getElementById('filterSolved').checked;
-  const filterUnsolved = document.getElementById('filterUnsolved').checked;
-
-  rows.forEach(row => {
-    let show = true;
-
-    // Topic filter
-    if (!selectedTopics.includes(row.dataset.topic)) {
-      show = false;
+function setupFilters() {
+  // Make status checkboxes exclusive like radio buttons
+  document.getElementById('filterAll').addEventListener('change', (e) => {
+    if (e.target.checked) {
+      document.getElementById('filterSolved').checked = false;
+      document.getElementById('filterUnsolved').checked = false;
     }
-
-    // Status filter
-    if (!filterAll) {
-      const isSolved = row.dataset.solved === 'true';
-      if (filterSolved && !isSolved) show = false;
-      if (filterUnsolved && isSolved) show = false;
+    filterProblems();
+  });
+  document.getElementById('filterSolved').addEventListener('change', (e) => {
+    if (e.target.checked) {
+      document.getElementById('filterAll').checked = false;
+      document.getElementById('filterUnsolved').checked = false;
     }
-
-    // Search filter
-    if (searchTerm && !row.textContent.toLowerCase().includes(searchTerm)) {
-      show = false;
+    filterProblems();
+  });
+  document.getElementById('filterUnsolved').addEventListener('change', (e) => {
+    if (e.target.checked) {
+      document.getElementById('filterAll').checked = false;
+      document.getElementById('filterSolved').checked = false;
     }
-
-    row.style.display = show ? 'flex' : 'none';
+    filterProblems();
   });
 
-  updateStats();
+  // Attach listeners to difficulty filters
+  ['diffBasic', 'diffIntermediate', 'diffAdvanced'].forEach(id => {
+    document.getElementById(id).addEventListener('change', filterProblems);
+  });
+}
+
+function filterProblems() {
+  renderProblems();
 }
 
 function toggleProblemSolved(problemName, solved) {
   const problem = dsaProblems.find(p => p.name === problemName);
   if (problem) {
     problem.solved = solved;
-    // Update the row's solved class and dataset
-    const row = Array.from(document.querySelectorAll('.problem-row')).find(r => r.textContent.includes(problemName));
+    
+    if (solved) {
+      if (!S.dsa.some(p => p.name === problemName)) {
+        S.dsa.push({
+          id: Date.now() + Math.random(),
+          name: problem.name,
+          cat: mapTopicToCategory(problem.topic),
+          diff: mapTopicToDifficulty(problem.topic),
+          link: problem.link || "",
+          date: new Date().toISOString().slice(0, 10)
+        });
+        
+        const points = mapTopicToDifficulty(problem.topic) === 'Easy' ? 10 : mapTopicToDifficulty(problem.topic) === 'Medium' ? 20 : 35;
+        S.xp += points;
+        S.level = Math.floor(S.xp / 100) + 1;
+      }
+    } else {
+      S.dsa = S.dsa.filter(p => p.name !== problemName);
+    }
+    saveState();
+    
+    // Update specific row directly to avoid resetting scroll position
+    const row = Array.from(document.querySelectorAll('.problem-row')).find(r => {
+      const link = r.querySelector('.problem-name a');
+      return link && link.textContent.trim().startsWith(problemName);
+    });
+    
     if (row) {
       row.dataset.solved = solved;
       row.classList.toggle('solved', solved);
@@ -547,12 +676,13 @@ function toggleProblemSolved(problemName, solved) {
         badge.innerHTML = solved ? '✅ Solved' : '⏳ Todo';
       }
     }
+    
     updateStats();
   }
 }
 
 function updateStats() {
-  const visibleRows = Array.from(document.querySelectorAll('.problem-row')).filter(row => row.style.display !== 'none');
+  const visibleRows = Array.from(document.querySelectorAll('.problem-row'));
   const solvedCount = visibleRows.filter(row => row.dataset.solved === 'true').length;
   
   document.getElementById('totalProblems').textContent = visibleRows.length;

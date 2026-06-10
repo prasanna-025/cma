@@ -344,25 +344,42 @@ function renderDSASection() {
   const todayCount = getTodayDSACount();
   const ring = document.getElementById('dsa-daily-ring');
   const circ = 201;
-  ring.style.strokeDashoffset = circ - Math.min(1, todayCount / 5) * circ;
-  document.getElementById('dsa-today-count').textContent = todayCount;
-  document.getElementById('dsa-total-display').textContent = S.dsa.length;
+  if (ring) ring.style.strokeDashoffset = circ - Math.min(1, todayCount / 5) * circ;
+  const todayCountEl = document.getElementById('dsa-today-count');
+  if (todayCountEl) todayCountEl.textContent = todayCount;
+  const totalDisplayEl = document.getElementById('dsa-total-display');
+  if (totalDisplayEl) totalDisplayEl.textContent = S.dsa.length;
 
   const msgs = ['Start strong — solve your first problem!', 'Great start! Keep going!', 'Halfway there!', 'Almost done!', 'One more for the target!', '🔥 Target crushed! Bonus round?'];
-  document.getElementById('dsa-motivation-line').textContent = msgs[Math.min(todayCount, msgs.length - 1)];
+  const motivationLineEl = document.getElementById('dsa-motivation-line');
+  if (motivationLineEl) motivationLineEl.textContent = msgs[Math.min(todayCount, msgs.length - 1)];
+
+  // Update difficulty counts
+  const easyCount = S.dsa.filter(p => p.diff === 'Easy').length;
+  const medCount = S.dsa.filter(p => p.diff === 'Medium').length;
+  const hardCount = S.dsa.filter(p => p.diff === 'Hard').length;
+  
+  const easyEl = document.getElementById('dsa-easy-count');
+  if (easyEl) easyEl.textContent = easyCount;
+  const medEl = document.getElementById('dsa-med-count');
+  if (medEl) medEl.textContent = medCount;
+  const hardEl = document.getElementById('dsa-hard-count');
+  if (hardEl) hardEl.textContent = hardCount;
 
   // Category bars
   const catBars = document.getElementById('dsa-cat-bars');
-  const counts = {};
-  DSA_CATS.forEach(c => counts[c] = 0);
-  S.dsa.forEach(p => { if (counts[p.cat] !== undefined) counts[p.cat]++; });
-  const max = Math.max(...Object.values(counts), 1);
-  catBars.innerHTML = DSA_CATS.map(c => `
-    <div class="cat-bar-item">
-      <div class="cat-bar-label"><span>${c}</span><span>${counts[c]}</span></div>
-      <div class="prog-bar"><div class="prog-fill" style="width:${counts[c]/max*100}%"></div></div>
-    </div>
-  `).join('');
+  if (catBars) {
+    const counts = {};
+    DSA_CATS.forEach(c => counts[c] = 0);
+    S.dsa.forEach(p => { if (counts[p.cat] !== undefined) counts[p.cat]++; });
+    const max = Math.max(...Object.values(counts), 1);
+    catBars.innerHTML = DSA_CATS.map(c => `
+      <div class="cat-bar-item">
+        <div class="cat-bar-label"><span>${c}</span><span>${counts[c]}</span></div>
+        <div class="prog-bar"><div class="prog-fill" style="width:${counts[c]/max*100}%"></div></div>
+      </div>
+    `).join('');
+  }
 
   renderProblemList();
 }
@@ -610,14 +627,46 @@ function deleteApp(id) {
 }
 
 // ── ANALYTICS ──
+function linkedinScore() {
+  const keys = ['li-photo', 'li-headline', 'li-about', 'li-500', 'li-skills', 'li-projects'];
+  return keys.filter(k => S.placementChecks[k]).length / keys.length;
+}
+
 function renderAnalytics() {
+  renderAnalyticsSummary();
   renderCatChart();
   renderSubjChart();
+  renderDiffSplit();
+  renderPlacementScoreChart();
   renderHoursChart();
+}
+
+function renderAnalyticsSummary() {
+  const el = document.getElementById('analytics-summary');
+  if (!el) return;
+  el.innerHTML = `
+    <div class="an-summary-card">
+      <div class="an-val">${S.dsa.length}</div>
+      <div class="an-label">DSA Solved</div>
+    </div>
+    <div class="an-summary-card">
+      <div class="an-val">${totalHours()}h</div>
+      <div class="an-label">Study Hours</div>
+    </div>
+    <div class="an-summary-card">
+      <div class="an-val">${S.streak}</div>
+      <div class="an-label">Day Streak</div>
+    </div>
+    <div class="an-summary-card">
+      <div class="an-val">${S.xp}</div>
+      <div class="an-label">Total XP</div>
+    </div>
+  `;
 }
 
 function renderCatChart() {
   const el = document.getElementById('cat-chart');
+  if (!el) return;
   const counts = {};
   DSA_CATS.forEach(c => counts[c] = 0);
   S.dsa.forEach(p => { if (counts[p.cat] !== undefined) counts[p.cat]++; });
@@ -633,6 +682,7 @@ function renderCatChart() {
 
 function renderSubjChart() {
   const el = document.getElementById('subj-chart');
+  if (!el) return;
   el.innerHTML = Object.keys(SUBJECTS_DATA).map(sub => {
     const pct = subjectPct(sub);
     return `
@@ -645,8 +695,66 @@ function renderSubjChart() {
   }).join('');
 }
 
+function renderDiffSplit() {
+  const el = document.getElementById('diff-split');
+  if (!el) return;
+  const easy = S.dsa.filter(p => p.diff === 'Easy').length;
+  const med = S.dsa.filter(p => p.diff === 'Medium').length;
+  const hard = S.dsa.filter(p => p.diff === 'Hard').length;
+  const total = easy + med + hard || 1;
+  const easyPct = Math.round(easy / total * 100);
+  const medPct = Math.round(med / total * 100);
+  const hardPct = Math.round(hard / total * 100);
+  el.innerHTML = `
+    <div class="diff-row">
+      <span class="diff-label">Easy</span>
+      <div class="diff-bar">
+        <div class="diff-fill easy" style="width:${Math.max(8, easyPct)}%">${easyPct}% (${easy})</div>
+      </div>
+    </div>
+    <div class="diff-row">
+      <span class="diff-label">Medium</span>
+      <div class="diff-bar">
+        <div class="diff-fill med" style="width:${Math.max(8, medPct)}%">${medPct}% (${med})</div>
+      </div>
+    </div>
+    <div class="diff-row">
+      <span class="diff-label">Hard</span>
+      <div class="diff-bar">
+        <div class="diff-fill hard" style="width:${Math.max(8, hardPct)}%">${hardPct}% (${hard})</div>
+      </div>
+    </div>
+  `;
+}
+
+function renderPlacementScoreChart() {
+  const el = document.getElementById('placement-score-chart');
+  if (!el) return;
+  const resumePct = Math.round(resumeScore() * 100);
+  const liPct = Math.round(linkedinScore() * 100);
+  const mockPct = Math.round(Math.min(100, S.mocks / 20 * 100));
+  el.innerHTML = `
+    <div class="chart-bar-row">
+      <span class="chart-label">Resume</span>
+      <div class="chart-bar-wrap"><div class="chart-bar-fill" style="width:${resumePct}%"></div></div>
+      <span class="chart-value">${resumePct}%</span>
+    </div>
+    <div class="chart-bar-row">
+      <span class="chart-label">LinkedIn</span>
+      <div class="chart-bar-wrap"><div class="chart-bar-fill" style="width:${liPct}%"></div></div>
+      <span class="chart-value">${liPct}%</span>
+    </div>
+    <div class="chart-bar-row">
+      <span class="chart-label">Mocks</span>
+      <div class="chart-bar-wrap"><div class="chart-bar-fill" style="width:${mockPct}%"></div></div>
+      <span class="chart-value">${mockPct}%</span>
+    </div>
+  `;
+}
+
 function renderHoursChart() {
   const el = document.getElementById('hours-chart');
+  if (!el) return;
   const now = new Date();
   const days = [];
   for (let i = 6; i >= 0; i--) {
@@ -673,7 +781,9 @@ function renderHoursChart() {
 // ── TOAST ──
 function toast(msg, type = 'success') {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = `toast ${type} show`;
-  setTimeout(() => t.classList.remove('show'), 3000);
+  if (t) {
+    t.textContent = msg;
+    t.className = `toast ${type} show`;
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
 }
