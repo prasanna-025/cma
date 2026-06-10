@@ -424,14 +424,21 @@
   </main>
 </div>
 
-<script src="dsa_problems.js"></script>
+<script src="dsa_problems.js" defer></script>
 <script>
-// Initialize page
-document.addEventListener('DOMContentLoaded', function() {
-  loadProblems();
-  populateTopicFilters();
-  updateStats();
-});
+// Initialize page - delay to ensure dsa_problems.js loads first
+function initPage() {
+  if (typeof dsaProblems !== 'undefined') {
+    loadProblems();
+    populateTopicFilters();
+    updateStats();
+  } else {
+    // Retry if not loaded yet
+    setTimeout(initPage, 100);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', initPage);
 
 function loadProblems() {
   const problemsList = document.getElementById('problemsList');
