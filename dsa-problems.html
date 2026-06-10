@@ -98,74 +98,101 @@
     .problems-grid {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0;
     }
 
     .problem-row {
-      background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(22, 33, 62, 0.8) 100%);
-      border: 1px solid rgba(108, 99, 255, 0.15);
-      border-radius: 10px;
-      padding: 1rem;
-      display: grid;
-      grid-template-columns: 0.5fr 2fr 1fr 1fr 0.75fr;
-      gap: 1rem;
+      background: rgba(26, 26, 46, 0.5);
+      border: 1px solid rgba(108, 99, 255, 0.1);
+      border-radius: 0;
+      padding: 1rem 1.25rem;
+      display: flex;
       align-items: center;
-      transition: all 0.3s ease;
+      gap: 1rem;
+      transition: all 0.2s ease;
+      border-bottom: 1px solid rgba(108, 99, 255, 0.08);
+    }
+
+    .problem-row:first-of-type {
+      border-radius: 10px 10px 0 0;
+    }
+
+    .problem-row:last-of-type {
+      border-radius: 0 0 10px 10px;
+      border-bottom: 1px solid rgba(108, 99, 255, 0.15);
     }
 
     .problem-row:hover {
-      border-color: rgba(108, 99, 255, 0.4);
-      background: linear-gradient(135deg, rgba(108, 99, 255, 0.1) 0%, rgba(0, 212, 170, 0.05) 100%);
+      background: rgba(108, 99, 255, 0.08);
+      border-color: rgba(108, 99, 255, 0.2);
+    }
+
+    .problem-row.solved {
+      opacity: 0.6;
+    }
+
+    .problem-row.solved .problem-name {
+      text-decoration: line-through;
+      color: #666;
     }
 
     .problem-checkbox {
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
 
     .problem-checkbox input {
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       cursor: pointer;
+      accent-color: #00d4aa;
     }
 
     .problem-name {
+      flex: 1;
       color: #fff;
       font-weight: 500;
       font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .problem-name a {
       color: #6c63ff;
       text-decoration: none;
-      transition: color 0.3s ease;
+      transition: color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
     }
 
     .problem-name a:hover {
       color: #00d4aa;
-      text-decoration: underline;
     }
 
     .problem-links {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.4rem;
+      flex-shrink: 0;
     }
 
     .problem-link-btn {
-      padding: 0.4rem 0.8rem;
-      background: rgba(108, 99, 255, 0.2);
-      border: 1px solid rgba(108, 99, 255, 0.4);
-      border-radius: 5px;
+      padding: 0.3rem 0.6rem;
+      background: rgba(108, 99, 255, 0.15);
+      border: 1px solid rgba(108, 99, 255, 0.3);
+      border-radius: 4px;
       color: #6c63ff;
       text-decoration: none;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
     }
 
     .problem-link-btn:hover {
-      background: rgba(108, 99, 255, 0.4);
+      background: rgba(108, 99, 255, 0.3);
       color: #00d4aa;
       border-color: #00d4aa;
     }
@@ -174,32 +201,39 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.3rem;
-      padding: 0.4rem 0.8rem;
-      background: rgba(0, 212, 170, 0.2);
-      border-radius: 5px;
+      gap: 0.25rem;
+      padding: 0.3rem 0.6rem;
+      background: rgba(0, 212, 170, 0.15);
+      border-radius: 4px;
       color: #00d4aa;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       font-weight: 500;
+      flex-shrink: 0;
     }
 
     .solved-badge.unsolved {
-      background: rgba(255, 107, 107, 0.1);
+      background: rgba(255, 107, 107, 0.08);
       color: #ff6b6b;
     }
 
     .category-header {
-      display: sticky;
-      top: 0;
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-      padding: 1rem;
-      border-radius: 8px;
+      padding: 0.875rem 1.25rem;
+      border-radius: 0;
       border-left: 4px solid #6c63ff;
-      margin-top: 2rem;
+      border-top: 1px solid rgba(108, 99, 255, 0.2);
+      margin-top: 1.5rem;
+      margin-bottom: 0;
       color: #00d4aa;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       z-index: 10;
+    }
+
+    .category-header:first-of-type {
+      margin-top: 0;
     }
 
     .stats-card {
@@ -390,74 +424,8 @@
   </main>
 </div>
 
+<script src="dsa_problems.js"></script>
 <script>
-// DSA Problems Data
-const dsaProblems = [
-  // Basics
-  { topic: "Basics", subtopic: "Math Problems", name: "Find even or odd", link: "https://practice.geeksforgeeks.org/problems/odd-or-even3618/1", tutorial: "Best Tutorial link - click to view", article: "Article link-click to view", solved: true, difficulty: "Easy" },
-  { topic: "Basics", subtopic: "Math Problems", name: "Find last digit in a number", link: "https://www.geeksforgeeks.org/problems/find-last-digit-of-ab-for-large-numbers1936/1", tutorial: "Best Tutorial", article: "Article", solved: true, difficulty: "Easy" },
-  { topic: "Basics", subtopic: "Math Problems", name: "Count digits in a number", link: "https://practice.geeksforgeeks.org/problems/count-digits5716/1", tutorial: "Tutorial", article: "Article", solved: true, difficulty: "Easy" },
-  { topic: "Basics", subtopic: "Math Problems", name: "Reverse a number", link: "https://www.geeksforgeeks.org/problems/reverse-digit0316/1", tutorial: "Tutorial", article: "Article", solved: true, difficulty: "Easy" },
-  { topic: "Basics", subtopic: "Math Problems", name: "Find power of a number", link: "https://www.geeksforgeeks.org/problems/power-of-numbers-1587115620/1", tutorial: "Tutorial", article: "Article", solved: true, difficulty: "Easy" },
-  { topic: "Basics", subtopic: "Math Problems", name: "GCD", link: "https://practice.geeksforgeeks.org/problems/gcd-of-two-numbers3459/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
-  { topic: "Basics", subtopic: "Math Problems", name: "Prime number", link: "https://practice.geeksforgeeks.org/problems/prime-number2314/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
-  
-  // Array
-  { topic: "Array", subtopic: "Basics", name: "Find max and min element", link: "https://www.geeksforgeeks.org/problems/find-minimum-and-maximum-element-in-an-array4428/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
-  { topic: "Array", subtopic: "Basics", name: "Search an element in array", link: "https://www.geeksforgeeks.org/problems/search-an-element-in-an-array-1587115621/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
-  { topic: "Array", subtopic: "Two Pointer", name: "Find pair with given sum", link: "https://www.geeksforgeeks.org/problems/key-pair5616/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
-  { topic: "Array", subtopic: "Two Pointer", name: "3 Sum", link: "https://www.geeksforgeeks.org/problems/triplet-sum-in-array-1587115621/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Hard" },
-  { topic: "Array", subtopic: "Must Solve", name: "Kadane's Algorithm", link: "https://practice.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
-  
-  // Recursion
-  { topic: "Recursion", subtopic: "Basics", name: "Factorial of N", link: "https://practice.geeksforgeeks.org/problems/factorial5739/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
-  { topic: "Recursion", subtopic: "Basics", name: "Fibonacci series", link: "https://www.geeksforgeeks.org/problems/nth-fibonacci-number1335/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
-  { topic: "Recursion", subtopic: "Basics", name: "Power(x,n)", link: "https://www.geeksforgeeks.org/problems/power-of-numbers-1587115620/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
-  
-  // Binary Search
-  { topic: "Binary Search", subtopic: "Basic Pattern", name: "Search in sorted array", link: "https://www.geeksforgeeks.org/problems/who-will-win-1587115621/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
-  { topic: "Binary Search", subtopic: "Basic Pattern", name: "Find floor and ceil", link: "https://www.geeksforgeeks.org/problems/floor-in-a-sorted-array-1587115620/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
-  { topic: "Binary Search", subtopic: "Application", name: "Aggressive cows", link: "https://www.geeksforgeeks.org/problems/aggressive-cows/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Hard" },
-  
-  // Sorting
-  { topic: "Sorting", subtopic: "Basics", name: "Bubble Sort", link: "https://www.geeksforgeeks.org/problems/bubble-sort/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
-  { topic: "Sorting", subtopic: "Basics", name: "Merge Sort", link: "https://www.geeksforgeeks.org/problems/merge-sort/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
-  { topic: "Sorting", subtopic: "Basics", name: "Quick Sort", link: "https://www.geeksforgeeks.org/problems/quick-sort/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Hard" },
-  
-  // LinkedList
-  { topic: "LinkedList", subtopic: "Basics", name: "Reverse a LL", link: "https://www.geeksforgeeks.org/problems/reverse-a-linked-list/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
-  { topic: "LinkedList", subtopic: "Basics", name: "Check if palindrome", link: "https://www.geeksforgeeks.org/problems/check-if-linked-list-is-pallindrome/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
-  { topic: "LinkedList", subtopic: "Loop", name: "Detect loop in LL", link: "https://www.geeksforgeeks.org/problems/detect-loop-in-linked-list/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
-  
-  // Stack
-  { topic: "Stack", subtopic: "Basics", name: "Check balanced parenthesis", link: "https://www.geeksforgeeks.org/problems/parenthesis-checker2744/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
-  { topic: "Stack", subtopic: "Next Greater", name: "Next greater element", link: "https://www.geeksforgeeks.org/problems/next-larger-element-1587115620/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
-  
-  // Queue
-  { topic: "Queue", subtopic: "Basics", name: "Implement queue using stack", link: "https://www.geeksforgeeks.org/problems/queue-using-two-stacks/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
-  { topic: "Queue", subtopic: "Implementation", name: "LRU Cache", link: "https://www.geeksforgeeks.org/problems/lru-cache/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Hard" },
-  
-  // Trees
-  { topic: "Trees", subtopic: "Traversals", name: "Inorder Traversal", link: "https://www.geeksforgeeks.org/problems/inorder-traversal/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
-  { topic: "Trees", subtopic: "Traversals", name: "Level Order Traversal", link: "https://www.geeksforgeeks.org/problems/level-order-traversal/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
-  { topic: "Trees", subtopic: "Basics", name: "Height of tree", link: "https://www.geeksforgeeks.org/problems/height-of-binary-tree/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
-  { topic: "Trees", subtopic: "BST", name: "Check for BST", link: "https://www.geeksforgeeks.org/problems/check-for-bst/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
-  
-  // Backtracking
-  { topic: "Backtracking", subtopic: "Basics", name: "Permutations of a string", link: "https://www.geeksforgeeks.org/problems/permutations-of-a-given-string2041/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
-  { topic: "Backtracking", subtopic: "Basics", name: "N-Queens", link: "https://www.geeksforgeeks.org/problems/n-queen-problem0315/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Hard" },
-  
-  // Graphs
-  { topic: "Graphs", subtopic: "Traversals", name: "BFS Traversal", link: "https://www.geeksforgeeks.org/problems/bfs-traversal-of-graph/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
-  { topic: "Graphs", subtopic: "Traversals", name: "DFS Traversal", link: "https://www.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
-  { topic: "Graphs", subtopic: "Basics", name: "Number of Islands", link: "https://www.geeksforgeeks.org/problems/find-the-number-of-islands/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
-  
-  // DP
-  { topic: "Dynamic Programming", subtopic: "1D DP", name: "Climb stairs", link: "https://www.geeksforgeeks.org/problems/count-ways-to-reach-the-nth-stair-1587115620/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
-  { topic: "Dynamic Programming", subtopic: "1D DP", name: "House Robber", link: "https://leetcode.com/problems/house-robber/", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
-  { topic: "Dynamic Programming", subtopic: "Knapsack", name: "0-1 Knapsack", link: "https://www.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
-];
-
 // Initialize page
 document.addEventListener('DOMContentLoaded', function() {
   loadProblems();
@@ -481,7 +449,7 @@ function loadProblems() {
 
     // Create problem row
     const row = document.createElement('div');
-    row.className = 'problem-row';
+    row.className = `problem-row ${problem.solved ? 'solved' : ''}`;
     row.dataset.topic = problem.topic;
     row.dataset.difficulty = problem.difficulty;
     row.dataset.solved = problem.solved;
@@ -492,14 +460,12 @@ function loadProblems() {
                onchange="toggleProblemSolved('${problem.name}', this.checked)">
       </div>
       <div class="problem-name">
-        ${problem.name}
+        <a href="${problem.link || '#'}" target="_blank">
+          ${problem.name} ${problem.link ? '<i class="fas fa-external-link-alt"></i>' : ''}
+        </a>
       </div>
       <div class="problem-links">
-        <a href="${problem.link}" target="_blank" class="problem-link-btn">Problem</a>
-      </div>
-      <div class="problem-links">
-        <button class="problem-link-btn">Tutorial</button>
-        <button class="problem-link-btn">Article</button>
+        ${problem.link ? `<a href="${problem.link}" target="_blank" class="problem-link-btn">Solve</a>` : ''}
       </div>
       <div class="solved-badge ${problem.solved ? '' : 'unsolved'}">
         ${problem.solved ? '✅ Solved' : '⏳ Todo'}
@@ -553,7 +519,7 @@ function filterProblems() {
       show = false;
     }
 
-    row.style.display = show ? 'grid' : 'none';
+    row.style.display = show ? 'flex' : 'none';
   });
 
   updateStats();
@@ -563,8 +529,18 @@ function toggleProblemSolved(problemName, solved) {
   const problem = dsaProblems.find(p => p.name === problemName);
   if (problem) {
     problem.solved = solved;
-    loadProblems();
-    filterProblems();
+    // Update the row's solved class and dataset
+    const row = Array.from(document.querySelectorAll('.problem-row')).find(r => r.textContent.includes(problemName));
+    if (row) {
+      row.dataset.solved = solved;
+      row.classList.toggle('solved', solved);
+      const badge = row.querySelector('.solved-badge');
+      if (badge) {
+        badge.className = `solved-badge ${solved ? '' : 'unsolved'}`;
+        badge.innerHTML = solved ? '✅ Solved' : '⏳ Todo';
+      }
+    }
+    updateStats();
   }
 }
 
