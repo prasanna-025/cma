@@ -99,6 +99,12 @@ function setupNav() {
 }
 
 function switchSection(sec) {
+  // Handle DSA Tracker - navigate to external page
+  if (sec === 'dsa') {
+    window.location.href = 'dsa-problems.html';
+    return;
+  }
+  
   document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
   document.querySelector(`.nav-item[data-section="${sec}"]`)?.classList.add('active');
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));

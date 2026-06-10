@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DSA Problem Tracker — PlacementOS</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    .dsa-container {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .dsa-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .filter-card {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid rgba(108, 99, 255, 0.2);
+    }
+
+    .filter-card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #00d4aa;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .filter-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .filter-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+    }
+
+    .filter-checkbox input {
+      cursor: pointer;
+    }
+
+    .filter-checkbox label {
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #a8dadc;
+    }
+
+    .dsa-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .search-bar {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      border: 1px solid rgba(108, 99, 255, 0.3);
+      border-radius: 8px;
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .search-bar input::placeholder {
+      color: #666;
+    }
+
+    .search-bar button {
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, #6c63ff 0%, #00d4aa 100%);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .problems-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .problem-row {
+      background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(22, 33, 62, 0.8) 100%);
+      border: 1px solid rgba(108, 99, 255, 0.15);
+      border-radius: 10px;
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: 0.5fr 2fr 1fr 1fr 0.75fr;
+      gap: 1rem;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .problem-row:hover {
+      border-color: rgba(108, 99, 255, 0.4);
+      background: linear-gradient(135deg, rgba(108, 99, 255, 0.1) 0%, rgba(0, 212, 170, 0.05) 100%);
+    }
+
+    .problem-checkbox {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .problem-checkbox input {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .problem-name {
+      color: #fff;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .problem-name a {
+      color: #6c63ff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .problem-name a:hover {
+      color: #00d4aa;
+      text-decoration: underline;
+    }
+
+    .problem-links {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .problem-link-btn {
+      padding: 0.4rem 0.8rem;
+      background: rgba(108, 99, 255, 0.2);
+      border: 1px solid rgba(108, 99, 255, 0.4);
+      border-radius: 5px;
+      color: #6c63ff;
+      text-decoration: none;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .problem-link-btn:hover {
+      background: rgba(108, 99, 255, 0.4);
+      color: #00d4aa;
+      border-color: #00d4aa;
+    }
+
+    .solved-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      padding: 0.4rem 0.8rem;
+      background: rgba(0, 212, 170, 0.2);
+      border-radius: 5px;
+      color: #00d4aa;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .solved-badge.unsolved {
+      background: rgba(255, 107, 107, 0.1);
+      color: #ff6b6b;
+    }
+
+    .category-header {
+      display: sticky;
+      top: 0;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid #6c63ff;
+      margin-top: 2rem;
+      color: #00d4aa;
+      font-weight: 600;
+      font-size: 1.1rem;
+      z-index: 10;
+    }
+
+    .stats-card {
+      background: linear-gradient(135deg, rgba(108, 99, 255, 0.1) 0%, rgba(0, 212, 170, 0.05) 100%);
+      border: 1px solid rgba(108, 99, 255, 0.3);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .stat-label {
+      color: #a8dadc;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .stat-value {
+      color: #00d4aa;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 1200px) {
+      .dsa-container {
+        grid-template-columns: 1fr;
+      }
+
+      .problem-row {
+        grid-template-columns: 0.4fr 1.5fr 0.8fr;
+      }
+
+      .problem-links, .solved-badge {
+        grid-column: 3;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .problem-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+
+      .dsa-sidebar {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .filter-card {
+        flex: 1;
+        min-width: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SVG Gradient Defs -->
+<svg style="position:absolute;width:0;height:0" aria-hidden="true">
+  <defs>
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6c63ff"/>
+      <stop offset="100%" style="stop-color:#00d4aa"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <span class="logo-icon">⚡</span>
+    <span class="logo-text">PlacementOS</span>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="index.html" class="nav-item" data-section="dashboard"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+    <a href="#" class="nav-item active" data-section="dsa"><i class="fas fa-code"></i><span>DSA Tracker</span></a>
+    <a href="index.html" class="nav-item" data-section="core-subjects"><i class="fas fa-book"></i><span>Core Subjects</span></a>
+    <a href="index.html" class="nav-item" data-section="communication"><i class="fas fa-comments"></i><span>Communication</span></a>
+    <a href="index.html" class="nav-item" data-section="soft-skills"><i class="fas fa-handshake"></i><span>Soft Skills</span></a>
+    <a href="index.html" class="nav-item" data-section="projects"><i class="fas fa-rocket"></i><span>Projects</span></a>
+    <a href="index.html" class="nav-item" data-section="placement"><i class="fas fa-briefcase"></i><span>Placement</span></a>
+    <a href="index.html" class="nav-item" data-section="analytics"><i class="fas fa-chart-line"></i><span>Analytics</span></a>
+  </nav>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main-container">
+  <header class="top-header">
+    <button class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+    <h2>DSA Problem Tracker</h2>
+    <div class="header-actions">
+      <i class="fas fa-user-circle"></i>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Master Data Structures & Algorithms 🚀</h1>
+      <p>Track your progress through curated DSA problems. Master each topic systematically.</p>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-card">
+      <div class="stat-item">
+        <span class="stat-label">Total Problems</span>
+        <span class="stat-value" id="totalProblems">0</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Solved</span>
+        <span class="stat-value" id="solvedCount">0</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Progress</span>
+        <span class="stat-value" id="progressPercent">0%</span>
+      </div>
+    </div>
+
+    <!-- Main DSA Container -->
+    <div class="dsa-container">
+      <!-- Sidebar Filters -->
+      <div class="dsa-sidebar">
+        <div class="filter-card">
+          <h3>📊 Filter by Status</h3>
+          <div class="filter-options">
+            <div class="filter-checkbox">
+              <input type="checkbox" id="filterAll" checked>
+              <label for="filterAll">All Problems</label>
+            </div>
+            <div class="filter-checkbox">
+              <input type="checkbox" id="filterSolved">
+              <label for="filterSolved">Solved Only</label>
+            </div>
+            <div class="filter-checkbox">
+              <input type="checkbox" id="filterUnsolved">
+              <label for="filterUnsolved">Unsolved Only</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-card">
+          <h3>🏷️ Filter by Topic</h3>
+          <div class="filter-options" id="topicFilters">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <div class="filter-card">
+          <h3>📈 Difficulty</h3>
+          <div class="filter-options">
+            <div class="filter-checkbox">
+              <input type="checkbox" id="diffBasic" checked>
+              <label for="diffBasic">Basic</label>
+            </div>
+            <div class="filter-checkbox">
+              <input type="checkbox" id="diffIntermediate" checked>
+              <label for="diffIntermediate">Intermediate</label>
+            </div>
+            <div class="filter-checkbox">
+              <input type="checkbox" id="diffAdvanced" checked>
+              <label for="diffAdvanced">Advanced</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Area -->
+      <div class="dsa-content">
+        <!-- Search Bar -->
+        <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="Search problems...">
+          <button onclick="filterProblems()">Search</button>
+        </div>
+
+        <!-- Problems List -->
+        <div class="problems-grid" id="problemsList">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// DSA Problems Data
+const dsaProblems = [
+  // Basics
+  { topic: "Basics", subtopic: "Math Problems", name: "Find even or odd", link: "https://practice.geeksforgeeks.org/problems/odd-or-even3618/1", tutorial: "Best Tutorial link - click to view", article: "Article link-click to view", solved: true, difficulty: "Easy" },
+  { topic: "Basics", subtopic: "Math Problems", name: "Find last digit in a number", link: "https://www.geeksforgeeks.org/problems/find-last-digit-of-ab-for-large-numbers1936/1", tutorial: "Best Tutorial", article: "Article", solved: true, difficulty: "Easy" },
+  { topic: "Basics", subtopic: "Math Problems", name: "Count digits in a number", link: "https://practice.geeksforgeeks.org/problems/count-digits5716/1", tutorial: "Tutorial", article: "Article", solved: true, difficulty: "Easy" },
+  { topic: "Basics", subtopic: "Math Problems", name: "Reverse a number", link: "https://www.geeksforgeeks.org/problems/reverse-digit0316/1", tutorial: "Tutorial", article: "Article", solved: true, difficulty: "Easy" },
+  { topic: "Basics", subtopic: "Math Problems", name: "Find power of a number", link: "https://www.geeksforgeeks.org/problems/power-of-numbers-1587115620/1", tutorial: "Tutorial", article: "Article", solved: true, difficulty: "Easy" },
+  { topic: "Basics", subtopic: "Math Problems", name: "GCD", link: "https://practice.geeksforgeeks.org/problems/gcd-of-two-numbers3459/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
+  { topic: "Basics", subtopic: "Math Problems", name: "Prime number", link: "https://practice.geeksforgeeks.org/problems/prime-number2314/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
+  
+  // Array
+  { topic: "Array", subtopic: "Basics", name: "Find max and min element", link: "https://www.geeksforgeeks.org/problems/find-minimum-and-maximum-element-in-an-array4428/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
+  { topic: "Array", subtopic: "Basics", name: "Search an element in array", link: "https://www.geeksforgeeks.org/problems/search-an-element-in-an-array-1587115621/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
+  { topic: "Array", subtopic: "Two Pointer", name: "Find pair with given sum", link: "https://www.geeksforgeeks.org/problems/key-pair5616/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
+  { topic: "Array", subtopic: "Two Pointer", name: "3 Sum", link: "https://www.geeksforgeeks.org/problems/triplet-sum-in-array-1587115621/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Hard" },
+  { topic: "Array", subtopic: "Must Solve", name: "Kadane's Algorithm", link: "https://practice.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
+  
+  // Recursion
+  { topic: "Recursion", subtopic: "Basics", name: "Factorial of N", link: "https://practice.geeksforgeeks.org/problems/factorial5739/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
+  { topic: "Recursion", subtopic: "Basics", name: "Fibonacci series", link: "https://www.geeksforgeeks.org/problems/nth-fibonacci-number1335/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
+  { topic: "Recursion", subtopic: "Basics", name: "Power(x,n)", link: "https://www.geeksforgeeks.org/problems/power-of-numbers-1587115620/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
+  
+  // Binary Search
+  { topic: "Binary Search", subtopic: "Basic Pattern", name: "Search in sorted array", link: "https://www.geeksforgeeks.org/problems/who-will-win-1587115621/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
+  { topic: "Binary Search", subtopic: "Basic Pattern", name: "Find floor and ceil", link: "https://www.geeksforgeeks.org/problems/floor-in-a-sorted-array-1587115620/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
+  { topic: "Binary Search", subtopic: "Application", name: "Aggressive cows", link: "https://www.geeksforgeeks.org/problems/aggressive-cows/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Hard" },
+  
+  // Sorting
+  { topic: "Sorting", subtopic: "Basics", name: "Bubble Sort", link: "https://www.geeksforgeeks.org/problems/bubble-sort/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
+  { topic: "Sorting", subtopic: "Basics", name: "Merge Sort", link: "https://www.geeksforgeeks.org/problems/merge-sort/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
+  { topic: "Sorting", subtopic: "Basics", name: "Quick Sort", link: "https://www.geeksforgeeks.org/problems/quick-sort/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Hard" },
+  
+  // LinkedList
+  { topic: "LinkedList", subtopic: "Basics", name: "Reverse a LL", link: "https://www.geeksforgeeks.org/problems/reverse-a-linked-list/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
+  { topic: "LinkedList", subtopic: "Basics", name: "Check if palindrome", link: "https://www.geeksforgeeks.org/problems/check-if-linked-list-is-pallindrome/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
+  { topic: "LinkedList", subtopic: "Loop", name: "Detect loop in LL", link: "https://www.geeksforgeeks.org/problems/detect-loop-in-linked-list/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
+  
+  // Stack
+  { topic: "Stack", subtopic: "Basics", name: "Check balanced parenthesis", link: "https://www.geeksforgeeks.org/problems/parenthesis-checker2744/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
+  { topic: "Stack", subtopic: "Next Greater", name: "Next greater element", link: "https://www.geeksforgeeks.org/problems/next-larger-element-1587115620/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
+  
+  // Queue
+  { topic: "Queue", subtopic: "Basics", name: "Implement queue using stack", link: "https://www.geeksforgeeks.org/problems/queue-using-two-stacks/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
+  { topic: "Queue", subtopic: "Implementation", name: "LRU Cache", link: "https://www.geeksforgeeks.org/problems/lru-cache/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Hard" },
+  
+  // Trees
+  { topic: "Trees", subtopic: "Traversals", name: "Inorder Traversal", link: "https://www.geeksforgeeks.org/problems/inorder-traversal/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
+  { topic: "Trees", subtopic: "Traversals", name: "Level Order Traversal", link: "https://www.geeksforgeeks.org/problems/level-order-traversal/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
+  { topic: "Trees", subtopic: "Basics", name: "Height of tree", link: "https://www.geeksforgeeks.org/problems/height-of-binary-tree/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
+  { topic: "Trees", subtopic: "BST", name: "Check for BST", link: "https://www.geeksforgeeks.org/problems/check-for-bst/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
+  
+  // Backtracking
+  { topic: "Backtracking", subtopic: "Basics", name: "Permutations of a string", link: "https://www.geeksforgeeks.org/problems/permutations-of-a-given-string2041/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
+  { topic: "Backtracking", subtopic: "Basics", name: "N-Queens", link: "https://www.geeksforgeeks.org/problems/n-queen-problem0315/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Hard" },
+  
+  // Graphs
+  { topic: "Graphs", subtopic: "Traversals", name: "BFS Traversal", link: "https://www.geeksforgeeks.org/problems/bfs-traversal-of-graph/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
+  { topic: "Graphs", subtopic: "Traversals", name: "DFS Traversal", link: "https://www.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
+  { topic: "Graphs", subtopic: "Basics", name: "Number of Islands", link: "https://www.geeksforgeeks.org/problems/find-the-number-of-islands/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
+  
+  // DP
+  { topic: "Dynamic Programming", subtopic: "1D DP", name: "Climb stairs", link: "https://www.geeksforgeeks.org/problems/count-ways-to-reach-the-nth-stair-1587115620/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Easy" },
+  { topic: "Dynamic Programming", subtopic: "1D DP", name: "House Robber", link: "https://leetcode.com/problems/house-robber/", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
+  { topic: "Dynamic Programming", subtopic: "Knapsack", name: "0-1 Knapsack", link: "https://www.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1", tutorial: "Tutorial", article: "Article", solved: false, difficulty: "Medium" },
+];
+
+// Initialize page
+document.addEventListener('DOMContentLoaded', function() {
+  loadProblems();
+  populateTopicFilters();
+  updateStats();
+});
+
+function loadProblems() {
+  const problemsList = document.getElementById('problemsList');
+  let currentTopic = '';
+  
+  dsaProblems.forEach(problem => {
+    // Add category header if topic changed
+    if (currentTopic !== problem.topic) {
+      currentTopic = problem.topic;
+      const header = document.createElement('div');
+      header.className = 'category-header';
+      header.textContent = `📍 ${problem.topic}`;
+      problemsList.appendChild(header);
+    }
+
+    // Create problem row
+    const row = document.createElement('div');
+    row.className = 'problem-row';
+    row.dataset.topic = problem.topic;
+    row.dataset.difficulty = problem.difficulty;
+    row.dataset.solved = problem.solved;
+
+    row.innerHTML = `
+      <div class="problem-checkbox">
+        <input type="checkbox" ${problem.solved ? 'checked' : ''} 
+               onchange="toggleProblemSolved('${problem.name}', this.checked)">
+      </div>
+      <div class="problem-name">
+        ${problem.name}
+      </div>
+      <div class="problem-links">
+        <a href="${problem.link}" target="_blank" class="problem-link-btn">Problem</a>
+      </div>
+      <div class="problem-links">
+        <button class="problem-link-btn">Tutorial</button>
+        <button class="problem-link-btn">Article</button>
+      </div>
+      <div class="solved-badge ${problem.solved ? '' : 'unsolved'}">
+        ${problem.solved ? '✅ Solved' : '⏳ Todo'}
+      </div>
+    `;
+    
+    problemsList.appendChild(row);
+  });
+}
+
+function populateTopicFilters() {
+  const topicFilters = document.getElementById('topicFilters');
+  const topics = [...new Set(dsaProblems.map(p => p.topic))];
+  
+  topics.forEach(topic => {
+    const checkbox = document.createElement('div');
+    checkbox.className = 'filter-checkbox';
+    checkbox.innerHTML = `
+      <input type="checkbox" id="topic-${topic}" checked onchange="filterProblems()">
+      <label for="topic-${topic}">${topic}</label>
+    `;
+    topicFilters.appendChild(checkbox);
+  });
+}
+
+function filterProblems() {
+  const rows = document.querySelectorAll('.problem-row');
+  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+  const selectedTopics = Array.from(document.querySelectorAll('#topicFilters input:checked')).map(el => el.id.replace('topic-', ''));
+  const filterAll = document.getElementById('filterAll').checked;
+  const filterSolved = document.getElementById('filterSolved').checked;
+  const filterUnsolved = document.getElementById('filterUnsolved').checked;
+
+  rows.forEach(row => {
+    let show = true;
+
+    // Topic filter
+    if (!selectedTopics.includes(row.dataset.topic)) {
+      show = false;
+    }
+
+    // Status filter
+    if (!filterAll) {
+      const isSolved = row.dataset.solved === 'true';
+      if (filterSolved && !isSolved) show = false;
+      if (filterUnsolved && isSolved) show = false;
+    }
+
+    // Search filter
+    if (searchTerm && !row.textContent.toLowerCase().includes(searchTerm)) {
+      show = false;
+    }
+
+    row.style.display = show ? 'grid' : 'none';
+  });
+
+  updateStats();
+}
+
+function toggleProblemSolved(problemName, solved) {
+  const problem = dsaProblems.find(p => p.name === problemName);
+  if (problem) {
+    problem.solved = solved;
+    loadProblems();
+    filterProblems();
+  }
+}
+
+function updateStats() {
+  const visibleRows = Array.from(document.querySelectorAll('.problem-row')).filter(row => row.style.display !== 'none');
+  const solvedCount = visibleRows.filter(row => row.dataset.solved === 'true').length;
+  
+  document.getElementById('totalProblems').textContent = visibleRows.length;
+  document.getElementById('solvedCount').textContent = solvedCount;
+  document.getElementById('progressPercent').textContent = visibleRows.length > 0 
+    ? Math.round((solvedCount / visibleRows.length) * 100) + '%' 
+    : '0%';
+}
+
+// Menu toggle
+document.getElementById('menuToggle')?.addEventListener('click', () => {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('active');
+});
+</script>
+
+</body>
+</html>
