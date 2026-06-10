@@ -1,0 +1,3984 @@
+﻿[
+    {
+        "topic":  "Basics",
+        "name":  "Find even or odd",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/odd-or-even3618/1",
+        "tutorial":  "",
+        "solved":  true,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Find last digit in a number",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/find-last-digit-of-ab-for-large-numbers1936/1",
+        "tutorial":  "",
+        "solved":  true,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Count digits in a number(Solving above last digit prob wil make this easy for you)",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/count-digits5716/1",
+        "tutorial":  "",
+        "solved":  true,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Reverse a number(Try thinking how you can use above logic in solving this)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/reverse-digit0316/1",
+        "tutorial":  "",
+        "solved":  true,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Find power of a number",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/power-of-numbers-1587115620/1",
+        "tutorial":  "",
+        "solved":  true,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "GCD",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/gcd-of-two-numbers3459/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Print all divisors of a number",
+        "article":  "",
+        "link":  "https://www.codingninjas.com/studio/problems/print-all-divisors-of-a-number_1164188",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Prime number(Try solving by yourself)",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/prime-number2314/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Armstrong number(Solving power of number, will make this easy for you)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/armstrong-numbers2727/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Check palindrome of number(Use the techniques you learnt so far solving above probs and solve this by yourself)",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/palindrome0746/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Square root of a number(Try to first figure out algo to solve this)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/square-root/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Perfect number",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/perfect-numbers3207/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics with traversal",
+        "name":  "What is an array? How is it represented?",
+        "article":  "",
+        "link":  "",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics with traversal",
+        "name":  "Find the maximum and minimum element in array(After solving the search , you can solve all probs in this basics by yourself)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/find-minimum-and-maximum-element-in-an-array4428/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics with traversal",
+        "name":  "Find third largest element in array",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/third-largest-element/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics with traversal",
+        "name":  "Search an element in array(Understand how to traverse through the array and how to access the elements)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/search-an-element-in-an-array-1587115621/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics with traversal",
+        "name":  "Find missing number in array",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/missing-number-in-array1416/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics with traversal",
+        "name":  "Find repeating number in array",
+        "article":  "",
+        "link":  "",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics with traversal",
+        "name":  "Sort an array of 0s , 1s and 2s (You dont need to know any sorting algo, just using basics, once solved, definitely learn the optimal algo)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/sort-an-array-of-0s-1s-and-2s4231/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics with traversal",
+        "name":  "Check if two arrays are equal or not",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/check-if-two-arrays-are-equal-or-not3847/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics with traversal",
+        "name":  "Rotate the array by 1",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/cyclically-rotate-an-array-by-one2614/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics with traversal",
+        "name":  "Rotate the array by k",
+        "article":  "",
+        "link":  "https://www.codingninjas.com/studio/problems/rotate-array_1230543",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics with traversal",
+        "name":  "Array subset of another array",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/array-subset-of-another-array2317/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics with traversal",
+        "name":  "Learn what is map and how its represented before moving forward",
+        "article":  "",
+        "link":  "",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics with traversal",
+        "name":  "Count frequency of elements in array(Solve efficiently, try applying what you learnt about map)",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/frequency-of-array-elements-1587115620/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)",
+        "name":  "Find pair with given sum",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/key-pair5616/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)",
+        "name":  "3 Sum",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/triplet-sum-in-array-1587115621/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)",
+        "name":  "4 Sum",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/4sum/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)",
+        "name":  "Find triplets with zero sum",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/find-triplets-with-zero-sum/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)",
+        "name":  "Find count of triplets",
+        "article":  "",
+        "link":  "Count the triplets ",
+        "tutorial":  "",
+        "solved":  {
+
+                   },
+        "notes":  ""
+    },
+    {
+        "topic":  "Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)",
+        "name":  "Union of two arrays(Learn the brute force \u0026 optimal soln, you will learn about set datastructure, which will be super useful in many probs in brute force)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/union-of-two-arrays3538/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)",
+        "name":  "Intersection of two arrays",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/intersection-of-two-arrays2404/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)",
+        "name":  "Remove duplicates from array(Quite diff from above, try to solve on own, this actually shows that not always you will have pointers at start and end)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/remove-duplicate-elements-from-sorted-array/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)",
+        "name":  "kth element of 2 sorted arrays",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/k-th-element-of-two-sorted-array1317/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)",
+        "name":  "Length of longest subarray with sum k",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?itm_source=geeksforgeeks\u0026itm_medium=article\u0026itm_campaign=bottom_sticky_on_article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)",
+        "name":  "Trapping rain water",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/trapping-rain-water-1587115621/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must Solve",
+        "name":  "Majority element",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/majority-element/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must Solve",
+        "name":  "Kadane\u0027s algo(super imp)",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must Solve",
+        "name":  "Count inversions",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must Solve",
+        "name":  "Merge intervals",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/merge-intervals/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must Solve",
+        "name":  "Maximum product subarray",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/maximum-product-subarray3604/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must Solve",
+        "name":  "Next permutation",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/next-permutation/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must Solve",
+        "name":  "Seive of eranthoses(Popular algo for prime numbers)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/sieve-of-eratosthenes5242/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversal \u0026 Basic \u0026 Must solve",
+        "name":  "What is a 2D Array? How to access element?",
+        "article":  "",
+        "link":  "",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversal \u0026 Basic \u0026 Must solve",
+        "name":  "Search in a matrix",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/search-a-2d-matrix/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversal \u0026 Basic \u0026 Must solve",
+        "name":  "Rotate by 90 degree",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/rotate-by-90-degree-1587115621/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversal \u0026 Basic \u0026 Must solve",
+        "name":  "Maximum num of 1\u0027s row",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/row-with-minimum-number-of-1s5430/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversal \u0026 Basic \u0026 Must solve",
+        "name":  "Left rotate matrix k times",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/left-rotate-matrix-k-times2351/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversal \u0026 Basic \u0026 Must solve",
+        "name":  "Print matrix in diagonal pattern",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/print-matrix-in-diagonal-pattern/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversal \u0026 Basic \u0026 Must solve",
+        "name":  "Set matrix zeros",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/set-matrix-zeroes/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Print 1 to N using recursion",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/print-1-to-n-without-using-loops-1587115620/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Factorial of N numbers",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/factorial5739/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Fibonacci series using recursion",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/nth-fibonacci-number1335/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Power(x,n) Draw the recursion tree for all the probs for sure",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/power-of-numbers-1587115620/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Print pattern",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/print-pattern3549/1?page=1\u0026category=Recursion\u0026difficulty=Easy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Recursive implementation of atoi",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/implement-atoi/1?utm_source=geeksforgeeks\u0026utm_medium=ml_Article_practice_tab\u0026utm_campaign=Article_practice_tab",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Pascal triangle",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/pascal-triangle0652/1?page=1\u0026category=Recursion\u0026difficulty=Easy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic pattern",
+        "name":  "Search in a sorted array(Efficiently -\u003e So learn binary search for this)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/who-will-win-1587115621/1?page=1\u0026category=Binary%20Search\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic pattern",
+        "name":  "Find floor and ceil in sorted array",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/floor-in-a-sorted-array-1587115620/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic pattern",
+        "name":  "Find first and last occurence of element in sorted array",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/first-and-last-occurrences-of-x3116/1?page=1\u0026category=Binary%20Search\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic pattern",
+        "name":  "Find missing num from 1 to N",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/missing-number/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic pattern",
+        "name":  "Find square root",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/square-root/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic pattern",
+        "name":  "Search for element in infinite array",
+        "article":  "",
+        "link":  "https://www.codingninjas.com/studio/problems/search-in-infinite-sorted-0-1-array_696193",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Sorted rotated array",
+        "name":  "Search element in sorted rotated array(With and without duplicate)",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/search-in-rotated-sorted-array-ii/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Sorted rotated array",
+        "name":  "Minimum element in sorted rotated array(With and without duplicate)A twist in normal BS is needed, once you learnt this, solve the below by yourself,even try to solve this also by yourself",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/minimum-number-in-a-sorted-rotated-array-1587115620/1?page=1\u0026category=Binary%20Search\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Sorted rotated array",
+        "name":  "Number of times array is sorted",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/rotation4723/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Sorted rotated array",
+        "name":  "Maximum element in sorted rotated array",
+        "article":  "",
+        "link":  "",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Biotonic array",
+        "name":  "Find the peak element",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/peak-element/1?page=1\u0026category=Arrays\u0026difficulty=Medium\u0026status=solved\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Biotonic array",
+        "name":  "Search element in biotonic array",
+        "article":  "",
+        "link":  "https://www.interviewbit.com/problems/search-in-bitonic-array/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Matrix",
+        "name":  "Find row with maximum number of 1\u0027s",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/binary-matrix-having-maximum-number-of-1s--170647/1?page=2\u0026category=Binary%20Search\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Matrix",
+        "name":  "Search in row wise column wise sorted matrix",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/search-in-a-matrix-1587115621/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Matrix",
+        "name":  "Search in sorted matrix II",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/search-a-2d-matrix-ii/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Matrix",
+        "name":  "Find peak in sorted matrix",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/find-a-peak-element-ii/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Application(Super imp)",
+        "name":  "Aggressive cows",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/aggressive-cows/1?page=1\u0026category=Binary%20Search\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Application(Super imp)",
+        "name":  "Allocate minimum pages",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Application(Super imp)",
+        "name":  "Painter partition",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/the-painters-partition-problem1535/1?page=1\u0026category=Binary%20Search\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Application(Super imp)",
+        "name":  "Split array largest sum",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/split-array-largest-sum--141634/1?page=2\u0026category=Binary%20Search\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Application(Super imp)",
+        "name":  "Minimum num of days to make m bouquets",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Application(Super imp)",
+        "name":  "Capacity to ship packages within D days",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/capacity-to-ship-packages-within-d-days/1?page=2\u0026category=Binary%20Search\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Application(Super imp)",
+        "name":  "koko eating bananas",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/koko-eating-bananas/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Application(Super imp)",
+        "name":  "kth smallest number in matrix multiplication table",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/kth-smallest-number-in-multiplication-table/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Application(Super imp)",
+        "name":  "kth smallest pair distance",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/find-k-th-smallest-pair-distance/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Application(Super imp)",
+        "name":  "Ugly number II",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/ugly-number-ii/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Application(Super imp)",
+        "name":  "Median of 2 sorted arrays",
+        "article":  "",
+        "link":  "Median of 2 Sorted Arrays of Different Sizes ",
+        "tutorial":  "",
+        "solved":  {
+
+                   },
+        "notes":  ""
+    },
+    {
+        "topic":  "Application(Super imp)",
+        "name":  "Find smallest divisor given threshold",
+        "article":  "",
+        "link":  "Find the Smallest Divisor Given a Threshold - LeetCode",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Selection sort",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/selection-sort/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Insertion sort",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/insertion-sort/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Merge sort",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/merge-sort/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics",
+        "name":  "Quick sort",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/quick-sort/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns",
+        "name":  "Create, Insert, Delete Operations in LL",
+        "article":  "",
+        "link":  "",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns",
+        "name":  "Search for an element in LL(Once create, insert is done, this should be easy)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/search-in-linked-list-1664434326/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns",
+        "name":  "Reverse a LL(Learn the O space approach, learn recursive \u0026 iterative soln)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/reverse-a-linked-list/1?page=1\u0026category=Linked%20List\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns",
+        "name":  "Check if LL is a Palindrome(Once reversing is learnt, this should be easy)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/check-if-linked-list-is-pallindrome/1?page=1\u0026category=Linked%20List\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns",
+        "name":  "Middle element of LL (Learn efficient approach)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/insert-in-middle-of-linked-list/1?page=2\u0026category=Linked%20List\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns",
+        "name":  "Find the intersection point of Y LL(Once you know traversal, apply node logic to solve this)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/intersection-point-in-y-shapped-linked-lists/1?page=1\u0026category=Linked%20List\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns",
+        "name":  "Union and Intersection of LL",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/union-of-two-linked-list/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns",
+        "name":  "Delete without head pointer",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/delete-without-head-pointer/1?page=1\u0026category=Linked%20List\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns",
+        "name":  "Count pairs with given sum",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/count-pairs-whose-sum-is-equal-to-x/1?page=2\u0026category=Linked%20List\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns",
+        "name":  "Reverse LL in groups of given size(Once you learn reverse of LL\u0027s efficient approach, you can try this)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/reverse-a-linked-list-in-groups-of-given-size/1?page=1\u0026category=Linked%20List\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Loop",
+        "name":  "Detect loop in LL(Once this is learnt, all the loop pattern probs below should be easy)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/detect-loop-in-linked-list/1?page=1\u0026category=Linked%20List\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Loop",
+        "name":  "Find length of loop in LL",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/find-length-of-loop/1?page=1\u0026category=Linked%20List\u0026difficulty=Easy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Loop",
+        "name":  "Find the starting point of loop",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/find-the-first-node-of-loop-in-linked-list--170645/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Loop",
+        "name":  "Remove the loop",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/remove-loop-in-linked-list/1?page=1\u0026category=Linked%20List\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Sorting, Merging \u0026 Related",
+        "name":  "Sort 0s, 1s, 2s in LL",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/given-a-linked-list-of-0s-1s-and-2s-sort-it/1?page=1\u0026category=Linked%20List\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Sorting, Merging \u0026 Related",
+        "name":  "Pairwise swap elements",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/pairwise-swap-elements-of-a-linked-list-by-swapping-data/1?page=2\u0026category=Linked%20List\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Sorting, Merging \u0026 Related",
+        "name":  "Merge k sorted LL(Merge two sorted is easy version of this ques, if you are finding it diff to come up with logic, first solve that)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/merge-two-sorted-linked-lists/1?page=1\u0026category=Linked%20List\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Sorting, Merging \u0026 Related",
+        "name":  "Merge sort in LL",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/sort-a-linked-list/1?page=2\u0026category=Linked%20List\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Sorting, Merging \u0026 Related",
+        "name":  "Quick sort in LL",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/quick-sort-on-linked-list/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Sorting, Merging \u0026 Related",
+        "name":  "Remove occurence of duplicates in sorted \u0026 unsorted LL",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/remove-duplicate-element-from-sorted-linked-list/1?page=1\u0026category=Linked%20List\u0026difficulty=Easy\u0026sortBy=submissions https://www.geeksforgeeks.org/problems/remove-duplicates-from-an-unsorted-linked-list/1?page=1\u0026category=Linked%20List\u0026difficulty=Easy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Sorting, Merging \u0026 Related",
+        "name":  "Seggregate even and odd nodes in LL",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/segregate-even-and-odd-nodes-in-a-linked-list5035/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Arithmetic(Reversal \u0026 traversal - Once you learnt these, you can solve probs in this pattern)",
+        "name":  "Add 1 to a number represented as LL",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/add-1-to-a-number-represented-as-linked-list/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Arithmetic(Reversal \u0026 traversal - Once you learnt these, you can solve probs in this pattern)",
+        "name":  "Add 2 numbers represented as LL",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/add-two-numbers-represented-by-linked-lists/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Arithmetic(Reversal \u0026 traversal - Once you learnt these, you can solve probs in this pattern)",
+        "name":  "Subtraction on LL(Comes under hard but should be solvable once the above ones are solved)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/subtraction-in-linked-list/1?page=1\u0026category=Linked%20List\u0026difficulty=Hard\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve other probs(Try to solve these probs on own, brute force atleast you can come up for most of them after solving above)",
+        "name":  "Rotate LL",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/reorder-list/1?page=3\u0026category=Linked%20List\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve other probs(Try to solve these probs on own, brute force atleast you can come up for most of them after solving above)",
+        "name":  "Flattening a LL(make sure to learn the efficient approach)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/flattening-a-linked-list--170645/1?page=4\u0026category=Linked%20List\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve other probs(Try to solve these probs on own, brute force atleast you can come up for most of them after solving above)",
+        "name":  "Delete nodes having greater value on right",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/delete-nodes-having-greater-value-on-right/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve other probs(Try to solve these probs on own, brute force atleast you can come up for most of them after solving above)",
+        "name":  "Delete N nodes after M nodes",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/delete-n-nodes-after-m-nodes-of-a-linked-list/1?page=3\u0026category=Linked%20List\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve other probs(Try to solve these probs on own, brute force atleast you can come up for most of them after solving above)",
+        "name":  "Delete all occurence of node",
+        "article":  "",
+        "link":  "",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve other probs(Try to solve these probs on own, brute force atleast you can come up for most of them after solving above)",
+        "name":  "Clone a LL",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/clone-a-linked-list-with-next-and-random-pointer/1?page=1\u0026category=Linked%20List\u0026difficulty=Hard\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve other probs(Try to solve these probs on own, brute force atleast you can come up for most of them after solving above)",
+        "name":  "Length of longest palindrome in LL",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/length-of-longest-palindrome-in-linked-list/1?page=2\u0026category=Linked%20List\u0026difficulty=Medium\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve other probs(Try to solve these probs on own, brute force atleast you can come up for most of them after solving above)",
+        "name":  "Learn the basics of circular LL",
+        "article":  "",
+        "link":  "",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Double Linked List",
+        "name":  "Learn the basic representation of the nodes in LL",
+        "article":  "",
+        "link":  "",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Double Linked List",
+        "name":  "Insert, Delete, Reverse DLL",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/reverse-a-doubly-linked-list/1?page=1\u0026category=doubly-linked-list\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Double Linked List",
+        "name":  "Pairs with given sum in DLL",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/find-pairs-with-given-sum-in-doubly-linked-list/1?page=1\u0026category=doubly-linked-list\u0026difficulty=Easy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic",
+        "name":  "What is stack? Leam how to represent the data structure and working of it",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/implement-stack-using-array/1?page=1\u0026category=Stack\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic",
+        "name":  "Implement 2 stack using array",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/implement-two-stacks-in-an-array/1?page=1\u0026category=Stack\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic",
+        "name":  "Check for balanced paranthesis",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/parenthesis-checker2744/1?page=1\u0026category=Stack\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic",
+        "name":  "Get min from stack in O(1) space and time",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/get-minimum-element-from-stack/1?page=1\u0026category=Stack\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Next greater element",
+        "name":  "Next greater element",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/next-larger-element-1587115620/1?page=1\u0026category=Stack\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Next greater element",
+        "name":  "Next greater element II",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/next-greater-element-ii/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Next smallest element(Once above pattern is covered, try to solve this on own)",
+        "name":  "Next smallest element on left",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/help-classmates--141631/1?itm_source=geeksforgeeks",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Next smallest element(Once above pattern is covered, try to solve this on own)",
+        "name":  "Next smallest element on right",
+        "article":  "",
+        "link":  "https://www.codingninjas.com/studio/problems/next-smaller-element_1112581",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Next smallest element(Once above pattern is covered, try to solve this on own)",
+        "name":  "Stock span problem(Implementation prob - Try to figure out the pattern from above next greater and smaller)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/stock-span-problem-1587115621/1?page=1\u0026category=Stack\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Next smallest element(Once above pattern is covered, try to solve this on own)",
+        "name":  "Trapping rainwater",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/trapping-rain-water-1587115621/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Next smallest element(Once above pattern is covered, try to solve this on own)",
+        "name":  "Maximum rectangular area on histogram(Once next greater and next smallest pattern is covered, this can be solved easily)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/maximum-rectangular-area-in-a-histogram-1587115620/1?page=1\u0026category=Stack\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Next smallest element(Once above pattern is covered, try to solve this on own)",
+        "name":  "Max rectangle(Same as above, just a small twist)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/max-rectangle/1?page=1\u0026category=Stack\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Expressions",
+        "name":  "Infix to postfix",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/infix-to-postfix-1587115620/1?page=2\u0026category=Stack\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Expressions",
+        "name":  "Evaluation of postfix expression",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/evaluation-of-postfix-expression1735/1?page=2\u0026category=Stack\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Expressions",
+        "name":  "Prefix to postfix",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/infix-to-postfix-1587115620/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Expressions",
+        "name":  "Arithmetic expression evaluation",
+        "article":  "",
+        "link":  "https://www.codingninjas.com/studio/problems/arithmetic-expression-evaluation_1170517",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Reversing stack",
+        "name":  "Insert at bottom of stack",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/insert-an-element-at-the-bottom-of-a-stack/1?page=4\u0026category=Stack\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Reversing stack",
+        "name":  "Reverse a stack",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/reverse-a-stack/1?page=2\u0026category=Stack\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Reversing stack",
+        "name":  "Sort stack(Solving above two can give you hint for this)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/sort-a-stack/1?page=1\u0026category=Stack\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Implementation probs",
+        "name":  "Celebrity problem",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/the-celebrity-problem/1?page=1\u0026category=Stack\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Implementation probs",
+        "name":  "Restrictive candy crush",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/restrictive-candy-crush--141631/1?page=2\u0026category=Stack\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Implementation probs",
+        "name":  "Count the reversals",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/count-the-reversals0401/1?page=1\u0026category=Queue\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic pattern",
+        "name":  "What is queue? Learn the basic representation and how its implemented?",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/implement-queue-using-array/1?page=1\u0026category=Queue\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic pattern",
+        "name":  "Implement queue using linkedlist",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/implement-queue-using-linked-list/1?page=1\u0026category=Queue\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic pattern",
+        "name":  "Implement queue using stack(super imp)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/queue-using-two-stacks/1?page=1\u0026category=Queue\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic pattern",
+        "name":  "Implement stack using queue(super imp)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/stack-using-two-queues/1?page=1\u0026category=Queue\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic pattern",
+        "name":  "Reverse a queue",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/queue-reversal/1?page=1\u0026category=Queue\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Implementation probs",
+        "name":  "Circular tour",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/circular-tour-1587115620/1?page=1\u0026category=Queue\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Implementation probs",
+        "name":  "First non repeating char in stream",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/first-non-repeating-character-in-a-stream1216/1?page=1\u0026category=Queue\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Implementation probs",
+        "name":  "Reverse first k elements in queue",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/reverse-first-k-elements-of-queue/1?page=1\u0026category=Queue\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Implementation probs",
+        "name":  "LRU Cache(super imp)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/lru-cache/1?page=1\u0026category=Queue\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Implementation probs",
+        "name":  "Minimum cost of ropes",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/minimum-cost-of-ropes-1587115620/1?page=1\u0026category=Queue\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Implementation probs",
+        "name":  "Nearly sorted(Learn priority queue for sure)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/nearly-sorted-1587115620/1?page=3\u0026category=Arrays\u0026difficulty=Medium",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Fixed Sliding Window(Size of the window will be provided)",
+        "name":  "Maximum sum subarray of size k",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Fixed Sliding Window(Size of the window will be provided)",
+        "name":  "Count distinct element in every window(Once you understoor handling window size fixed from above prob, this will be easy)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/count-distinct-elements-in-every-window/1?page=1\u0026category=sliding-window\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Fixed Sliding Window(Size of the window will be provided)",
+        "name":  "First negative integer in every window of size k(Try to solve on own before looking for soln since you did above topics too already",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/first-negative-integer-in-every-window-of-size-k3345/1?page=1\u0026category=sliding-window\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Fixed Sliding Window(Size of the window will be provided)",
+        "name":  "Maximum of all subarray of size k(Try to solve on own)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/maximum-of-all-subarrays-of-size-k3101/1?page=1\u0026category=sliding-window\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Fixed Sliding Window(Size of the window will be provided)",
+        "name":  "Count substring of length k with k-1 distinct elements",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/substrings-of-length-k-with-k-1-distinct-elements/1?page=1\u0026category=sliding-window\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Fixed Sliding Window(Size of the window will be provided)",
+        "name":  "Maximum of minimum for every window(Imp)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/maximum-of-minimum-for-every-window-size3453/1?page=1\u0026category=sliding-window\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Variable sliding window(Each prob will teach something in addition to the window so do solve everything)",
+        "name":  "Subarray with given sum",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/subarray-with-given-sum-1587115621/1?page=1\u0026category=sliding-window\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Variable sliding window(Each prob will teach something in addition to the window so do solve everything)",
+        "name":  "Longest subarray with given sum k(Same as above with slight modification)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?page=1\u0026category=sliding-window\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Variable sliding window(Each prob will teach something in addition to the window so do solve everything)",
+        "name":  "Subarray with 0 sum",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/subarray-with-0-sum-1587115621/1?page=1\u0026category=sliding-window\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Variable sliding window(Each prob will teach something in addition to the window so do solve everything)",
+        "name":  "Smallest window of distinct elements",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/smallest-distant-window3132/1?page=1\u0026category=sliding-window\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Variable sliding window(Each prob will teach something in addition to the window so do solve everything)",
+        "name":  "Smallest window containing 0,1,2",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/smallest-window-containing-0-1-and-2--170637/1?page=2\u0026category=sliding-window\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Variable sliding window(Each prob will teach something in addition to the window so do solve everything)",
+        "name":  "Smallest window in string containing all chars of another string",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/smallest-window-in-a-string-containing-all-the-characters-of-another-string-1587115621/1?page=1\u0026category=sliding-window\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Variable sliding window(Each prob will teach something in addition to the window so do solve everything)",
+        "name":  "Length of longest substring",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/length-of-the-longest-substring3036/1?page=1\u0026category=sliding-window\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Variable sliding window(Each prob will teach something in addition to the window so do solve everything)",
+        "name":  "Largest subarray of 0s and 1s",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/largest-subarray-of-0s-and-1s/1?page=1\u0026category=sliding-window\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Variable sliding window(Each prob will teach something in addition to the window so do solve everything)",
+        "name":  "Count of anagram occurence(Super imp)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/count-occurences-of-anagrams5839/1?page=1\u0026category=sliding-window\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Variable sliding window(Each prob will teach something in addition to the window so do solve everything)",
+        "name":  "Max consecutive ones III",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/max-consecutive-ones-iii/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Variable sliding window(Each prob will teach something in addition to the window so do solve everything)",
+        "name":  "Fruit into basket",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/fruit-into-baskets",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Variable sliding window(Each prob will teach something in addition to the window so do solve everything)",
+        "name":  "Count number of nice subarrays",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/count-number-of-nice-subarrays/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Variable sliding window(Each prob will teach something in addition to the window so do solve everything)",
+        "name":  "Longest repeating char replacement",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/longest-repeating-character-replacement",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Variable sliding window(Each prob will teach something in addition to the window so do solve everything)",
+        "name":  "Minimum window substring",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/minimum-window-substring/description/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Variable sliding window(Each prob will teach something in addition to the window so do solve everything)",
+        "name":  "Minimum window subsequence(Understand the diff between subarray and subsequence before starting this prob)",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/minimum-window-subsequence/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Variable sliding window(Each prob will teach something in addition to the window so do solve everything)",
+        "name":  "Subarray with k diff integers",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/subarrays-with-k-different-integers/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversals",
+        "name":  "PreOrder Traversal",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/preorder-traversal/1?page=1\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversals",
+        "name":  "InOrder Traversal",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/inorder-traversal/1?page=2\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversals",
+        "name":  "PostOrder Traversal",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/postorder-traversal/1?page=2\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversals",
+        "name":  "Level Order Traversal",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/level-order-traversal/1?page=1\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversals",
+        "name":  "Boundary Traversal(Once level traversal is learnt, this you can solve)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/boundary-traversal-of-binary-tree/1?page=1\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversals",
+        "name":  "Vertical Traversal(Once level traversal is learnt, this you can solve, lil extra logic is needed)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/print-a-binary-tree-in-vertical-order/1?page=1\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversals",
+        "name":  "Top View of BT(Once you have mastered level traversal, this should be easy)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/top-view-of-binary-tree/1?page=1\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversals",
+        "name":  "Bottom View of BT(Once you have mastered level traversal, this should be easy)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1?page=1\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversals",
+        "name":  "Left View of BT(Once you have mastered vertical traversal, this should be easy)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/left-view-of-binary-tree/1?page=1\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversals",
+        "name":  "Right View of BT(Once you have mastered vertical traversal, this should be easy)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/right-view-of-binary-tree/1?page=1\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversals",
+        "name":  "Diagonal Traversal",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/diagonal-traversal-of-binary-tree/1?page=3\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic and Easy patterns(Try to solve these once you learnt traversals)",
+        "name":  "Insert node in a tree",
+        "article":  "",
+        "link":  "",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic and Easy patterns(Try to solve these once you learnt traversals)",
+        "name":  "Height of the tree",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/height-of-binary-tree/1?page=1\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic and Easy patterns(Try to solve these once you learnt traversals)",
+        "name":  "Diameter of the tree",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/diameter-of-binary-tree/1?page=1\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic and Easy patterns(Try to solve these once you learnt traversals)",
+        "name":  "Check if 2 trees are identical",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/determine-if-two-trees-are-identical/1?page=1\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic and Easy patterns(Try to solve these once you learnt traversals)",
+        "name":  "Check if subtree",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/check-if-subtree/1?page=2\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic and Easy patterns(Try to solve these once you learnt traversals)",
+        "name":  "Check for balanced tree",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/check-for-balanced-tree/1?page=1\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic and Easy patterns(Try to solve these once you learnt traversals)",
+        "name":  "Lowest common Ancestor in BT",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-binary-tree/1?page=1\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic and Easy patterns(Try to solve these once you learnt traversals)",
+        "name":  "Sum tree",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/sum-tree/1?page=1\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic and Easy patterns(Try to solve these once you learnt traversals)",
+        "name":  "Symmetric tree",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/symmetric-tree/1?page=2\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic and Easy patterns(Try to solve these once you learnt traversals)",
+        "name":  "Mirror of a tree",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/mirror-tree/1?page=1\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic and Easy patterns(Try to solve these once you learnt traversals)",
+        "name":  "Check if isomorphic",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/check-if-tree-is-isomorphic/1?page=2\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Path and Distance",
+        "name":  "Root to leaf paths",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/root-to-leaf-paths/1?page=4\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Path and Distance",
+        "name":  "Root to leaf path sum (Once the root to leaf path is solved, this should be easy)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/root-to-leaf-paths/1?page=4\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Path and Distance",
+        "name":  "Maximum path sum from any node(Once the root to leaf path is solved, this should be easy)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/maximum-path-sum-from-any-node/1?page=3\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Path and Distance",
+        "name":  "K Sum Paths (Once the root to leaf path is solved, this should be easy)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/k-sum-paths/1?page=3\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Path and Distance",
+        "name":  "Nodes at given distance",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/nodes-at-given-distance-in-binary-tree/1?page=3\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Path and Distance",
+        "name":  "Range sum of BST(Solving nodes at given distance, will make this easy)",
+        "article":  "",
+        "link":  "",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Path and Distance",
+        "name":  "Minimum distance between 2 nodes(Solving nodes at given distance, will make this easy)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/min-distance-between-two-given-nodes-of-a-binary-tree/1?page=2\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Path and Distance",
+        "name":  "Maximum distance between node and ancestor(Must solve though distance pattern is covered)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/maximum-difference-between-node-and-its-ancestor/1?page=3\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Path and Distance",
+        "name":  "Min time to burn a tree(Using distance logic, this can be sovled)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/burning-tree/1?page=4\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)",
+        "name":  "Insert a node in BST",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/insert-into-a-binary-search-tree/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)",
+        "name":  "Search a value in BST(Learn efficient algo to do it, since this can be handled efficiently in BST than BT)",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/search-a-node-in-bst/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)",
+        "name":  "Find minimum and maximum in BST",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/max-and-min-element-in-binary-tree/1?page=5\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)",
+        "name":  "Find the Kth largest element/kth Smallest in BST(Try to solve it without looking for soln, once you have mastered all the above patterns, this should be easy)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/kth-largest-element-in-bst/1?page=2\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)",
+        "name":  "Check for BST(Try solving probs in this pattern by yourself till LCA once above are solved)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/check-for-bst/1?page=1\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)",
+        "name":  "Find the closest element in BST",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/find-the-closest-element-in-bst/1?page=3\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)",
+        "name":  "Count BST nodes in the given range",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/count-bst-nodes-that-lie-in-a-given-range/1?page=3\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)",
+        "name":  "Largest BST in BT(Super imp - Must solve)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/largest-bst/1?page=2\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)",
+        "name":  "Lowest Common Ancestor in BST",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-bst/1?page=1\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)",
+        "name":  "Merge two BST(Super imp - Must solve)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/merge-two-bst-s/1?page=4\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)",
+        "name":  "Inorder successor and predecessor",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/predecessor-and-successor/1?page=2\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)",
+        "name":  "Populate inorder successor for all nodes",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/populate-inorder-successor-for-all-nodes/1?page=5\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)",
+        "name":  "BST to greater sum tree",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/bst-to-greater-sum-tree/1?page=8\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)",
+        "name":  "Delete given node from BST",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/delete-node-in-a-bst/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Construct from given",
+        "name":  "Construct Binary Tree from Preorder and Inorder Traversal ( First understand the concept of how to derive at the solution, then start coding it by yourself)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/construct-tree-1/1?page=1\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Construct from given",
+        "name":  "Construct Binary Tree from Inorder and Postorder Traversal",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Construct from given",
+        "name":  "Construct BST from given preorder traversal",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/construct-tree-from-preorder-traversal/1?page=7\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Construct from given",
+        "name":  "Construct BT from parent array",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/construct-binary-tree-from-parent-array/1?page=5\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Subtree \u0026 Other must do tree probs",
+        "name":  "Serialize and deserialize BT",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/serialize-and-deserialize-a-binary-tree/1?page=4\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Subtree \u0026 Other must do tree probs",
+        "name":  "Largest subtree sum in a tree",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/largest-subtree-sum-in-a-tree/1?page=6\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Subtree \u0026 Other must do tree probs",
+        "name":  "Maximum sum of non adjacent nodes",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/maximum-sum-of-non-adjacent-nodes/1?page=3\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Subtree \u0026 Other must do tree probs",
+        "name":  "Duplicate subtree",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/duplicate-subtrees/1?page=4\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Subtree \u0026 Other must do tree probs",
+        "name":  "Flatten BT to linked list",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/flatten-binary-tree-to-linked-list/1?page=5\u0026category=Tree\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Permutations of a string",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/permutations-of-a-given-string2041/1?page=1\u0026category=Backtracking\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Permutation II (You can solve on own once you solve above)",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/permutations-ii",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Combination sum I",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/combination-sum-1587115620/1?page=1\u0026category=Backtracking\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Combination sum II(Once you solve combination I, you should be able to solve this and below 2 probs too easily)",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/combination-sum-ii",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Combination sum III",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/combination-sum-iii",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Rat in maze(Once above probs are solved, you can do this easily)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/rat-in-a-maze-problem/1?page=1\u0026category=Backtracking\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Possible words from phone digits",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/possible-words-from-phone-digits-1587115620/1?page=1\u0026category=Backtracking\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Subsets",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/subsets-1613027340/1?page=1\u0026category=Backtracking\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Unique subset(Solving above, you will be able to solve this easily)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/subsets-1587115621/1?page=1\u0026category=Backtracking\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "N-Queen(Super imp)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/n-queen-problem0315/1?page=1\u0026category=Backtracking\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "N Queen II",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/n-queens-ii",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Permutation with spaces",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/permutation-with-spaces3627/1?page=1\u0026category=Backtracking\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Generate parantheses",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/generate-all-possible-parentheses/1?page=1\u0026category=Backtracking\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Generate IP address",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/generate-ip-addresses/1?page=1\u0026category=Backtracking\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Solve the sudoku",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/solve-the-sudoku-1587115621/1?page=1\u0026category=Backtracking\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "kth permutation",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/find-kth-permutation/1?page=2\u0026category=Backtracking\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Word search",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/word-search/1?page=3\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Palindrome partition of string",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/find-all-possible-palindromic-partitions-of-a-string/1?page=2\u0026category=Backtracking\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Decode the string",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/decode-the-string2444/1?page=1\u0026category=Backtracking\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Letter case permutation",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/letter-case-permutation/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "sum string",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/sum-string3151/1?page=1\u0026category=Backtracking\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "word boggle",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/word-boggle4143/1?page=1\u0026category=Backtracking\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Largest number in k swaps",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/largest-number-in-k-swaps-1587115620/1?page=1\u0026category=Backtracking\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)",
+        "name":  "Partition array to k subsets",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/partition-array-to-k-subsets/1?page=1\u0026category=Backtracking\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversals \u0026 Basic",
+        "name":  "BFS Traversal(Super imp and basic)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/bfs-traversal-of-graph/1?page=1\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversals \u0026 Basic",
+        "name":  "DFS Traversal(Super imp and basic)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1?page=1\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversals \u0026 Basic",
+        "name":  "Detect cycle in Directed graph",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1?page=1\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversals \u0026 Basic",
+        "name":  "Detect cycle in Undirected graph",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1?page=1\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Traversals \u0026 Basic",
+        "name":  "Detect Negative cycle in graph",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/negative-weight-cycle3504/1?page=2\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Connected component(After traversal, this will be easy to solve)",
+        "name":  "Connected component(Once you master this , all the below using this pattern will become super easy)",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/strongly-connected-component-tarjanss-algo-1587115621/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Connected component(After traversal, this will be easy to solve)",
+        "name":  "Number of Provinces(Learn how to solve this prob and solve the below in this pattern)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/number-of-provinces/1?page=2\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Connected component(After traversal, this will be easy to solve)",
+        "name":  "Number of Islands",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/find-the-number-of-islands/1?page=1\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Connected component(After traversal, this will be easy to solve)",
+        "name":  "Number of distinct island",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/number-of-distinct-islands/1?page=2\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Connected component(After traversal, this will be easy to solve)",
+        "name":  "Number of closed island",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/find-number-of-closed-islands/1?page=3\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Bipartite",
+        "name":  "Bipartite graph",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/bipartite-graph/1?page=1\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Bipartite",
+        "name":  "M-colouring",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Shortest Path",
+        "name":  "Find shortest path in DAG",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/1?page=1\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Shortest Path",
+        "name":  "Djikstra Algo",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1?page=1\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Shortest Path",
+        "name":  "Step by Knight",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/steps-by-knight5927/1?page=1\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Shortest Path",
+        "name":  "Shortest path source to destiny",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/shortest-source-to-destination-path3544/1?page=1\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Shortest Path",
+        "name":  "Find if path exists",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/find-whether-path-exist5238/1?page=2\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Shortest Path",
+        "name":  "Covid spread",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/covid-spread--141631/1?page=4\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Shortest Path",
+        "name":  "Minimum cost path",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/minimum-cost-path3833/1?page=2\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Shortest Path",
+        "name":  "Word ladder I",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/word-ladder/1?page=3\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Shortest Path",
+        "name":  "Word ladder II",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/word-ladder-ii/1?page=3\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Shortest Path",
+        "name":  "Floyd warshal algo",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1?page=1\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Shortest Path",
+        "name":  "Bellmanford algo(Imp - Will be used for negative cycle)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/1?page=2\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Multi Source",
+        "name":  "Flood fill",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/flood-fill-algorithm1856/1?page=1\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Multi Source",
+        "name":  "Replace O\u0027s with X\u0027s(Below can be solved easily in this pattern once you learnt flood fill)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/replace-os-with-xs0052/1?page=1\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Multi Source",
+        "name":  "Unit area of largest region of 1s",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/length-of-largest-region-of-1s-1587115620/1?page=2\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Multi Source",
+        "name":  "Rotten Oranges",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/rotten-oranges2536/1?page=1\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Topological sort",
+        "name":  "Topological sort algo(Learning this algo, will make you solve all the probs in this pattern)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/topological-sort/1?page=1\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Topological sort",
+        "name":  "Prerequisite tasks",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/prerequisite-tasks/1?page=2\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Topological sort",
+        "name":  "Course schedule I",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/course-schedule/1?page=3\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Topological sort",
+        "name":  "Course schedule II",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/course-schedule-ii",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Topological sort",
+        "name":  "Eventual safe states",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/eventual-safe-states/1?page=2\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Topological sort",
+        "name":  "Alien dictionary",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/alien-dictionary/1?page=1\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Minimum Spanning Tree",
+        "name":  "Minimum spanning tree(Once you learn this, then you will be able to solve the probs in this pattern by yourself)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1?page=1\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Minimum Spanning Tree",
+        "name":  "Kruskals algo",
+        "article":  "",
+        "link":  "https://www.codingninjas.com/studio/problems/code-kruskal-s-algorithm_6320",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Minimum Spanning Tree",
+        "name":  "Minimum cost to connect cities",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/connecting-cities-with-minimum-cost",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Minimum Spanning Tree",
+        "name":  "Minimum cost to connect all points",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/min-cost-to-connect-all-points/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Minimum Spanning Tree",
+        "name":  "Optimize water distribution",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/optimize-water-distribution-in-a-village",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Disjoint set",
+        "name":  "Learn the disjoint set Algo",
+        "article":  "",
+        "link":  "",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Disjoint set",
+        "name":  "Union by rank, path compression(Super imp, dont skip)",
+        "article":  "",
+        "link":  "",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Disjoint set",
+        "name":  "Networks connected",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/number-of-operations-to-make-network-connected/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Disjoint set",
+        "name":  "Minimum swaps to sort",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/minimum-swaps/1?page=1\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Disjoint set",
+        "name":  "Santa Banta",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/santa-banta2814/1?page=3\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Disjoint set",
+        "name":  "Number of pairs",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/number-of-pairs-1645358985/1?page=5\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Disjoint set",
+        "name":  "Number of Island II",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/number-of-islands-ii/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Disjoint set",
+        "name":  "Making a large island",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/making-a-large-island",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve imp algos",
+        "name":  "Bridges in graph",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/bridge-edge-in-graph/1?page=3\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve imp algos",
+        "name":  "Articulation point",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/articulation-point-1/1?page=3\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve imp algos",
+        "name":  "Critical connection",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/critical-connections/1?page=5\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve imp algos",
+        "name":  "Kosaraja algo (Strongly connected component algo)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1?page=2\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve imp algos",
+        "name":  "Word boggle",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/word-boggle4143/1?page=2\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve imp algos",
+        "name":  "Word boggle II",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/word-boggle-ii--141631/1?page=5\u0026category=Graph\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Minimum number of jumps",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/minimum-number-of-jumps-1587115620/1?page=1\u0026category=Greedy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Minimum operations",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/find-optimum-operation4504/1?page=1\u0026category=Greedy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Minimize the sum of product",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/minimize-the-sum-of-product1525/1?page=1\u0026category=Greedy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Largest number possible",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/largest-number-possible5028/1?page=1\u0026category=Greedy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Lemonade change",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/lemonade-change/1?page=2\u0026category=Greedy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Activity selection prob(Super imp)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/activity-selection-1587115620/1?page=1\u0026category=Greedy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "N meetings in a room(Super imp)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1?page=1\u0026category=Greedy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Minimum platforms",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/minimum-platforms-1587115620/1?page=1\u0026category=Greedy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Minimize the height",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/minimize-the-heights-i/1?page=2\u0026category=Greedy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Minimum number of coins using greedy(This can be solved using naive, DP also but make sure to use greedy here)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/-minimum-number-of-coins4426/1?page=1\u0026category=Greedy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Job sequencing prob",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1?page=1\u0026category=Greedy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Fractional knapsack",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1?page=1\u0026category=Greedy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Jump game",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/jump-game/1?page=2\u0026category=Greedy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Insert interval",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/insert-interval/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Merge interval",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/merge-intervals/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Non overlapping interval",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/non-overlapping-intervals/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Minimum cost of ropes",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/minimum-cost-of-ropes-1587115620/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Partition labels",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/partition-labels/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Cinema seat allocation",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/cinema-seat-allocation/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Max length chain",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/max-length-chain/1?page=1\u0026category=Greedy\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Valid parantheses - Minimum",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Shortest job first",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/shortest-job-first/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basics and must solves",
+        "name":  "Least recently used",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/lru-cache/1?utm_source=youtube\u0026utm_medium=collab_fraz_websitelink\u0026utm_campaign=LRU+Cache",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic",
+        "name":  "Understand the basics!!",
+        "article":  "",
+        "link":  "",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "1D - Linear DP",
+        "name":  "Count num of hops",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/count-number-of-hops-1587115620/1?page=2\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "1D - Linear DP",
+        "name":  "Count way to reach nth stair(Order matters)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/count-ways-to-reach-the-nth-stair-1587115620/1?page=2\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "1D - Linear DP",
+        "name":  "Count way to reach nth stair(Order doesn\u0027t matter)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/count-ways-to-nth-stairorder-does-not-matter5639/1?page=4\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "1D - Linear DP",
+        "name":  "House robber",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/house-robber/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "1D - Linear DP",
+        "name":  "House robber II",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/house-robber-ii/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "2D Grid DP",
+        "name":  "Count paths - grid",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/count-the-paths4332/1?page=5\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "2D Grid DP",
+        "name":  "Unique paths II",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/unique-paths-ii/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "2D Grid DP",
+        "name":  "Count all possible paths with condition(You can solve this by yourself once above two are solved)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/count-all-possible-paths-from-top-left-to-bottom-right3011/1?page=3\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "2D Grid DP",
+        "name":  "Minimum path sum in grid",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/minimum-path-sum/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "2D Grid DP",
+        "name":  "Max path sum",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/path-in-matrix3805/1?page=2\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "2D Grid DP",
+        "name":  "Minimum path sum in triangular grid",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/triangle/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "2D Grid DP",
+        "name":  "Number of paths with k coins",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/number-of-paths-in-a-matrix-with-k-coins2728/1?page=7\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "2D Grid DP",
+        "name":  "Minimum/Maximum falling path sum",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/minimum-falling-path-sum",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "2D Grid DP",
+        "name":  "Minimum falling path sum II",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/minimum-falling-path-sum-ii",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on subsequence",
+        "name":  "Subset sum problem",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1?page=1\u0026category=Dynamic%20Programming\u0026status=solved\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on subsequence",
+        "name":  "Count subset with given sum k",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/perfect-sum-problem5633/1?page=1\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on subsequence",
+        "name":  "Partition equal subset sum(Try to do it on own after solving above two, just a small trick)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/subset-sum-problem2014/1?page=1\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on subsequence",
+        "name":  "Minimum sum partition",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/minimum-sum-partition3317/1?page=2\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on subsequence",
+        "name":  "Count partition with given diff",
+        "article":  "",
+        "link":  "",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on subsequence",
+        "name":  "0-1 Knapsack",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1?page=1\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on subsequence",
+        "name":  "Maximum non adjacent subsequence",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/max-sum-without-adjacents2430/1?page=3\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on subsequence",
+        "name":  "Coin change",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/coin-change2448/1?page=1\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on subsequence",
+        "name":  "Min number of coins",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/number-of-coins1824/1?page=2\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on subsequence",
+        "name":  "Rod cutting",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/rod-cutting0840/1?page=2\u0026category=Dynamic%20Programming\u0026status=solved\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on subsequence",
+        "name":  "Target sum",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/target-sum",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on subsequence",
+        "name":  "Minimum cost to fill given weight in bag(Solving the above probs in this pattern will make this super easy)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/minimum-cost-to-fill-given-weight-in-a-bag1956/1?page=3\u0026category=Dynamic%20Programming\u0026status=solved\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on subsequence",
+        "name":  "Knapsack with duplication items",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1?page=2\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on Increasing subsequence",
+        "name":  "Longest increasing subsequence",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/longest-increasing-subsequence/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on Increasing subsequence",
+        "name":  "Print longest increasing subsequence",
+        "article":  "",
+        "link":  "",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on Increasing subsequence",
+        "name":  "Longest bitonic subsequence(Solve on own, definitely you can do it once the above two are solved)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/longest-bitonic-subsequence0824/1?page=4\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on Increasing subsequence",
+        "name":  "Longest divisible subset(This and the below are just extended version of longest increasing subsequence, so try on own",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/largest-divisible-subset/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on Increasing subsequence",
+        "name":  "Longest string chain",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/longest-string-chain/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on Increasing subsequence",
+        "name":  "Num of longest increasing subsequence",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/number-of-longest-increasing-subsequence/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on strings(Using Longest common subsequence pattern)",
+        "name":  "Longest common subsequence(Once you learn this pattern, all probs under this pattern can be solved by yourself)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/longest-common-subsequence-1587115620/1?page=1\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on strings(Using Longest common subsequence pattern)",
+        "name":  "Print Longest common subsequence(Here you will need to print the string so must solve)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/print-all-lcs-sequences3413/1?page=7\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on strings(Using Longest common subsequence pattern)",
+        "name":  "Longest palindromic subsequence",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/longest-palindromic-subsequence",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on strings(Using Longest common subsequence pattern)",
+        "name":  "Form a palindrome with minimum insertions",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on strings(Using Longest common subsequence pattern)",
+        "name":  "Min num of deletions and insertions to make string s1 equal to s2",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/minimum-number-of-deletions-and-insertions0209/1?page=4\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on strings(Using Longest common subsequence pattern)",
+        "name":  "Shortest common supersequence",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/shortest-common-supersequence0322/1?page=2\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on strings(Using Longest common subsequence pattern)",
+        "name":  "Longest common substring/subarray",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/longest-common-substring1452/1?page=1\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on strings(Using Longest common subsequence pattern)",
+        "name":  "Longest palindromic substring",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/longest-palindrome-in-a-string3411/1?page=1\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on strings(Using Longest common subsequence pattern)",
+        "name":  "Longest repeating subsequence",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/longest-repeating-subsequence2004/1?page=2\u0026category=Dynamic%20Programming\u0026status=solved\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on string",
+        "name":  "Edit distance (All the probs in this pattern are super imp, each prob is different so do solve all)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/edit-distance3702/1?page=1\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on string",
+        "name":  "Distinct occurence",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/distinct-occurrences/1?page=3\u0026category=Dynamic%20Programming\u0026status=solved\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on string",
+        "name":  "Wildcard pattern matching",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/wildcard-pattern-matching/1?page=4\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on string",
+        "name":  "Longest valid parentheses",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/longest-valid-parentheses5657/1?page=3\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on string",
+        "name":  "Word break",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/word-break1352/1?page=3\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on string",
+        "name":  "Word break II",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/word-break-part-23249/1?page=5\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on string",
+        "name":  "Word wrap",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/word-wrap1646/1?page=4\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on string",
+        "name":  "Interleaved strings",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/interleaved-strings/1?page=3\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on stocks(Was asked in one of my interview too, so dont miss any ques from this pattern)",
+        "name":  "Best time to buy and sell stock",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on stocks(Was asked in one of my interview too, so dont miss any ques from this pattern)",
+        "name":  "Best time to buy and sell stock II(Once you solve the above prob, all probs in this pattern are extended versions, so you can solve by yourself)",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on stocks(Was asked in one of my interview too, so dont miss any ques from this pattern)",
+        "name":  "Best time to buy and sell stock III",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on stocks(Was asked in one of my interview too, so dont miss any ques from this pattern)",
+        "name":  "Best time to buy and sell stock IV",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on stocks(Was asked in one of my interview too, so dont miss any ques from this pattern)",
+        "name":  "Best time to buy and sell stock with cooldown",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on stocks(Was asked in one of my interview too, so dont miss any ques from this pattern)",
+        "name":  "Best time to buy and sell stock with transaction fee",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on partition and MCM",
+        "name":  "Matrix chain multiplication(Quite tricky pattern, every prob is diff and teaches something so do solve all)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/matrix-chain-multiplication0303/1?page=2\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on partition and MCM",
+        "name":  "Minimum cost to cut stick",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/minimum-cost-to-cut-a-stick/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on partition and MCM",
+        "name":  "Burst balloons",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/burst-balloons/1?page=8\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on partition and MCM",
+        "name":  "Boolean Parenthesization",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/boolean-parenthesization5610/1?page=3\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on partition and MCM",
+        "name":  "Palindrom partitioning",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/palindromic-patitioning4845/1?page=2\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on partition and MCM",
+        "name":  "Partition array for max sum",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/partition-array-for-maximum-sum/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on partition and MCM",
+        "name":  "Max rectangles area with all 1s",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/max-rectangle/1?page=3\u0026category=Dynamic%20Programming\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "DP on partition and MCM",
+        "name":  "Count square submatrices",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/count-square-submatrices-with-all-ones/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns",
+        "name":  "What is heap? Understand the data structure",
+        "article":  "",
+        "link":  "",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns",
+        "name":  "Min heap implementation",
+        "article":  "",
+        "link":  "Min Heap Implementation - Coding Ninjas",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns",
+        "name":  "Max heap implementation",
+        "article":  "",
+        "link":  "https://www.gatevidyalay.com/tag/max-heap-questions/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic patterns",
+        "name":  "Convert min heap to max heap",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/convert-min-heap-to-max-heap-1666385109/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Top k pattern",
+        "name":  "kth largest in array",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/k-largest-elements4206/1?page=1\u0026category=Heap\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Top k pattern",
+        "name":  "kth smallest in array",
+        "article":  "",
+        "link":  "",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Top k pattern",
+        "name":  "Top k frequent elements",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/top-k-frequent-elements/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Top k pattern",
+        "name":  "Top k frequent words",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/top-k-frequent-words",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Top k pattern",
+        "name":  "Frequency sort",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/sort-characters-by-frequency/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Top k pattern",
+        "name":  "kth largest num in streams",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/kth-largest-element-in-a-stream2220/1?page=1\u0026category=Heap\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Top k pattern",
+        "name":  "Reorganize string",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/reorganize-string/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Top k pattern",
+        "name":  "Reorganize string k distance apart",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/rearrange-string-k-distance-apart",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Top k pattern",
+        "name":  "kth smallest sum of matrix",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/find-the-kth-smallest-sum-of-a-matrix-with-sorted-rows/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Top k pattern",
+        "name":  "ugly num II",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/ugly-number-ii/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Merge k sorted pattern",
+        "name":  "Merge k sorted array",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/merge-k-sorted-arrays/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Merge k sorted pattern",
+        "name":  "k pairs with smallest sum",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/find-k-pairs-with-smallest-sums/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Merge k sorted pattern",
+        "name":  "k smallest nums in M sorted list",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Two heaps pattern",
+        "name":  "Find median from data stream",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/find-median-in-a-stream-1587115620/1?page=1\u0026category=Heap\u0026sortBy=submissions",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Two heaps pattern",
+        "name":  "Sliding window median",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/sliding-window-median/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Two heaps pattern",
+        "name":  "Maximum capital/IPO",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/ipo/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Minimum number pattern",
+        "name":  "Minimum cost to connect ropes",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/minimum-cost-of-ropes-1587115620/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Minimum number pattern",
+        "name":  "Meeting room II",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/meeting-rooms-ii",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Minimum number pattern",
+        "name":  "Minimum cost to hire k workers",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/minimum-cost-to-hire-k-workers/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Minimum number pattern",
+        "name":  "Minimum num of CPU",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/task-scheduler/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Minimum number pattern",
+        "name":  "Minimum num of refueling stops",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/minimum-number-of-refueling-stops/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic and must solve",
+        "name":  "Implement Trie from scratch",
+        "article":  "",
+        "link":  "https://www.codingninjas.com/studio/problems/implement-trie_631356",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic and must solve",
+        "name":  "Word break (Do solve it using trie, though you had solved this already)",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/word-break-trie--141631/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic and must solve",
+        "name":  "Longest string with all prefixes",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/longest-common-prefix/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic and must solve",
+        "name":  "Maximum XOR of two numbers in array",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/maximum-xor-of-two-numbers-in-an-array/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic and must solve",
+        "name":  "Unique rows in boolean matrix",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/unique-rows-in-boolean-matrix/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Basic and must solve",
+        "name":  "Prefix match with other strings",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/prefix-match-with-other-strings/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve and Algos specific to string",
+        "name":  "Implement Atoi",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/implement-atoi/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve and Algos specific to string",
+        "name":  "Count and say",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/count-and-say/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve and Algos specific to string",
+        "name":  "Minimum bracket reversals",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/count-the-reversals0401/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve and Algos specific to string",
+        "name":  "Rabin karp algo( Pattern searching, super imp, this was infact asked in one of my interview)",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/search-pattern-rabin-karp-algorithm--141631/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve and Algos specific to string",
+        "name":  "Boyer moor algo (Pattern searching)",
+        "article":  "",
+        "link":  "https://www.codingninjas.com/studio/problems/boyer-moore-algorithm-for-pattern-searching_1115634",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve and Algos specific to string",
+        "name":  "KMP algo ( Longest prefix suffix, super imp)",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/longest-prefix-suffix2527/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve and Algos specific to string",
+        "name":  "Longest happy prefix",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/longest-prefix-also-suffix/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve and Algos specific to string",
+        "name":  "Remove all adjacent duplicates",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve and Algos specific to string",
+        "name":  "Hashing in strings",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/practice-problems-on-hashing/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve and Algos specific to string",
+        "name":  "Print all anagrams",
+        "article":  "",
+        "link":  "https://leetcode.com/problems/group-anagrams/",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve and Algos specific to string",
+        "name":  "Z - Function",
+        "article":  "",
+        "link":  "https://practice.geeksforgeeks.org/problems/search-pattern-z-algorithm--141631/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve and Algos specific to string",
+        "name":  "Shortest palindrome",
+        "article":  "",
+        "link":  "Shortest Palindrome - LeetCode",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve and Algos specific to string",
+        "name":  "Circle of strings",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/circle-of-strings4530/1",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    },
+    {
+        "topic":  "Must solve and Algos specific to string",
+        "name":  "Roman numerals to decimals",
+        "article":  "",
+        "link":  "https://www.geeksforgeeks.org/problems/roman-number-to-integer3201/1?itm_source=geeksforgeeks\u0026itm_medium=Article\u0026itm_campaign=bottom_sticky_on_Article",
+        "tutorial":  "",
+        "solved":  false,
+        "notes":  ""
+    }
+]

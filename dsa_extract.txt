@@ -1,0 +1,442 @@
+﻿Basics|Find even or odd|https://practice.geeksforgeeks.org/problems/odd-or-even3618/1|true
+Basics|Find last digit in a number|https://www.geeksforgeeks.org/problems/find-last-digit-of-ab-for-large-numbers1936/1|true
+Basics|Count digits in a number(Solving above last digit prob wil make this easy for you)|https://practice.geeksforgeeks.org/problems/count-digits5716/1|true
+Basics|Reverse a number(Try thinking how you can use above logic in solving this)|https://www.geeksforgeeks.org/problems/reverse-digit0316/1|true
+Basics|Find power of a number|https://www.geeksforgeeks.org/problems/power-of-numbers-1587115620/1|true
+Basics|GCD|https://practice.geeksforgeeks.org/problems/gcd-of-two-numbers3459/1|false
+Basics|Print all divisors of a number|https://www.codingninjas.com/studio/problems/print-all-divisors-of-a-number_1164188|false
+Basics|Prime number(Try solving by yourself)|https://practice.geeksforgeeks.org/problems/prime-number2314/1|false
+Basics|Armstrong number(Solving power of number, will make this easy for you)|https://www.geeksforgeeks.org/problems/armstrong-numbers2727/1|false
+Basics|Check palindrome of number(Use the techniques you learnt so far solving above probs and solve this by yourself)|https://practice.geeksforgeeks.org/problems/palindrome0746/1|false
+Basics|Square root of a number(Try to first figure out algo to solve this)|https://www.geeksforgeeks.org/problems/square-root/1|false
+Basics|Perfect number|https://practice.geeksforgeeks.org/problems/perfect-numbers3207/1|false
+Basics with traversal|What is an array? How is it represented?||false
+Basics with traversal|Find the maximum and minimum element in array(After solving the search , you can solve all probs in this basics by yourself)|https://www.geeksforgeeks.org/problems/find-minimum-and-maximum-element-in-an-array4428/1|false
+Basics with traversal|Find third largest element in array|https://practice.geeksforgeeks.org/problems/third-largest-element/1|false
+Basics with traversal|Search an element in array(Understand how to traverse through the array and how to access the elements)|https://www.geeksforgeeks.org/problems/search-an-element-in-an-array-1587115621/1|false
+Basics with traversal|Find missing number in array|https://practice.geeksforgeeks.org/problems/missing-number-in-array1416/1|false
+Basics with traversal|Find repeating number in array||false
+Basics with traversal|Sort an array of 0s , 1s and 2s (You dont need to know any sorting algo, just using basics, once solved, definitely learn the optimal algo)|https://www.geeksforgeeks.org/problems/sort-an-array-of-0s-1s-and-2s4231/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Basics with traversal|Check if two arrays are equal or not|https://www.geeksforgeeks.org/problems/check-if-two-arrays-are-equal-or-not3847/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Basics with traversal|Rotate the array by 1|https://www.geeksforgeeks.org/problems/cyclically-rotate-an-array-by-one2614/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Basics with traversal|Rotate the array by k|https://www.codingninjas.com/studio/problems/rotate-array_1230543|false
+Basics with traversal|Array subset of another array|https://www.geeksforgeeks.org/problems/array-subset-of-another-array2317/1|false
+Basics with traversal|Learn what is map and how its represented before moving forward||false
+Basics with traversal|Count frequency of elements in array(Solve efficiently, try applying what you learnt about map)|https://practice.geeksforgeeks.org/problems/frequency-of-array-elements-1587115620/1|false
+Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)|Find pair with given sum|https://www.geeksforgeeks.org/problems/key-pair5616/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)|3 Sum|https://www.geeksforgeeks.org/problems/triplet-sum-in-array-1587115621/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)|4 Sum|https://leetcode.com/problems/4sum/|false
+Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)|Find triplets with zero sum|https://www.geeksforgeeks.org/problems/find-triplets-with-zero-sum/1|false
+Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)|Find count of triplets|Count the triplets | Practice | GeeksforGeeks|false
+Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)|Union of two arrays(Learn the brute force & optimal soln, you will learn about set datastructure, which will be super useful in many probs in brute force)|https://www.geeksforgeeks.org/problems/union-of-two-arrays3538/1|false
+Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)|Intersection of two arrays|https://www.geeksforgeeks.org/problems/intersection-of-two-arrays2404/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)|Remove duplicates from array(Quite diff from above, try to solve on own, this actually shows that not always you will have pointers at start and end)|https://www.geeksforgeeks.org/problems/remove-duplicate-elements-from-sorted-array/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)|kth element of 2 sorted arrays|https://www.geeksforgeeks.org/problems/k-th-element-of-two-sorted-array1317/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)|Length of longest subarray with sum k|https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?itm_source=geeksforgeeks&itm_medium=article&itm_campaign=bottom_sticky_on_article|false
+Two pointer(This is very imp pattern, not just for these probs but very commonly you can use this technique)|Trapping rain water|https://www.geeksforgeeks.org/problems/trapping-rain-water-1587115621/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Must Solve|Majority element|https://leetcode.com/problems/majority-element/|false
+Must Solve|Kadane's algo(super imp)|https://practice.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/1|false
+Must Solve|Count inversions|https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1|false
+Must Solve|Merge intervals|https://leetcode.com/problems/merge-intervals/|false
+Must Solve|Maximum product subarray|https://practice.geeksforgeeks.org/problems/maximum-product-subarray3604/1|false
+Must Solve|Next permutation|https://leetcode.com/problems/next-permutation/|false
+Must Solve|Seive of eranthoses(Popular algo for prime numbers)|https://www.geeksforgeeks.org/problems/sieve-of-eratosthenes5242/1|false
+Traversal & Basic & Must solve|What is a 2D Array? How to access element?||false
+Traversal & Basic & Must solve|Search in a matrix|https://leetcode.com/problems/search-a-2d-matrix/|false
+Traversal & Basic & Must solve|Rotate by 90 degree|https://www.geeksforgeeks.org/problems/rotate-by-90-degree-1587115621/1|false
+Traversal & Basic & Must solve|Maximum num of 1's row|https://www.geeksforgeeks.org/problems/row-with-minimum-number-of-1s5430/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Traversal & Basic & Must solve|Left rotate matrix k times|https://practice.geeksforgeeks.org/problems/left-rotate-matrix-k-times2351/1|false
+Traversal & Basic & Must solve|Print matrix in diagonal pattern|https://www.geeksforgeeks.org/problems/print-matrix-in-diagonal-pattern/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Traversal & Basic & Must solve|Set matrix zeros|https://leetcode.com/problems/set-matrix-zeroes/|false
+Basics|Print 1 to N using recursion|https://www.geeksforgeeks.org/problems/print-1-to-n-without-using-loops-1587115620/1|false
+Basics|Factorial of N numbers|https://practice.geeksforgeeks.org/problems/factorial5739/1|false
+Basics|Fibonacci series using recursion|https://www.geeksforgeeks.org/problems/nth-fibonacci-number1335/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Basics|Power(x,n) Draw the recursion tree for all the probs for sure|https://www.geeksforgeeks.org/problems/power-of-numbers-1587115620/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Basics|Print pattern|https://www.geeksforgeeks.org/problems/print-pattern3549/1?page=1&category=Recursion&difficulty=Easy&sortBy=submissions|false
+Basics|Recursive implementation of atoi|https://practice.geeksforgeeks.org/problems/implement-atoi/1?utm_source=geeksforgeeks&utm_medium=ml_Article_practice_tab&utm_campaign=Article_practice_tab|false
+Basics|Pascal triangle|https://www.geeksforgeeks.org/problems/pascal-triangle0652/1?page=1&category=Recursion&difficulty=Easy&sortBy=submissions|false
+Basic pattern|Search in a sorted array(Efficiently -> So learn binary search for this)|https://www.geeksforgeeks.org/problems/who-will-win-1587115621/1?page=1&category=Binary%20Search&sortBy=submissions|false
+Basic pattern|Find floor and ceil in sorted array|https://www.geeksforgeeks.org/problems/floor-in-a-sorted-array-1587115620/1|false
+Basic pattern|Find first and last occurence of element in sorted array|https://www.geeksforgeeks.org/problems/first-and-last-occurrences-of-x3116/1?page=1&category=Binary%20Search&sortBy=submissions|false
+Basic pattern|Find missing num from 1 to N|https://leetcode.com/problems/missing-number/|false
+Basic pattern|Find square root|https://www.geeksforgeeks.org/problems/square-root/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Basic pattern|Search for element in infinite array|https://www.codingninjas.com/studio/problems/search-in-infinite-sorted-0-1-array_696193|false
+Sorted rotated array|Search element in sorted rotated array(With and without duplicate)|https://leetcode.com/problems/search-in-rotated-sorted-array-ii/|false
+Sorted rotated array|Minimum element in sorted rotated array(With and without duplicate)A twist in normal BS is needed, once you learnt this, solve the below by yourself,even try to solve this also by yourself|https://www.geeksforgeeks.org/problems/minimum-number-in-a-sorted-rotated-array-1587115620/1?page=1&category=Binary%20Search&sortBy=submissions|false
+Sorted rotated array|Number of times array is sorted|https://www.geeksforgeeks.org/problems/rotation4723/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Sorted rotated array|Maximum element in sorted rotated array||false
+Biotonic array|Find the peak element|https://www.geeksforgeeks.org/problems/peak-element/1?page=1&category=Arrays&difficulty=Medium&status=solved&sortBy=submissions|false
+Biotonic array|Search element in biotonic array|https://www.interviewbit.com/problems/search-in-bitonic-array/|false
+Matrix|Find row with maximum number of 1's|https://www.geeksforgeeks.org/problems/binary-matrix-having-maximum-number-of-1s--170647/1?page=2&category=Binary%20Search&sortBy=submissions|false
+Matrix|Search in row wise column wise sorted matrix|https://www.geeksforgeeks.org/problems/search-in-a-matrix-1587115621/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Matrix|Search in sorted matrix II|https://leetcode.com/problems/search-a-2d-matrix-ii/|false
+Matrix|Find peak in sorted matrix|https://leetcode.com/problems/find-a-peak-element-ii/|false
+Application(Super imp)|Aggressive cows|https://www.geeksforgeeks.org/problems/aggressive-cows/1?page=1&category=Binary%20Search&sortBy=submissions|false
+Application(Super imp)|Allocate minimum pages|https://www.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Application(Super imp)|Painter partition|https://www.geeksforgeeks.org/problems/the-painters-partition-problem1535/1?page=1&category=Binary%20Search&sortBy=submissions|false
+Application(Super imp)|Split array largest sum|https://www.geeksforgeeks.org/problems/split-array-largest-sum--141634/1?page=2&category=Binary%20Search&sortBy=submissions|false
+Application(Super imp)|Minimum num of days to make m bouquets|https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/|false
+Application(Super imp)|Capacity to ship packages within D days|https://www.geeksforgeeks.org/problems/capacity-to-ship-packages-within-d-days/1?page=2&category=Binary%20Search&sortBy=submissions|false
+Application(Super imp)|koko eating bananas|https://leetcode.com/problems/koko-eating-bananas/|false
+Application(Super imp)|kth smallest number in matrix multiplication table|https://leetcode.com/problems/kth-smallest-number-in-multiplication-table/|false
+Application(Super imp)|kth smallest pair distance|https://leetcode.com/problems/find-k-th-smallest-pair-distance/|false
+Application(Super imp)|Ugly number II|https://leetcode.com/problems/ugly-number-ii/|false
+Application(Super imp)|Median of 2 sorted arrays|Median of 2 Sorted Arrays of Different Sizes | Practice | GeeksforGeeks|false
+Application(Super imp)|Find smallest divisor given threshold|Find the Smallest Divisor Given a Threshold - LeetCode|false
+Basics|Selection sort|https://www.geeksforgeeks.org/problems/selection-sort/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Basics|Insertion sort|https://www.geeksforgeeks.org/problems/insertion-sort/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Basics|Merge sort|https://www.geeksforgeeks.org/problems/merge-sort/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Basics|Quick sort|https://www.geeksforgeeks.org/problems/quick-sort/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Basic patterns|Create, Insert, Delete Operations in LL||false
+Basic patterns|Search for an element in LL(Once create, insert is done, this should be easy)|https://www.geeksforgeeks.org/problems/search-in-linked-list-1664434326/1|false
+Basic patterns|Reverse a LL(Learn the O space approach, learn recursive & iterative soln)|https://www.geeksforgeeks.org/problems/reverse-a-linked-list/1?page=1&category=Linked%20List&sortBy=submissions|false
+Basic patterns|Check if LL is a Palindrome(Once reversing is learnt, this should be easy)|https://www.geeksforgeeks.org/problems/check-if-linked-list-is-pallindrome/1?page=1&category=Linked%20List&sortBy=submissions|false
+Basic patterns|Middle element of LL (Learn efficient approach)|https://www.geeksforgeeks.org/problems/insert-in-middle-of-linked-list/1?page=2&category=Linked%20List&sortBy=submissions|false
+Basic patterns|Find the intersection point of Y LL(Once you know traversal, apply node logic to solve this)|https://www.geeksforgeeks.org/problems/intersection-point-in-y-shapped-linked-lists/1?page=1&category=Linked%20List&sortBy=submissions|false
+Basic patterns|Union and Intersection of LL|https://www.geeksforgeeks.org/problems/union-of-two-linked-list/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Basic patterns|Delete without head pointer|https://www.geeksforgeeks.org/problems/delete-without-head-pointer/1?page=1&category=Linked%20List&sortBy=submissions|false
+Basic patterns|Count pairs with given sum|https://www.geeksforgeeks.org/problems/count-pairs-whose-sum-is-equal-to-x/1?page=2&category=Linked%20List&sortBy=submissions|false
+Basic patterns|Reverse LL in groups of given size(Once you learn reverse of LL's efficient approach, you can try this)|https://www.geeksforgeeks.org/problems/reverse-a-linked-list-in-groups-of-given-size/1?page=1&category=Linked%20List&sortBy=submissions|false
+Loop|Detect loop in LL(Once this is learnt, all the loop pattern probs below should be easy)|https://www.geeksforgeeks.org/problems/detect-loop-in-linked-list/1?page=1&category=Linked%20List&sortBy=submissions|false
+Loop|Find length of loop in LL|https://www.geeksforgeeks.org/problems/find-length-of-loop/1?page=1&category=Linked%20List&difficulty=Easy&sortBy=submissions|false
+Loop|Find the starting point of loop|https://www.geeksforgeeks.org/problems/find-the-first-node-of-loop-in-linked-list--170645/1|false
+Loop|Remove the loop|https://www.geeksforgeeks.org/problems/remove-loop-in-linked-list/1?page=1&category=Linked%20List&sortBy=submissions|false
+Sorting, Merging & Related|Sort 0s, 1s, 2s in LL|https://www.geeksforgeeks.org/problems/given-a-linked-list-of-0s-1s-and-2s-sort-it/1?page=1&category=Linked%20List&sortBy=submissions|false
+Sorting, Merging & Related|Pairwise swap elements|https://www.geeksforgeeks.org/problems/pairwise-swap-elements-of-a-linked-list-by-swapping-data/1?page=2&category=Linked%20List&sortBy=submissions|false
+Sorting, Merging & Related|Merge k sorted LL(Merge two sorted is easy version of this ques, if you are finding it diff to come up with logic, first solve that)|https://www.geeksforgeeks.org/problems/merge-two-sorted-linked-lists/1?page=1&category=Linked%20List&sortBy=submissions|false
+Sorting, Merging & Related|Merge sort in LL|https://www.geeksforgeeks.org/problems/sort-a-linked-list/1?page=2&category=Linked%20List&sortBy=submissions|false
+Sorting, Merging & Related|Quick sort in LL|https://www.geeksforgeeks.org/problems/quick-sort-on-linked-list/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Sorting, Merging & Related|Remove occurence of duplicates in sorted & unsorted LL|https://www.geeksforgeeks.org/problems/remove-duplicate-element-from-sorted-linked-list/1?page=1&category=Linked%20List&difficulty=Easy&sortBy=submissions https://www.geeksforgeeks.org/problems/remove-duplicates-from-an-unsorted-linked-list/1?page=1&category=Linked%20List&difficulty=Easy&sortBy=submissions|false
+Sorting, Merging & Related|Seggregate even and odd nodes in LL|https://practice.geeksforgeeks.org/problems/segregate-even-and-odd-nodes-in-a-linked-list5035/1|false
+Arithmetic(Reversal & traversal - Once you learnt these, you can solve probs in this pattern)|Add 1 to a number represented as LL|https://practice.geeksforgeeks.org/problems/add-1-to-a-number-represented-as-linked-list/1|false
+Arithmetic(Reversal & traversal - Once you learnt these, you can solve probs in this pattern)|Add 2 numbers represented as LL|https://practice.geeksforgeeks.org/problems/add-two-numbers-represented-by-linked-lists/1|false
+Arithmetic(Reversal & traversal - Once you learnt these, you can solve probs in this pattern)|Subtraction on LL(Comes under hard but should be solvable once the above ones are solved)|https://www.geeksforgeeks.org/problems/subtraction-in-linked-list/1?page=1&category=Linked%20List&difficulty=Hard&sortBy=submissions|false
+Must solve other probs(Try to solve these probs on own, brute force atleast you can come up for most of them after solving above)|Rotate LL|https://www.geeksforgeeks.org/problems/reorder-list/1?page=3&category=Linked%20List&sortBy=submissions|false
+Must solve other probs(Try to solve these probs on own, brute force atleast you can come up for most of them after solving above)|Flattening a LL(make sure to learn the efficient approach)|https://www.geeksforgeeks.org/problems/flattening-a-linked-list--170645/1?page=4&category=Linked%20List&sortBy=submissions|false
+Must solve other probs(Try to solve these probs on own, brute force atleast you can come up for most of them after solving above)|Delete nodes having greater value on right|https://practice.geeksforgeeks.org/problems/delete-nodes-having-greater-value-on-right/1|false
+Must solve other probs(Try to solve these probs on own, brute force atleast you can come up for most of them after solving above)|Delete N nodes after M nodes|https://www.geeksforgeeks.org/problems/delete-n-nodes-after-m-nodes-of-a-linked-list/1?page=3&category=Linked%20List&sortBy=submissions|false
+Must solve other probs(Try to solve these probs on own, brute force atleast you can come up for most of them after solving above)|Delete all occurence of node||false
+Must solve other probs(Try to solve these probs on own, brute force atleast you can come up for most of them after solving above)|Clone a LL|https://www.geeksforgeeks.org/problems/clone-a-linked-list-with-next-and-random-pointer/1?page=1&category=Linked%20List&difficulty=Hard&sortBy=submissions|false
+Must solve other probs(Try to solve these probs on own, brute force atleast you can come up for most of them after solving above)|Length of longest palindrome in LL|https://www.geeksforgeeks.org/problems/length-of-longest-palindrome-in-linked-list/1?page=2&category=Linked%20List&difficulty=Medium&sortBy=submissions|false
+Must solve other probs(Try to solve these probs on own, brute force atleast you can come up for most of them after solving above)|Learn the basics of circular LL||false
+Double Linked List|Learn the basic representation of the nodes in LL||false
+Double Linked List|Insert, Delete, Reverse DLL|https://www.geeksforgeeks.org/problems/reverse-a-doubly-linked-list/1?page=1&category=doubly-linked-list&sortBy=submissions|false
+Double Linked List|Pairs with given sum in DLL|https://www.geeksforgeeks.org/problems/find-pairs-with-given-sum-in-doubly-linked-list/1?page=1&category=doubly-linked-list&difficulty=Easy&sortBy=submissions|false
+Basic|What is stack? Leam how to represent the data structure and working of it|https://www.geeksforgeeks.org/problems/implement-stack-using-array/1?page=1&category=Stack&sortBy=submissions|false
+Basic|Implement 2 stack using array|https://www.geeksforgeeks.org/problems/implement-two-stacks-in-an-array/1?page=1&category=Stack&sortBy=submissions|false
+Basic|Check for balanced paranthesis|https://www.geeksforgeeks.org/problems/parenthesis-checker2744/1?page=1&category=Stack&sortBy=submissions|false
+Basic|Get min from stack in O(1) space and time|https://www.geeksforgeeks.org/problems/get-minimum-element-from-stack/1?page=1&category=Stack&sortBy=submissions|false
+Next greater element|Next greater element|https://www.geeksforgeeks.org/problems/next-larger-element-1587115620/1?page=1&category=Stack&sortBy=submissions|false
+Next greater element|Next greater element II|https://leetcode.com/problems/next-greater-element-ii/|false
+Next smallest element(Once above pattern is covered, try to solve this on own)|Next smallest element on left|https://www.geeksforgeeks.org/problems/help-classmates--141631/1?itm_source=geeksforgeeks|false
+Next smallest element(Once above pattern is covered, try to solve this on own)|Next smallest element on right|https://www.codingninjas.com/studio/problems/next-smaller-element_1112581|false
+Next smallest element(Once above pattern is covered, try to solve this on own)|Stock span problem(Implementation prob - Try to figure out the pattern from above next greater and smaller)|https://www.geeksforgeeks.org/problems/stock-span-problem-1587115621/1?page=1&category=Stack&sortBy=submissions|false
+Next smallest element(Once above pattern is covered, try to solve this on own)|Trapping rainwater|https://www.geeksforgeeks.org/problems/trapping-rain-water-1587115621/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Next smallest element(Once above pattern is covered, try to solve this on own)|Maximum rectangular area on histogram(Once next greater and next smallest pattern is covered, this can be solved easily)|https://www.geeksforgeeks.org/problems/maximum-rectangular-area-in-a-histogram-1587115620/1?page=1&category=Stack&sortBy=submissions|false
+Next smallest element(Once above pattern is covered, try to solve this on own)|Max rectangle(Same as above, just a small twist)|https://www.geeksforgeeks.org/problems/max-rectangle/1?page=1&category=Stack&sortBy=submissions|false
+Expressions|Infix to postfix|https://www.geeksforgeeks.org/problems/infix-to-postfix-1587115620/1?page=2&category=Stack&sortBy=submissions|false
+Expressions|Evaluation of postfix expression|https://www.geeksforgeeks.org/problems/evaluation-of-postfix-expression1735/1?page=2&category=Stack&sortBy=submissions|false
+Expressions|Prefix to postfix|https://practice.geeksforgeeks.org/problems/infix-to-postfix-1587115620/1|false
+Expressions|Arithmetic expression evaluation|https://www.codingninjas.com/studio/problems/arithmetic-expression-evaluation_1170517|false
+Reversing stack|Insert at bottom of stack|https://www.geeksforgeeks.org/problems/insert-an-element-at-the-bottom-of-a-stack/1?page=4&category=Stack&sortBy=submissions|false
+Reversing stack|Reverse a stack|https://www.geeksforgeeks.org/problems/reverse-a-stack/1?page=2&category=Stack&sortBy=submissions|false
+Reversing stack|Sort stack(Solving above two can give you hint for this)|https://www.geeksforgeeks.org/problems/sort-a-stack/1?page=1&category=Stack&sortBy=submissions|false
+Implementation probs|Celebrity problem|https://www.geeksforgeeks.org/problems/the-celebrity-problem/1?page=1&category=Stack&sortBy=submissions|false
+Implementation probs|Restrictive candy crush|https://www.geeksforgeeks.org/problems/restrictive-candy-crush--141631/1?page=2&category=Stack&sortBy=submissions|false
+Implementation probs|Count the reversals|https://www.geeksforgeeks.org/problems/count-the-reversals0401/1?page=1&category=Queue&sortBy=submissions|false
+Basic pattern|What is queue? Learn the basic representation and how its implemented?|https://www.geeksforgeeks.org/problems/implement-queue-using-array/1?page=1&category=Queue&sortBy=submissions|false
+Basic pattern|Implement queue using linkedlist|https://www.geeksforgeeks.org/problems/implement-queue-using-linked-list/1?page=1&category=Queue&sortBy=submissions|false
+Basic pattern|Implement queue using stack(super imp)|https://www.geeksforgeeks.org/problems/queue-using-two-stacks/1?page=1&category=Queue&sortBy=submissions|false
+Basic pattern|Implement stack using queue(super imp)|https://www.geeksforgeeks.org/problems/stack-using-two-queues/1?page=1&category=Queue&sortBy=submissions|false
+Basic pattern|Reverse a queue|https://www.geeksforgeeks.org/problems/queue-reversal/1?page=1&category=Queue&sortBy=submissions|false
+Implementation probs|Circular tour|https://www.geeksforgeeks.org/problems/circular-tour-1587115620/1?page=1&category=Queue&sortBy=submissions|false
+Implementation probs|First non repeating char in stream|https://www.geeksforgeeks.org/problems/first-non-repeating-character-in-a-stream1216/1?page=1&category=Queue&sortBy=submissions|false
+Implementation probs|Reverse first k elements in queue|https://www.geeksforgeeks.org/problems/reverse-first-k-elements-of-queue/1?page=1&category=Queue&sortBy=submissions|false
+Implementation probs|LRU Cache(super imp)|https://www.geeksforgeeks.org/problems/lru-cache/1?page=1&category=Queue&sortBy=submissions|false
+Implementation probs|Minimum cost of ropes|https://www.geeksforgeeks.org/problems/minimum-cost-of-ropes-1587115620/1?page=1&category=Queue&sortBy=submissions|false
+Implementation probs|Nearly sorted(Learn priority queue for sure)|https://www.geeksforgeeks.org/problems/nearly-sorted-1587115620/1?page=3&category=Arrays&difficulty=Medium|false
+Fixed Sliding Window(Size of the window will be provided)|Maximum sum subarray of size k|https://www.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Fixed Sliding Window(Size of the window will be provided)|Count distinct element in every window(Once you understoor handling window size fixed from above prob, this will be easy)|https://www.geeksforgeeks.org/problems/count-distinct-elements-in-every-window/1?page=1&category=sliding-window&sortBy=submissions|false
+Fixed Sliding Window(Size of the window will be provided)|First negative integer in every window of size k(Try to solve on own before looking for soln since you did above topics too already|https://www.geeksforgeeks.org/problems/first-negative-integer-in-every-window-of-size-k3345/1?page=1&category=sliding-window&sortBy=submissions|false
+Fixed Sliding Window(Size of the window will be provided)|Maximum of all subarray of size k(Try to solve on own)|https://www.geeksforgeeks.org/problems/maximum-of-all-subarrays-of-size-k3101/1?page=1&category=sliding-window&sortBy=submissions|false
+Fixed Sliding Window(Size of the window will be provided)|Count substring of length k with k-1 distinct elements|https://www.geeksforgeeks.org/problems/substrings-of-length-k-with-k-1-distinct-elements/1?page=1&category=sliding-window&sortBy=submissions|false
+Fixed Sliding Window(Size of the window will be provided)|Maximum of minimum for every window(Imp)|https://www.geeksforgeeks.org/problems/maximum-of-minimum-for-every-window-size3453/1?page=1&category=sliding-window&sortBy=submissions|false
+Variable sliding window(Each prob will teach something in addition to the window so do solve everything)|Subarray with given sum|https://www.geeksforgeeks.org/problems/subarray-with-given-sum-1587115621/1?page=1&category=sliding-window&sortBy=submissions|false
+Variable sliding window(Each prob will teach something in addition to the window so do solve everything)|Longest subarray with given sum k(Same as above with slight modification)|https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?page=1&category=sliding-window&sortBy=submissions|false
+Variable sliding window(Each prob will teach something in addition to the window so do solve everything)|Subarray with 0 sum|https://www.geeksforgeeks.org/problems/subarray-with-0-sum-1587115621/1?page=1&category=sliding-window&sortBy=submissions|false
+Variable sliding window(Each prob will teach something in addition to the window so do solve everything)|Smallest window of distinct elements|https://www.geeksforgeeks.org/problems/smallest-distant-window3132/1?page=1&category=sliding-window&sortBy=submissions|false
+Variable sliding window(Each prob will teach something in addition to the window so do solve everything)|Smallest window containing 0,1,2|https://www.geeksforgeeks.org/problems/smallest-window-containing-0-1-and-2--170637/1?page=2&category=sliding-window&sortBy=submissions|false
+Variable sliding window(Each prob will teach something in addition to the window so do solve everything)|Smallest window in string containing all chars of another string|https://www.geeksforgeeks.org/problems/smallest-window-in-a-string-containing-all-the-characters-of-another-string-1587115621/1?page=1&category=sliding-window&sortBy=submissions|false
+Variable sliding window(Each prob will teach something in addition to the window so do solve everything)|Length of longest substring|https://www.geeksforgeeks.org/problems/length-of-the-longest-substring3036/1?page=1&category=sliding-window&sortBy=submissions|false
+Variable sliding window(Each prob will teach something in addition to the window so do solve everything)|Largest subarray of 0s and 1s|https://www.geeksforgeeks.org/problems/largest-subarray-of-0s-and-1s/1?page=1&category=sliding-window&sortBy=submissions|false
+Variable sliding window(Each prob will teach something in addition to the window so do solve everything)|Count of anagram occurence(Super imp)|https://www.geeksforgeeks.org/problems/count-occurences-of-anagrams5839/1?page=1&category=sliding-window&sortBy=submissions|false
+Variable sliding window(Each prob will teach something in addition to the window so do solve everything)|Max consecutive ones III|https://leetcode.com/problems/max-consecutive-ones-iii/|false
+Variable sliding window(Each prob will teach something in addition to the window so do solve everything)|Fruit into basket|https://leetcode.com/problems/fruit-into-baskets|false
+Variable sliding window(Each prob will teach something in addition to the window so do solve everything)|Count number of nice subarrays|https://leetcode.com/problems/count-number-of-nice-subarrays/|false
+Variable sliding window(Each prob will teach something in addition to the window so do solve everything)|Longest repeating char replacement|https://leetcode.com/problems/longest-repeating-character-replacement|false
+Variable sliding window(Each prob will teach something in addition to the window so do solve everything)|Minimum window substring|https://leetcode.com/problems/minimum-window-substring/description/|false
+Variable sliding window(Each prob will teach something in addition to the window so do solve everything)|Minimum window subsequence(Understand the diff between subarray and subsequence before starting this prob)|https://leetcode.com/problems/minimum-window-subsequence/|false
+Variable sliding window(Each prob will teach something in addition to the window so do solve everything)|Subarray with k diff integers|https://leetcode.com/problems/subarrays-with-k-different-integers/|false
+Traversals|PreOrder Traversal|https://www.geeksforgeeks.org/problems/preorder-traversal/1?page=1&category=Tree&sortBy=submissions|false
+Traversals|InOrder Traversal|https://www.geeksforgeeks.org/problems/inorder-traversal/1?page=2&category=Tree&sortBy=submissions|false
+Traversals|PostOrder Traversal|https://www.geeksforgeeks.org/problems/postorder-traversal/1?page=2&category=Tree&sortBy=submissions|false
+Traversals|Level Order Traversal|https://www.geeksforgeeks.org/problems/level-order-traversal/1?page=1&category=Tree&sortBy=submissions|false
+Traversals|Boundary Traversal(Once level traversal is learnt, this you can solve)|https://www.geeksforgeeks.org/problems/boundary-traversal-of-binary-tree/1?page=1&category=Tree&sortBy=submissions|false
+Traversals|Vertical Traversal(Once level traversal is learnt, this you can solve, lil extra logic is needed)|https://www.geeksforgeeks.org/problems/print-a-binary-tree-in-vertical-order/1?page=1&category=Tree&sortBy=submissions|false
+Traversals|Top View of BT(Once you have mastered level traversal, this should be easy)|https://www.geeksforgeeks.org/problems/top-view-of-binary-tree/1?page=1&category=Tree&sortBy=submissions|false
+Traversals|Bottom View of BT(Once you have mastered level traversal, this should be easy)|https://www.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1?page=1&category=Tree&sortBy=submissions|false
+Traversals|Left View of BT(Once you have mastered vertical traversal, this should be easy)|https://www.geeksforgeeks.org/problems/left-view-of-binary-tree/1?page=1&category=Tree&sortBy=submissions|false
+Traversals|Right View of BT(Once you have mastered vertical traversal, this should be easy)|https://www.geeksforgeeks.org/problems/right-view-of-binary-tree/1?page=1&category=Tree&sortBy=submissions|false
+Traversals|Diagonal Traversal|https://www.geeksforgeeks.org/problems/diagonal-traversal-of-binary-tree/1?page=3&category=Tree&sortBy=submissions|false
+Basic and Easy patterns(Try to solve these once you learnt traversals)|Insert node in a tree||false
+Basic and Easy patterns(Try to solve these once you learnt traversals)|Height of the tree|https://www.geeksforgeeks.org/problems/height-of-binary-tree/1?page=1&category=Tree&sortBy=submissions|false
+Basic and Easy patterns(Try to solve these once you learnt traversals)|Diameter of the tree|https://www.geeksforgeeks.org/problems/diameter-of-binary-tree/1?page=1&category=Tree&sortBy=submissions|false
+Basic and Easy patterns(Try to solve these once you learnt traversals)|Check if 2 trees are identical|https://www.geeksforgeeks.org/problems/determine-if-two-trees-are-identical/1?page=1&category=Tree&sortBy=submissions|false
+Basic and Easy patterns(Try to solve these once you learnt traversals)|Check if subtree|https://www.geeksforgeeks.org/problems/check-if-subtree/1?page=2&category=Tree&sortBy=submissions|false
+Basic and Easy patterns(Try to solve these once you learnt traversals)|Check for balanced tree|https://www.geeksforgeeks.org/problems/check-for-balanced-tree/1?page=1&category=Tree&sortBy=submissions|false
+Basic and Easy patterns(Try to solve these once you learnt traversals)|Lowest common Ancestor in BT|https://www.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-binary-tree/1?page=1&category=Tree&sortBy=submissions|false
+Basic and Easy patterns(Try to solve these once you learnt traversals)|Sum tree|https://www.geeksforgeeks.org/problems/sum-tree/1?page=1&category=Tree&sortBy=submissions|false
+Basic and Easy patterns(Try to solve these once you learnt traversals)|Symmetric tree|https://www.geeksforgeeks.org/problems/symmetric-tree/1?page=2&category=Tree&sortBy=submissions|false
+Basic and Easy patterns(Try to solve these once you learnt traversals)|Mirror of a tree|https://www.geeksforgeeks.org/problems/mirror-tree/1?page=1&category=Tree&sortBy=submissions|false
+Basic and Easy patterns(Try to solve these once you learnt traversals)|Check if isomorphic|https://www.geeksforgeeks.org/problems/check-if-tree-is-isomorphic/1?page=2&category=Tree&sortBy=submissions|false
+Path and Distance|Root to leaf paths|https://www.geeksforgeeks.org/problems/root-to-leaf-paths/1?page=4&category=Tree&sortBy=submissions|false
+Path and Distance|Root to leaf path sum (Once the root to leaf path is solved, this should be easy)|https://www.geeksforgeeks.org/problems/root-to-leaf-paths/1?page=4&category=Tree&sortBy=submissions|false
+Path and Distance|Maximum path sum from any node(Once the root to leaf path is solved, this should be easy)|https://www.geeksforgeeks.org/problems/maximum-path-sum-from-any-node/1?page=3&category=Tree&sortBy=submissions|false
+Path and Distance|K Sum Paths (Once the root to leaf path is solved, this should be easy)|https://www.geeksforgeeks.org/problems/k-sum-paths/1?page=3&category=Tree&sortBy=submissions|false
+Path and Distance|Nodes at given distance|https://www.geeksforgeeks.org/problems/nodes-at-given-distance-in-binary-tree/1?page=3&category=Tree&sortBy=submissions|false
+Path and Distance|Range sum of BST(Solving nodes at given distance, will make this easy)||false
+Path and Distance|Minimum distance between 2 nodes(Solving nodes at given distance, will make this easy)|https://www.geeksforgeeks.org/problems/min-distance-between-two-given-nodes-of-a-binary-tree/1?page=2&category=Tree&sortBy=submissions|false
+Path and Distance|Maximum distance between node and ancestor(Must solve though distance pattern is covered)|https://www.geeksforgeeks.org/problems/maximum-difference-between-node-and-its-ancestor/1?page=3&category=Tree&sortBy=submissions|false
+Path and Distance|Min time to burn a tree(Using distance logic, this can be sovled)|https://www.geeksforgeeks.org/problems/burning-tree/1?page=4&category=Tree&sortBy=submissions|false
+Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)|Insert a node in BST|https://leetcode.com/problems/insert-into-a-binary-search-tree/|false
+Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)|Search a value in BST(Learn efficient algo to do it, since this can be handled efficiently in BST than BT)|https://practice.geeksforgeeks.org/problems/search-a-node-in-bst/1|false
+Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)|Find minimum and maximum in BST|https://www.geeksforgeeks.org/problems/max-and-min-element-in-binary-tree/1?page=5&category=Tree&sortBy=submissions|false
+Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)|Find the Kth largest element/kth Smallest in BST(Try to solve it without looking for soln, once you have mastered all the above patterns, this should be easy)|https://www.geeksforgeeks.org/problems/kth-largest-element-in-bst/1?page=2&category=Tree&sortBy=submissions|false
+Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)|Check for BST(Try solving probs in this pattern by yourself till LCA once above are solved)|https://www.geeksforgeeks.org/problems/check-for-bst/1?page=1&category=Tree&sortBy=submissions|false
+Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)|Find the closest element in BST|https://www.geeksforgeeks.org/problems/find-the-closest-element-in-bst/1?page=3&category=Tree&sortBy=submissions|false
+Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)|Count BST nodes in the given range|https://www.geeksforgeeks.org/problems/count-bst-nodes-that-lie-in-a-given-range/1?page=3&category=Tree&sortBy=submissions|false
+Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)|Largest BST in BT(Super imp - Must solve)|https://www.geeksforgeeks.org/problems/largest-bst/1?page=2&category=Tree&sortBy=submissions|false
+Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)|Lowest Common Ancestor in BST|https://www.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-bst/1?page=1&category=Tree&sortBy=submissions|false
+Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)|Merge two BST(Super imp - Must solve)|https://www.geeksforgeeks.org/problems/merge-two-bst-s/1?page=4&category=Tree&sortBy=submissions|false
+Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)|Inorder successor and predecessor|https://www.geeksforgeeks.org/problems/predecessor-and-successor/1?page=2&category=Tree&sortBy=submissions|false
+Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)|Populate inorder successor for all nodes|https://www.geeksforgeeks.org/problems/populate-inorder-successor-for-all-nodes/1?page=5&category=Tree&sortBy=submissions|false
+Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)|BST to greater sum tree|https://www.geeksforgeeks.org/problems/bst-to-greater-sum-tree/1?page=8&category=Tree&sortBy=submissions|false
+Binary Search Tree(Once the above patterns are covered, BST probs will become easy, but make sure to learn what BST is in general before starting with probs)|Delete given node from BST|https://leetcode.com/problems/delete-node-in-a-bst/|false
+Construct from given|Construct Binary Tree from Preorder and Inorder Traversal ( First understand the concept of how to derive at the solution, then start coding it by yourself)|https://www.geeksforgeeks.org/problems/construct-tree-1/1?page=1&category=Tree&sortBy=submissions|false
+Construct from given|Construct Binary Tree from Inorder and Postorder Traversal|https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/|false
+Construct from given|Construct BST from given preorder traversal|https://www.geeksforgeeks.org/problems/construct-tree-from-preorder-traversal/1?page=7&category=Tree&sortBy=submissions|false
+Construct from given|Construct BT from parent array|https://www.geeksforgeeks.org/problems/construct-binary-tree-from-parent-array/1?page=5&category=Tree&sortBy=submissions|false
+Subtree & Other must do tree probs|Serialize and deserialize BT|https://www.geeksforgeeks.org/problems/serialize-and-deserialize-a-binary-tree/1?page=4&category=Tree&sortBy=submissions|false
+Subtree & Other must do tree probs|Largest subtree sum in a tree|https://www.geeksforgeeks.org/problems/largest-subtree-sum-in-a-tree/1?page=6&category=Tree&sortBy=submissions|false
+Subtree & Other must do tree probs|Maximum sum of non adjacent nodes|https://www.geeksforgeeks.org/problems/maximum-sum-of-non-adjacent-nodes/1?page=3&category=Tree&sortBy=submissions|false
+Subtree & Other must do tree probs|Duplicate subtree|https://www.geeksforgeeks.org/problems/duplicate-subtrees/1?page=4&category=Tree&sortBy=submissions|false
+Subtree & Other must do tree probs|Flatten BT to linked list|https://www.geeksforgeeks.org/problems/flatten-binary-tree-to-linked-list/1?page=5&category=Tree&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Permutations of a string|https://www.geeksforgeeks.org/problems/permutations-of-a-given-string2041/1?page=1&category=Backtracking&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Permutation II (You can solve on own once you solve above)|https://leetcode.com/problems/permutations-ii|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Combination sum I|https://www.geeksforgeeks.org/problems/combination-sum-1587115620/1?page=1&category=Backtracking&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Combination sum II(Once you solve combination I, you should be able to solve this and below 2 probs too easily)|https://leetcode.com/problems/combination-sum-ii|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Combination sum III|https://leetcode.com/problems/combination-sum-iii|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Rat in maze(Once above probs are solved, you can do this easily)|https://www.geeksforgeeks.org/problems/rat-in-a-maze-problem/1?page=1&category=Backtracking&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Possible words from phone digits|https://www.geeksforgeeks.org/problems/possible-words-from-phone-digits-1587115620/1?page=1&category=Backtracking&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Subsets|https://www.geeksforgeeks.org/problems/subsets-1613027340/1?page=1&category=Backtracking&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Unique subset(Solving above, you will be able to solve this easily)|https://www.geeksforgeeks.org/problems/subsets-1587115621/1?page=1&category=Backtracking&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|N-Queen(Super imp)|https://www.geeksforgeeks.org/problems/n-queen-problem0315/1?page=1&category=Backtracking&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|N Queen II|https://leetcode.com/problems/n-queens-ii|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Permutation with spaces|https://www.geeksforgeeks.org/problems/permutation-with-spaces3627/1?page=1&category=Backtracking&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Generate parantheses|https://www.geeksforgeeks.org/problems/generate-all-possible-parentheses/1?page=1&category=Backtracking&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Generate IP address|https://www.geeksforgeeks.org/problems/generate-ip-addresses/1?page=1&category=Backtracking&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Solve the sudoku|https://www.geeksforgeeks.org/problems/solve-the-sudoku-1587115621/1?page=1&category=Backtracking&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|kth permutation|https://www.geeksforgeeks.org/problems/find-kth-permutation/1?page=2&category=Backtracking&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Word search|https://www.geeksforgeeks.org/problems/word-search/1?page=3&category=Graph&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Palindrome partition of string|https://www.geeksforgeeks.org/problems/find-all-possible-palindromic-partitions-of-a-string/1?page=2&category=Backtracking&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Decode the string|https://www.geeksforgeeks.org/problems/decode-the-string2444/1?page=1&category=Backtracking&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Letter case permutation|https://leetcode.com/problems/letter-case-permutation/|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|sum string|https://www.geeksforgeeks.org/problems/sum-string3151/1?page=1&category=Backtracking&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|word boggle|https://www.geeksforgeeks.org/problems/word-boggle4143/1?page=1&category=Backtracking&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Largest number in k swaps|https://www.geeksforgeeks.org/problems/largest-number-in-k-swaps-1587115620/1?page=1&category=Backtracking&sortBy=submissions|false
+Basic patterns and must solve(Each prob in this pattern will teach you something and also as you solve, you will start mastering it though initially it takes sometime)|Partition array to k subsets|https://www.geeksforgeeks.org/problems/partition-array-to-k-subsets/1?page=1&category=Backtracking&sortBy=submissions|false
+Traversals & Basic|BFS Traversal(Super imp and basic)|https://www.geeksforgeeks.org/problems/bfs-traversal-of-graph/1?page=1&category=Graph&sortBy=submissions|false
+Traversals & Basic|DFS Traversal(Super imp and basic)|https://www.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1?page=1&category=Graph&sortBy=submissions|false
+Traversals & Basic|Detect cycle in Directed graph|https://www.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1?page=1&category=Graph&sortBy=submissions|false
+Traversals & Basic|Detect cycle in Undirected graph|https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1?page=1&category=Graph&sortBy=submissions|false
+Traversals & Basic|Detect Negative cycle in graph|https://www.geeksforgeeks.org/problems/negative-weight-cycle3504/1?page=2&category=Graph&sortBy=submissions|false
+Connected component(After traversal, this will be easy to solve)|Connected component(Once you master this , all the below using this pattern will become super easy)|https://practice.geeksforgeeks.org/problems/strongly-connected-component-tarjanss-algo-1587115621/1|false
+Connected component(After traversal, this will be easy to solve)|Number of Provinces(Learn how to solve this prob and solve the below in this pattern)|https://www.geeksforgeeks.org/problems/number-of-provinces/1?page=2&category=Graph&sortBy=submissions|false
+Connected component(After traversal, this will be easy to solve)|Number of Islands|https://www.geeksforgeeks.org/problems/find-the-number-of-islands/1?page=1&category=Graph&sortBy=submissions|false
+Connected component(After traversal, this will be easy to solve)|Number of distinct island|https://www.geeksforgeeks.org/problems/number-of-distinct-islands/1?page=2&category=Graph&sortBy=submissions|false
+Connected component(After traversal, this will be easy to solve)|Number of closed island|https://www.geeksforgeeks.org/problems/find-number-of-closed-islands/1?page=3&category=Graph&sortBy=submissions|false
+Bipartite|Bipartite graph|https://www.geeksforgeeks.org/problems/bipartite-graph/1?page=1&category=Graph&sortBy=submissions|false
+Bipartite|M-colouring|https://practice.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1|false
+Shortest Path|Find shortest path in DAG|https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/1?page=1&category=Graph&sortBy=submissions|false
+Shortest Path|Djikstra Algo|https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1?page=1&category=Graph&sortBy=submissions|false
+Shortest Path|Step by Knight|https://www.geeksforgeeks.org/problems/steps-by-knight5927/1?page=1&category=Graph&sortBy=submissions|false
+Shortest Path|Shortest path source to destiny|https://www.geeksforgeeks.org/problems/shortest-source-to-destination-path3544/1?page=1&category=Graph&sortBy=submissions|false
+Shortest Path|Find if path exists|https://www.geeksforgeeks.org/problems/find-whether-path-exist5238/1?page=2&category=Graph&sortBy=submissions|false
+Shortest Path|Covid spread|https://www.geeksforgeeks.org/problems/covid-spread--141631/1?page=4&category=Graph&sortBy=submissions|false
+Shortest Path|Minimum cost path|https://www.geeksforgeeks.org/problems/minimum-cost-path3833/1?page=2&category=Graph&sortBy=submissions|false
+Shortest Path|Word ladder I|https://www.geeksforgeeks.org/problems/word-ladder/1?page=3&category=Graph&sortBy=submissions|false
+Shortest Path|Word ladder II|https://www.geeksforgeeks.org/problems/word-ladder-ii/1?page=3&category=Graph&sortBy=submissions|false
+Shortest Path|Floyd warshal algo|https://www.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1?page=1&category=Graph&sortBy=submissions|false
+Shortest Path|Bellmanford algo(Imp - Will be used for negative cycle)|https://www.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/1?page=2&category=Graph&sortBy=submissions|false
+Multi Source|Flood fill|https://www.geeksforgeeks.org/problems/flood-fill-algorithm1856/1?page=1&category=Graph&sortBy=submissions|false
+Multi Source|Replace O's with X's(Below can be solved easily in this pattern once you learnt flood fill)|https://www.geeksforgeeks.org/problems/replace-os-with-xs0052/1?page=1&category=Graph&sortBy=submissions|false
+Multi Source|Unit area of largest region of 1s|https://www.geeksforgeeks.org/problems/length-of-largest-region-of-1s-1587115620/1?page=2&category=Graph&sortBy=submissions|false
+Multi Source|Rotten Oranges|https://www.geeksforgeeks.org/problems/rotten-oranges2536/1?page=1&category=Graph&sortBy=submissions|false
+Topological sort|Topological sort algo(Learning this algo, will make you solve all the probs in this pattern)|https://www.geeksforgeeks.org/problems/topological-sort/1?page=1&category=Graph&sortBy=submissions|false
+Topological sort|Prerequisite tasks|https://www.geeksforgeeks.org/problems/prerequisite-tasks/1?page=2&category=Graph&sortBy=submissions|false
+Topological sort|Course schedule I|https://www.geeksforgeeks.org/problems/course-schedule/1?page=3&category=Graph&sortBy=submissions|false
+Topological sort|Course schedule II|https://leetcode.com/problems/course-schedule-ii|false
+Topological sort|Eventual safe states|https://www.geeksforgeeks.org/problems/eventual-safe-states/1?page=2&category=Graph&sortBy=submissions|false
+Topological sort|Alien dictionary|https://www.geeksforgeeks.org/problems/alien-dictionary/1?page=1&category=Graph&sortBy=submissions|false
+Minimum Spanning Tree|Minimum spanning tree(Once you learn this, then you will be able to solve the probs in this pattern by yourself)|https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1?page=1&category=Graph&sortBy=submissions|false
+Minimum Spanning Tree|Kruskals algo|https://www.codingninjas.com/studio/problems/code-kruskal-s-algorithm_6320|false
+Minimum Spanning Tree|Minimum cost to connect cities|https://leetcode.com/problems/connecting-cities-with-minimum-cost|false
+Minimum Spanning Tree|Minimum cost to connect all points|https://leetcode.com/problems/min-cost-to-connect-all-points/|false
+Minimum Spanning Tree|Optimize water distribution|https://leetcode.com/problems/optimize-water-distribution-in-a-village|false
+Disjoint set|Learn the disjoint set Algo||false
+Disjoint set|Union by rank, path compression(Super imp, dont skip)||false
+Disjoint set|Networks connected|https://leetcode.com/problems/number-of-operations-to-make-network-connected/|false
+Disjoint set|Minimum swaps to sort|https://www.geeksforgeeks.org/problems/minimum-swaps/1?page=1&category=Graph&sortBy=submissions|false
+Disjoint set|Santa Banta|https://www.geeksforgeeks.org/problems/santa-banta2814/1?page=3&category=Graph&sortBy=submissions|false
+Disjoint set|Number of pairs|https://www.geeksforgeeks.org/problems/number-of-pairs-1645358985/1?page=5&category=Graph&sortBy=submissions|false
+Disjoint set|Number of Island II|https://leetcode.com/problems/number-of-islands-ii/|false
+Disjoint set|Making a large island|https://leetcode.com/problems/making-a-large-island|false
+Must solve imp algos|Bridges in graph|https://www.geeksforgeeks.org/problems/bridge-edge-in-graph/1?page=3&category=Graph&sortBy=submissions|false
+Must solve imp algos|Articulation point|https://www.geeksforgeeks.org/problems/articulation-point-1/1?page=3&category=Graph&sortBy=submissions|false
+Must solve imp algos|Critical connection|https://www.geeksforgeeks.org/problems/critical-connections/1?page=5&category=Graph&sortBy=submissions|false
+Must solve imp algos|Kosaraja algo (Strongly connected component algo)|https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1?page=2&category=Graph&sortBy=submissions|false
+Must solve imp algos|Word boggle|https://www.geeksforgeeks.org/problems/word-boggle4143/1?page=2&category=Graph&sortBy=submissions|false
+Must solve imp algos|Word boggle II|https://www.geeksforgeeks.org/problems/word-boggle-ii--141631/1?page=5&category=Graph&sortBy=submissions|false
+Basics and must solves|Minimum number of jumps|https://www.geeksforgeeks.org/problems/minimum-number-of-jumps-1587115620/1?page=1&category=Greedy&sortBy=submissions|false
+Basics and must solves|Minimum operations|https://www.geeksforgeeks.org/problems/find-optimum-operation4504/1?page=1&category=Greedy&sortBy=submissions|false
+Basics and must solves|Minimize the sum of product|https://www.geeksforgeeks.org/problems/minimize-the-sum-of-product1525/1?page=1&category=Greedy&sortBy=submissions|false
+Basics and must solves|Largest number possible|https://www.geeksforgeeks.org/problems/largest-number-possible5028/1?page=1&category=Greedy&sortBy=submissions|false
+Basics and must solves|Lemonade change|https://www.geeksforgeeks.org/problems/lemonade-change/1?page=2&category=Greedy&sortBy=submissions|false
+Basics and must solves|Activity selection prob(Super imp)|https://www.geeksforgeeks.org/problems/activity-selection-1587115620/1?page=1&category=Greedy&sortBy=submissions|false
+Basics and must solves|N meetings in a room(Super imp)|https://www.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1?page=1&category=Greedy&sortBy=submissions|false
+Basics and must solves|Minimum platforms|https://www.geeksforgeeks.org/problems/minimum-platforms-1587115620/1?page=1&category=Greedy&sortBy=submissions|false
+Basics and must solves|Minimize the height|https://www.geeksforgeeks.org/problems/minimize-the-heights-i/1?page=2&category=Greedy&sortBy=submissions|false
+Basics and must solves|Minimum number of coins using greedy(This can be solved using naive, DP also but make sure to use greedy here)|https://www.geeksforgeeks.org/problems/-minimum-number-of-coins4426/1?page=1&category=Greedy&sortBy=submissions|false
+Basics and must solves|Job sequencing prob|https://www.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1?page=1&category=Greedy&sortBy=submissions|false
+Basics and must solves|Fractional knapsack|https://www.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1?page=1&category=Greedy&sortBy=submissions|false
+Basics and must solves|Jump game|https://www.geeksforgeeks.org/problems/jump-game/1?page=2&category=Greedy&sortBy=submissions|false
+Basics and must solves|Insert interval|https://leetcode.com/problems/insert-interval/|false
+Basics and must solves|Merge interval|https://leetcode.com/problems/merge-intervals/|false
+Basics and must solves|Non overlapping interval|https://leetcode.com/problems/non-overlapping-intervals/|false
+Basics and must solves|Minimum cost of ropes|https://practice.geeksforgeeks.org/problems/minimum-cost-of-ropes-1587115620/1|false
+Basics and must solves|Partition labels|https://leetcode.com/problems/partition-labels/|false
+Basics and must solves|Cinema seat allocation|https://leetcode.com/problems/cinema-seat-allocation/|false
+Basics and must solves|Max length chain|https://www.geeksforgeeks.org/problems/max-length-chain/1?page=1&category=Greedy&sortBy=submissions|false
+Basics and must solves|Valid parantheses - Minimum|https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/|false
+Basics and must solves|Shortest job first|https://practice.geeksforgeeks.org/problems/shortest-job-first/1|false
+Basics and must solves|Least recently used|https://practice.geeksforgeeks.org/problems/lru-cache/1?utm_source=youtube&utm_medium=collab_fraz_websitelink&utm_campaign=LRU+Cache|false
+Basic|Understand the basics!!||false
+1D - Linear DP|Count num of hops|https://www.geeksforgeeks.org/problems/count-number-of-hops-1587115620/1?page=2&category=Dynamic%20Programming&sortBy=submissions|false
+1D - Linear DP|Count way to reach nth stair(Order matters)|https://www.geeksforgeeks.org/problems/count-ways-to-reach-the-nth-stair-1587115620/1?page=2&category=Dynamic%20Programming&sortBy=submissions|false
+1D - Linear DP|Count way to reach nth stair(Order doesn't matter)|https://www.geeksforgeeks.org/problems/count-ways-to-nth-stairorder-does-not-matter5639/1?page=4&category=Dynamic%20Programming&sortBy=submissions|false
+1D - Linear DP|House robber|https://leetcode.com/problems/house-robber/|false
+1D - Linear DP|House robber II|https://leetcode.com/problems/house-robber-ii/|false
+2D Grid DP|Count paths - grid|https://www.geeksforgeeks.org/problems/count-the-paths4332/1?page=5&category=Dynamic%20Programming&sortBy=submissions|false
+2D Grid DP|Unique paths II|https://leetcode.com/problems/unique-paths-ii/|false
+2D Grid DP|Count all possible paths with condition(You can solve this by yourself once above two are solved)|https://www.geeksforgeeks.org/problems/count-all-possible-paths-from-top-left-to-bottom-right3011/1?page=3&category=Dynamic%20Programming&sortBy=submissions|false
+2D Grid DP|Minimum path sum in grid|https://leetcode.com/problems/minimum-path-sum/|false
+2D Grid DP|Max path sum|https://www.geeksforgeeks.org/problems/path-in-matrix3805/1?page=2&category=Dynamic%20Programming&sortBy=submissions|false
+2D Grid DP|Minimum path sum in triangular grid|https://leetcode.com/problems/triangle/|false
+2D Grid DP|Number of paths with k coins|https://www.geeksforgeeks.org/problems/number-of-paths-in-a-matrix-with-k-coins2728/1?page=7&category=Dynamic%20Programming&sortBy=submissions|false
+2D Grid DP|Minimum/Maximum falling path sum|https://leetcode.com/problems/minimum-falling-path-sum|false
+2D Grid DP|Minimum falling path sum II|https://leetcode.com/problems/minimum-falling-path-sum-ii|false
+DP on subsequence|Subset sum problem|https://www.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1?page=1&category=Dynamic%20Programming&status=solved&sortBy=submissions|false
+DP on subsequence|Count subset with given sum k|https://www.geeksforgeeks.org/problems/perfect-sum-problem5633/1?page=1&category=Dynamic%20Programming&sortBy=submissions|false
+DP on subsequence|Partition equal subset sum(Try to do it on own after solving above two, just a small trick)|https://www.geeksforgeeks.org/problems/subset-sum-problem2014/1?page=1&category=Dynamic%20Programming&sortBy=submissions|false
+DP on subsequence|Minimum sum partition|https://www.geeksforgeeks.org/problems/minimum-sum-partition3317/1?page=2&category=Dynamic%20Programming&sortBy=submissions|false
+DP on subsequence|Count partition with given diff||false
+DP on subsequence|0-1 Knapsack|https://www.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1?page=1&category=Dynamic%20Programming&sortBy=submissions|false
+DP on subsequence|Maximum non adjacent subsequence|https://www.geeksforgeeks.org/problems/max-sum-without-adjacents2430/1?page=3&category=Dynamic%20Programming&sortBy=submissions|false
+DP on subsequence|Coin change|https://www.geeksforgeeks.org/problems/coin-change2448/1?page=1&category=Dynamic%20Programming&sortBy=submissions|false
+DP on subsequence|Min number of coins|https://www.geeksforgeeks.org/problems/number-of-coins1824/1?page=2&category=Dynamic%20Programming&sortBy=submissions|false
+DP on subsequence|Rod cutting|https://www.geeksforgeeks.org/problems/rod-cutting0840/1?page=2&category=Dynamic%20Programming&status=solved&sortBy=submissions|false
+DP on subsequence|Target sum|https://leetcode.com/problems/target-sum|false
+DP on subsequence|Minimum cost to fill given weight in bag(Solving the above probs in this pattern will make this super easy)|https://www.geeksforgeeks.org/problems/minimum-cost-to-fill-given-weight-in-a-bag1956/1?page=3&category=Dynamic%20Programming&status=solved&sortBy=submissions|false
+DP on subsequence|Knapsack with duplication items|https://www.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1?page=2&category=Dynamic%20Programming&sortBy=submissions|false
+DP on Increasing subsequence|Longest increasing subsequence|https://leetcode.com/problems/longest-increasing-subsequence/|false
+DP on Increasing subsequence|Print longest increasing subsequence||false
+DP on Increasing subsequence|Longest bitonic subsequence(Solve on own, definitely you can do it once the above two are solved)|https://www.geeksforgeeks.org/problems/longest-bitonic-subsequence0824/1?page=4&category=Dynamic%20Programming&sortBy=submissions|false
+DP on Increasing subsequence|Longest divisible subset(This and the below are just extended version of longest increasing subsequence, so try on own|https://leetcode.com/problems/largest-divisible-subset/|false
+DP on Increasing subsequence|Longest string chain|https://leetcode.com/problems/longest-string-chain/|false
+DP on Increasing subsequence|Num of longest increasing subsequence|https://leetcode.com/problems/number-of-longest-increasing-subsequence/|false
+DP on strings(Using Longest common subsequence pattern)|Longest common subsequence(Once you learn this pattern, all probs under this pattern can be solved by yourself)|https://www.geeksforgeeks.org/problems/longest-common-subsequence-1587115620/1?page=1&category=Dynamic%20Programming&sortBy=submissions|false
+DP on strings(Using Longest common subsequence pattern)|Print Longest common subsequence(Here you will need to print the string so must solve)|https://www.geeksforgeeks.org/problems/print-all-lcs-sequences3413/1?page=7&category=Dynamic%20Programming&sortBy=submissions|false
+DP on strings(Using Longest common subsequence pattern)|Longest palindromic subsequence|https://leetcode.com/problems/longest-palindromic-subsequence|false
+DP on strings(Using Longest common subsequence pattern)|Form a palindrome with minimum insertions|https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome|false
+DP on strings(Using Longest common subsequence pattern)|Min num of deletions and insertions to make string s1 equal to s2|https://www.geeksforgeeks.org/problems/minimum-number-of-deletions-and-insertions0209/1?page=4&category=Dynamic%20Programming&sortBy=submissions|false
+DP on strings(Using Longest common subsequence pattern)|Shortest common supersequence|https://www.geeksforgeeks.org/problems/shortest-common-supersequence0322/1?page=2&category=Dynamic%20Programming&sortBy=submissions|false
+DP on strings(Using Longest common subsequence pattern)|Longest common substring/subarray|https://www.geeksforgeeks.org/problems/longest-common-substring1452/1?page=1&category=Dynamic%20Programming&sortBy=submissions|false
+DP on strings(Using Longest common subsequence pattern)|Longest palindromic substring|https://www.geeksforgeeks.org/problems/longest-palindrome-in-a-string3411/1?page=1&category=Dynamic%20Programming&sortBy=submissions|false
+DP on strings(Using Longest common subsequence pattern)|Longest repeating subsequence|https://www.geeksforgeeks.org/problems/longest-repeating-subsequence2004/1?page=2&category=Dynamic%20Programming&status=solved&sortBy=submissions|false
+DP on string|Edit distance (All the probs in this pattern are super imp, each prob is different so do solve all)|https://www.geeksforgeeks.org/problems/edit-distance3702/1?page=1&category=Dynamic%20Programming&sortBy=submissions|false
+DP on string|Distinct occurence|https://www.geeksforgeeks.org/problems/distinct-occurrences/1?page=3&category=Dynamic%20Programming&status=solved&sortBy=submissions|false
+DP on string|Wildcard pattern matching|https://www.geeksforgeeks.org/problems/wildcard-pattern-matching/1?page=4&category=Dynamic%20Programming&sortBy=submissions|false
+DP on string|Longest valid parentheses|https://www.geeksforgeeks.org/problems/longest-valid-parentheses5657/1?page=3&category=Dynamic%20Programming&sortBy=submissions|false
+DP on string|Word break|https://www.geeksforgeeks.org/problems/word-break1352/1?page=3&category=Dynamic%20Programming&sortBy=submissions|false
+DP on string|Word break II|https://www.geeksforgeeks.org/problems/word-break-part-23249/1?page=5&category=Dynamic%20Programming&sortBy=submissions|false
+DP on string|Word wrap|https://www.geeksforgeeks.org/problems/word-wrap1646/1?page=4&category=Dynamic%20Programming&sortBy=submissions|false
+DP on string|Interleaved strings|https://www.geeksforgeeks.org/problems/interleaved-strings/1?page=3&category=Dynamic%20Programming&sortBy=submissions|false
+DP on stocks(Was asked in one of my interview too, so dont miss any ques from this pattern)|Best time to buy and sell stock|https://leetcode.com/problems/best-time-to-buy-and-sell-stock/|false
+DP on stocks(Was asked in one of my interview too, so dont miss any ques from this pattern)|Best time to buy and sell stock II(Once you solve the above prob, all probs in this pattern are extended versions, so you can solve by yourself)|https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/|false
+DP on stocks(Was asked in one of my interview too, so dont miss any ques from this pattern)|Best time to buy and sell stock III|https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/|false
+DP on stocks(Was asked in one of my interview too, so dont miss any ques from this pattern)|Best time to buy and sell stock IV|https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/|false
+DP on stocks(Was asked in one of my interview too, so dont miss any ques from this pattern)|Best time to buy and sell stock with cooldown|https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/|false
+DP on stocks(Was asked in one of my interview too, so dont miss any ques from this pattern)|Best time to buy and sell stock with transaction fee|https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/|false
+DP on partition and MCM|Matrix chain multiplication(Quite tricky pattern, every prob is diff and teaches something so do solve all)|https://www.geeksforgeeks.org/problems/matrix-chain-multiplication0303/1?page=2&category=Dynamic%20Programming&sortBy=submissions|false
+DP on partition and MCM|Minimum cost to cut stick|https://leetcode.com/problems/minimum-cost-to-cut-a-stick/|false
+DP on partition and MCM|Burst balloons|https://www.geeksforgeeks.org/problems/burst-balloons/1?page=8&category=Dynamic%20Programming&sortBy=submissions|false
+DP on partition and MCM|Boolean Parenthesization|https://www.geeksforgeeks.org/problems/boolean-parenthesization5610/1?page=3&category=Dynamic%20Programming&sortBy=submissions|false
+DP on partition and MCM|Palindrom partitioning|https://www.geeksforgeeks.org/problems/palindromic-patitioning4845/1?page=2&category=Dynamic%20Programming&sortBy=submissions|false
+DP on partition and MCM|Partition array for max sum|https://leetcode.com/problems/partition-array-for-maximum-sum/|false
+DP on partition and MCM|Max rectangles area with all 1s|https://www.geeksforgeeks.org/problems/max-rectangle/1?page=3&category=Dynamic%20Programming&sortBy=submissions|false
+DP on partition and MCM|Count square submatrices|https://leetcode.com/problems/count-square-submatrices-with-all-ones/|false
+Basic patterns|What is heap? Understand the data structure||false
+Basic patterns|Min heap implementation|Min Heap Implementation - Coding Ninjas|false
+Basic patterns|Max heap implementation|https://www.gatevidyalay.com/tag/max-heap-questions/|false
+Basic patterns|Convert min heap to max heap|https://www.geeksforgeeks.org/problems/convert-min-heap-to-max-heap-1666385109/1|false
+Top k pattern|kth largest in array|https://www.geeksforgeeks.org/problems/k-largest-elements4206/1?page=1&category=Heap&sortBy=submissions|false
+Top k pattern|kth smallest in array||false
+Top k pattern|Top k frequent elements|https://leetcode.com/problems/top-k-frequent-elements/|false
+Top k pattern|Top k frequent words|https://leetcode.com/problems/top-k-frequent-words|false
+Top k pattern|Frequency sort|https://leetcode.com/problems/sort-characters-by-frequency/|false
+Top k pattern|kth largest num in streams|https://www.geeksforgeeks.org/problems/kth-largest-element-in-a-stream2220/1?page=1&category=Heap&sortBy=submissions|false
+Top k pattern|Reorganize string|https://leetcode.com/problems/reorganize-string/|false
+Top k pattern|Reorganize string k distance apart|https://leetcode.com/problems/rearrange-string-k-distance-apart|false
+Top k pattern|kth smallest sum of matrix|https://leetcode.com/problems/find-the-kth-smallest-sum-of-a-matrix-with-sorted-rows/|false
+Top k pattern|ugly num II|https://leetcode.com/problems/ugly-number-ii/|false
+Merge k sorted pattern|Merge k sorted array|https://practice.geeksforgeeks.org/problems/merge-k-sorted-arrays/1|false
+Merge k sorted pattern|k pairs with smallest sum|https://leetcode.com/problems/find-k-pairs-with-smallest-sums/|false
+Merge k sorted pattern|k smallest nums in M sorted list|https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/|false
+Two heaps pattern|Find median from data stream|https://www.geeksforgeeks.org/problems/find-median-in-a-stream-1587115620/1?page=1&category=Heap&sortBy=submissions|false
+Two heaps pattern|Sliding window median|https://leetcode.com/problems/sliding-window-median/|false
+Two heaps pattern|Maximum capital/IPO|https://leetcode.com/problems/ipo/|false
+Minimum number pattern|Minimum cost to connect ropes|https://practice.geeksforgeeks.org/problems/minimum-cost-of-ropes-1587115620/1|false
+Minimum number pattern|Meeting room II|https://leetcode.com/problems/meeting-rooms-ii|false
+Minimum number pattern|Minimum cost to hire k workers|https://leetcode.com/problems/minimum-cost-to-hire-k-workers/|false
+Minimum number pattern|Minimum num of CPU|https://leetcode.com/problems/task-scheduler/|false
+Minimum number pattern|Minimum num of refueling stops|https://leetcode.com/problems/minimum-number-of-refueling-stops/|false
+Basic and must solve|Implement Trie from scratch|https://www.codingninjas.com/studio/problems/implement-trie_631356|false
+Basic and must solve|Word break (Do solve it using trie, though you had solved this already)|https://www.geeksforgeeks.org/problems/word-break-trie--141631/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Basic and must solve|Longest string with all prefixes|https://leetcode.com/problems/longest-common-prefix/|false
+Basic and must solve|Maximum XOR of two numbers in array|https://www.geeksforgeeks.org/problems/maximum-xor-of-two-numbers-in-an-array/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Basic and must solve|Unique rows in boolean matrix|https://www.geeksforgeeks.org/problems/unique-rows-in-boolean-matrix/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Basic and must solve|Prefix match with other strings|https://www.geeksforgeeks.org/problems/prefix-match-with-other-strings/1|false
+Must solve and Algos specific to string|Implement Atoi|https://www.geeksforgeeks.org/problems/implement-atoi/1|false
+Must solve and Algos specific to string|Count and say|https://leetcode.com/problems/count-and-say/|false
+Must solve and Algos specific to string|Minimum bracket reversals|https://www.geeksforgeeks.org/problems/count-the-reversals0401/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
+Must solve and Algos specific to string|Rabin karp algo( Pattern searching, super imp, this was infact asked in one of my interview)|https://practice.geeksforgeeks.org/problems/search-pattern-rabin-karp-algorithm--141631/1|false
+Must solve and Algos specific to string|Boyer moor algo (Pattern searching)|https://www.codingninjas.com/studio/problems/boyer-moore-algorithm-for-pattern-searching_1115634|false
+Must solve and Algos specific to string|KMP algo ( Longest prefix suffix, super imp)|https://practice.geeksforgeeks.org/problems/longest-prefix-suffix2527/1|false
+Must solve and Algos specific to string|Longest happy prefix|https://www.geeksforgeeks.org/longest-prefix-also-suffix/|false
+Must solve and Algos specific to string|Remove all adjacent duplicates|https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/|false
+Must solve and Algos specific to string|Hashing in strings|https://www.geeksforgeeks.org/practice-problems-on-hashing/|false
+Must solve and Algos specific to string|Print all anagrams|https://leetcode.com/problems/group-anagrams/|false
+Must solve and Algos specific to string|Z - Function|https://practice.geeksforgeeks.org/problems/search-pattern-z-algorithm--141631/1|false
+Must solve and Algos specific to string|Shortest palindrome|Shortest Palindrome - LeetCode|false
+Must solve and Algos specific to string|Circle of strings|https://www.geeksforgeeks.org/problems/circle-of-strings4530/1|false
+Must solve and Algos specific to string|Roman numerals to decimals|https://www.geeksforgeeks.org/problems/roman-number-to-integer3201/1?itm_source=geeksforgeeks&itm_medium=Article&itm_campaign=bottom_sticky_on_Article|false
