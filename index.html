@@ -317,10 +317,16 @@
   <!-- ===== SOFT SKILLS ===== -->
   <section class="section" id="section-softskills">
     <div class="section-header">
-      <h1>Soft Skills</h1>
-      <p>40% of hiring is this. Build the person, not just the programmer.</p>
+      <h1>Soft Skills &amp; Aptitude</h1>
+      <p>Master core personality traits alongside placement aptitude topics.</p>
     </div>
-    <div class="skill-overview-row" id="soft-overview"></div>
+    <div class="filter-chips" id="softskills-tab-chips" style="margin-bottom: 16px;">
+      <span class="chip active" onclick="switchSoftSkillsTab('core', this)">🧠 Core Soft Skills</span>
+      <span class="chip" onclick="switchSoftSkillsTab('quant', this)">🔢 Quantitative Aptitude</span>
+      <span class="chip" onclick="switchSoftSkillsTab('logical', this)">🧩 Logical Reasoning</span>
+      <span class="chip" onclick="switchSoftSkillsTab('verbal', this)">💬 Verbal Ability</span>
+    </div>
+    <div class="skill-overview-row" id="soft-overview" style="margin-bottom: 16px;"></div>
     <div class="skill-trackers" id="soft-trackers"></div>
   </section>
 

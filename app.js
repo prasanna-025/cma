@@ -34,6 +34,62 @@ const SUBJECTS_DATA = {
 
 const COMM_SKILLS = ['Reading Comprehension', 'Speaking Fluency', 'Vocabulary Building', 'Email Writing', 'Interview Answers', 'Group Discussion', 'Presentation Skills'];
 const SOFT_SKILLS = ['Confidence', 'Presentation', 'Leadership', 'Teamwork', 'Time Management', 'Problem Solving', 'Adaptability', 'Critical Thinking'];
+const QUANT_APTITUDE = [
+  'Divisibility',
+  'Decimal Fractions and Numbers',
+  'Number System and LCM & HCF',
+  'Mensuration',
+  'Geometry',
+  'Area, Perimeter, and Shapes',
+  'Ages (Arithmetic Ability)',
+  'Averages (Arithmetic Ability)',
+  'Equations (Arithmetic Ability)',
+  'Probability (Arithmetic Ability)',
+  'Percentages (Arithmetic Ability)',
+  'Profit and Loss (Arithmetic Ability)',
+  'Time and Work (Arithmetic Ability)',
+  'Clocks and Calendar',
+  'Arrangement & Series',
+  'Ratios and Proportions',
+  'Series and Progressions',
+  'Allegations and Mixtures',
+  'Distance, Speed, and Time',
+  'Permutations and Combinations',
+  'Elementary Statistics'
+];
+const LOGICAL_REASONING = [
+  'Meaningful Word Creation',
+  'Number Series',
+  'Missing Number Single',
+  'Missing Number Analogy',
+  'Blood Relations',
+  'Coding-Decoding',
+  'Ages (Rank Based Logic)',
+  'Data Sufficiency',
+  'Rank Based Logic',
+  'Seating Arrangement (Complex)',
+  'Odd Man Out (Numbers)',
+  'Odd Man Out (Logical)',
+  'Distance and Directions',
+  'Statement and Conclusion',
+  'Mathematical Operational Arrangement',
+  'Symbols and Notations'
+];
+const VERBAL_ABILITY = [
+  'Spelling',
+  'Grammar',
+  'Selecting words',
+  'Error Correction',
+  'Passage Ordering',
+  'Error Identification',
+  'Sentence Completion',
+  'Synonyms and Antonyms',
+  'Reading Comprehension (Verbal)',
+  'Cloze Test',
+  'Reading and Comprehension'
+];
+
+let activeSoftSkillsTab = 'core'; // 'core', 'quant', 'logical', 'verbal'
 
 const DSA_CATS = ['Arrays', 'Strings', 'Trees', 'Graphs', 'DP', 'Sorting', 'Linked List', 'Binary Search', 'Stack/Queue', 'Greedy'];
 const DASH_QUOTES = [
@@ -650,13 +706,91 @@ function toggleTopic(sub, topic, cb) {
 }
 
 // ── COMMUNICATION & SOFT SKILLS ──
+function renderCommSkillsOverview() {
+  const overview = document.getElementById('comm-overview');
+  if (!overview) return;
+
+  const skills = COMM_SKILLS;
+  const prefix = 'comm';
+  let total = skills.length;
+  let proficientCount = 0;
+  let sumVal = 0;
+  skills.forEach(skill => {
+    const key = `${prefix}_${skill}`;
+    const val = S.skills[key] || 0;
+    if (val >= 3) proficientCount++;
+    sumVal += val;
+  });
+
+  const avgVal = total > 0 ? (sumVal / total) : 0;
+  const avgPct = Math.round((avgVal / 4) * 100);
+
+  overview.innerHTML = `
+    <div class="skill-ov-chip"><i class="fas fa-layer-group"></i> Total: <b>${total} topics</b></div>
+    <div class="skill-ov-chip"><i class="fas fa-award"></i> Ready: <b>${proficientCount} proficient</b></div>
+    <div class="skill-ov-chip"><i class="fas fa-chart-pie"></i> Mastery: <b>${avgPct}%</b></div>
+  `;
+}
+
 function renderCommSkills() {
   renderSkillTrackers('comm-trackers', COMM_SKILLS, 'comm');
+  renderCommSkillsOverview();
+}
+
+function renderSoftSkillsOverview(skills, prefix) {
+  const overview = document.getElementById('soft-overview');
+  if (!overview) return;
+
+  let total = skills.length;
+  let proficientCount = 0;
+  let sumVal = 0;
+  skills.forEach(skill => {
+    const key = `${prefix}_${skill}`;
+    const val = S.skills[key] || 0;
+    if (val >= 3) proficientCount++;
+    sumVal += val;
+  });
+
+  const avgVal = total > 0 ? (sumVal / total) : 0;
+  const avgPct = Math.round((avgVal / 4) * 100);
+
+  overview.innerHTML = `
+    <div class="skill-ov-chip"><i class="fas fa-layer-group"></i> Total: <b>${total} topics</b></div>
+    <div class="skill-ov-chip"><i class="fas fa-award"></i> Ready: <b>${proficientCount} proficient</b></div>
+    <div class="skill-ov-chip"><i class="fas fa-chart-pie"></i> Mastery: <b>${avgPct}%</b></div>
+  `;
 }
 
 function renderSoftSkills() {
-  renderSkillTrackers('soft-trackers', SOFT_SKILLS, 'soft');
+  let list = SOFT_SKILLS;
+  let prefix = 'soft';
+  if (activeSoftSkillsTab === 'quant') {
+    list = QUANT_APTITUDE;
+    prefix = 'quant';
+  } else if (activeSoftSkillsTab === 'logical') {
+    list = LOGICAL_REASONING;
+    prefix = 'logical';
+  } else if (activeSoftSkillsTab === 'verbal') {
+    list = VERBAL_ABILITY;
+    prefix = 'verbal';
+  }
+  renderSkillTrackers('soft-trackers', list, prefix);
+  renderSoftSkillsOverview(list, prefix);
 }
+
+function switchSoftSkillsTab(tabName, element) {
+  activeSoftSkillsTab = tabName;
+  document.querySelectorAll('#softskills-tab-chips .chip').forEach(c => c.classList.remove('active'));
+  if (element) {
+    element.classList.add('active');
+  } else {
+    const target = document.querySelector(`#softskills-tab-chips .chip[onclick*="${tabName}"]`);
+    if (target) target.classList.add('active');
+  }
+  renderSoftSkills();
+}
+
+window.switchSoftSkillsTab = switchSoftSkillsTab;
 
 function renderSkillTrackers(containerId, skills, prefix) {
   const container = document.getElementById(containerId);
