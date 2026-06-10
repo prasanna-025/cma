@@ -6,7 +6,7 @@
 const S = {
   dsa: [], projects: [], applications: [],
   hours: {}, dailyChecks: {}, placementChecks: {},
-  skills: {}, subjects: {},
+  skills: {}, subjects: {}, customSkills: [],
   streak: 0, lastActive: null,
   xp: 0, level: 1,
   mocks: 0, apps: 0,
@@ -17,6 +17,7 @@ const S = {
 function load() {
   const saved = localStorage.getItem('placementOS_v2');
   if (saved) Object.assign(S, JSON.parse(saved));
+  if (!S.customSkills) S.customSkills = [];
   initStreakCheck();
 }
 
@@ -136,6 +137,7 @@ function renderAll() {
   renderSoftSkills();
   renderProjects();
   renderPlacement();
+  renderCustomSkills();
   renderAnalytics();
 }
 
@@ -175,9 +177,10 @@ function switchSection(sec) {
   document.querySelector(`.nav-item[data-section="${sec}"]`)?.classList.add('active');
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.getElementById(`section-${sec}`)?.classList.add('active');
-  const titles = { dashboard: 'Dashboard', dsa: 'DSA Tracker', subjects: 'Core Subjects', communication: 'Communication', softskills: 'Soft Skills', projects: 'Projects', placement: 'Placement Tracker', analytics: 'Analytics' };
+  const titles = { dashboard: 'Dashboard', dsa: 'DSA Tracker', subjects: 'Core Subjects', communication: 'Communication', softskills: 'Soft Skills', projects: 'Projects', placement: 'Placement Tracker', extraskills: 'Cloud & Extra Skills', analytics: 'Analytics' };
   document.getElementById('topbar-title').textContent = titles[sec] || sec;
   if (sec === 'analytics') renderAnalytics();
+  if (sec === 'extraskills') renderCustomSkills();
 }
 
 function setupMobileMenu() {
@@ -684,12 +687,24 @@ function renderSubjects() {
           <div class="prog-fill" style="width:${pct}%"></div>
         </div>
         <div class="subject-topics">
-          ${SUBJECTS_DATA[sub].map(topic => `
-            <label class="topic-item">
-              <input type="checkbox" ${S.subjects[sub][topic] ? 'checked' : ''} onchange="toggleTopic('${sub}','${topic}',this)">
-              <span>${topic}</span>
-            </label>
-          `).join('')}
+          ${SUBJECTS_DATA[sub].map(topic => {
+            const isDone = !!S.subjects[sub]?.[topic];
+            const chatLink = S.subjects[sub]?.[topic + '_chat_link'] || '';
+            return `
+              <div class="topic-item-wrapper" style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:4px 6px; border-radius:7px; transition:background .15s;">
+                <label class="topic-item" style="flex:1; padding:0; margin:0; cursor:pointer;">
+                  <input type="checkbox" ${isDone ? 'checked' : ''} onchange="toggleTopic('${sub}','${topic}',this)">
+                  <span style="${isDone ? 'text-decoration:line-through; color:var(--text3);' : ''}">${topic}</span>
+                </label>
+                <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
+                  ${chatLink ? `
+                    <a href="${chatLink}" target="_blank" class="chat-icon-btn" title="Open ChatGPT study link" style="color:var(--accent2); font-size:12px; display:inline-flex; align-items:center; justify-content:center; padding:4px;"><i class="fas fa-robot"></i></a>
+                  ` : ''}
+                  <button onclick="editTopicChatLink('${sub}', '${topic}')" class="btn-sm" style="padding:2px 5px; font-size:9.5px; border-radius:4px; height:20px; line-height:1;" title="Set ChatGPT Link"><i class="fas fa-link"></i></button>
+                </div>
+              </div>
+            `;
+          }).join('')}
         </div>
       </div>
     `;
@@ -704,6 +719,19 @@ function toggleTopic(sub, topic, cb) {
   renderSubjects();
   renderDashboard();
 }
+
+function editTopicChatLink(sub, topic) {
+  const current = S.subjects[sub]?.[topic + '_chat_link'] || '';
+  const url = prompt(`Enter ChatGPT/Study link for "${topic}":`, current);
+  if (url === null) return;
+  if (!S.subjects[sub]) S.subjects[sub] = {};
+  S.subjects[sub][topic + '_chat_link'] = url.trim();
+  save();
+  renderSubjects();
+  toast('Study link saved!');
+}
+
+window.editTopicChatLink = editTopicChatLink;
 
 // ── COMMUNICATION & SOFT SKILLS ──
 function renderCommSkillsOverview() {
@@ -799,6 +827,7 @@ function renderSkillTrackers(containerId, skills, prefix) {
     const val = S.skills[key] || 0;
     const isComp = !!S.skills[key + '_complete'];
     const levels = ['Beginner', 'Learning', 'Practicing', 'Proficient', 'Expert'];
+    const chatLink = S.skills[key + '_chat_link'] || '';
     return `
       <div class="skill-card ${isComp ? 'completed' : ''}">
         <div class="skill-card-header">
@@ -815,6 +844,13 @@ function renderSkillTrackers(containerId, skills, prefix) {
           ${levels.map((l, i) => `<button class="level-btn ${val === i ? 'active' : ''}" onclick="setSkill('${key}', ${i})">${l}</button>`).join('')}
         </div>
         <textarea class="skill-notes" rows="2" placeholder="Notes..." onchange="setSkillNote('${key}', this.value)">${S.skills[key + '_note'] || ''}</textarea>
+        
+        <div style="position:relative; margin-top:8px; display:flex; gap:6px; align-items:center;">
+          <input type="url" class="inp" placeholder="ChatGPT Study Link..." onchange="setSkillChatLink('${key}', this.value)" value="${chatLink}" style="font-size:11px; padding:5px 8px; height:24px; flex:1;">
+          ${chatLink ? `
+            <a href="${chatLink}" target="_blank" class="btn btn-sm" style="padding:4px 8px; font-size:10px; background:rgba(0, 212, 170, 0.1); border-color:rgba(0, 212, 170, 0.2); color:var(--accent2); height:24px; display:inline-flex; align-items:center; justify-content:center;" title="Open Chat Link"><i class="fas fa-robot"></i></a>
+          ` : ''}
+        </div>
       </div>
     `;
   }).join('');
@@ -847,6 +883,15 @@ function setSkillNote(key, val) {
   S.skills[key + '_note'] = val;
   save();
 }
+
+function setSkillChatLink(key, val) {
+  S.skills[key + '_chat_link'] = val.trim();
+  save();
+  renderCommSkills();
+  renderSoftSkills();
+}
+
+window.setSkillChatLink = setSkillChatLink;
 
 // ── PROJECTS ──
 function addProject() {
@@ -1169,3 +1214,211 @@ function initDashQuoteRotator() {
   // Rotate every 10 seconds
   setInterval(updateQuote, 10000);
 }
+
+// ── CLOUD & EXTRA SKILLS ──
+function renderCustomSkillsSummary() {
+  const el = document.getElementById('extraskills-summary-stats');
+  if (!el) return;
+
+  if (!S.customSkills) S.customSkills = [];
+
+  const totalSkills = S.customSkills.length;
+  let totalTopics = 0;
+  let completedTopics = 0;
+
+  S.customSkills.forEach(s => {
+    totalTopics += s.topics.length;
+    completedTopics += s.topics.filter(t => t.completed).length;
+  });
+
+  el.innerHTML = `
+    <div class="skill-ov-chip"><i class="fas fa-folder"></i> Paths: <b>${totalSkills} active</b></div>
+    <div class="skill-ov-chip"><i class="fas fa-book-open"></i> Topics: <b>${totalTopics} tracked</b></div>
+    <div class="skill-ov-chip"><i class="fas fa-check-circle"></i> Completed: <b>${completedTopics} done</b></div>
+  `;
+}
+
+function renderCustomSkills() {
+  const container = document.getElementById('custom-skills-container');
+  if (!container) return;
+
+  if (!S.customSkills) S.customSkills = [];
+
+  renderCustomSkillsSummary();
+
+  if (S.customSkills.length === 0) {
+    container.innerHTML = `
+      <div class="card" style="text-align:center; padding:40px; color:var(--text3); border-color:var(--border);">
+        <div style="font-size:40px; margin-bottom:12px;">☁️</div>
+        <h3 style="color:#fff;">No Custom Skills Yet</h3>
+        <p style="font-size:13px; margin-top:4px; color:var(--text2);">Create your first custom skill path (e.g., Cloud Computing) above to get started!</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = S.customSkills.map(skill => {
+    const totalTopics = skill.topics.length;
+    const completedTopics = skill.topics.filter(t => t.completed).length;
+    const pct = totalTopics > 0 ? Math.round((completedTopics / totalTopics) * 100) : 0;
+
+    return `
+      <div class="card full-card">
+        <div class="card-header" style="border-bottom: 1px solid var(--border); padding-bottom:12px; margin-bottom:16px;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span style="font-size:20px;">☁️</span>
+            <div>
+              <span style="font-size:16px; font-weight:700; color:#fff; text-transform:none;">${skill.name}</span>
+              <span style="font-size:11px; color:var(--text2); display:block; text-transform:none; font-weight:normal; letter-spacing:0; margin-top:2px;">${completedTopics}/${totalTopics} topics complete</span>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; text-transform:none;">
+            <div style="width:120px; text-align:right;">
+              <div class="progress-label" style="margin-bottom:3px;"><span style="font-size:10px;">Progress</span><span style="font-size:10px; font-family:var(--mono);">${pct}%</span></div>
+              <div class="prog-bar" style="height:6px;"><div class="prog-fill" style="width:${pct}%;"></div></div>
+            </div>
+            <button class="btn-danger" onclick="deleteCustomSkill(${skill.id})" title="Delete Skill Path" style="padding:6px 10px;"><i class="fas fa-trash"></i></button>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:20px; flex-wrap:wrap;">
+          <!-- Left: Add Topic Form inside this skill -->
+          <div style="flex:1; min-width:280px; background:var(--bg3); padding:16px; border-radius:10px; border:1px solid var(--border); align-self:flex-start;">
+            <h4 style="font-size:12px; font-weight:700; color:var(--text2); text-transform:uppercase; margin-bottom:12px; letter-spacing:0.5px;"><i class="fas fa-plus-circle" style="color:var(--accent2); margin-right:4px;"></i> Add Topic</h4>
+            <div class="form-grid" style="grid-template-columns:1fr; gap:10px;">
+              <input type="text" id="topic-name-${skill.id}" class="inp" placeholder="Topic name (e.g. AWS S3, Cloud Models)" />
+              <textarea id="topic-desc-${skill.id}" class="inp" rows="3" placeholder="What did you learn? Detailed notes..." style="resize:none; font-size:12px;"></textarea>
+              <input type="url" id="topic-link-${skill.id}" class="inp" placeholder="ChatGPT Link or Study resource link" />
+            </div>
+            <button class="btn btn-primary" onclick="addCustomTopic(${skill.id})" style="margin-top:12px; width:100%; font-size:12px; padding:7px 14px;">
+              <i class="fas fa-check"></i> Add Topic
+            </button>
+          </div>
+
+          <!-- Right: List of Topics -->
+          <div style="flex:2; min-width:320px; display:flex; flex-direction:column; gap:10px;">
+            <h4 style="font-size:12px; font-weight:700; color:var(--text2); text-transform:uppercase; margin-bottom:4px; letter-spacing:0.5px;"><i class="fas fa-list-ul" style="margin-right:4px;"></i> Topics (${totalTopics})</h4>
+            ${totalTopics === 0 ? `
+              <div style="color:var(--text3); font-size:12px; text-align:center; padding:32px 0;">No topics added to this skill path yet. Add one on the left! 📝</div>
+            ` : skill.topics.map(topic => `
+              <div class="skill-card ${topic.completed ? 'completed' : ''}" style="background:var(--bg3); border:1px solid var(--border); padding:12px 14px; border-radius:10px; transition:all 0.2s;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+                  <label style="display:flex; align-items:center; gap:8px; cursor:pointer; margin:0; padding:0;">
+                    <input type="checkbox" ${topic.completed ? 'checked' : ''} onchange="toggleCustomTopic(${skill.id}, ${topic.id}, this.checked)" style="width:16px; height:16px; accent-color:var(--accent2); cursor:pointer;">
+                    <span style="font-size:13.5px; font-weight:700; ${topic.completed ? 'text-decoration:line-through; color:var(--text3);' : 'color:#fff;'}">${topic.name}</span>
+                  </label>
+                  <div style="display:flex; gap:6px; align-items:center;">
+                    ${topic.link ? `
+                      <a href="${topic.link}" target="_blank" class="btn btn-sm" style="padding:4px 8px; font-size:10px; background:rgba(0, 212, 170, 0.1); border-color:rgba(0, 212, 170, 0.2); color:var(--accent2); height:22px; display:inline-flex; align-items:center; justify-content:center; gap:4px; border-radius:6px; text-decoration:none;">
+                        <i class="fas fa-robot"></i> ChatGPT
+                      </a>
+                    ` : ''}
+                    <button class="btn-danger" onclick="deleteCustomTopic(${skill.id}, ${topic.id})" style="padding:4px 8px; font-size:10.5px; height:22px; display:inline-flex; align-items:center; justify-content:center;"><i class="fas fa-trash"></i></button>
+                  </div>
+                </div>
+                ${topic.desc ? `
+                  <p style="font-size:12px; color:var(--text2); margin-top:8px; margin-left:24px; line-height:1.5; white-space:pre-wrap;">${topic.desc}</p>
+                ` : ''}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function addCustomSkill() {
+  const nameInput = document.getElementById('custom-skill-name');
+  if (!nameInput) return;
+  const name = nameInput.value.trim();
+  if (!name) return toast('Enter skill path name', 'error');
+
+  if (!S.customSkills) S.customSkills = [];
+
+  const skill = {
+    id: Date.now(),
+    name,
+    topics: []
+  };
+
+  S.customSkills.push(skill);
+  nameInput.value = '';
+  addXP(15);
+  save();
+  renderCustomSkills();
+  toast(`☁️ Custom path "${name}" created!`);
+}
+
+function deleteCustomSkill(skillId) {
+  if (!confirm('Are you sure you want to delete this custom skill path and all its topics?')) return;
+  S.customSkills = S.customSkills.filter(s => s.id !== skillId);
+  save();
+  renderCustomSkills();
+  toast('Skill path removed');
+}
+
+function addCustomTopic(skillId) {
+  const nameInput = document.getElementById(`topic-name-${skillId}`);
+  const descInput = document.getElementById(`topic-desc-${skillId}`);
+  const linkInput = document.getElementById(`topic-link-${skillId}`);
+
+  if (!nameInput || !descInput || !linkInput) return;
+
+  const name = nameInput.value.trim();
+  const desc = descInput.value.trim();
+  const link = linkInput.value.trim();
+
+  if (!name) return toast('Enter topic name', 'error');
+
+  const skill = S.customSkills.find(s => s.id === skillId);
+  if (!skill) return;
+
+  const topic = {
+    id: Date.now(),
+    name,
+    desc,
+    link,
+    completed: false
+  };
+
+  skill.topics.push(topic);
+  nameInput.value = '';
+  descInput.value = '';
+  linkInput.value = '';
+
+  addXP(5);
+  save();
+  renderCustomSkills();
+  toast(`📝 Topic "${name}" added!`);
+}
+
+function deleteCustomTopic(skillId, topicId) {
+  const skill = S.customSkills.find(s => s.id === skillId);
+  if (!skill) return;
+
+  skill.topics = skill.topics.filter(t => t.id !== topicId);
+  save();
+  renderCustomSkills();
+  toast('Topic deleted');
+}
+
+function toggleCustomTopic(skillId, topicId, isChecked) {
+  const skill = S.customSkills.find(s => s.id === skillId);
+  if (!skill) return;
+
+  const topic = skill.topics.find(t => t.id === topicId);
+  if (!topic) return;
+
+  topic.completed = isChecked;
+  if (isChecked) addXP(5);
+  save();
+  renderCustomSkills();
+}
+
+window.addCustomSkill = addCustomSkill;
+window.deleteCustomSkill = deleteCustomSkill;
+window.addCustomTopic = addCustomTopic;
+window.deleteCustomTopic = deleteCustomTopic;
+window.toggleCustomTopic = toggleCustomTopic;
+window.renderCustomSkills = renderCustomSkills;

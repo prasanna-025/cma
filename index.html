@@ -34,6 +34,7 @@
     <a href="#" class="nav-item" data-section="softskills"><i class="fas fa-brain"></i><span>Soft Skills</span></a>
     <a href="#" class="nav-item" data-section="projects"><i class="fas fa-folder-open"></i><span>Projects</span></a>
     <a href="#" class="nav-item" data-section="placement"><i class="fas fa-briefcase"></i><span>Placement</span></a>
+    <a href="#" class="nav-item" data-section="extraskills"><i class="fas fa-cloud"></i><span>Cloud &amp; Extra Skills</span></a>
     <a href="#" class="nav-item" data-section="analytics"><i class="fas fa-chart-line"></i><span>Analytics</span></a>
     <a href="focus-todo.html" class="nav-item"><i class="fas fa-hourglass-half"></i><span>Focus Timer</span></a>
     <a href="motivation.html" class="nav-item"><i class="fas fa-fire"></i><span>Grind Motivation</span></a>
@@ -467,6 +468,39 @@
       </div>
       <div class="company-pipeline" id="company-pipeline"></div>
     </div>
+  </section>
+
+  <!-- ===== CLOUD & EXTRA SKILLS ===== -->
+  <section class="section" id="section-extraskills">
+    <div class="section-header">
+      <h1>Cloud &amp; Extra Skills</h1>
+      <p>Log your custom skill paths (e.g. AWS, GCP, Cloud Computing) and track your notes and study links.</p>
+    </div>
+
+    <div class="cards-row">
+      <!-- Add Skill Form -->
+      <div class="card" style="flex:1; max-width:360px;">
+        <div class="card-header"><i class="fas fa-folder-plus"></i> Create Custom Skill</div>
+        <div class="form-grid" style="grid-template-columns:1fr;">
+          <input type="text" id="custom-skill-name" class="inp" placeholder="e.g. Cloud Computing, DevOps"/>
+        </div>
+        <button class="btn btn-primary" onclick="addCustomSkill()" style="margin-top:12px;width:100%">
+          <i class="fas fa-plus"></i> Create Skill
+        </button>
+      </div>
+
+      <!-- General Info/Stats -->
+      <div class="card" style="flex:2;">
+        <div class="card-header"><i class="fas fa-info-circle"></i> Tracking Progress</div>
+        <p style="font-size:13px; color:var(--text2); line-height:1.6; margin-bottom:12px;">
+          Build your custom curriculum. Enter topics you learn, describe what you studied, and attach your ChatGPT link for quick access later.
+        </p>
+        <div id="extraskills-summary-stats" style="display:flex; gap:12px; flex-wrap:wrap;"></div>
+      </div>
+    </div>
+
+    <!-- Skills List Container -->
+    <div id="custom-skills-container" style="display:grid; grid-template-columns:1fr; gap:20px; margin-top:20px;"></div>
   </section>
 
   <!-- ===== ANALYTICS ===== -->
