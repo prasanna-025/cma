@@ -293,6 +293,21 @@
         min-width: 250px;
       }
     }
+
+    /* Screenshot Dropzone Hover & Focus */
+    .screenshot-dropzone {
+      transition: all 0.2s ease;
+    }
+    .screenshot-dropzone:hover {
+      border-color: #00d4aa !important;
+      background: rgba(0, 212, 170, 0.05) !important;
+      box-shadow: 0 0 10px rgba(0, 212, 170, 0.1);
+    }
+    .screenshot-dropzone:focus {
+      border-color: #6c63ff !important;
+      background: rgba(108, 99, 255, 0.05) !important;
+      box-shadow: 0 0 10px rgba(108, 99, 255, 0.2);
+    }
   </style>
 </head>
 <body>
@@ -439,6 +454,92 @@ let S = {
   weekHours: {}
 };
 
+// ── INDEXEDDB FOR DSA SCREENSHOTS ──
+const dbName = "PlacementOS_DSA_DB";
+const storeName = "screenshots";
+
+function getDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(dbName, 1);
+    request.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains(storeName)) {
+        db.createObjectStore(storeName, { keyPath: "problemName" });
+      }
+    };
+    request.onsuccess = (e) => resolve(e.target.result);
+    request.onerror = (e) => reject(e.target.error);
+  });
+}
+
+async function saveScreenshot(problemName, base64Data) {
+  const db = await getDB();
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction(storeName, "readwrite");
+    const store = transaction.objectStore(storeName);
+    store.put({ problemName, base64Data });
+    transaction.oncomplete = () => {
+      screenshotCache[problemName] = true;
+      resolve();
+    };
+    transaction.onerror = (e) => reject(e.target.error);
+  });
+}
+
+async function getScreenshot(problemName) {
+  const db = await getDB();
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction(storeName, "readonly");
+    const store = transaction.objectStore(storeName);
+    const request = store.get(problemName);
+    request.onsuccess = (e) => resolve(e.target.result ? e.target.result.base64Data : null);
+    request.onerror = (e) => reject(e.target.error);
+  });
+}
+
+async function deleteScreenshot(problemName) {
+  const db = await getDB();
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction(storeName, "readwrite");
+    const store = transaction.objectStore(storeName);
+    store.delete(problemName);
+    transaction.oncomplete = () => {
+      delete screenshotCache[problemName];
+      resolve();
+    };
+    transaction.onerror = (e) => reject(e.target.error);
+  });
+}
+
+let screenshotCache = {};
+
+async function loadScreenshotCache() {
+  try {
+    const db = await getDB();
+    return new Promise((resolve) => {
+      const transaction = db.transaction(storeName, "readonly");
+      const store = transaction.objectStore(storeName);
+      const request = store.getAllKeys();
+      request.onsuccess = (e) => {
+        screenshotCache = {};
+        e.target.result.forEach(key => {
+          screenshotCache[key] = true;
+        });
+        resolve();
+      };
+      request.onerror = () => {
+        screenshotCache = {};
+        resolve();
+      };
+    });
+  } catch (err) {
+    console.error("IndexedDB error:", err);
+    screenshotCache = {};
+  }
+}
+
+let openPanes = {};
+
 function loadState() {
   const saved = localStorage.getItem('placementOS_v2');
   if (saved) {
@@ -459,6 +560,8 @@ function loadState() {
     });
     saveState();
   }
+  
+  if (!S.dsaNotes) S.dsaNotes = {};
   
   // Sync in-memory dsaProblems status
   dsaProblems.forEach(p => {
@@ -561,6 +664,7 @@ function renderProblems() {
       row.dataset.difficulty = difficulty;
       row.dataset.solved = problem.solved;
 
+      const isPaneOpen = !!openPanes[problem.name];
       row.innerHTML = `
         <div class="problem-checkbox">
           <input type="checkbox" ${problem.solved ? 'checked' : ''} 
@@ -571,8 +675,11 @@ function renderProblems() {
             ${problem.name} ${problem.link ? '<i class="fas fa-external-link-alt"></i>' : ''}
           </a>
         </div>
-        <div class="problem-links">
+        <div class="problem-links" style="display:flex; align-items:center; gap:6px;">
           ${problem.link ? `<a href="${problem.link}" target="_blank" class="problem-link-btn">Solve</a>` : ''}
+          <button onclick="toggleDetailsPane('${problem.name.replace(/'/g, "\\'")}')" class="problem-link-btn" style="background:rgba(108,99,255,0.08); border-color:rgba(108,99,255,0.25);">
+            <i class="fas ${isPaneOpen ? 'fa-chevron-up' : 'fa-chevron-down'}"></i> Notes &amp; Code
+          </button>
         </div>
         <div class="solved-badge ${problem.solved ? '' : 'unsolved'}">
           ${problem.solved ? '✅ Solved' : '⏳ Todo'}
@@ -580,6 +687,39 @@ function renderProblems() {
       `;
       
       problemsList.appendChild(row);
+
+      if (isPaneOpen) {
+        const details = document.createElement('div');
+        details.className = 'problem-details-pane';
+        details.style.cssText = 'display:flex; gap:16px; padding:16px 20px; background:rgba(16,20,32,0.65); border-left: 2px solid var(--accent); border-bottom: 1px solid rgba(108,99,255,0.1); flex-wrap:wrap; width:100%; border-radius:0; box-sizing:border-box;';
+        
+        const savedNotes = S.dsaNotes?.[problem.name] || '';
+        const hasScreenshot = !!screenshotCache[problem.name];
+
+        details.innerHTML = `
+          <!-- Left: What I Learned -->
+          <div style="flex:1.2; min-width:260px; display:flex; flex-direction:column; gap:6px;">
+            <label style="font-size:11px; font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:4px;"><i class="fas fa-edit" style="color:var(--accent2);"></i> What I Learned (Notes)</label>
+            <textarea class="inp" placeholder="Describe the approach, time complexity, or key learnings..." onchange="saveProblemNotes('${problem.name.replace(/'/g, "\\'")}', this.value)" style="font-size:12px; resize:vertical; min-height:68px; background:var(--bg3); line-height:1.5; color:#fff; border-color:var(--border);">${savedNotes}</textarea>
+          </div>
+
+          <!-- Right: Code Screenshot -->
+          <div style="flex:1; min-width:240px; display:flex; flex-direction:column; gap:6px;">
+            <label style="font-size:11px; font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:4px;"><i class="fas fa-camera" style="color:var(--accent);"></i> Code Screenshot</label>
+            <div id="screenshot-area-${problem.name.replace(/\s+/g, '_')}" class="screenshot-dropzone" onpaste="handleScreenshotPaste(event, '${problem.name.replace(/'/g, "\\'")}')" style="border:1.5px dashed rgba(108,99,255,0.25); border-radius:8px; height:68px; display:flex; align-items:center; justify-content:center; background:rgba(108,99,255,0.02); cursor:pointer; transition:all 0.2s; outline:none; text-align:center; padding:10px; box-sizing:border-box;" onclick="triggerFileInput('${problem.name.replace(/'/g, "\\'")}')" tabindex="0">
+              ${hasScreenshot ? `
+                <div style="display:flex; align-items:center; gap:10px; width:100%; justify-content:center;">
+                  <span style="color:var(--accent2); font-size:12px; font-weight:600;"><i class="fas fa-image"></i> View Submission Code</span>
+                  <button onclick="event.stopPropagation(); deleteProblemScreenshot('${problem.name.replace(/'/g, "\\'")}')" class="btn-danger" style="padding:3px 8px; font-size:10px; border-radius:5px; height:22px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer;" title="Delete Screenshot"><i class="fas fa-trash-alt"></i></button>
+                </div>
+              ` : `
+                <span style="font-size:11px; color:var(--text2);"><i class="fas fa-cloud-upload-alt" style="margin-right:4px;"></i> Click to Upload or Paste (Ctrl+V)</span>
+              `}
+            </div>
+          </div>
+        `;
+        problemsList.appendChild(details);
+      }
     }
   });
 
@@ -697,7 +837,123 @@ document.getElementById('menuToggle')?.addEventListener('click', () => {
   const sidebar = document.getElementById('sidebar');
   sidebar.classList.toggle('active');
 });
+
+// ── CUSTOM HELPER FUNCTIONS ──
+function toggleDetailsPane(problemName) {
+  openPanes[problemName] = !openPanes[problemName];
+  renderProblems();
+}
+window.toggleDetailsPane = toggleDetailsPane;
+
+function saveProblemNotes(problemName, notes) {
+  if (!S.dsaNotes) S.dsaNotes = {};
+  S.dsaNotes[problemName] = notes;
+  saveState();
+  toast('Notes saved!');
+}
+window.saveProblemNotes = saveProblemNotes;
+
+async function handleScreenshotPaste(e, problemName) {
+  const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].type.indexOf('image') !== -1) {
+      e.preventDefault();
+      const blob = items[i].getAsFile();
+      const reader = new FileReader();
+      reader.onload = async (event) => {
+        const base64 = event.target.result;
+        await saveScreenshot(problemName, base64);
+        renderProblems();
+        toast("Screenshot pasted from clipboard!");
+      };
+      reader.readAsDataURL(blob);
+      break;
+    }
+  }
+}
+window.handleScreenshotPaste = handleScreenshotPaste;
+
+let currentUploadProblemName = '';
+
+function triggerFileInput(problemName) {
+  getScreenshot(problemName).then(data => {
+    if (data) {
+      openLightbox(problemName, data);
+    } else {
+      currentUploadProblemName = problemName;
+      document.getElementById('globalFileInput').click();
+    }
+  });
+}
+window.triggerFileInput = triggerFileInput;
+
+function handleFileSelect(e) {
+  const file = e.target.files[0];
+  if (!file || !currentUploadProblemName) return;
+
+  const reader = new FileReader();
+  reader.onload = async (event) => {
+    const base64 = event.target.result;
+    await saveScreenshot(currentUploadProblemName, base64);
+    renderProblems();
+    toast("Screenshot uploaded successfully!");
+  };
+  reader.readAsDataURL(file);
+  e.target.value = '';
+}
+window.handleFileSelect = handleFileSelect;
+
+async function deleteProblemScreenshot(problemName) {
+  if (!confirm('Are you sure you want to delete this screenshot?')) return;
+  await deleteScreenshot(problemName);
+  renderProblems();
+  toast('Screenshot deleted');
+}
+window.deleteProblemScreenshot = deleteProblemScreenshot;
+
+function openLightbox(problemName, base64Data) {
+  const modal = document.getElementById('lightboxModal');
+  const img = document.getElementById('lightboxImg');
+  const caption = document.getElementById('lightboxCaption');
+
+  if (modal && img && caption) {
+    img.src = base64Data;
+    caption.textContent = `Submission code screenshot for "${problemName}"`;
+    modal.style.display = 'flex';
+  }
+}
+window.openLightbox = openLightbox;
+
+function closeLightbox() {
+  const modal = document.getElementById('lightboxModal');
+  if (modal) modal.style.display = 'none';
+}
+window.closeLightbox = closeLightbox;
+
+// ── TOAST HELPER FOR DSA PAGE ──
+function toast(msg, type = 'success') {
+  let t = document.getElementById('toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'toast';
+    t.className = 'toast';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.className = `toast ${type} show`;
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
 </script>
+
+<!-- HIDDEN FILE INPUT -->
+<input type="file" id="globalFileInput" accept="image/*" style="display:none;" onchange="handleFileSelect(event)">
+
+<!-- LIGHTBOX MODAL -->
+<div id="lightboxModal" onclick="closeLightbox()" style="display:none; position:fixed; z-index:10000; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.92); align-items:center; justify-content:center; flex-direction:column; cursor:zoom-out; backdrop-filter:blur(5px); transition: opacity 0.25s;">
+  <span onclick="closeLightbox()" style="position:absolute; top:20px; right:35px; color:#fff; font-size:40px; font-weight:bold; cursor:pointer;" title="Close">&times;</span>
+  <img id="lightboxImg" style="margin:auto; display:block; max-width:85%; max-height:80%; border: 2px solid rgba(108, 99, 255, 0.3); border-radius:8px; box-shadow:0 10px 40px rgba(0,0,0,0.8); cursor:default;" onclick="event.stopPropagation()">
+  <div id="lightboxCaption" style="margin:20px auto 0; text-align:center; color:#e8eaf0; font-size:13px; font-weight:600; font-family:var(--font); letter-spacing:0.5px; background:rgba(0,0,0,0.6); padding:6px 16px; border-radius:99px; border:1px solid rgba(255,255,255,0.1);"></div>
+</div>
 
 </body>
 </html>
