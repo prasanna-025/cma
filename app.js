@@ -69,6 +69,7 @@ window.addEventListener('DOMContentLoaded', () => {
   setDateChip();
   renderAll();
   initDashQuoteRotator();
+  loadStopwatchState();
 });
 
 function renderAll() {
@@ -302,16 +303,208 @@ function renderWeekGrid() {
   }
 }
 
-// ── HOURS ──
+// ── HOURS & TIMER ──
+let swInterval = null;
+let swRunning = false;
+
+function loadStopwatchState() {
+  if (!document.getElementById('pulse-timer-style')) {
+    const style = document.createElement('style');
+    style.id = 'pulse-timer-style';
+    style.textContent = `@keyframes pulse-timer { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }`;
+    document.head.appendChild(style);
+  }
+
+  const start = localStorage.getItem('placementOS_sw_start');
+  const accum = parseInt(localStorage.getItem('placementOS_sw_accum') || '0', 10);
+  
+  if (start) {
+    swRunning = true;
+    const elapsed = Math.floor((Date.now() - parseInt(start, 10)) / 1000) + accum;
+    startStopwatchInterval(elapsed);
+    updateStopwatchUI(true);
+    switchLoggerTab('timer');
+  } else if (accum > 0) {
+    swRunning = false;
+    updateStopwatchDisplay(accum);
+    updateStopwatchUI(false, true);
+    switchLoggerTab('timer');
+  }
+}
+
+function updateStopwatchDisplay(totalSecs) {
+  const hrs = Math.floor(totalSecs / 3600).toString().padStart(2, '0');
+  const mins = Math.floor((totalSecs % 3600) / 60).toString().padStart(2, '0');
+  const secs = (totalSecs % 60).toString().padStart(2, '0');
+  const display = document.getElementById('stopwatch-display');
+  if (display) display.textContent = `${hrs}:${mins}:${secs}`;
+}
+
+function startStopwatchInterval(initialSecs) {
+  let currentSecs = initialSecs;
+  updateStopwatchDisplay(currentSecs);
+  
+  const display = document.getElementById('stopwatch-display');
+  if (display) display.style.animation = 'pulse-timer 1.5s infinite';
+
+  swInterval = setInterval(() => {
+    currentSecs++;
+    updateStopwatchDisplay(currentSecs);
+  }, 1000);
+}
+
+function toggleStopwatch() {
+  const start = localStorage.getItem('placementOS_sw_start');
+  const accum = parseInt(localStorage.getItem('placementOS_sw_accum') || '0', 10);
+
+  if (swRunning) {
+    // Pause
+    clearInterval(swInterval);
+    swInterval = null;
+    swRunning = false;
+    
+    if (start) {
+      const sessionElapsed = Math.floor((Date.now() - parseInt(start, 10)) / 1000);
+      localStorage.setItem('placementOS_sw_accum', (accum + sessionElapsed).toString());
+      localStorage.removeItem('placementOS_sw_start');
+    }
+    
+    const display = document.getElementById('stopwatch-display');
+    if (display) display.style.animation = 'none';
+
+    updateStopwatchUI(false, true);
+  } else {
+    // Start/Resume
+    swRunning = true;
+    localStorage.setItem('placementOS_sw_start', Date.now().toString());
+    
+    startStopwatchInterval(accum);
+    updateStopwatchUI(true);
+  }
+}
+
+function updateStopwatchUI(isRunning, hasAccumulated = false) {
+  const startBtn = document.getElementById('sw-start-btn');
+  const stopBtn = document.getElementById('sw-stop-btn');
+  if (!startBtn || !stopBtn) return;
+
+  if (isRunning) {
+    startBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+    startBtn.className = 'btn btn-sm';
+    startBtn.style.background = 'rgba(247,201,72,.15)';
+    startBtn.style.border = '1px solid rgba(247,201,72,.3)';
+    startBtn.style.color = 'var(--med)';
+    
+    stopBtn.disabled = false;
+    stopBtn.style.opacity = '1';
+    stopBtn.style.cursor = 'pointer';
+    stopBtn.className = 'btn btn-primary';
+    stopBtn.style.background = 'var(--hard)';
+  } else {
+    startBtn.innerHTML = hasAccumulated ? '<i class="fas fa-play"></i> Resume' : '<i class="fas fa-play"></i> Start';
+    startBtn.className = 'btn btn-primary';
+    startBtn.style.background = 'var(--accent)';
+    startBtn.style.color = '#fff';
+    startBtn.style.border = 'none';
+    
+    if (hasAccumulated) {
+      stopBtn.disabled = false;
+      stopBtn.style.opacity = '1';
+      stopBtn.style.cursor = 'pointer';
+      stopBtn.className = 'btn btn-primary';
+      stopBtn.style.background = 'var(--hard)';
+    } else {
+      stopBtn.disabled = true;
+      stopBtn.style.opacity = '0.5';
+      stopBtn.style.cursor = 'not-allowed';
+      stopBtn.className = 'btn btn-sm';
+      stopBtn.style.background = 'var(--bg3)';
+      stopBtn.style.color = 'var(--text2)';
+    }
+  }
+}
+
+function stopStopwatch() {
+  clearInterval(swInterval);
+  swInterval = null;
+  
+  const start = localStorage.getItem('placementOS_sw_start');
+  const accum = parseInt(localStorage.getItem('placementOS_sw_accum') || '0', 10);
+  
+  let totalSecs = accum;
+  if (start) {
+    totalSecs += Math.floor((Date.now() - parseInt(start, 10)) / 1000);
+  }
+  
+  localStorage.removeItem('placementOS_sw_start');
+  localStorage.removeItem('placementOS_sw_accum');
+  
+  swRunning = false;
+  
+  updateStopwatchDisplay(0);
+  const display = document.getElementById('stopwatch-display');
+  if (display) display.style.animation = 'none';
+  updateStopwatchUI(false, false);
+  
+  const loggedHours = totalSecs / 3600;
+  addStudyHours(loggedHours, true);
+}
+
+function switchLoggerTab(tab) {
+  const tabManual = document.getElementById('tab-manual');
+  const tabTimer = document.getElementById('tab-timer');
+  const manualForm = document.getElementById('logger-manual-form');
+  const timerForm = document.getElementById('logger-timer-form');
+  
+  if (!tabManual || !tabTimer || !manualForm || !timerForm) return;
+
+  if (tab === 'manual') {
+    tabManual.classList.add('active');
+    tabManual.style.background = 'rgba(108,99,255,.18)';
+    tabManual.style.color = 'var(--accent)';
+    
+    tabTimer.classList.remove('active');
+    tabTimer.style.background = 'transparent';
+    tabTimer.style.color = 'var(--text2)';
+    
+    manualForm.style.display = 'flex';
+    timerForm.style.display = 'none';
+  } else {
+    tabTimer.classList.add('active');
+    tabTimer.style.background = 'rgba(108,99,255,.18)';
+    tabTimer.style.color = 'var(--accent)';
+    
+    tabManual.classList.remove('active');
+    tabManual.style.background = 'transparent';
+    tabManual.style.color = 'var(--text2)';
+    
+    manualForm.style.display = 'none';
+    timerForm.style.display = 'flex';
+  }
+}
+
+function addStudyHours(hours, isTimer = false) {
+  if (hours <= 0) return;
+  const roundedHours = Math.round(hours * 100) / 100;
+  if (roundedHours <= 0) {
+    return toast('Session too short to log (min 1 min)', 'error');
+  }
+  S.hours[TODAY_KEY] = (S.hours[TODAY_KEY] || 0) + roundedHours;
+  addXP(Math.max(1, Math.floor(roundedHours * 10)));
+  save();
+  renderDashboard();
+  if (isTimer) {
+    toast(`⏱️ Session logged: ${roundedHours}h! Keep it up!`);
+  } else {
+    toast(`✅ ${roundedHours}h logged — keep grinding!`);
+  }
+}
+
 function logHours() {
   const v = parseFloat(document.getElementById('hours-input').value);
   if (!v || v <= 0) return toast('Enter valid hours', 'error');
-  S.hours[TODAY_KEY] = (S.hours[TODAY_KEY] || 0) + v;
   document.getElementById('hours-input').value = '';
-  addXP(Math.floor(v * 10));
-  save();
-  renderDashboard();
-  toast(`✅ ${v}h logged — keep grinding!`);
+  addStudyHours(v, false);
 }
 
 // ── DSA ──
