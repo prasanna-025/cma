@@ -797,11 +797,15 @@ function renderSkillTrackers(containerId, skills, prefix) {
   container.innerHTML = skills.map(skill => {
     const key = `${prefix}_${skill}`;
     const val = S.skills[key] || 0;
+    const isComp = !!S.skills[key + '_complete'];
     const levels = ['Beginner', 'Learning', 'Practicing', 'Proficient', 'Expert'];
     return `
-      <div class="skill-card">
+      <div class="skill-card ${isComp ? 'completed' : ''}">
         <div class="skill-card-header">
-          <span class="skill-card-title">${skill}</span>
+          <label style="padding:0;margin:0;cursor:pointer;display:flex;align-items:center;gap:8px;">
+            <input type="checkbox" ${isComp ? 'checked' : ''} onchange="toggleSkillComplete('${key}', this.checked)" style="width:16px;height:16px;accent-color:var(--accent2);margin-right:2px;cursor:pointer;">
+            <span class="skill-card-title" style="font-size:14px;font-weight:700;${isComp ? 'text-decoration:line-through;color:var(--text3);' : ''}">${skill}</span>
+          </label>
           <span class="skill-rating">${levels[val] || 'Beginner'}</span>
         </div>
         <div class="prog-bar" style="margin-bottom:12px">
@@ -819,11 +823,25 @@ function renderSkillTrackers(containerId, skills, prefix) {
 function setSkill(key, val) {
   const prev = S.skills[key] || 0;
   S.skills[key] = val;
+  S.skills[key + '_complete'] = (val === 4);
   if (val > prev) addXP(5);
   save();
   renderCommSkills();
   renderSoftSkills();
 }
+
+function toggleSkillComplete(key, isChecked) {
+  const prev = S.skills[key] || 0;
+  const newVal = isChecked ? 4 : 0;
+  S.skills[key] = newVal;
+  S.skills[key + '_complete'] = isChecked;
+  if (newVal > prev) addXP(5);
+  save();
+  renderCommSkills();
+  renderSoftSkills();
+}
+
+window.toggleSkillComplete = toggleSkillComplete;
 
 function setSkillNote(key, val) {
   S.skills[key + '_note'] = val;
