@@ -12,11 +12,23 @@ const firebaseConfig = {
   appId: "1:913628894297:web:ae140c0c5251ff4d170d48"
 };
 
+function normalizeSyncCode(code) {
+  if (!code) return '';
+  return code.trim()
+             .toUpperCase()
+             .replace(/O/g, '0')
+             .replace(/I/g, '1')
+             .replace(/L/g, '1');
+}
+
 let db = null;
 let syncCode = localStorage.getItem('placementOS_sync_code');
 
-if (!syncCode) {
-  syncCode = 'OS-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+if (syncCode) {
+  syncCode = normalizeSyncCode(syncCode);
+  localStorage.setItem('placementOS_sync_code', syncCode);
+} else {
+  syncCode = generateSyncCode();
   localStorage.setItem('placementOS_sync_code', syncCode);
 }
 
@@ -37,9 +49,14 @@ if (typeof firebase !== 'undefined') {
   }
 }
 
-// Helper to generate a random code
+// Helper to generate a random code (excluding confusing characters)
 function generateSyncCode() {
-  return 'OS-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code = 'OS-';
+  for (let i = 0; i < 6; i++) {
+    code += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return code;
 }
 
 // Pull data from Firestore
@@ -135,7 +152,7 @@ function syncPush(state) {
 // Change the sync code (link devices)
 function changeSyncCode(newCode) {
   if (!newCode) return;
-  newCode = newCode.trim().toUpperCase();
+  newCode = normalizeSyncCode(newCode);
   if (newCode === syncCode) return;
   
   syncCode = newCode;
