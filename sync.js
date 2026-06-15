@@ -138,31 +138,35 @@ function changeSyncCode(newCode) {
   newCode = newCode.trim().toUpperCase();
   if (newCode === syncCode) return;
   
-  if (confirm(`Do you want to switch sync code to "${newCode}"? This will link this device with that sync code's cloud progress.`)) {
-    syncCode = newCode;
-    localStorage.setItem('placementOS_sync_code', syncCode);
-    
-    // Pull the data immediately
-    if (db) {
-      db.collection('sync_states').doc(syncCode).get().then(doc => {
-        if (doc.exists) {
-          const serverData = doc.data();
-          localStorage.setItem('placementOS_v2', serverData.data);
-          alert("🔄 Linked successfully! App will now reload to apply the synced progress.");
-          location.reload();
-        } else {
-          // If no doc exists on server, push our current local data
-          const localSaved = localStorage.getItem('placementOS_v2');
-          if (localSaved) {
-            try {
-              syncPush(JSON.parse(localSaved));
-              alert(`🔄 Created new sync profile "${newCode}"! Your laptop data is now backed up.`);
-              location.reload();
-            } catch(e) {}
+  syncCode = newCode;
+  localStorage.setItem('placementOS_sync_code', syncCode);
+  
+  // Pull the data immediately
+  if (db) {
+    db.collection('sync_states').doc(syncCode).get().then(doc => {
+      if (doc.exists) {
+        const serverData = doc.data();
+        localStorage.setItem('placementOS_v2', serverData.data);
+        location.reload();
+      } else {
+        // If no doc exists on server, push our current local data
+        const localSaved = localStorage.getItem('placementOS_v2');
+        if (localSaved) {
+          try {
+            syncPush(JSON.parse(localSaved));
+            location.reload();
+          } catch(e) {
+            location.reload();
           }
+        } else {
+          location.reload();
         }
-      });
-    }
+      }
+    }).catch(() => {
+      location.reload();
+    });
+  } else {
+    location.reload();
   }
 }
 
