@@ -441,6 +441,7 @@
   </main>
 </div>
 
+<script src="recovered_data.js"></script>
 <script src="dsa_problems.js" defer></script>
 <script>
 // Initialize page - delay to ensure dsa_problems.js loads first
@@ -614,6 +615,7 @@ document.addEventListener('DOMContentLoaded', initPage);
 function renderProblems() {
   const problemsList = document.getElementById('problemsList');
   problemsList.innerHTML = '';
+  const fragment = document.createDocumentFragment();
   
   const searchTerm = document.getElementById('searchInput').value.toLowerCase();
   const selectedTopics = Array.from(document.querySelectorAll('#topicFilters input:checked')).map(el => el.id.replace('topic-', ''));
@@ -654,7 +656,7 @@ function renderProblems() {
         const header = document.createElement('div');
         header.className = 'category-header';
         header.textContent = `📍 ${problem.topic}`;
-        problemsList.appendChild(header);
+        fragment.appendChild(header);
       }
 
       // Create problem row
@@ -686,7 +688,7 @@ function renderProblems() {
         </div>
       `;
       
-      problemsList.appendChild(row);
+      fragment.appendChild(row);
 
       if (isPaneOpen) {
         const details = document.createElement('div');
@@ -718,11 +720,12 @@ function renderProblems() {
             </div>
           </div>
         `;
-        problemsList.appendChild(details);
+        fragment.appendChild(details);
       }
     }
   });
 
+  problemsList.appendChild(fragment);
   updateStats();
 }
 
