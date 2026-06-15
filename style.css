@@ -821,3 +821,8 @@ body {
   .analytics-summary { gap: 8px; }
   .an-summary-card .an-val { font-size: 22px; }
 }
+
+/* ── VOCABULARY DETAILS ACCORDION ── */
+#vocab-word-list details summary::-webkit-details-marker { display: none; }
+#vocab-word-list details summary { list-style: none; }
+#vocab-word-list details[open] summary i.fa-chevron-right { transform: rotate(90deg); }

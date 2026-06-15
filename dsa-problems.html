@@ -441,6 +441,9 @@
   </main>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+<script src="sync.js"></script>
 <script src="recovered_data.js"></script>
 <script src="dsa_problems.js" defer></script>
 <script>
@@ -571,7 +574,11 @@ function loadState() {
 }
 
 function saveState() {
+  S.updatedAt = Date.now();
   localStorage.setItem('placementOS_v2', JSON.stringify(S));
+  if (typeof window.syncPush === 'function') {
+    window.syncPush(S);
+  }
 }
 
 const DSA_CATS = ['Arrays', 'Strings', 'Trees', 'Graphs', 'DP', 'Sorting', 'Linked List', 'Binary Search', 'Stack/Queue', 'Greedy'];

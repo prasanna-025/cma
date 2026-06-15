@@ -18,11 +18,18 @@ function load() {
   const saved = localStorage.getItem('placementOS_v2');
   if (saved) Object.assign(S, JSON.parse(saved));
   if (!S.customSkills) S.customSkills = [];
+  if (!S.speakingPracticeMins) S.speakingPracticeMins = 0;
+  if (!S.speakingPracticeLog) S.speakingPracticeLog = [];
+  if (!S.vocabulary) S.vocabulary = [];
   initStreakCheck();
 }
 
 function save() {
+  S.updatedAt = Date.now();
   localStorage.setItem('placementOS_v2', JSON.stringify(S));
+  if (typeof window.syncPush === 'function') {
+    window.syncPush(S);
+  }
 }
 
 // ── SUBJECTS DATA ──
@@ -828,6 +835,37 @@ function renderSkillTrackers(containerId, skills, prefix) {
     const isComp = !!S.skills[key + '_complete'];
     const levels = ['Beginner', 'Learning', 'Practicing', 'Proficient', 'Expert'];
     const chatLink = S.skills[key + '_chat_link'] || '';
+    
+    let extraHTML = '';
+    if (skill === 'Speaking Fluency') {
+      const totalMins = S.speakingPracticeMins || 0;
+      const log = S.speakingPracticeLog || [];
+      const recent = log.slice(0, 2).map(l => `${l.mins}m on ${l.date}`).join(', ');
+      extraHTML = `
+        <div class="speaking-logger" style="margin-top: 12px; padding: 10px; background: rgba(108,99,255,0.06); border-radius: 8px; border: 1px dashed rgba(108,99,255,0.25);">
+          <label style="font-size: 11px; font-weight: 700; color: var(--text2); display: block; margin-bottom: 6px;"><i class="fas fa-microphone"></i> SPEAKING APP PRACTICE LOGGER</label>
+          <div style="display: flex; gap: 6px; align-items: center;">
+            <input type="number" id="speaking-mins-input" class="inp" placeholder="Minutes practiced..." style="font-size: 11.5px; padding: 4px 8px; height: 26px; flex: 1; min:1; max:300;">
+            <button class="btn btn-sm" onclick="logSpeakingMins()" style="height: 26px; font-size: 11px; padding: 0 10px; background:var(--accent); color:white; border:none; border-radius:5px; font-weight:600; cursor:pointer;">Log</button>
+          </div>
+          <div style="font-size: 11px; color: var(--accent2); margin-top: 6px; font-weight: 600;" id="speaking-total-status">
+            Total Practice: ${totalMins} mins
+            ${recent ? `<div style="font-size: 9.5px; color: var(--text3); margin-top: 2px; font-weight: normal;">Recent: ${recent}</div>` : ''}
+          </div>
+        </div>
+      `;
+    } else if (skill === 'Vocabulary Building') {
+      extraHTML = `
+        <div class="vocab-logger" style="margin-top: 12px; padding: 10px; background: rgba(0,212,170,0.06); border-radius: 8px; border: 1px dashed rgba(0,212,170,0.25);">
+          <label style="font-size: 11px; font-weight: 700; color: var(--text2); display: block; margin-bottom: 6px;"><i class="fas fa-book"></i> VOCABULARY BUILDER</label>
+          <button class="btn btn-sm" onclick="openVocabModal()" style="width: 100%; font-size: 11px; height: 26px; background:rgba(0, 212, 170, 0.1); border-color:rgba(0, 212, 170, 0.2); color:var(--accent2); cursor:pointer;">+ Add Word with 5 Sentences</button>
+          <div id="vocab-word-list" style="margin-top: 8px; display: flex; flex-direction: column; gap: 6px; max-height: 150px; overflow-y: auto;">
+            <!-- Vocab words will render here -->
+          </div>
+        </div>
+      `;
+    }
+
     return `
       <div class="skill-card ${isComp ? 'completed' : ''}">
         <div class="skill-card-header">
@@ -851,9 +889,14 @@ function renderSkillTrackers(containerId, skills, prefix) {
             <a href="${chatLink}" target="_blank" class="btn btn-sm" style="padding:4px 8px; font-size:10px; background:rgba(0, 212, 170, 0.1); border-color:rgba(0, 212, 170, 0.2); color:var(--accent2); height:24px; display:inline-flex; align-items:center; justify-content:center;" title="Open Chat Link"><i class="fas fa-robot"></i></a>
           ` : ''}
         </div>
+        ${extraHTML}
       </div>
     `;
   }).join('');
+  
+  if (containerId === 'comm-trackers') {
+    renderVocabWordList();
+  }
 }
 
 function setSkill(key, val) {
@@ -1422,3 +1465,185 @@ window.addCustomTopic = addCustomTopic;
 window.deleteCustomTopic = deleteCustomTopic;
 window.toggleCustomTopic = toggleCustomTopic;
 window.renderCustomSkills = renderCustomSkills;
+
+// ── UTILS ──
+function escHtml(str) {
+  if (typeof str !== 'string') return '';
+  return str.replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+}
+
+// ── SPEAKING APP PRACTICE LOGGER ──
+function logSpeakingMins() {
+  const input = document.getElementById('speaking-mins-input');
+  if (!input) return;
+  const mins = parseInt(input.value, 10);
+  if (isNaN(mins) || mins <= 0) {
+    return toast('Please enter a valid number of minutes.', 'error');
+  }
+  
+  if (!S.speakingPracticeLog) S.speakingPracticeLog = [];
+  S.speakingPracticeMins = (S.speakingPracticeMins || 0) + mins;
+  
+  const dateStr = new Date().toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+  S.speakingPracticeLog.unshift({
+    date: dateStr,
+    mins: mins,
+    timestamp: Date.now()
+  });
+  
+  const hours = mins / 60;
+  input.value = '';
+  
+  // Log study hours (automatically saves & re-renders dashboard)
+  addStudyHours(hours, false);
+  
+  // Re-render Communication Skills to update total practice count & log lists
+  renderCommSkills();
+  
+  toast(`🎙️ Logged ${mins} minutes of speaking practice!`);
+}
+
+// ── VOCABULARY BUILDER ──
+function openVocabModal() {
+  // If modal already exists, remove it first
+  closeVocabModal();
+  
+  const modalHtml = `
+    <div class="modal-overlay show" id="vocab-modal-overlay" onclick="closeVocabModal()">
+      <div class="modal" onclick="event.stopPropagation()" style="max-width: 500px; text-align: left; padding: 24px;">
+        <h3 style="margin-bottom: 16px; display: flex; align-items: center; gap: 8px; font-size: 18px; color: var(--text);">
+          <i class="fas fa-book" style="color: var(--accent2);"></i> Add Vocabulary Word
+        </h3>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+          <div>
+            <label style="font-size: 12px; font-weight: 600; color: var(--text2); display: block; margin-bottom: 4px;">Word</label>
+            <input type="text" id="vocab-word-input" class="inp" placeholder="e.g. Ephemeral" style="width: 100%; font-size: 13px; padding: 8px 12px; height: auto;">
+          </div>
+          <div>
+            <label style="font-size: 12px; font-weight: 600; color: var(--text2); display: block; margin-bottom: 4px;">Meaning</label>
+            <input type="text" id="vocab-meaning-input" class="inp" placeholder="e.g. Lasting for a very short time" style="width: 100%; font-size: 13px; padding: 8px 12px; height: auto;">
+          </div>
+          <div>
+            <label style="font-size: 12px; font-weight: 600; color: var(--text2); display: block; margin-bottom: 6px;">5 Real-World Example Sentences</label>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <input type="text" class="inp vocab-sentence-input" placeholder="Sentence 1..." style="width: 100%; font-size: 12.5px; padding: 6px 10px; height: auto;">
+              <input type="text" class="inp vocab-sentence-input" placeholder="Sentence 2..." style="width: 100%; font-size: 12.5px; padding: 6px 10px; height: auto;">
+              <input type="text" class="inp vocab-sentence-input" placeholder="Sentence 3..." style="width: 100%; font-size: 12.5px; padding: 6px 10px; height: auto;">
+              <input type="text" class="inp vocab-sentence-input" placeholder="Sentence 4..." style="width: 100%; font-size: 12.5px; padding: 6px 10px; height: auto;">
+              <input type="text" class="inp vocab-sentence-input" placeholder="Sentence 5..." style="width: 100%; font-size: 12.5px; padding: 6px 10px; height: auto;">
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+          <button class="btn btn-sm" onclick="closeVocabModal()" style="background: none; border: 1px solid var(--border2); color: var(--text2);">Cancel</button>
+          <button class="btn" onclick="saveVocabWord()" style="background: var(--accent2); color: var(--bg); border: none; font-weight: 600; padding: 6px 16px; border-radius: 6px;">Save Word</button>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  const div = document.createElement('div');
+  div.id = 'vocab-modal-container';
+  div.innerHTML = modalHtml;
+  document.body.appendChild(div);
+}
+
+function closeVocabModal() {
+  const container = document.getElementById('vocab-modal-container');
+  if (container) {
+    container.remove();
+  }
+}
+
+function saveVocabWord() {
+  const wordInput = document.getElementById('vocab-word-input');
+  const meaningInput = document.getElementById('vocab-meaning-input');
+  if (!wordInput || !meaningInput) return;
+  
+  const word = wordInput.value.trim();
+  const meaning = meaningInput.value.trim();
+  const inputs = document.querySelectorAll('.vocab-sentence-input');
+  const sentences = Array.from(inputs).map(inp => inp.value.trim()).filter(Boolean);
+  
+  if (!word || !meaning) {
+    return toast('Please enter both the word and its meaning.', 'error');
+  }
+  
+  if (sentences.length < 5) {
+    return toast('Please enter all 5 real-world sentences.', 'error');
+  }
+  
+  if (!S.vocabulary) S.vocabulary = [];
+  S.vocabulary.unshift({
+    word,
+    meaning,
+    sentences
+  });
+  
+  // Award 10 XP for building vocabulary!
+  addXP(10);
+  save();
+  closeVocabModal();
+  renderCommSkills();
+  toast(`📝 Added "${word}" to vocabulary builder!`);
+}
+
+// Delete vocab word helper
+function deleteVocabWord(idx) {
+  if (!confirm("Are you sure you want to delete this vocabulary word?")) return;
+  if (!S.vocabulary) S.vocabulary = [];
+  S.vocabulary.splice(idx, 1);
+  save();
+  renderCommSkills();
+  toast("Word deleted.");
+}
+
+function renderVocabWordList() {
+  const container = document.getElementById('vocab-word-list');
+  if (!container) return;
+  
+  const vocab = S.vocabulary || [];
+  if (vocab.length === 0) {
+    container.innerHTML = `<div style="font-size: 10.5px; color: var(--text3); text-align: center; padding: 8px 0;">No words added yet.</div>`;
+    return;
+  }
+  
+  container.innerHTML = vocab.map((item, idx) => {
+    const escWord = escHtml(item.word);
+    const escMeaning = escHtml(item.meaning);
+    const sentsHtml = item.sentences.map((s, sIdx) => `<li style="margin-bottom: 4px; line-height:1.4;">${sIdx + 1}. "${escHtml(s)}"</li>`).join('');
+    
+    return `
+      <details style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font-size: 11.5px; color: var(--text2); transition: all 0.2s;">
+        <summary style="font-weight: 600; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; outline: none; list-style: none;">
+          <span style="display: flex; align-items: center; gap: 6px;">
+            <i class="fas fa-chevron-right" style="font-size: 9px; color: var(--accent2); transition: transform 0.2s;"></i>
+            <b>${escWord}</b>
+          </span>
+          <button onclick="event.stopPropagation(); deleteVocabWord(${idx})" style="background: none; border: none; color: var(--text3); cursor: pointer; padding: 2px 6px; font-size: 10px;" onmouseover="this.style.color='var(--hard)'" onmouseout="this.style.color='var(--text3)'">
+            <i class="fas fa-trash"></i>
+          </button>
+        </summary>
+        <div style="margin-top: 6px; padding-left: 14px; border-left: 2px solid var(--border2); font-size: 11px;">
+          <div style="margin-bottom: 6px;"><b>Meaning:</b> ${escMeaning}</div>
+          <div style="font-weight: 600; margin-bottom: 4px; color: var(--accent);">Example Sentences:</div>
+          <ul style="margin: 0; padding-left: 12px; color: var(--text2); list-style-type: none;">
+            ${sentsHtml}
+          </ul>
+        </div>
+      </details>
+    `;
+  }).join('');
+}
+
+// Expose functions to window
+window.logSpeakingMins = logSpeakingMins;
+window.openVocabModal = openVocabModal;
+window.closeVocabModal = closeVocabModal;
+window.saveVocabWord = saveVocabWord;
+window.deleteVocabWord = deleteVocabWord;
+window.renderVocabWordList = renderVocabWordList;
