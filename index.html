@@ -88,50 +88,29 @@
       </a>
     </div>
 
-    <!-- Readiness & Hologram Container -->
-    <div class="dashboard-top-row" style="display: grid; grid-template-columns: 2fr 1fr; gap: 14px; margin-bottom: 18px;">
-      <!-- Readiness Banner -->
-      <div class="readiness-banner" style="margin-bottom: 0;">
-        <div class="readiness-ring-wrap">
-          <svg class="ring-svg" viewBox="0 0 120 120">
-            <circle class="ring-bg" cx="60" cy="60" r="52"/>
-            <circle class="ring-fg" id="readiness-ring" cx="60" cy="60" r="52"
-                    stroke-dasharray="326.7" stroke-dashoffset="326.7" stroke="url(#ringGrad)"/>
-          </svg>
-          <div class="ring-label">
-            <span id="readiness-pct">0%</span>
-            <small>Ready</small>
-          </div>
-        </div>
-        <div class="readiness-info">
-          <div class="readiness-title">Placement Readiness</div>
-          <div class="readiness-sub">Based on DSA, hours, subjects, projects, resume &amp; mocks</div>
-          <div class="readiness-stats">
-            <div class="r-stat"><span id="r-dsa">0</span><label>DSA Solved</label></div>
-            <div class="r-stat"><span id="r-hours">0h</span><label>Study Hours</label></div>
-            <div class="r-stat"><span id="r-streak">0</span><label>Day Streak</label></div>
-            <div class="r-stat"><span id="r-xp">0</span><label>Total XP</label></div>
-            <div class="r-stat"><span id="r-projects">0</span><label>Projects</label></div>
-            <div class="r-stat"><span id="r-mocks">0</span><label>Mocks Done</label></div>
-          </div>
+    <!-- Readiness Banner -->
+    <div class="readiness-banner">
+      <div class="readiness-ring-wrap">
+        <svg class="ring-svg" viewBox="0 0 120 120">
+          <circle class="ring-bg" cx="60" cy="60" r="52"/>
+          <circle class="ring-fg" id="readiness-ring" cx="60" cy="60" r="52"
+                  stroke-dasharray="326.7" stroke-dashoffset="326.7" stroke="url(#ringGrad)"/>
+        </svg>
+        <div class="ring-label">
+          <span id="readiness-pct">0%</span>
+          <small>Ready</small>
         </div>
       </div>
-
-      <!-- Hologram Assistant Card -->
-      <div class="hologram-card" style="background: rgba(16, 19, 28, 0.65); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: var(--radius); padding: 16px 18px; display: flex; gap: 12px; align-items: center; position: relative; overflow: hidden; height: 100%;">
-        <div class="hologram-image-wrap" style="position: relative; width: 70px; height: 95px; flex-shrink: 0; border-radius: 8px; overflow: hidden; border: 1px solid rgba(0, 212, 170, 0.2); background: #000; box-shadow: 0 0 10px rgba(0, 212, 170, 0.1);">
-          <img src="joi_hologram.png" alt="JOI AI Companion" style="width: 100%; height: 100%; object-fit: cover; filter: drop-shadow(0 0 4px var(--accent2));" />
-          <div class="hologram-overlay" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 212, 170, 0.1) 0%, rgba(108, 99, 255, 0.1) 100%); pointer-events: none;"></div>
-          <div class="hologram-scanline" style="position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: rgba(0, 212, 170, 0.5); box-shadow: 0 0 8px var(--accent2); animation: scanline 2.5s infinite linear; pointer-events: none;"></div>
-        </div>
-        <div class="hologram-content" style="flex: 1; z-index: 2;">
-          <div class="hologram-badge" style="font-size: 8px; font-weight: 700; color: var(--accent2); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; display: inline-flex; align-items: center; gap: 4px;">
-            <span style="display: inline-block; width: 6px; height: 6px; background: var(--accent2); border-radius: 50%; animation: pulse-glow 1.5s infinite alternate;"></span> Hologram Assistant
-          </div>
-          <div class="hologram-title" style="font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 3px;">JOI Companion</div>
-          <div class="hologram-speech" id="hologram-speech" style="font-size: 11px; color: var(--text2); line-height: 1.45; font-style: italic;">
-            "Connecting to neural core..."
-          </div>
+      <div class="readiness-info">
+        <div class="readiness-title">Placement Readiness</div>
+        <div class="readiness-sub">Based on DSA, hours, subjects, projects, resume &amp; mocks</div>
+        <div class="readiness-stats">
+          <div class="r-stat"><span id="r-dsa">0</span><label>DSA Solved</label></div>
+          <div class="r-stat"><span id="r-hours">0h</span><label>Study Hours</label></div>
+          <div class="r-stat"><span id="r-streak">0</span><label>Day Streak</label></div>
+          <div class="r-stat"><span id="r-xp">0</span><label>Total XP</label></div>
+          <div class="r-stat"><span id="r-projects">0</span><label>Projects</label></div>
+          <div class="r-stat"><span id="r-mocks">0</span><label>Mocks Done</label></div>
         </div>
       </div>
     </div>

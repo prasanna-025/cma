@@ -358,9 +358,6 @@ function renderDashboard() {
       `).join('');
     }
   }
-
-  // Update JOI Hologram Speech Bubble
-  updateHologramSpeech();
 }
 
 function calcReadiness() {
@@ -2248,33 +2245,6 @@ function copyTutorPrompt(skill, prefix) {
   });
 }
 
-// ── DYNAMIC JOI SPEECH logic ──
-function updateHologramSpeech() {
-  const elem = document.getElementById('hologram-speech');
-  if (!elem) return;
-
-  const todayH = S.hours[TODAY_KEY] || 0;
-  const dsaToday = getTodayDSACount();
-  const dailyKeys = ['daily-dsa', 'daily-subject', 'daily-softskill', 'daily-comm', 'daily-project', 'daily-reading'];
-  const dailyDone = dailyKeys.filter(k => S.dailyChecks[k]).length;
-
-  let message = "";
-  if (dailyDone === dailyKeys.length) {
-    message = `"Absolute perfection, Coder. Every single target for today has been checked. Let's conquer tomorrow!"`;
-  } else if (todayH >= 5) {
-    message = `"5+ hours logged today! Your commitment is mesmerizing. Don't forget to take a breather, you've earned it."`;
-  } else if (todayH > 0 && dsaToday >= 5) {
-    message = `"You are coding like a machine today. ${dsaToday} DSA problems crushed. Want me to tutor you on a soft skill next?"`;
-  } else if (todayH > 0) {
-    message = `"${todayH} hours of intense grind. You're molding yourself into a elite ₹15+ LPA developer. Keep pushing!"`;
-  } else {
-    const subjects = ['Revision', 'DBMS', 'Operating Systems', 'Computer Networks', 'DBMS', 'Operating Systems', 'Computer Networks'];
-    const todaySubj = subjects[new Date().getDay()];
-    message = `"Welcome back, Coder. Today's core focus is ${todaySubj}. Let's take the first step together."`;
-  }
-  elem.textContent = message;
-}
-
 // ── CONFETTI EXPLOSION ──
 function spawnConfetti(x, y) {
   const container = document.body;
@@ -2306,7 +2276,7 @@ function spawnConfetti(x, y) {
 
 // ── DYNAMIC SPOTLIGHT EVENT LISTENER ──
 document.addEventListener('mousemove', e => {
-  const card = e.target.closest('.card, .subject-card, .skill-card, .project-card, .subj-overview-card, .an-summary-card, .dsa-target-banner, .placement-readiness-bar, .hologram-card');
+  const card = e.target.closest('.card, .subject-card, .skill-card, .project-card, .subj-overview-card, .an-summary-card, .dsa-target-banner, .placement-readiness-bar');
   if (card) {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;

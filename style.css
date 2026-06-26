@@ -950,24 +950,13 @@ body::after {
 .soft-card details summary i.fa-chevron-down { transition: transform 0.2s ease; }
 .soft-card details[open] summary i.fa-chevron-down { transform: rotate(180deg); }
 
-/* ── HOLOGRAM COMPANION & CREATIVE UI EFFECTS ── */
-@keyframes scanline {
-  0% { top: 0%; }
-  100% { top: 100%; }
-}
-
-@keyframes pulse-glow {
-  0% { transform: scale(0.9); opacity: 0.5; box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.4); }
-  100% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 8px 3px rgba(0, 212, 170, 0.7); }
-}
-
 /* ── RADIAL SPOTLIGHT GLOW EFFECT ── */
-.card, .subject-card, .skill-card, .project-card, .subj-overview-card, .an-summary-card, .dsa-target-banner, .placement-readiness-bar, .hologram-card {
+.card, .subject-card, .skill-card, .project-card, .subj-overview-card, .an-summary-card, .dsa-target-banner, .placement-readiness-bar {
   position: relative;
   overflow: hidden;
 }
 
-.card::after, .subject-card::after, .skill-card::after, .project-card::after, .subj-overview-card::after, .an-summary-card::after, .dsa-target-banner::after, .placement-readiness-bar::after, .hologram-card::after {
+.card::after, .subject-card::after, .skill-card::after, .project-card::after, .subj-overview-card::after, .an-summary-card::after, .dsa-target-banner::after, .placement-readiness-bar::after {
   content: '';
   position: absolute;
   top: 0; left: 0;
@@ -979,11 +968,11 @@ body::after {
   opacity: 0;
 }
 
-.card:hover::after, .subject-card:hover::after, .skill-card:hover::after, .project-card:hover::after, .subj-overview-card:hover::after, .an-summary-card:hover::after, .dsa-target-banner:hover::after, .placement-readiness-bar:hover::after, .hologram-card:hover::after {
+.card:hover::after, .subject-card:hover::after, .skill-card:hover::after, .project-card:hover::after, .subj-overview-card:hover::after, .an-summary-card:hover::after, .dsa-target-banner:hover::after, .placement-readiness-bar:hover::after {
   opacity: 1;
 }
 
-.card > *, .subject-card > *, .skill-card > *, .project-card > *, .subj-overview-card > *, .an-summary-card > *, .dsa-target-banner > *, .placement-readiness-bar > *, .hologram-card > * {
+.card > *, .subject-card > *, .skill-card > *, .project-card > *, .subj-overview-card > *, .an-summary-card > *, .dsa-target-banner > *, .placement-readiness-bar > * {
   position: relative;
   z-index: 2;
 }
