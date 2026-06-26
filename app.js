@@ -223,6 +223,7 @@ function initStreakCheck() {
   if (diff === 0) return;
   if (diff === 1) { S.streak++; }
   else { S.streak = 1; }
+  S.dailyChecks = {}; // Reset daily checklist on a new day
   S.lastActive = today;
   save();
 }
@@ -267,6 +268,22 @@ function renderDashboard() {
   document.getElementById('hours-today').textContent = todayH + 'h';
   document.getElementById('hours-week').textContent = weekH + 'h';
   document.getElementById('hours-total').textContent = totalHours() + 'h';
+
+  // Update daily checklist subject label based on rotation
+  const dailySubjectSpan = document.querySelector('#daily-checklist input[data-key="daily-subject"] ~ span');
+  if (dailySubjectSpan) {
+    const subjects = [
+      'Revision + Mock (Revise all 3 + Mock)', // Sunday
+      'DBMS Topic', // Monday
+      'Operating Systems Topic', // Tuesday
+      'Computer Networks Topic', // Wednesday
+      'DBMS Topic', // Thursday
+      'Operating Systems Topic', // Friday
+      'Computer Networks Topic' // Saturday
+    ];
+    const todaySubject = subjects[new Date().getDay()];
+    dailySubjectSpan.innerHTML = `Core Subject: <b>${todaySubject}</b>`;
+  }
 
   // Daily checklist
   restoreCheckboxes('daily-checklist', S.dailyChecks, 'data-key');
@@ -326,10 +343,10 @@ function subjectPct(name) {
 }
 
 function updateDailyPct() {
-  const keys = ['daily-dsa', 'daily-subject', 'daily-project', 'daily-mock', 'daily-reading'];
+  const keys = ['daily-dsa', 'daily-subject', 'daily-softskill', 'daily-comm', 'daily-project', 'daily-reading'];
   const done = keys.filter(k => S.dailyChecks[k]).length;
-  document.getElementById('daily-pct-label').textContent = `${done} / 5 done`;
-  document.getElementById('daily-fill').style.width = (done / 5 * 100) + '%';
+  document.getElementById('daily-pct-label').textContent = `${done} / 6 done`;
+  document.getElementById('daily-fill').style.width = (done / 6 * 100) + '%';
 }
 
 function toggleDaily(cb) {
@@ -679,7 +696,96 @@ function deleteProblem(id) {
 }
 
 // ── SUBJECTS ──
+// ── SUBJECTS ──
+function renderSubjectRotation() {
+  const container = document.getElementById('subjects-overview');
+  if (!container) return;
+
+  const now = new Date();
+  const dayIndex = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+  
+  const schedule = [
+    { day: 'Sunday', subject: 'Revision + Mock', desc: 'Revise all three + mock interview', icon: 'fa-graduation-cap' },
+    { day: 'Monday', subject: 'DBMS', desc: 'Database Management Systems study slot', icon: 'fa-database' },
+    { day: 'Tuesday', subject: 'Operating Systems', desc: 'Process, memory, deadlocks, etc.', icon: 'fa-laptop-code' },
+    { day: 'Wednesday', subject: 'Computer Networks', desc: 'OSI model, TCP/IP, protocols, subnetting', icon: 'fa-network-wired' },
+    { day: 'Thursday', subject: 'DBMS', desc: 'SQL, transactions, normalization, indexing', icon: 'fa-database' },
+    { day: 'Friday', subject: 'Operating Systems', desc: 'OS scheduling, memory, file systems', icon: 'fa-laptop-code' },
+    { day: 'Saturday', subject: 'Computer Networks', desc: 'Routing, sockets, networks security', icon: 'fa-network-wired' }
+  ];
+  
+  const todayItem = schedule[dayIndex];
+  
+  const scheduleHtml = schedule.map((item, idx) => {
+    const isToday = idx === dayIndex;
+    return `
+      <div class="rotation-day-card ${isToday ? 'active' : ''}" style="
+        padding: 12px;
+        background: ${isToday ? 'linear-gradient(135deg, rgba(108,99,255,0.15) 0%, rgba(0,212,170,0.1) 100%)' : 'rgba(255,255,255,0.02)'};
+        border: 1px solid ${isToday ? 'var(--accent)' : 'var(--border)'};
+        border-radius: var(--radius);
+        text-align: center;
+        flex: 1;
+        min-width: 110px;
+        position: relative;
+        transition: all 0.25s ease;
+        box-shadow: ${isToday ? '0 8px 24px rgba(108,99,255,0.15)' : 'none'};
+      ">
+        ${isToday ? `<span style="position: absolute; top: -8px; left: 50%; transform: translateX(-50%); background: var(--accent2); color: var(--bg); font-size: 8px; font-weight: 800; padding: 2px 6px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.5px;">TODAY</span>` : ''}
+        <div style="font-size: 11px; font-weight: 700; color: ${isToday ? 'var(--accent2)' : 'var(--text3)'}; margin-bottom: 4px; text-transform: uppercase;">${item.day.slice(0, 3)}</div>
+        <div style="font-size: 18px; margin-bottom: 6px; color: ${isToday ? 'var(--text)' : 'var(--text2)'};"><i class="fas ${item.icon}"></i></div>
+        <div style="font-size: 11.5px; font-weight: 700; color: var(--text);">${item.subject}</div>
+      </div>
+    `;
+  }).join('');
+
+  container.innerHTML = `
+    <div class="subject-rotation-container" style="
+      margin-bottom: 24px;
+      padding: 18px;
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    ">
+      <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center; margin-bottom: 18px;">
+        <div style="flex: 1; min-width: 250px;">
+          <h3 style="font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-calendar-alt" style="color: var(--accent);"></i> Core Subject Rotation Schedule
+          </h3>
+          <p style="font-size: 12.5px; color: var(--text2); line-height: 1.5; margin: 0;">
+            Revisit every core subject (DBMS, OS, Computer Networks) every single week so concepts stay fresh in your mind for placement interviews!
+          </p>
+        </div>
+        <div class="today-rotation-banner" style="
+          background: rgba(108,99,255,0.06);
+          border: 1px dashed rgba(108,99,255,0.3);
+          padding: 10px 14px;
+          border-radius: var(--radius);
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          min-width: 240px;
+        ">
+          <div style="font-size: 22px; color: var(--accent2);"><i class="fas ${todayItem.icon}"></i></div>
+          <div>
+            <div style="font-size: 10px; color: var(--text3); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Today's Rotation Focus</div>
+            <div style="font-size: 14px; font-weight: 700; color: var(--text);">${todayItem.subject}</div>
+            <div style="font-size: 10.5px; color: var(--text2); margin-top: 1px;">${todayItem.desc}</div>
+          </div>
+        </div>
+      </div>
+      
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: space-between;">
+        ${scheduleHtml}
+      </div>
+    </div>
+  `;
+}
+
 function renderSubjects() {
+  renderSubjectRotation();
+  
   const grid = document.getElementById('subjects-grid');
   grid.innerHTML = Object.keys(SUBJECTS_DATA).map(sub => {
     if (!S.subjects[sub]) S.subjects[sub] = {};
