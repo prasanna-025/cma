@@ -285,6 +285,22 @@ function renderDashboard() {
     dailySubjectSpan.innerHTML = `Core Subject: <b>${todaySubject}</b>`;
   }
 
+  // Update daily checklist soft skill label based on rotation
+  const dailySoftskillSpan = document.querySelector('#daily-checklist input[data-key="daily-softskill"] ~ span');
+  if (dailySoftskillSpan) {
+    const softskills = [
+      'Core Soft Skills Focus', // Sunday
+      'Quantitative Aptitude Focus', // Monday
+      'Logical Reasoning Focus', // Tuesday
+      'Verbal Ability Focus', // Wednesday
+      'Quantitative Aptitude Focus', // Thursday
+      'Logical Reasoning Focus', // Friday
+      'Verbal Ability Focus' // Saturday
+    ];
+    const todaySoftskill = softskills[new Date().getDay()];
+    dailySoftskillSpan.innerHTML = `Soft Skill: <b>${todaySoftskill}</b>`;
+  }
+
   // Daily checklist
   restoreCheckboxes('daily-checklist', S.dailyChecks, 'data-key');
   updateDailyPct();
@@ -902,7 +918,96 @@ function renderSoftSkillsOverview(skills, prefix) {
   `;
 }
 
+// ── SOFT SKILLS ROTATION ──
+function renderSoftRotation() {
+  const container = document.getElementById('soft-rotation-overview');
+  if (!container) return;
+
+  const now = new Date();
+  const dayIndex = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+
+  const schedule = [
+    { day: 'Sunday', subject: 'Core Soft Skills', desc: 'Confidence, Time Management, Leadership, etc.', icon: 'fa-brain' },
+    { day: 'Monday', subject: 'Quantitative Aptitude', desc: 'Number systems, percentages, work & time, clocks', icon: 'fa-calculator' },
+    { day: 'Tuesday', subject: 'Logical Reasoning', desc: 'Series, relations, seating arrangements, directions', icon: 'fa-puzzle-piece' },
+    { day: 'Wednesday', subject: 'Verbal Ability', desc: 'Grammar, synonyms, reading comprehension, spelling', icon: 'fa-comments' },
+    { day: 'Thursday', subject: 'Quantitative Aptitude', desc: 'Ratios, speed & distance, stats, permutations', icon: 'fa-calculator' },
+    { day: 'Friday', subject: 'Logical Reasoning', desc: 'Coding-decoding, blood relations, ranks', icon: 'fa-puzzle-piece' },
+    { day: 'Saturday', subject: 'Verbal Ability', desc: 'Error correction, sentence completion, cloze test', icon: 'fa-comments' }
+  ];
+
+  const todayItem = schedule[dayIndex];
+
+  const scheduleHtml = schedule.map((item, idx) => {
+    const isToday = idx === dayIndex;
+    return `
+      <div class="rotation-day-card ${isToday ? 'active' : ''}" style="
+        padding: 12px;
+        background: ${isToday ? 'linear-gradient(135deg, rgba(0,212,170,0.15) 0%, rgba(108,99,255,0.1) 100%)' : 'rgba(255,255,255,0.02)'};
+        border: 1px solid ${isToday ? 'var(--accent2)' : 'var(--border)'};
+        border-radius: var(--radius);
+        text-align: center;
+        flex: 1;
+        min-width: 110px;
+        position: relative;
+        transition: all 0.25s ease;
+        box-shadow: ${isToday ? '0 8px 24px rgba(0,212,170,0.15)' : 'none'};
+      ">
+        ${isToday ? `<span style="position: absolute; top: -8px; left: 50%; transform: translateX(-50%); background: var(--accent); color: var(--text); font-size: 8px; font-weight: 800; padding: 2px 6px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.5px;">TODAY</span>` : ''}
+        <div style="font-size: 11px; font-weight: 700; color: ${isToday ? 'var(--accent)' : 'var(--text3)'}; margin-bottom: 4px; text-transform: uppercase;">${item.day.slice(0, 3)}</div>
+        <div style="font-size: 18px; margin-bottom: 6px; color: ${isToday ? 'var(--text)' : 'var(--text2)'};"><i class="fas ${item.icon}"></i></div>
+        <div style="font-size: 11px; font-weight: 700; color: var(--text);">${item.subject}</div>
+      </div>
+    `;
+  }).join('');
+
+  container.innerHTML = `
+    <div class="soft-rotation-container" style="
+      margin-bottom: 20px;
+      padding: 18px;
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    ">
+      <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center; margin-bottom: 18px;">
+        <div style="flex: 1; min-width: 250px;">
+          <h3 style="font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-calendar-check" style="color: var(--accent2);"></i> Soft Skills & Aptitude Rotation Schedule
+          </h3>
+          <p style="font-size: 12.5px; color: var(--text2); line-height: 1.5; margin: 0;">
+            Follow this rotation to master Quantitative Aptitude, Logical Reasoning, and Verbal Ability systematically along with Core Soft Skills.
+          </p>
+        </div>
+        <div class="today-soft-rotation-banner" style="
+          background: rgba(0,212,170,0.06);
+          border: 1px dashed rgba(0,212,170,0.3);
+          padding: 10px 14px;
+          border-radius: var(--radius);
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          min-width: 240px;
+        ">
+          <div style="font-size: 22px; color: var(--accent);"><i class="fas ${todayItem.icon}"></i></div>
+          <div>
+            <div style="font-size: 10px; color: var(--text3); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Today's Aptitude Focus</div>
+            <div style="font-size: 14px; font-weight: 700; color: var(--text);">${todayItem.subject}</div>
+            <div style="font-size: 10.5px; color: var(--text2); margin-top: 1px;">${todayItem.desc}</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: space-between;">
+        ${scheduleHtml}
+      </div>
+    </div>
+  `;
+}
+
 function renderSoftSkills() {
+  renderSoftRotation();
+  
   let list = SOFT_SKILLS;
   let prefix = 'soft';
   if (activeSoftSkillsTab === 'quant') {
