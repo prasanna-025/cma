@@ -249,6 +249,16 @@ function updateXPBar() {
 
 // ── DASHBOARD ──
 function renderDashboard() {
+  // Dynamic Greeting
+  const hr = new Date().getHours();
+  let greet = "Good morning, Coder 👋";
+  if (hr >= 12 && hr < 17) greet = "Good afternoon, Coder ⚡";
+  else if (hr >= 17 && hr < 22) greet = "Good evening, Coder 🌌";
+  else if (hr >= 22 || hr < 5) greet = "Burning the midnight oil, Coder 🦉";
+  
+  const greetingEl = document.getElementById('greeting');
+  if (greetingEl) greetingEl.textContent = greet;
+
   // Readiness
   const pct = calcReadiness();
   document.getElementById('readiness-pct').textContent = pct + '%';
@@ -260,7 +270,7 @@ function renderDashboard() {
 
   const ring = document.getElementById('readiness-ring');
   const circ = 326.7;
-  ring.style.strokeDashoffset = circ - (pct / 100 * circ);
+  if (ring) ring.style.strokeDashoffset = circ - (pct / 100 * circ);
 
   // Hours
   const todayH = S.hours[TODAY_KEY] || 0;
@@ -313,6 +323,44 @@ function renderDashboard() {
 
   // Sidebar XP
   updateXPBar();
+
+  // Today's DSA Progress Dashboard Card
+  const dsaToday = getTodayDSACount();
+  const dsaTodayChip = document.getElementById('dash-dsa-today');
+  if (dsaTodayChip) dsaTodayChip.textContent = `${dsaToday} / 7`;
+  const dsaFill = document.getElementById('dash-dsa-fill');
+  if (dsaFill) dsaFill.style.width = Math.min(100, (dsaToday / 7) * 100) + '%';
+
+  // Render recent DSA problems solved today
+  const recentDsaEl = document.getElementById('dash-dsa-recent');
+  if (recentDsaEl) {
+    const todayProbs = S.dsa.filter(p => p.date === TODAY_KEY);
+    if (todayProbs.length === 0) {
+      recentDsaEl.innerHTML = `
+        <div style="font-size: 11.5px; color: var(--text3); font-style: italic; text-align: center; padding: 12px 0;">
+          No problems solved today yet. Let's make a dent!
+        </div>
+      `;
+    } else {
+      recentDsaEl.innerHTML = todayProbs.map(p => `
+        <div class="problem-item" style="padding: 8px 12px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid var(--border);">
+          <div style="min-width: 0; flex: 1;">
+            <div style="font-size: 12.5px; font-weight: 600; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; color: #fff;">
+              ${p.name}
+            </div>
+            <div style="font-size: 10px; color: var(--text2); display: flex; gap: 8px; margin-top: 2px;">
+              <span>${p.cat}</span>
+              <span class="prob-diff-tag ${p.diff}" style="padding: 0px 4px; font-size: 8px;">${p.diff}</span>
+            </div>
+          </div>
+          ${p.link ? `<a href="${p.link}" target="_blank" style="font-size: 11px; color: var(--accent2); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; border: 1px solid rgba(0, 212, 170, 0.2); padding: 2px 6px; border-radius: 4px;"><i class="fas fa-external-link-alt"></i> Code</a>` : ''}
+        </div>
+      `).join('');
+    }
+  }
+
+  // Update JOI Hologram Speech Bubble
+  updateHologramSpeech();
 }
 
 function calcReadiness() {
@@ -367,9 +415,18 @@ function updateDailyPct() {
 
 function toggleDaily(cb) {
   S.dailyChecks[cb.dataset.key] = cb.checked;
-  if (cb.checked) addXP(5);
+  if (cb.checked) {
+    addXP(5);
+    if (window.event) {
+      const e = window.event;
+      if (e.clientX && e.clientY) {
+        spawnConfetti(e.clientX, e.clientY);
+      }
+    }
+  }
   updateDailyPct();
   save();
+  renderDashboard();
 }
 
 function renderBadges() {
@@ -607,24 +664,32 @@ function logHours() {
 }
 
 // ── DSA ──
-function addProblem() {
+function addDSAProblem() {
   const name = document.getElementById('prob-name').value.trim();
-  if (!name) return toast('Enter problem title', 'error');
-  const prob = {
-    id: Date.now(), name,
-    cat: document.getElementById('prob-cat').value,
-    diff: document.getElementById('prob-diff').value,
-    link: document.getElementById('prob-link').value.trim(),
-    date: TODAY_KEY
-  };
+  const cat = document.getElementById('prob-cat').value;
+  const diff = document.getElementById('prob-diff').value;
+  const link = document.getElementById('prob-link').value.trim();
+  const notes = document.getElementById('prob-notes').value.trim();
+
+  if (!name) { toast('Please enter a problem name.', 'error'); return; }
+
+  const prob = { name, cat, diff, link, notes, date: TODAY_KEY };
   S.dsa.push(prob);
   document.getElementById('prob-name').value = '';
   document.getElementById('prob-link').value = '';
   addXP(prob.diff === 'Easy' ? 10 : prob.diff === 'Medium' ? 20 : 35);
+  
+  if (window.event) {
+    const e = window.event;
+    if (e.clientX && e.clientY) {
+      spawnConfetti(e.clientX, e.clientY);
+    }
+  }
+
   save();
   renderDSASection();
   renderDashboard();
-  toast(`🎯 "${name}" added — ${getTodayDSACount()}/5 today!`);
+  toast(`🎯 "${name}" added — ${getTodayDSACount()}/7 today!`);
 }
 
 function getTodayDSACount() {
@@ -645,13 +710,22 @@ function renderDSASection() {
   const todayCount = getTodayDSACount();
   const ring = document.getElementById('dsa-daily-ring');
   const circ = 201;
-  if (ring) ring.style.strokeDashoffset = circ - Math.min(1, todayCount / 5) * circ;
+  if (ring) ring.style.strokeDashoffset = circ - Math.min(1, todayCount / 7) * circ;
   const todayCountEl = document.getElementById('dsa-today-count');
   if (todayCountEl) todayCountEl.textContent = todayCount;
   const totalDisplayEl = document.getElementById('dsa-total-display');
   if (totalDisplayEl) totalDisplayEl.textContent = S.dsa.length;
 
-  const msgs = ['Start strong — solve your first problem!', 'Great start! Keep going!', 'Halfway there!', 'Almost done!', 'One more for the target!', '🔥 Target crushed! Bonus round?'];
+  const msgs = [
+    'Start strong — solve your first problem!',
+    'Great start! Keep going!',
+    'Two solved! You are on a roll!',
+    'Three down, four to go!',
+    'More than halfway there!',
+    'Five solved! Almost at the target!',
+    'One more to crush today\'s goal!',
+    '🔥 Target crushed! Bonus round?'
+  ];
   const motivationLineEl = document.getElementById('dsa-motivation-line');
   if (motivationLineEl) motivationLineEl.textContent = msgs[Math.min(todayCount, msgs.length - 1)];
 
@@ -843,7 +917,15 @@ function renderSubjects() {
 function toggleTopic(sub, topic, cb) {
   if (!S.subjects[sub]) S.subjects[sub] = {};
   S.subjects[sub][topic] = cb.checked;
-  if (cb.checked) addXP(8);
+  if (cb.checked) {
+    addXP(8);
+    if (window.event) {
+      const e = window.event;
+      if (e.clientX && e.clientY) {
+        spawnConfetti(e.clientX, e.clientY);
+      }
+    }
+  }
   save();
   renderSubjects();
   renderDashboard();
@@ -1281,14 +1363,30 @@ function restoreCheckboxes(selector, store, attr) {
 
 function togglePlacement(cb) {
   S.placementChecks[cb.dataset.key] = cb.checked;
-  if (cb.checked) addXP(10);
+  if (cb.checked) {
+    addXP(10);
+    if (window.event) {
+      const e = window.event;
+      if (e.clientX && e.clientY) {
+        spawnConfetti(e.clientX, e.clientY);
+      }
+    }
+  }
   save();
   renderDashboard();
 }
 
 function changeMock(delta) {
   S.mocks = Math.max(0, S.mocks + delta);
-  if (delta > 0) addXP(15);
+  if (delta > 0) {
+    addXP(15);
+    if (window.event) {
+      const e = window.event;
+      if (e.clientX && e.clientY) {
+        spawnConfetti(e.clientX, e.clientY);
+      }
+    }
+  }
   document.getElementById('mock-count').textContent = S.mocks;
   updateMockBar();
   save();
@@ -2070,8 +2168,20 @@ function toggleSoftMilestone(key, milestone) {
   if (isNowCompleted && !wasCompleted) {
     addXP(15); // Award bonus XP on completing all milestones!
     toast("🏆 Topic fully mastered! +15 XP");
+    if (window.event) {
+      const e = window.event;
+      if (e.clientX && e.clientY) {
+        spawnConfetti(e.clientX, e.clientY);
+      }
+    }
   } else {
     addXP(3);
+    if (m[milestone] && window.event) {
+      const e = window.event;
+      if (e.clientX && e.clientY) {
+        spawnConfetti(e.clientX, e.clientY);
+      }
+    }
   }
   
   save();
@@ -2095,6 +2205,12 @@ function toggleSoftSkillComplete(key, isChecked) {
   if (isChecked && !wasCompleted) {
     addXP(15);
     toast("🏆 Topic fully mastered! +15 XP");
+    if (window.event) {
+      const e = window.event;
+      if (e.clientX && e.clientY) {
+        spawnConfetti(e.clientX, e.clientY);
+      }
+    }
   }
   
   save();
@@ -2132,7 +2248,76 @@ function copyTutorPrompt(skill, prefix) {
   });
 }
 
+// ── DYNAMIC JOI SPEECH logic ──
+function updateHologramSpeech() {
+  const elem = document.getElementById('hologram-speech');
+  if (!elem) return;
+
+  const todayH = S.hours[TODAY_KEY] || 0;
+  const dsaToday = getTodayDSACount();
+  const dailyKeys = ['daily-dsa', 'daily-subject', 'daily-softskill', 'daily-comm', 'daily-project', 'daily-reading'];
+  const dailyDone = dailyKeys.filter(k => S.dailyChecks[k]).length;
+
+  let message = "";
+  if (dailyDone === dailyKeys.length) {
+    message = `"Absolute perfection, Coder. Every single target for today has been checked. Let's conquer tomorrow!"`;
+  } else if (todayH >= 5) {
+    message = `"5+ hours logged today! Your commitment is mesmerizing. Don't forget to take a breather, you've earned it."`;
+  } else if (todayH > 0 && dsaToday >= 5) {
+    message = `"You are coding like a machine today. ${dsaToday} DSA problems crushed. Want me to tutor you on a soft skill next?"`;
+  } else if (todayH > 0) {
+    message = `"${todayH} hours of intense grind. You're molding yourself into a elite ₹15+ LPA developer. Keep pushing!"`;
+  } else {
+    const subjects = ['Revision', 'DBMS', 'Operating Systems', 'Computer Networks', 'DBMS', 'Operating Systems', 'Computer Networks'];
+    const todaySubj = subjects[new Date().getDay()];
+    message = `"Welcome back, Coder. Today's core focus is ${todaySubj}. Let's take the first step together."`;
+  }
+  elem.textContent = message;
+}
+
+// ── CONFETTI EXPLOSION ──
+function spawnConfetti(x, y) {
+  const container = document.body;
+  const colors = ['#6c63ff', '#00d4aa', '#ff6b6b', '#f7c948', '#00d4aa'];
+  for (let i = 0; i < 20; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'xp-particle';
+    particle.style.left = `${x}px`;
+    particle.style.top = `${y}px`;
+    particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    
+    // Random directions
+    const angle = Math.random() * Math.PI * 2;
+    const distance = Math.random() * 80 + 30;
+    const destX = Math.cos(angle) * distance;
+    const destY = Math.sin(angle) * distance - 40; // Bias upwards
+    
+    particle.style.setProperty('--dx', `${destX}px`);
+    particle.style.setProperty('--dy', `${destY}px`);
+    
+    container.appendChild(particle);
+    
+    // Remove after animation finishes
+    setTimeout(() => {
+      particle.remove();
+    }, 1000);
+  }
+}
+
+// ── DYNAMIC SPOTLIGHT EVENT LISTENER ──
+document.addEventListener('mousemove', e => {
+  const card = e.target.closest('.card, .subject-card, .skill-card, .project-card, .subj-overview-card, .an-summary-card, .dsa-target-banner, .placement-readiness-bar, .hologram-card');
+  if (card) {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  }
+});
+
 window.toggleSoftMilestone = toggleSoftMilestone;
 window.toggleSoftSkillComplete = toggleSoftSkillComplete;
 window.launchAITutor = launchAITutor;
 window.copyTutorPrompt = copyTutorPrompt;
+window.spawnConfetti = spawnConfetti;

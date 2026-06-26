@@ -949,3 +949,86 @@ body::after {
 .soft-card details summary { list-style: none; }
 .soft-card details summary i.fa-chevron-down { transition: transform 0.2s ease; }
 .soft-card details[open] summary i.fa-chevron-down { transform: rotate(180deg); }
+
+/* ── HOLOGRAM COMPANION & CREATIVE UI EFFECTS ── */
+@keyframes scanline {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+
+@keyframes pulse-glow {
+  0% { transform: scale(0.9); opacity: 0.5; box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.4); }
+  100% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 8px 3px rgba(0, 212, 170, 0.7); }
+}
+
+/* ── RADIAL SPOTLIGHT GLOW EFFECT ── */
+.card, .subject-card, .skill-card, .project-card, .subj-overview-card, .an-summary-card, .dsa-target-banner, .placement-readiness-bar, .hologram-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after, .subject-card::after, .skill-card::after, .project-card::after, .subj-overview-card::after, .an-summary-card::after, .dsa-target-banner::after, .placement-readiness-bar::after, .hologram-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(350px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), rgba(0, 212, 170, 0.07) 0%, rgba(108, 99, 255, 0.03) 40%, transparent 80%);
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  opacity: 0;
+}
+
+.card:hover::after, .subject-card:hover::after, .skill-card:hover::after, .project-card:hover::after, .subj-overview-card:hover::after, .an-summary-card:hover::after, .dsa-target-banner:hover::after, .placement-readiness-bar:hover::after, .hologram-card:hover::after {
+  opacity: 1;
+}
+
+.card > *, .subject-card > *, .skill-card > *, .project-card > *, .subj-overview-card > *, .an-summary-card > *, .dsa-target-banner > *, .placement-readiness-bar > *, .hologram-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── FIRE STREAK badge ── */
+.streak-badge i {
+  animation: flame-flicker 1.5s infinite alternate ease-in-out;
+  color: #ff6b00 !important;
+  text-shadow: 0 0 8px rgba(255, 107, 0, 0.6), 0 0 16px rgba(247, 201, 72, 0.4);
+}
+
+@keyframes flame-flicker {
+  0% { transform: scale(1) rotate(-1deg); filter: brightness(1); }
+  25% { transform: scale(1.05) rotate(1deg) skewX(1deg); filter: brightness(1.2); }
+  50% { transform: scale(0.98) rotate(-1.5deg); filter: brightness(0.9); }
+  75% { transform: scale(1.08) rotate(1.5deg) skewX(-1deg); filter: brightness(1.3); }
+  100% { transform: scale(1.02) rotate(0deg); filter: brightness(1.1); }
+}
+
+/* ── XP CONFETTI PARTICLES ── */
+.xp-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  box-shadow: 0 0 8px currentColor;
+  animation: particle-explode 1s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes particle-explode {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* ── DRIFT ROTATION ANIMATION ── */
+@keyframes drift {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate(4vw, -3vw) scale(1.08) rotate(180deg); }
+  100% { transform: translate(8vw, 5vw) scale(1.15) rotate(360deg); }
+}
