@@ -1042,67 +1042,133 @@ function renderSkillTrackers(containerId, skills, prefix) {
   const container = document.getElementById(containerId);
   container.innerHTML = skills.map(skill => {
     const key = `${prefix}_${skill}`;
-    const val = S.skills[key] || 0;
-    const isComp = !!S.skills[key + '_complete'];
-    const levels = ['Beginner', 'Learning', 'Practicing', 'Proficient', 'Expert'];
-    const chatLink = S.skills[key + '_chat_link'] || '';
     
-    let extraHTML = '';
-    if (skill === 'Speaking Fluency') {
-      const totalMins = S.speakingPracticeMins || 0;
-      const log = S.speakingPracticeLog || [];
-      const recent = log.slice(0, 2).map(l => `${l.mins}m on ${l.date}`).join(', ');
-      extraHTML = `
-        <div class="speaking-logger" style="margin-top: 12px; padding: 10px; background: rgba(108,99,255,0.06); border-radius: 8px; border: 1px dashed rgba(108,99,255,0.25);">
-          <label style="font-size: 11px; font-weight: 700; color: var(--text2); display: block; margin-bottom: 6px;"><i class="fas fa-microphone"></i> SPEAKING APP PRACTICE LOGGER</label>
-          <div style="display: flex; gap: 6px; align-items: center;">
-            <input type="number" id="speaking-mins-input" class="inp" placeholder="Minutes practiced..." style="font-size: 11.5px; padding: 4px 8px; height: 26px; flex: 1; min:1; max:300;">
-            <button class="btn btn-sm" onclick="logSpeakingMins()" style="height: 26px; font-size: 11px; padding: 0 10px; background:var(--accent); color:white; border:none; border-radius:5px; font-weight:600; cursor:pointer;">Log</button>
+    if (prefix !== 'comm') {
+      const milestones = S.skills[key + '_milestones'] || { learn: false, practice: false, interview: false };
+      const doneCount = (milestones.learn ? 1 : 0) + (milestones.practice ? 1 : 0) + (milestones.interview ? 1 : 0);
+      const progressPct = Math.round(doneCount / 3 * 100);
+      const isCompleted = !!S.skills[key + '_complete'];
+      
+      let stageText = "Not Started";
+      let stageBg = "rgba(255,255,255,0.05)";
+      let stageColor = "var(--text3)";
+      if (doneCount === 1) {
+        stageText = "Theory Learned";
+        stageBg = "rgba(108,99,255,0.15)";
+        stageColor = "var(--accent)";
+      } else if (doneCount === 2) {
+        stageText = "Practice Done";
+        stageBg = "rgba(247,201,72,0.15)";
+        stageColor = "var(--gold)";
+      } else if (doneCount === 3) {
+        stageText = "Mastered";
+        stageBg = "rgba(0,212,170,0.15)";
+        stageColor = "var(--accent2)";
+      }
+      
+      const guide = getLearningGuide(prefix, skill);
+      
+      return `
+        <div class="skill-card soft-card ${isCompleted ? 'completed' : ''}" style="display: flex; flex-direction: column; gap: 10px; padding: 14px;">
+          <div class="skill-card-header" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+            <label style="padding:0; margin:0; cursor:pointer; display:flex; align-items:center; gap:8px; flex: 1;">
+              <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleSoftSkillComplete('${key}', this.checked)" style="width:16px; height:16px; accent-color:var(--accent2); cursor:pointer; margin-top: 2px;">
+              <span class="skill-card-title" style="font-size:13.5px; font-weight:700; ${isCompleted ? 'text-decoration:line-through; color:var(--text3);' : ''}">${skill}</span>
+            </label>
+            <span style="font-size: 10px; font-weight: 700; color: ${stageColor}; background: ${stageBg}; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.3px; flex-shrink: 0;">${stageText}</span>
           </div>
-          <div style="font-size: 11px; color: var(--accent2); margin-top: 6px; font-weight: 600;" id="speaking-total-status">
-            Total Practice: ${totalMins} mins
-            ${recent ? `<div style="font-size: 9.5px; color: var(--text3); margin-top: 2px; font-weight: normal;">Recent: ${recent}</div>` : ''}
+          
+          <div class="prog-bar" style="margin: 4px 0">
+            <div class="prog-fill" style="width:${progressPct}%; background: ${isCompleted ? 'var(--accent2)' : 'var(--accent)'}"></div>
           </div>
+          
+          <div class="milestones-row" style="display: flex; gap: 6px; margin: 4px 0;">
+            <button class="level-btn ${milestones.learn ? 'active' : ''}" onclick="toggleSoftMilestone('${key}', 'learn')" style="flex: 1; font-size: 10px; padding: 5px; text-align: center; border-radius: 5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px;"><i class="fas fa-book-open"></i> Learn</button>
+            <button class="level-btn ${milestones.practice ? 'active' : ''}" onclick="toggleSoftMilestone('${key}', 'practice')" style="flex: 1; font-size: 10px; padding: 5px; text-align: center; border-radius: 5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px;"><i class="fas fa-pencil-alt"></i> Practice</button>
+            <button class="level-btn ${milestones.interview ? 'active' : ''}" onclick="toggleSoftMilestone('${key}', 'interview')" style="flex: 1; font-size: 10px; padding: 5px; text-align: center; border-radius: 5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px;"><i class="fas fa-user-tie"></i> Ready</button>
+          </div>
+          
+          <textarea class="skill-notes" rows="2" placeholder="Study notes/solutions..." onchange="setSkillNote('${key}', this.value)" style="font-size: 11.5px; padding: 6px; border-radius: 6px; border-color: var(--border2);">${S.skills[key + '_note'] || ''}</textarea>
+          
+          <details style="background: rgba(255,255,255,0.015); border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font-size: 11px;">
+            <summary style="font-weight: 600; color: var(--accent2); cursor: pointer; outline: none; list-style: none; display: flex; align-items: center; justify-content: space-between;">
+              <span><i class="fas fa-lightbulb"></i> Study Guide & Prompt</span>
+              <i class="fas fa-chevron-down" style="font-size: 9px; transition: transform 0.2s;"></i>
+            </summary>
+            <div style="margin-top: 8px; border-top: 1px solid var(--border2); padding-top: 8px; display: flex; flex-direction: column; gap: 6px; line-height: 1.4;">
+              <div><b style="color: var(--text);">How to Study:</b><br><span style="color: var(--text2);">${guide.tip}</span></div>
+              <div><b style="color: var(--text);">Action Task:</b><br><span style="color: var(--text2);">${guide.task}</span></div>
+              <div style="margin-top: 4px; display: flex; gap: 4px; align-items: center;">
+                <button onclick="launchAITutor('${skill.replace(/'/g, "\\'")}', '${prefix}')" class="btn" style="flex: 1; font-size: 10px; height: 26px; padding: 0 8px; background: rgba(108,99,255,0.1); border-color: rgba(108,99,255,0.25); color: var(--accent); cursor: pointer; font-weight: 600;"><i class="fas fa-robot"></i> ChatGPT Tutor</button>
+                <button onclick="copyTutorPrompt('${skill.replace(/'/g, "\\'")}', '${prefix}')" class="btn" style="height: 26px; padding: 0 8px; background: none; border-color: var(--border2); color: var(--text2); cursor: pointer;" title="Copy Prompt"><i class="fas fa-copy"></i></button>
+              </div>
+            </div>
+          </details>
         </div>
       `;
-    } else if (skill === 'Vocabulary Building') {
-      extraHTML = `
-        <div class="vocab-logger" style="margin-top: 12px; padding: 10px; background: rgba(0,212,170,0.06); border-radius: 8px; border: 1px dashed rgba(0,212,170,0.25);">
-          <label style="font-size: 11px; font-weight: 700; color: var(--text2); display: block; margin-bottom: 6px;"><i class="fas fa-book"></i> VOCABULARY BUILDER</label>
-          <button class="btn btn-sm" onclick="openVocabModal()" style="width: 100%; font-size: 11px; height: 26px; background:rgba(0, 212, 170, 0.1); border-color:rgba(0, 212, 170, 0.2); color:var(--accent2); cursor:pointer;">+ Add Word with 5 Sentences</button>
-          <div id="vocab-word-list" style="margin-top: 8px; display: flex; flex-direction: column; gap: 6px; max-height: 150px; overflow-y: auto;">
-            <!-- Vocab words will render here -->
+    } else {
+      const val = S.skills[key] || 0;
+      const isComp = !!S.skills[key + '_complete'];
+      const levels = ['Beginner', 'Learning', 'Practicing', 'Proficient', 'Expert'];
+      const chatLink = S.skills[key + '_chat_link'] || '';
+      
+      let extraHTML = '';
+      if (skill === 'Speaking Fluency') {
+        const totalMins = S.speakingPracticeMins || 0;
+        const log = S.speakingPracticeLog || [];
+        const recent = log.slice(0, 2).map(l => `${l.mins}m on ${l.date}`).join(', ');
+        extraHTML = `
+          <div class="speaking-logger" style="margin-top: 12px; padding: 10px; background: rgba(108,99,255,0.06); border-radius: 8px; border: 1px dashed rgba(108,99,255,0.25);">
+            <label style="font-size: 11px; font-weight: 700; color: var(--text2); display: block; margin-bottom: 6px;"><i class="fas fa-microphone"></i> SPEAKING APP PRACTICE LOGGER</label>
+            <div style="display: flex; gap: 6px; align-items: center;">
+              <input type="number" id="speaking-mins-input" class="inp" placeholder="Minutes practiced..." style="font-size: 11.5px; padding: 4px 8px; height: 26px; flex: 1; min:1; max:300;">
+              <button class="btn btn-sm" onclick="logSpeakingMins()" style="height: 26px; font-size: 11px; padding: 0 10px; background:var(--accent); color:white; border:none; border-radius:5px; font-weight:600; cursor:pointer;">Log</button>
+            </div>
+            <div style="font-size: 11px; color: var(--accent2); margin-top: 6px; font-weight: 600;" id="speaking-total-status">
+              Total Practice: ${totalMins} mins
+              ${recent ? `<div style="font-size: 9.5px; color: var(--text3); margin-top: 2px; font-weight: normal;">Recent: ${recent}</div>` : ''}
+            </div>
           </div>
+        `;
+      } else if (skill === 'Vocabulary Building') {
+        extraHTML = `
+          <div class="vocab-logger" style="margin-top: 12px; padding: 10px; background: rgba(0,212,170,0.06); border-radius: 8px; border: 1px dashed rgba(0,212,170,0.25);">
+            <label style="font-size: 11px; font-weight: 700; color: var(--text2); display: block; margin-bottom: 6px;"><i class="fas fa-book"></i> VOCABULARY BUILDER</label>
+            <button class="btn btn-sm" onclick="openVocabModal()" style="width: 100%; font-size: 11px; height: 26px; background:rgba(0, 212, 170, 0.1); border-color:rgba(0, 212, 170, 0.2); color:var(--accent2); cursor:pointer;">+ Add Word with 5 Sentences</button>
+            <div id="vocab-word-list" style="margin-top: 8px; display: flex; flex-direction: column; gap: 6px; max-height: 150px; overflow-y: auto;">
+              <!-- Vocab words will render here -->
+            </div>
+          </div>
+        `;
+      }
+  
+      return `
+        <div class="skill-card ${isComp ? 'completed' : ''}">
+          <div class="skill-card-header">
+            <label style="padding:0;margin:0;cursor:pointer;display:flex;align-items:center;gap:8px;">
+              <input type="checkbox" ${isComp ? 'checked' : ''} onchange="toggleSkillComplete('${key}', this.checked)" style="width:16px;height:16px;accent-color:var(--accent2);margin-right:2px;cursor:pointer;">
+              <span class="skill-card-title" style="font-size:14px;font-weight:700;${isComp ? 'text-decoration:line-through;color:var(--text3);' : ''}">${skill}</span>
+            </label>
+            <span class="skill-rating">${levels[val] || 'Beginner'}</span>
+          </div>
+          <div class="prog-bar" style="margin-bottom:12px">
+            <div class="prog-fill" style="width:${val * 25}%"></div>
+          </div>
+          <div class="skill-level-btns">
+            ${levels.map((l, i) => `<button class="level-btn ${val === i ? 'active' : ''}" onclick="setSkill('${key}', ${i})">${l}</button>`).join('')}
+          </div>
+          <textarea class="skill-notes" rows="2" placeholder="Notes..." onchange="setSkillNote('${key}', this.value)">${S.skills[key + '_note'] || ''}</textarea>
+          
+          <div style="position:relative; margin-top:8px; display:flex; gap:6px; align-items:center;">
+            <input type="url" class="inp" placeholder="ChatGPT Study Link..." onchange="setSkillChatLink('${key}', this.value)" value="${chatLink}" style="font-size:11px; padding:5px 8px; height:24px; flex:1;">
+            ${chatLink ? `
+              <a href="${chatLink}" target="_blank" class="btn btn-sm" style="padding:4px 8px; font-size:10px; background:rgba(0, 212, 170, 0.1); border-color:rgba(0, 212, 170, 0.2); color:var(--accent2); height:24px; display:inline-flex; align-items:center; justify-content:center;" title="Open Chat Link"><i class="fas fa-robot"></i></a>
+            ` : ''}
+          </div>
+          ${extraHTML}
         </div>
       `;
     }
-
-    return `
-      <div class="skill-card ${isComp ? 'completed' : ''}">
-        <div class="skill-card-header">
-          <label style="padding:0;margin:0;cursor:pointer;display:flex;align-items:center;gap:8px;">
-            <input type="checkbox" ${isComp ? 'checked' : ''} onchange="toggleSkillComplete('${key}', this.checked)" style="width:16px;height:16px;accent-color:var(--accent2);margin-right:2px;cursor:pointer;">
-            <span class="skill-card-title" style="font-size:14px;font-weight:700;${isComp ? 'text-decoration:line-through;color:var(--text3);' : ''}">${skill}</span>
-          </label>
-          <span class="skill-rating">${levels[val] || 'Beginner'}</span>
-        </div>
-        <div class="prog-bar" style="margin-bottom:12px">
-          <div class="prog-fill" style="width:${val * 25}%"></div>
-        </div>
-        <div class="skill-level-btns">
-          ${levels.map((l, i) => `<button class="level-btn ${val === i ? 'active' : ''}" onclick="setSkill('${key}', ${i})">${l}</button>`).join('')}
-        </div>
-        <textarea class="skill-notes" rows="2" placeholder="Notes..." onchange="setSkillNote('${key}', this.value)">${S.skills[key + '_note'] || ''}</textarea>
-        
-        <div style="position:relative; margin-top:8px; display:flex; gap:6px; align-items:center;">
-          <input type="url" class="inp" placeholder="ChatGPT Study Link..." onchange="setSkillChatLink('${key}', this.value)" value="${chatLink}" style="font-size:11px; padding:5px 8px; height:24px; flex:1;">
-          ${chatLink ? `
-            <a href="${chatLink}" target="_blank" class="btn btn-sm" style="padding:4px 8px; font-size:10px; background:rgba(0, 212, 170, 0.1); border-color:rgba(0, 212, 170, 0.2); color:var(--accent2); height:24px; display:inline-flex; align-items:center; justify-content:center;" title="Open Chat Link"><i class="fas fa-robot"></i></a>
-          ` : ''}
-        </div>
-        ${extraHTML}
-      </div>
-    `;
   }).join('');
   
   if (containerId === 'comm-trackers') {
@@ -1858,3 +1924,215 @@ window.closeVocabModal = closeVocabModal;
 window.saveVocabWord = saveVocabWord;
 window.deleteVocabWord = deleteVocabWord;
 window.renderVocabWordList = renderVocabWordList;
+
+// ── SOFT SKILLS MILESTONES & TUTOR INTERFACE ──
+function getLearningGuide(prefix, skill) {
+  const s = skill.toLowerCase();
+  
+  if (prefix === 'soft') {
+    if (s.includes('confidence')) {
+      return {
+        tip: "Identify your core strengths. Focus on active posture, power-posing, and positive reinforcement.",
+        task: "Explain your top coding project aloud to yourself in a mirror for 3 minutes without stopping."
+      };
+    }
+    if (s.includes('presentation')) {
+      return {
+        tip: "Structure slides/talks into: Hook, Core Message, and Call-to-Action. Pace yourself and use pauses.",
+        task: "Record a 2-minute video presenting a simple code concept. Watch it to note eye contact and voice pitch."
+      };
+    }
+    if (s.includes('time management')) {
+      return {
+        tip: "Use the Eisenhower Matrix (Urgent vs. Important). Implement 25-minute Pomodoro focus blocks.",
+        task: "Block out tomorrow's schedule on a calendar, assigning specific hours to your top 3 tasks."
+      };
+    }
+    if (s.includes('problem solving')) {
+      return {
+        tip: "Break large problems down into small logical steps. Write down inputs, outputs, and constraints first.",
+        task: "Take a hard problem statement, write down the pseudocode step-by-step, and explain it aloud."
+      };
+    }
+    if (s.includes('leadership')) {
+      return {
+        tip: "Leadership is about influence and enabling others. Practice taking initiative and active listening.",
+        task: "Draft a 1-page team distribution plan for a group project, assigning tasks based on strengths."
+      };
+    }
+    if (s.includes('teamwork')) {
+      return {
+        tip: "Communicate proactively. Appreciate team members' contributions and resolve disagreements constructively.",
+        task: "Write a short paragraph detailing how you would handle a team member who is not delivering their part."
+      };
+    }
+    return {
+      tip: "Read case studies, observe leaders, and practice active listening in group projects.",
+      task: "Summarize a soft skill scenario and outline 3 bullet points on how to handle it professionally."
+    };
+  }
+  
+  if (prefix === 'quant') {
+    if (s.includes('percent') || s.includes('profit')) {
+      return {
+        tip: "Master fraction-to-percentage conversions (e.g. 1/6 = 16.67%, 1/8 = 12.5%) for rapid mental math.",
+        task: "Solve 5 profit, loss, and discount questions without writing down any calculations."
+      };
+    }
+    if (s.includes('time and work')) {
+      return {
+        tip: "Convert time to work efficiency using the LCM of days. Solve for total units of work.",
+        task: "Solve 3 cistern/efficiency work questions using the LCM method."
+      };
+    }
+    if (s.includes('speed') || s.includes('distance')) {
+      return {
+        tip: "Use relative speed for crossing/meeting problems. Speed = Distance / Time. Know conversion 1 m/s = 3.6 km/h.",
+        task: "Solve 3 problems involving trains passing poles or moving in opposite directions."
+      };
+    }
+    if (s.includes('probability') || s.includes('permutation')) {
+      return {
+        tip: "Understand fundamental counting principles. n! for arrangements, nCr for selections.",
+        task: "Calculate the total permutations of arranging the word 'SUCCESS' such that all vowels are together."
+      };
+    }
+    return {
+      tip: "Memorize shortcut formulas. Focus on speed and accuracy. Always eliminate obviously incorrect options.",
+      task: "Solve 5 quick practice questions on this topic under a strict 1-minute timer per question."
+    };
+  }
+  
+  if (prefix === 'logical') {
+    if (s.includes('blood relation')) {
+      return {
+        tip: "Draw a family tree. Use squares for males, circles for females, double lines for spouses, and vertical lines for generations.",
+        task: "Solve 3 relation puzzles. Start tracing the relationship from the last person mentioned."
+      };
+    }
+    if (s.includes('coding')) {
+      return {
+        tip: "Write down alphabet numbers (A=1, Z=26) and check opposite pairs (A-Z, B-Y, C-X). Check alternate letters.",
+        task: "Decode 3 messages by matching character displacement values (e.g., +2, -1 pattern)."
+      };
+    }
+    if (s.includes('seating')) {
+      return {
+        tip: "Always start circular arrangements by placing the first person at the bottom facing inwards. Place definite clues first.",
+        task: "Solve an 8-person circular seating arrangement puzzle with mixed inward/outward directions."
+      };
+    }
+    return {
+      tip: "Look for differences, ratios, squares, or alternate series patterns. Eliminate options logically.",
+      task: "Solve 3 number/analogy sequence puzzles and note the pattern used."
+    };
+  }
+  
+  if (prefix === 'verbal') {
+    if (s.includes('grammar') || s.includes('error')) {
+      return {
+        tip: "Check Subject-Verb agreement, pronoun-antecedent agreement, and correct preposition usage.",
+        task: "Find the grammatical errors in 5 mock test sentences and write the correct versions."
+      };
+    }
+    if (s.includes('comprehension')) {
+      return {
+        tip: "Read the questions first to know what details to find, then scan the passage to extract them.",
+        task: "Read a technical paragraph and write a concise 1-sentence summary of the main argument."
+      };
+    }
+    return {
+      tip: "Build your vocabulary contextually. Read sentences carefully to detect subtle word choices.",
+      task: "Look up synonyms/antonyms for 3 placement-focused words and use them in sentences."
+    };
+  }
+  
+  return {
+    tip: "Study key concepts, write down clear explanations, and practice under mock exam conditions.",
+    task: "Complete 3 practice questions on this topic and review the detailed solutions."
+  };
+}
+
+function toggleSoftMilestone(key, milestone) {
+  if (!S.skills[key + '_milestones']) {
+    S.skills[key + '_milestones'] = { learn: false, practice: false, interview: false };
+  }
+  
+  const m = S.skills[key + '_milestones'];
+  m[milestone] = !m[milestone];
+  
+  const doneCount = (m.learn ? 1 : 0) + (m.practice ? 1 : 0) + (m.interview ? 1 : 0);
+  const wasCompleted = !!S.skills[key + '_complete'];
+  const isNowCompleted = (doneCount === 3);
+  
+  S.skills[key + '_complete'] = isNowCompleted;
+  
+  if (isNowCompleted && !wasCompleted) {
+    addXP(15); // Award bonus XP on completing all milestones!
+    toast("🏆 Topic fully mastered! +15 XP");
+  } else {
+    addXP(3);
+  }
+  
+  save();
+  renderSoftSkills();
+  renderDashboard();
+}
+
+function toggleSoftSkillComplete(key, isChecked) {
+  if (!S.skills[key + '_milestones']) {
+    S.skills[key + '_milestones'] = { learn: false, practice: false, interview: false };
+  }
+  
+  const m = S.skills[key + '_milestones'];
+  m.learn = isChecked;
+  m.practice = isChecked;
+  m.interview = isChecked;
+  
+  const wasCompleted = !!S.skills[key + '_complete'];
+  S.skills[key + '_complete'] = isChecked;
+  
+  if (isChecked && !wasCompleted) {
+    addXP(15);
+    toast("🏆 Topic fully mastered! +15 XP");
+  }
+  
+  save();
+  renderSoftSkills();
+  renderDashboard();
+}
+
+function getTutorPromptText(skill, prefix) {
+  const guide = getLearningGuide(prefix, skill);
+  return `Act as an expert mock interviewer and placement tutor. I am studying the topic "${skill}" under the category "${prefix}".
+
+1. Briefly explain the core theory/strategy for this topic in 2 concise paragraphs. Use this specific approach: "${guide.tip}".
+2. Give me exactly 3 realistic practice questions/challenges related to this topic (e.g. for aptitude, mathematical problems; for soft skills, scenario-based interview questions).
+3. Quiz me on them one-by-one. Wait for my response before proceeding.
+
+Let's begin!`;
+}
+
+function launchAITutor(skill, prefix) {
+  const promptText = getTutorPromptText(skill, prefix);
+  navigator.clipboard.writeText(promptText).then(() => {
+    toast("📋 Prompt copied! Opening ChatGPT...");
+    window.open("https://chatgpt.com/?q=" + encodeURIComponent("I want to practice placement prep. I have copied my tutor prompt to my clipboard, please ask me to paste it."), "_blank");
+  }).catch(() => {
+    window.open("https://chatgpt.com/?q=" + encodeURIComponent(promptText), "_blank");
+  });
+}
+
+function copyTutorPrompt(skill, prefix) {
+  const promptText = getTutorPromptText(skill, prefix);
+  navigator.clipboard.writeText(promptText).then(() => {
+    toast("📋 AI Tutor prompt copied!");
+  }).catch(() => {
+    toast("Failed to copy. Please allow clipboard permissions.", "error");
+  });
+}
+
+window.toggleSoftMilestone = toggleSoftMilestone;
+window.toggleSoftSkillComplete = toggleSoftSkillComplete;
+window.launchAITutor = launchAITutor;
+window.copyTutorPrompt = copyTutorPrompt;

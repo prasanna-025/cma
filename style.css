@@ -826,3 +826,9 @@ body {
 #vocab-word-list details summary::-webkit-details-marker { display: none; }
 #vocab-word-list details summary { list-style: none; }
 #vocab-word-list details[open] summary i.fa-chevron-right { transform: rotate(90deg); }
+
+/* ── SOFT SKILLS DETAILS ACCORDION ── */
+.soft-card details summary::-webkit-details-marker { display: none; }
+.soft-card details summary { list-style: none; }
+.soft-card details summary i.fa-chevron-down { transition: transform 0.2s ease; }
+.soft-card details[open] summary i.fa-chevron-down { transform: rotate(180deg); }
