@@ -566,6 +566,7 @@ function loadState() {
   }
   
   if (!S.dsaNotes) S.dsaNotes = {};
+  if (!S.dsaCodes) S.dsaCodes = {};
   
   // Sync in-memory dsaProblems status
   dsaProblems.forEach(p => {
@@ -703,17 +704,24 @@ function renderProblems() {
         details.style.cssText = 'display:flex; gap:16px; padding:16px 20px; background:rgba(16,20,32,0.65); border-left: 2px solid var(--accent); border-bottom: 1px solid rgba(108,99,255,0.1); flex-wrap:wrap; width:100%; border-radius:0; box-sizing:border-box;';
         
         const savedNotes = S.dsaNotes?.[problem.name] || '';
+        const savedCode = S.dsaCodes?.[problem.name] || '';
         const hasScreenshot = !!screenshotCache[problem.name];
 
         details.innerHTML = `
           <!-- Left: What I Learned -->
-          <div style="flex:1.2; min-width:260px; display:flex; flex-direction:column; gap:6px;">
+          <div style="flex:1.2; min-width:240px; display:flex; flex-direction:column; gap:6px;">
             <label style="font-size:11px; font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:4px;"><i class="fas fa-edit" style="color:var(--accent2);"></i> What I Learned (Notes)</label>
             <textarea class="inp" placeholder="Describe the approach, time complexity, or key learnings..." onchange="saveProblemNotes('${problem.name.replace(/'/g, "\\'")}', this.value)" style="font-size:12px; resize:vertical; min-height:68px; background:var(--bg3); line-height:1.5; color:#fff; border-color:var(--border);">${savedNotes}</textarea>
           </div>
 
+          <!-- Middle: Solution Code -->
+          <div style="flex:1.5; min-width:280px; display:flex; flex-direction:column; gap:6px;">
+            <label style="font-size:11px; font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:4px;"><i class="fas fa-code" style="color:var(--accent2);"></i> Solution Code</label>
+            <textarea class="inp" placeholder="Paste your solution code here..." onchange="saveProblemCode('${problem.name.replace(/'/g, "\\'")}', this.value)" style="font-size:11.5px; font-family:'JetBrains Mono', monospace; resize:vertical; min-height:68px; background:var(--bg3); line-height:1.4; color:#00d4aa; border-color:var(--border);">${savedCode}</textarea>
+          </div>
+
           <!-- Right: Code Screenshot -->
-          <div style="flex:1; min-width:240px; display:flex; flex-direction:column; gap:6px;">
+          <div style="flex:1; min-width:200px; display:flex; flex-direction:column; gap:6px;">
             <label style="font-size:11px; font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:4px;"><i class="fas fa-camera" style="color:var(--accent);"></i> Code Screenshot</label>
             <div id="screenshot-area-${problem.name.replace(/\s+/g, '_')}" class="screenshot-dropzone" onpaste="handleScreenshotPaste(event, '${problem.name.replace(/'/g, "\\'")}')" style="border:1.5px dashed rgba(108,99,255,0.25); border-radius:8px; height:68px; display:flex; align-items:center; justify-content:center; background:rgba(108,99,255,0.02); cursor:pointer; transition:all 0.2s; outline:none; text-align:center; padding:10px; box-sizing:border-box;" onclick="triggerFileInput('${problem.name.replace(/'/g, "\\'")}')" tabindex="0">
               ${hasScreenshot ? `
@@ -862,6 +870,14 @@ function saveProblemNotes(problemName, notes) {
   toast('Notes saved!');
 }
 window.saveProblemNotes = saveProblemNotes;
+
+function saveProblemCode(problemName, code) {
+  if (!S.dsaCodes) S.dsaCodes = {};
+  S.dsaCodes[problemName] = code;
+  saveState();
+  toast('Code saved!');
+}
+window.saveProblemCode = saveProblemCode;
 
 async function handleScreenshotPaste(e, problemName) {
   const items = (e.clipboardData || e.originalEvent.clipboardData).items;

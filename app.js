@@ -13,7 +13,8 @@ const S = {
   weekHours: {},
   roadmapChecks: {},
   roadmapNotes: {},
-  roadmapLinks: {}
+  roadmapLinks: {},
+  dsaCodes: {}
 };
 
 // ── LOAD ──
@@ -27,6 +28,7 @@ function load() {
   if (!S.roadmapChecks) S.roadmapChecks = {};
   if (!S.roadmapNotes) S.roadmapNotes = {};
   if (!S.roadmapLinks) S.roadmapLinks = {};
+  if (!S.dsaCodes) S.dsaCodes = {};
   initStreakCheck();
 }
 
@@ -675,13 +677,23 @@ function addDSAProblem() {
   const diff = document.getElementById('prob-diff').value;
   const link = document.getElementById('prob-link').value.trim();
   const notes = document.getElementById('prob-notes').value.trim();
+  const code = document.getElementById('prob-code') ? document.getElementById('prob-code').value.trim() : '';
 
   if (!name) { toast('Please enter a problem name.', 'error'); return; }
 
   const prob = { name, cat, diff, link, notes, date: TODAY_KEY };
   S.dsa.push(prob);
+  
+  if (code) {
+    if (!S.dsaCodes) S.dsaCodes = {};
+    S.dsaCodes[name] = code;
+  }
+
   document.getElementById('prob-name').value = '';
   document.getElementById('prob-link').value = '';
+  if (document.getElementById('prob-notes')) document.getElementById('prob-notes').value = '';
+  if (document.getElementById('prob-code')) document.getElementById('prob-code').value = '';
+  
   addXP(prob.diff === 'Easy' ? 10 : prob.diff === 'Medium' ? 20 : 35);
   
   if (window.event) {
@@ -2598,3 +2610,31 @@ window.renderRoadmap = renderRoadmap;
 window.copyRoadmapNoteText = copyRoadmapNoteText;
 window.clearRoadmapNote = clearRoadmapNote;
 window.openRoadmapNotepad = openRoadmapNotepad;
+
+// Auto-fill SDE DSA problem name from Leetcode URL
+function autoFillDSAProblemDetails(url) {
+  if (!url) return;
+  url = url.trim();
+  if (url.includes('leetcode.com/problems/')) {
+    const match = url.match(/problems\/([a-z0-9\-]+)/i);
+    if (match && match[1]) {
+      const slug = match[1];
+      const name = slug
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+      
+      const nameInput = document.getElementById('prob-name');
+      if (nameInput && !nameInput.value.trim()) {
+        nameInput.value = name;
+        nameInput.style.borderColor = 'var(--accent2)';
+        setTimeout(() => {
+          nameInput.style.borderColor = '';
+        }, 1000);
+      }
+    }
+  }
+}
+
+window.addProblem = addDSAProblem;
+window.autoFillDSAProblemDetails = autoFillDSAProblemDetails;
