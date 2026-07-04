@@ -636,15 +636,20 @@ const DSA_CATS = ['Arrays', 'Strings', 'Trees', 'Graphs', 'DP', 'Sorting', 'Link
 function mapTopicToCategory(topic) {
   if (!topic) return 'Arrays';
   const t = topic.toLowerCase();
+  
   if (t.includes('string')) return 'Strings';
-  if (t.includes('tree') || t.includes('traversal')) return 'Trees';
+  if (t.includes('linked list') || t.includes('ll') || t.includes('dll') || t.includes('circular ll')) return 'Linked List';
+  if (t.includes('stack') || t.includes('queue') || t.includes('heap') || t.includes('priority')) return 'Stack/Queue';
+  if (t.includes('tree')) return 'Trees';
   if (t.includes('graph') || t.includes('disjoint') || t.includes('island')) return 'Graphs';
   if (t.includes('dp') || t.includes('dynamic') || t.includes('knapsack') || t.includes('stocks') || t.includes('mcm')) return 'DP';
   if (t.includes('sort') || t.includes('merge')) return 'Sorting';
-  if (t.includes('linked list') || t.includes('ll') || t.includes('dll') || t.includes('circular ll')) return 'Linked List';
   if (t.includes('binary search') || t.includes('bs') || t.includes('rotated') || t.includes('search') || t.includes('biotonic') || t.includes('matrix')) return 'Binary Search';
-  if (t.includes('stack') || t.includes('queue') || t.includes('heap') || t.includes('priority')) return 'Stack/Queue';
   if (t.includes('greedy')) return 'Greedy';
+  
+  // Array topics: basic, traversal, pointer, window, hashing, etc.
+  if (t.includes('basic') || t.includes('traversal') || t.includes('pointer') || t.includes('window') || t.includes('hashing') || t.includes('map') || t.includes('array')) return 'Arrays';
+  
   return 'Arrays';
 }
 
