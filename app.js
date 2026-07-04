@@ -2429,8 +2429,6 @@ function renderRoadmap() {
             const isChecked = !!S.roadmapChecks[key];
             const notes = S.roadmapNotes[key] || '';
             const link = S.roadmapLinks[key] || '';
-            const safeCat = category.replace(/[^a-zA-Z0-9]/g, '');
-            const safeTopic = topic.replace(/[^a-zA-Z0-9]/g, '');
 
             return `
               <div class="roadmap-topic-row" style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 8px; padding: 10px; transition: all 0.2s;">
@@ -2441,84 +2439,14 @@ function renderRoadmap() {
                   </label>
                   
                   <div style="display: flex; gap: 4px;">
-                    <button class="btn btn-sm" onclick="openRoadmapNotepad('${category.replace(/'/g, "\\'")}', '${topic.replace(/'/g, "\\'")}')" style="padding: 3px 6px; font-size: 10px;" title="Open Notepad in New Tab">
-                      <i class="fas fa-edit"></i> Notes ↗
+                    <button class="btn btn-sm" onclick="openRoadmapNotepad('${category.replace(/'/g, "\\'")}', '${topic.replace(/'/g, "\\'")}')" style="padding: 3px 6px; font-size: 10px; ${notes ? 'border-color: var(--accent2); color: var(--accent2); background: rgba(0, 212, 170, 0.05);' : ''}" title="Open Notepad in New Tab">
+                      <i class="fas fa-edit"></i> ${notes ? 'Notes ✓' : 'Notes ↗'}
                     </button>
                     <button class="btn btn-sm" onclick="editRoadmapTopicLink('${category.replace(/'/g, "\\'")}', '${topic.replace(/'/g, "\\'")}')" style="padding: 3px 6px; font-size: 10px; ${link ? 'border-color: var(--accent2); color: var(--accent2); background: rgba(0, 212, 170, 0.05);' : ''}" title="Link ChatGPT">
                       <i class="fas fa-link"></i> ${link ? 'Linked 🚀' : 'Link'}
                     </button>
                   </div>
                 </div>
-
-                <!-- Render note bubble if exists -->
-                ${notes ? `
-                  <div class="notepad-paper" style="
-                    margin-top: 10px;
-                    padding: 14px 16px 14px 28px;
-                    background: linear-gradient(135deg, #fffcf0 0%, #fff7d6 100%);
-                    background-image: linear-gradient(#e5dbad 1px, transparent 1px);
-                    background-size: 100% 22px;
-                    border-left: 3px solid #ff7675;
-                    border-radius: 4px;
-                    box-shadow: 3px 5px 12px rgba(0,0,0,0.25);
-                    font-family: inherit;
-                    font-size: 12px;
-                    color: #2d3436;
-                    line-height: 22px;
-                    position: relative;
-                    word-break: break-word;
-                    transform: rotate(-0.5deg);
-                    transition: all 0.3s;
-                  " onmouseover="this.style.transform='rotate(0deg) scale(1.02)'" onmouseout="this.style.transform='rotate(-0.5deg)'">
-                    
-                    <!-- Frosted tape effect -->
-                    <div style="
-                      position: absolute;
-                      top: -8px;
-                      left: 50%;
-                      transform: translateX(-50%) rotate(2deg);
-                      width: 50px;
-                      height: 14px;
-                      background: rgba(255, 255, 255, 0.45);
-                      backdrop-filter: blur(2px);
-                      border: 1px dashed rgba(0,0,0,0.15);
-                    "></div>
-
-                    <!-- Notepad controls -->
-                    <div style="
-                      position: absolute;
-                      top: 4px;
-                      right: 6px;
-                      display: flex;
-                      gap: 4px;
-                      z-index: 10;
-                    ">
-                      <button onclick="copyRoadmapNoteText('${key.replace(/'/g, "\\'")}')" style="
-                        background: none;
-                        border: none;
-                        color: #718093;
-                        cursor: pointer;
-                        font-size: 10px;
-                        padding: 2px;
-                      " title="Copy Notes"><i class="fas fa-copy"></i></button>
-                      <button onclick="clearRoadmapNote('${category.replace(/'/g, "\\'")}', '${topic.replace(/'/g, "\\'")}')" style="
-                        background: none;
-                        border: none;
-                        color: #e74c3c;
-                        cursor: pointer;
-                        font-size: 10px;
-                        padding: 2px;
-                      " title="Delete Note"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-
-                    <strong style="color: #d63031; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px; line-height: 1.2;">
-                      <i class="fas fa-sticky-note"></i> Topic Notes
-                    </strong>
-                    <div style="font-weight: 500;">
-                      ${notes.replace(/\n/g, '<br>')}
-                    </div>
-                  </div>
-                ` : ''}
 
                 <!-- Render chat link if exists -->
                 ${link ? `
