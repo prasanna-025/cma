@@ -2441,19 +2441,13 @@ function renderRoadmap() {
                   </label>
                   
                   <div style="display: flex; gap: 4px;">
-                    <button class="btn btn-sm" onclick="toggleRoadmapNoteForm('${category.replace(/'/g, "\\'")}', '${topic.replace(/'/g, "\\'")}')" style="padding: 3px 6px; font-size: 10px;" title="Write notes">
-                      <i class="fas fa-edit"></i> Notes
+                    <button class="btn btn-sm" onclick="openRoadmapNotepad('${category.replace(/'/g, "\\'")}', '${topic.replace(/'/g, "\\'")}')" style="padding: 3px 6px; font-size: 10px;" title="Open Notepad in New Tab">
+                      <i class="fas fa-edit"></i> Notes ↗
                     </button>
                     <button class="btn btn-sm" onclick="editRoadmapTopicLink('${category.replace(/'/g, "\\'")}', '${topic.replace(/'/g, "\\'")}')" style="padding: 3px 6px; font-size: 10px; ${link ? 'border-color: var(--accent2); color: var(--accent2); background: rgba(0, 212, 170, 0.05);' : ''}" title="Link ChatGPT">
                       <i class="fas fa-link"></i> ${link ? 'Linked 🚀' : 'Link'}
                     </button>
                   </div>
-                </div>
-
-                <!-- Notes drawer -->
-                <div id="note-drawer-${safeCat}-${safeTopic}" class="note-drawer" style="display: none; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border);">
-                  <textarea id="note-textarea-${safeCat}-${safeTopic}" class="inp" style="width: 100%; height: 60px; font-size: 12px; margin-bottom: 6px; padding: 6px; background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 4px; color: #fff; resize: vertical;" placeholder="Write down your study notes...">${notes}</textarea>
-                  <button class="btn btn-sm btn-primary" onclick="saveRoadmapTopicNote('${category.replace(/'/g, "\\'")}', '${topic.replace(/'/g, "\\'")}')" style="font-size: 10px; padding: 4px 8px;">Save Note</button>
                 </div>
 
                 <!-- Render note bubble if exists -->
@@ -2654,6 +2648,18 @@ function clearRoadmapNote(category, topic) {
   }
 }
 
+function openRoadmapNotepad(category, topic) {
+  window.open(`notepad.html?category=${encodeURIComponent(category)}&topic=${encodeURIComponent(topic)}`, '_blank');
+}
+
+// Storage event listener to sync note updates across tabs in real-time
+window.addEventListener('storage', (e) => {
+  if (e.key === 'placementOS_v2') {
+    load();
+    if (typeof renderRoadmap === 'function') renderRoadmap();
+  }
+});
+
 window.toggleRoadmapTopic = toggleRoadmapTopic;
 window.toggleRoadmapNoteForm = toggleRoadmapNoteForm;
 window.saveRoadmapTopicNote = saveRoadmapTopicNote;
@@ -2663,3 +2669,4 @@ window.copyRoadmapTutorPrompt = copyRoadmapTutorPrompt;
 window.renderRoadmap = renderRoadmap;
 window.copyRoadmapNoteText = copyRoadmapNoteText;
 window.clearRoadmapNote = clearRoadmapNote;
+window.openRoadmapNotepad = openRoadmapNotepad;
