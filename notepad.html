@@ -293,8 +293,11 @@
         <button class="btn btn-success" onclick="copyAIPrompt()" title="Quiz & Mock Interview Prompt">
           <i class="fas fa-robot"></i> Tutor
         </button>
-        <button class="btn btn-success" style="background: rgba(108, 99, 255, 0.1); border-color: rgba(108, 99, 255, 0.2); color: #8c83ff;" onclick="optimizeNotesWithAI()" title="Enhance grammar & structure notes with AI">
+        <button class="btn btn-success" style="background: rgba(108, 99, 255, 0.1); border-color: rgba(108, 99, 255, 0.2); color: #8c83ff;" onclick="optimizeNotesWithAI()" id="ai-enhance-btn" title="Enhance grammar & structure notes with AI">
           <i class="fas fa-magic"></i> Polished by AI
+        </button>
+        <button class="btn" onclick="promptApiKey()" style="padding: 10px;" title="Configure Gemini API Key">
+          <i class="fas fa-cog"></i>
         </button>
       </div>
     </div>
@@ -420,14 +423,101 @@ Please:
       });
     }
 
+    // Configure API key
+    function promptApiKey() {
+      const current = localStorage.getItem('gemini_api_key') || '';
+      const key = prompt("🔑 Configure Gemini API Key:\nEnter your Google Gemini API Key to enable instant AI polishing.\n\nDon't have one? You can get a free key from Google AI Studio.\nLeave blank to clear.", current);
+      if (key === null) return;
+      
+      if (key.trim()) {
+        localStorage.setItem('gemini_api_key', key.trim());
+        showToast("Gemini API Key saved!");
+      } else {
+        localStorage.removeItem('gemini_api_key');
+        showToast("Gemini API Key cleared.");
+      }
+    }
+
     // Enhance notes (Grammar, spelling & SDE structure optimization) with AI
-    function optimizeNotesWithAI() {
+    async function optimizeNotesWithAI() {
       const currentNotes = textareaEl.value.trim();
       if (!currentNotes) {
         showToast("⚠️ Write some notes first before enhancing!");
         return;
       }
+
+      let apiKey = localStorage.getItem('gemini_api_key');
+      if (!apiKey) {
+        apiKey = prompt("🔑 Gemini API Key Required:\nTo instantly polish your notes on this page, enter your free Google Gemini API Key.\n\n(Get one for free at: https://aistudio.google.com/)\n\nPress Cancel to fall back to the manual ChatGPT copy-paste method.");
+        if (!apiKey || !apiKey.trim()) {
+          showToast("⚠️ Falling back to manual clipboard method...");
+          fallbackManualAIPrompt(currentNotes);
+          return;
+        }
+        localStorage.setItem('gemini_api_key', apiKey.trim());
+        showToast("Gemini API Key saved!");
+      }
+
+      const btn = document.getElementById('ai-enhance-btn');
+      const originalText = btn.innerHTML;
       
+      // Update UI to loading state
+      btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Polishing...`;
+      btn.disabled = true;
+      textareaEl.disabled = true;
+      saveStatusEl.innerHTML = `<i class="fas fa-spinner fa-spin" style="color: var(--accent);"></i> AI is writing...`;
+
+      try {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            contents: [{
+              parts: [{
+                text: `Act as an SDE placement tutor and professional technical copywriter. Clean up the following study notes for the topic "${topic}" under "${category}".
+Tasks:
+1. Correct all grammar, spelling, and punctuation errors.
+2. Re-structure the notes to make them extremely professional, clean, and highly understandable (use clear headers, bullet points, and code block formatting where helpful).
+3. Do not shorten them excessively — retain all SDE-critical concepts and facts.
+4. Output ONLY the final polished markdown notes. Do not include any intro, outro, or conversation.
+
+Here are the notes to polish:
+---
+${currentNotes}
+---`
+              }]
+            }]
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const polishedText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+        
+        if (polishedText) {
+          textareaEl.value = polishedText.trim();
+          autoSaveNote(); // save to local storage
+          showToast("✨ Notes successfully polished by AI!");
+        } else {
+          throw new Error("No response parts received from API");
+        }
+      } catch (err) {
+        console.error(err);
+        showToast("❌ Auto-polishing failed. Falling back to ChatGPT...");
+        fallbackManualAIPrompt(currentNotes);
+      } finally {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        textareaEl.disabled = false;
+      }
+    }
+
+    function fallbackManualAIPrompt(currentNotes) {
       const promptText = `Act as a professional technical editor and SDE placement tutor. Here are my raw study notes for the topic "${topic}" under "${category}":
 ---
 ${currentNotes}
@@ -438,14 +528,12 @@ Please:
 2. Re-structure the notes to make them highly understandable, clean, and professional (using bullet points and code block highlights if needed).
 3. Keep it concise, comprehensive, and optimized for placement preparation.
 Please output only the polished, final notes so that I can easily copy it back into my notepad.`;
-
+      
       navigator.clipboard.writeText(promptText).then(() => {
         showToast("📋 Enhance prompt copied! Opening ChatGPT...");
         setTimeout(() => {
           window.open("https://chatgpt.com/?q=" + encodeURIComponent("I want to polish my study notes. I have copied my raw notes and instructions to my clipboard. Please ask me to paste it so you can correct the grammar and structure them."), "_blank");
         }, 800);
-      }).catch(() => {
-        showToast("Failed to copy. Please allow clipboard permissions.");
       });
     }
 
