@@ -2725,31 +2725,53 @@ Answer the user's questions about SDE placements, interview prep, resumes, mock 
       replyText = data.choices?.[0]?.message?.content;
 
     } else {
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          contents: [{
-            parts: [{
-              text: `${promptSystem}\n\nUser Question: ${userText}`
-            }]
-          }]
-        })
-      });
+      const models = ["gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-pro"];
+      let lastError = null;
 
-      if (!response.ok) {
-        let errMsg = `Gemini Error ${response.status}`;
+      for (const model of models) {
         try {
-          const errJSON = await response.json();
-          if (errJSON.error && errJSON.error.message) errMsg = errJSON.error.message;
-        } catch(e) {}
-        throw new Error(errMsg);
+          const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/${model}:generateContent?key=${apiKey}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              contents: [{
+                parts: [{
+                  text: `${promptSystem}\n\nUser Question: ${userText}`
+                }]
+              }]
+            })
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            replyText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (replyText) {
+              lastError = null;
+              break;
+            }
+          } else {
+            let errMsg = `Gemini Error ${response.status}`;
+            try {
+              const errJSON = await response.json();
+              if (errJSON.error && errJSON.error.message) errMsg = errJSON.error.message;
+            } catch(e) {}
+            lastError = new Error(errMsg);
+            // If it's a 404 (model not found), continue the loop to try the next model
+            if (response.status !== 404) {
+              break;
+            }
+          }
+        } catch (err) {
+          lastError = err;
+          break;
+        }
       }
 
-      const data = await response.json();
-      replyText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (!replyText && lastError) {
+        throw lastError;
+      }
     }
 
     const indicator = document.getElementById(typingId);
