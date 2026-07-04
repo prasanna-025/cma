@@ -1350,6 +1350,39 @@ function renderPlacement() {
   document.getElementById('app-count').textContent = S.apps;
   updateMockBar();
   renderPipeline();
+
+  // Update card percentages dynamically
+  updatePlacementCardPct('resume-pct', ['resume-made', 'resume-ats', 'resume-reviewed', 'resume-1page', 'resume-links', 'resume-action']);
+  updatePlacementCardPct('li-pct', ['li-photo', 'li-headline', 'li-about', 'li-500', 'li-skills', 'li-projects']);
+  updatePlacementCardPct('priorities-pct', ['priority-dsa', 'priority-python', 'priority-fastapi', 'priority-react', 'priority-sql', 'priority-docker', 'priority-aws', 'priority-projects', 'priority-aiml']);
+
+  // Calculate dynamic Placement Readiness Score
+  const resumeDone = ['resume-made', 'resume-ats', 'resume-reviewed', 'resume-1page', 'resume-links', 'resume-action'].filter(k => S.placementChecks[k]).length;
+  const liDone = ['li-photo', 'li-headline', 'li-about', 'li-500', 'li-skills', 'li-projects'].filter(k => S.placementChecks[k]).length;
+  const prioritiesDone = ['priority-dsa', 'priority-python', 'priority-fastapi', 'priority-react', 'priority-sql', 'priority-docker', 'priority-aws', 'priority-projects', 'priority-aiml'].filter(k => S.placementChecks[k]).length;
+
+  const mockPct = Math.min(1, S.mocks / 20);
+  const appPct = Math.min(1, S.apps / 10);
+
+  const totalScore = Math.round((
+    (resumeDone / 6) * 0.25 + 
+    (liDone / 6) * 0.15 + 
+    (prioritiesDone / 9) * 0.35 + 
+    mockPct * 0.15 + 
+    appPct * 0.10
+  ) * 100);
+
+  const plrPctEl = document.getElementById('plr-pct');
+  if (plrPctEl) plrPctEl.textContent = totalScore + '%';
+  const plrBarEl = document.getElementById('plr-bar');
+  if (plrBarEl) plrBarEl.style.width = totalScore + '%';
+}
+
+function updatePlacementCardPct(elemId, keys) {
+  const done = keys.filter(k => S.placementChecks[k]).length;
+  const pct = Math.round((done / keys.length) * 100);
+  const el = document.getElementById(elemId);
+  if (el) el.textContent = pct + '%';
 }
 
 function restoreCheckboxes(selector, store, attr) {
@@ -1371,6 +1404,7 @@ function togglePlacement(cb) {
   }
   save();
   renderDashboard();
+  renderPlacement();
 }
 
 function changeMock(delta) {
@@ -1388,6 +1422,7 @@ function changeMock(delta) {
   updateMockBar();
   save();
   renderDashboard();
+  renderPlacement();
 }
 
 function updateMockBar() {
@@ -1400,6 +1435,7 @@ function changeApp(delta) {
   S.apps = Math.max(0, S.apps + delta);
   document.getElementById('app-count').textContent = S.apps;
   save();
+  renderPlacement();
 }
 
 function addApplication() {
