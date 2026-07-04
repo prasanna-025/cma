@@ -290,8 +290,11 @@
         <button class="btn btn-primary" onclick="saveNote()">
           <i class="fas fa-save"></i> Save Notes
         </button>
-        <button class="btn btn-success" onclick="copyAIPrompt()">
-          <i class="fas fa-robot"></i> ChatGPT Tutor Prompt
+        <button class="btn btn-success" onclick="copyAIPrompt()" title="Quiz & Mock Interview Prompt">
+          <i class="fas fa-robot"></i> Tutor
+        </button>
+        <button class="btn btn-success" style="background: rgba(108, 99, 255, 0.1); border-color: rgba(108, 99, 255, 0.2); color: #8c83ff;" onclick="optimizeNotesWithAI()" title="Enhance grammar & structure notes with AI">
+          <i class="fas fa-magic"></i> Polished by AI
         </button>
       </div>
     </div>
@@ -414,6 +417,35 @@ Please:
       
       navigator.clipboard.writeText(promptText).then(() => {
         showToast("📋 ChatGPT prompt copied!");
+      });
+    }
+
+    // Enhance notes (Grammar, spelling & SDE structure optimization) with AI
+    function optimizeNotesWithAI() {
+      const currentNotes = textareaEl.value.trim();
+      if (!currentNotes) {
+        showToast("⚠️ Write some notes first before enhancing!");
+        return;
+      }
+      
+      const promptText = `Act as a professional technical editor and SDE placement tutor. Here are my raw study notes for the topic "${topic}" under "${category}":
+---
+${currentNotes}
+---
+
+Please:
+1. Correct any grammar or spelling mistakes.
+2. Re-structure the notes to make them highly understandable, clean, and professional (using bullet points and code block highlights if needed).
+3. Keep it concise, comprehensive, and optimized for placement preparation.
+Please output only the polished, final notes so that I can easily copy it back into my notepad.`;
+
+      navigator.clipboard.writeText(promptText).then(() => {
+        showToast("📋 Enhance prompt copied! Opening ChatGPT...");
+        setTimeout(() => {
+          window.open("https://chatgpt.com/?q=" + encodeURIComponent("I want to polish my study notes. I have copied my raw notes and instructions to my clipboard. Please ask me to paste it so you can correct the grammar and structure them."), "_blank");
+        }, 800);
+      }).catch(() => {
+        showToast("Failed to copy. Please allow clipboard permissions.");
       });
     }
 
