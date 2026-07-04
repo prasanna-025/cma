@@ -10,7 +10,8 @@ const S = {
   streak: 0, lastActive: null,
   xp: 0, level: 1,
   mocks: 0, apps: 0,
-  weekHours: {}
+  weekHours: {},
+  roadmapChecks: {}
 };
 
 // ── LOAD ──
@@ -21,6 +22,7 @@ function load() {
   if (!S.speakingPracticeMins) S.speakingPracticeMins = 0;
   if (!S.speakingPracticeLog) S.speakingPracticeLog = [];
   if (!S.vocabulary) S.vocabulary = [];
+  if (!S.roadmapChecks) S.roadmapChecks = {};
   initStreakCheck();
 }
 
@@ -146,6 +148,7 @@ function renderAll() {
   renderPlacement();
   renderCustomSkills();
   renderAnalytics();
+  renderRoadmap();
 }
 
 function injectSVGDefs() {
@@ -184,10 +187,11 @@ function switchSection(sec) {
   document.querySelector(`.nav-item[data-section="${sec}"]`)?.classList.add('active');
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.getElementById(`section-${sec}`)?.classList.add('active');
-  const titles = { dashboard: 'Dashboard', dsa: 'DSA Tracker', subjects: 'Core Subjects', communication: 'Communication', softskills: 'Soft Skills', projects: 'Projects', placement: 'Placement Tracker', extraskills: 'Cloud & Extra Skills', analytics: 'Analytics' };
+  const titles = { dashboard: 'Dashboard', dsa: 'DSA Tracker', subjects: 'Core Subjects', communication: 'Communication', softskills: 'Soft Skills', projects: 'Projects', placement: 'Placement Tracker', roadmap: '8-Month Roadmap', extraskills: 'Cloud & Extra Skills', analytics: 'Analytics' };
   document.getElementById('topbar-title').textContent = titles[sec] || sec;
   if (sec === 'analytics') renderAnalytics();
   if (sec === 'extraskills') renderCustomSkills();
+  if (sec === 'roadmap') renderRoadmap();
 }
 
 function setupMobileMenu() {
@@ -2327,3 +2331,173 @@ window.toggleSoftSkillComplete = toggleSoftSkillComplete;
 window.launchAITutor = launchAITutor;
 window.copyTutorPrompt = copyTutorPrompt;
 window.spawnConfetti = spawnConfetti;
+
+// ── 8-MONTH PLACEMENT ROADMAP DATA & LOGIC ──
+const ROADMAP_DATA = {
+  "Python (Master it)": [
+    "Advanced Python",
+    "OOP",
+    "File handling",
+    "Exception handling",
+    "Modules",
+    "Multithreading basics"
+  ],
+  "Frontend": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React.js"
+  ],
+  "Python Backend": [
+    "FastAPI (FastAPI or Flask)",
+    "REST APIs",
+    "JWT Authentication",
+    "API testing"
+  ],
+  "Database": [
+    "MySQL or PostgreSQL",
+    "SQL",
+    "ORM (SQLAlchemy)"
+  ],
+  "Git & GitHub": [
+    "Git Commands",
+    "GitHub Workflow & PRs"
+  ],
+  "Docker": [
+    "Docker Basics",
+    "Dockerfile & Images",
+    "Docker Compose"
+  ],
+  "AWS": [
+    "EC2",
+    "S3",
+    "IAM",
+    "VPC",
+    "RDS",
+    "Basic deployment"
+  ],
+  "Linux": [
+    "Commands",
+    "Shell scripting"
+  ],
+  "DSA": [
+    "Arrays",
+    "Strings",
+    "Linked Lists",
+    "Trees",
+    "Graphs",
+    "Dynamic Programming (basics)"
+  ]
+};
+
+function renderRoadmap() {
+  const grid = document.getElementById('roadmap-grid');
+  if (!grid) return;
+
+  let totalTopics = 0;
+  let completedTopics = 0;
+
+  grid.innerHTML = Object.keys(ROADMAP_DATA).map(category => {
+    const topics = ROADMAP_DATA[category];
+    const doneTopics = topics.filter(topic => {
+      const key = `${category}_${topic}`;
+      return !!S.roadmapChecks[key];
+    });
+
+    totalTopics += topics.length;
+    completedTopics += doneTopics.length;
+
+    const pct = topics.length > 0 ? Math.round((doneTopics.length / topics.length) * 100) : 0;
+
+    return `
+      <div class="subject-card">
+        <div class="subject-title">
+          <span>${category}</span>
+          <span class="subject-pct">${pct}%</span>
+        </div>
+        <div class="subject-topic-count">${doneTopics.length} / ${topics.length} completed</div>
+        
+        <div class="prog-bar" style="height: 6px; margin: 4px 0 12px 0;">
+          <div class="prog-fill" style="width: ${pct}%"></div>
+        </div>
+
+        <div class="subject-topics">
+          ${topics.map(topic => {
+            const key = `${category}_${topic}`;
+            const isChecked = !!S.roadmapChecks[key];
+            return `
+              <label class="topic-item">
+                <input type="checkbox" onchange="toggleRoadmapTopic('${category.replace(/'/g, "\\'")}', '${topic.replace(/'/g, "\\'")}', this)" ${isChecked ? 'checked' : ''}>
+                <span>${topic}</span>
+              </label>
+            `;
+          }).join('')}
+        </div>
+
+        <div style="margin-top: 14px; border-top: 1px solid var(--border); padding-top: 10px; display: flex; gap: 8px;">
+          <button class="btn btn-sm" onclick="launchRoadmapTutor('${category.replace(/'/g, "\\'")}')" style="flex: 1; justify-content: center; font-size: 11px; padding: 6px;"><i class="fas fa-robot"></i> ChatGPT Tutor</button>
+          <button class="btn btn-sm" onclick="copyRoadmapTutorPrompt('${category.replace(/'/g, "\\'")}')" style="padding: 6px;" title="Copy Prompt"><i class="fas fa-copy"></i></button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Update overall progress bar
+  const overallPct = totalTopics > 0 ? Math.round((completedTopics / totalTopics) * 100) : 0;
+  const pctEl = document.getElementById('roadmap-pct');
+  if (pctEl) pctEl.textContent = overallPct + '%';
+  const barEl = document.getElementById('roadmap-bar');
+  if (barEl) barEl.style.width = overallPct + '%';
+}
+
+function toggleRoadmapTopic(category, topic, cb) {
+  const key = `${category}_${topic}`;
+  S.roadmapChecks[key] = cb.checked;
+  if (cb.checked) {
+    addXP(10);
+    if (window.event) {
+      const e = window.event;
+      if (e.clientX && e.clientY) {
+        spawnConfetti(e.clientX, e.clientY);
+      }
+    }
+  }
+  save();
+  renderRoadmap();
+  renderDashboard();
+}
+
+function getRoadmapTutorPrompt(category) {
+  return `Act as an expert SDE interviewer and placement tutor. I am studying the domain "${category}" from my 8-month SDE placement roadmap.
+Specifically, I need guidance and mock questions for these topics:
+${ROADMAP_DATA[category].map(t => `- ${t}`).join('\n')}
+
+Please:
+1. Briefly summarize the core, interview-critical concepts for these topics.
+2. Provide 3 highly realistic, frequently-asked interview questions (with coding tasks if applicable).
+3. Quiz me on them one by one. Ask the first question and wait for my response.`;
+}
+
+function launchRoadmapTutor(category) {
+  const promptText = getRoadmapTutorPrompt(category);
+  navigator.clipboard.writeText(promptText).then(() => {
+    toast("📋 Prompt copied! Opening ChatGPT...");
+    window.open("https://chatgpt.com/?q=" + encodeURIComponent("I want to practice placement prep. I have copied my tutor prompt to my clipboard, please ask me to paste it."), "_blank");
+  }).catch(() => {
+    window.open("https://chatgpt.com/?q=" + encodeURIComponent(promptText), "_blank");
+  });
+}
+
+function copyRoadmapTutorPrompt(category) {
+  const promptText = getRoadmapTutorPrompt(category);
+  navigator.clipboard.writeText(promptText).then(() => {
+    toast("📋 Roadmap Tutor prompt copied!");
+  }).catch(() => {
+    toast("Failed to copy. Please allow clipboard permissions.", "error");
+  });
+}
+
+window.toggleRoadmapTopic = toggleRoadmapTopic;
+window.launchRoadmapTutor = launchRoadmapTutor;
+window.copyRoadmapTutorPrompt = copyRoadmapTutorPrompt;
+window.renderRoadmap = renderRoadmap;
