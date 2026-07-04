@@ -605,33 +605,6 @@
   </div>
 </div>
 
-<!-- Floating AI Chatbot Widget -->
-<div class="ai-bot-fab pulse" id="ai-bot-fab" onclick="toggleAIChat()" title="Open PlacementOS AI Chatbot">
-  <i class="fas fa-robot"></i>
-</div>
-
-<div class="ai-chat-window" id="ai-chat-window">
-  <div class="ai-chat-header">
-    <div class="ai-bot-title">
-      <div class="bot-status-dot"></div>
-      <span>⚡ PlacementOS AI Companion</span>
-    </div>
-    <div style="display: flex; gap: 8px; align-items: center;">
-      <button class="chat-close-btn" onclick="promptDashboardApiKey()" title="Configure AI API Key" style="padding: 2px;"><i class="fas fa-cog"></i></button>
-      <button class="chat-close-btn" onclick="toggleAIChat()" style="padding: 2px;"><i class="fas fa-times"></i></button>
-    </div>
-  </div>
-  <div class="ai-chat-messages" id="ai-chat-messages">
-    <div class="message bot-message">
-      Hi! I am your PlacementOS AI Assistant. 🚀 I can help you solve DSA questions, prepare for mock interviews, write code (FastAPI/React/Python), or explain computer science fundamentals! Ask me anything.
-    </div>
-  </div>
-  <div class="ai-chat-input-area">
-    <input type="text" id="ai-chat-input" placeholder="Ask anything... (Press Enter)" onkeydown="handleChatKey(event)">
-    <button class="chat-send-btn" onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
-  </div>
-</div>
-
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 <script src="sync.js"></script>
