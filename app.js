@@ -2598,3 +2598,196 @@ window.renderRoadmap = renderRoadmap;
 window.copyRoadmapNoteText = copyRoadmapNoteText;
 window.clearRoadmapNote = clearRoadmapNote;
 window.openRoadmapNotepad = openRoadmapNotepad;
+
+// ── FLOATING AI CHATBOT COMPANION ──
+function toggleAIChat() {
+  const chatWindow = document.getElementById('ai-chat-window');
+  const chatFab = document.getElementById('ai-bot-fab');
+  if (chatWindow && chatFab) {
+    chatWindow.classList.toggle('show');
+    chatFab.classList.remove('pulse');
+    if (chatWindow.classList.contains('show')) {
+      const input = document.getElementById('ai-chat-input');
+      if (input) input.focus();
+    }
+  }
+}
+
+function handleChatKey(event) {
+  if (event.key === 'Enter') {
+    sendChatMessage();
+  }
+}
+
+async function sendChatMessage() {
+  const input = document.getElementById('ai-chat-input');
+  if (!input) return;
+  const userText = input.value.trim();
+  if (!userText) return;
+
+  input.value = '';
+  appendMessage(userText, 'user-message');
+
+  const messagesContainer = document.getElementById('ai-chat-messages');
+  const typingId = 'ai-chat-typing';
+  const typingIndicator = document.createElement('div');
+  typingIndicator.className = 'message bot-message';
+  typingIndicator.id = typingId;
+  typingIndicator.innerHTML = `
+    <div class="typing-indicator">
+      <span></span><span></span><span></span>
+    </div>
+  `;
+  messagesContainer.appendChild(typingIndicator);
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+  let apiKey = localStorage.getItem('gemini_api_key') || '';
+  apiKey = apiKey.trim();
+
+  if (!apiKey) {
+    setTimeout(() => {
+      const indicator = document.getElementById(typingId);
+      if (indicator) indicator.remove();
+
+      let reply = "";
+      const lower = userText.toLowerCase();
+
+      if (lower.includes('dsa') || lower.includes('problem')) {
+        const todayCount = typeof getTodayDSACount === 'function' ? getTodayDSACount() : 0;
+        const totalCount = S.dsa ? S.dsa.length : 0;
+        reply = `📊 **DSA Progress**: You have solved **${todayCount} problems today** (Target: 5). Total lifetime solved is **${totalCount}**. Keep practicing! Type 'notes' or check the roadmap for topics.`;
+      } else if (lower.includes('resume')) {
+        reply = `📄 **SDE Resume Tip**: Keep your resume to exactly **1 page**. Highlight SDE-related technologies (FastAPI, SQL, React) first, and include clickable GitHub links to your projects!`;
+      } else if (lower.includes('mock') || lower.includes('interview')) {
+        const mockCount = S.mocks ? S.mocks.length : 0;
+        reply = `🤝 **Mock Interviews**: You have logged **${mockCount} mock interviews** so far. Practicing aloud is key to clearing placements!`;
+      } else if (lower.includes('streak') || lower.includes('xp')) {
+        reply = `🔥 **Stats**: Your current level is **${S.level || 1}**, with **${S.xp || 0} XP** and a **${S.streak || 1}-day streak**! You are doing great!`;
+      } else {
+        reply = `👋 **API Key Required**: I noticed you haven't linked your AI API Key yet! To enable smart, personalized conversations, click the Settings gear icon (⚙️) on any topic notes page and paste your OpenAI or Google Gemini key.
+        \n\nIn the meantime, you can ask me about: **'dsa'**, **'resume'**, **'mock'**, or **'streak'**!`;
+      }
+
+      appendMessage(reply, 'bot-message');
+    }, 1000);
+    return;
+  }
+
+  const isOpenAI = apiKey.startsWith('sk-');
+  const dsaToday = typeof getTodayDSACount === 'function' ? getTodayDSACount() : 0;
+  const dsaTotal = S.dsa ? S.dsa.length : 0;
+  const xp = S.xp || 0;
+  const level = S.level || 1;
+  const streak = S.streak || 1;
+
+  const promptSystem = `You are a helpful, professional, and friendly SDE Placement Coach and AI Assistant built into PlacementOS.
+Provide concise, highly actionable, and tech-focused answers. Keep formatting tidy using bold text, short paragraphs, or bullet points.
+
+The user's current progress context:
+- Level: ${level}
+- XP: ${xp}
+- Daily Streak: ${streak} days
+- DSA Problems Solved Today: ${dsaToday} / 5
+- Total Lifetime DSA Solved: ${dsaTotal}
+
+Answer the user's questions about SDE placements, interview prep, resumes, mock interviews, programming concepts, or general study advice.`;
+
+  try {
+    let replyText = "";
+
+    if (isOpenAI) {
+      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+          model: "gpt-4o-mini",
+          messages: [
+            { role: "system", content: promptSystem },
+            { role: "user", content: userText }
+          ],
+          temperature: 0.7
+        })
+      });
+
+      if (!response.ok) {
+        let errMsg = `OpenAI Error ${response.status}`;
+        try {
+          const errJSON = await response.json();
+          if (errJSON.error && errJSON.error.message) errMsg = errJSON.error.message;
+        } catch(e) {}
+        throw new Error(errMsg);
+      }
+
+      const data = await response.json();
+      replyText = data.choices?.[0]?.message?.content;
+
+    } else {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{
+              text: `${promptSystem}\n\nUser Question: ${userText}`
+            }]
+          }]
+        })
+      });
+
+      if (!response.ok) {
+        let errMsg = `Gemini Error ${response.status}`;
+        try {
+          const errJSON = await response.json();
+          if (errJSON.error && errJSON.error.message) errMsg = errJSON.error.message;
+        } catch(e) {}
+        throw new Error(errMsg);
+      }
+
+      const data = await response.json();
+      replyText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+    }
+
+    const indicator = document.getElementById(typingId);
+    if (indicator) indicator.remove();
+
+    if (replyText) {
+      appendMessage(replyText.trim(), 'bot-message');
+    } else {
+      throw new Error("No response content from model");
+    }
+
+  } catch (err) {
+    console.error(err);
+    const indicator = document.getElementById(typingId);
+    if (indicator) indicator.remove();
+
+    appendMessage(`❌ **API Error**: ${err.message || "Failed to fetch response."}. Please verify your API Key.`, 'bot-message');
+  }
+}
+
+function appendMessage(text, className) {
+  const messagesContainer = document.getElementById('ai-chat-messages');
+  if (!messagesContainer) return;
+
+  const msgDiv = document.createElement('div');
+  msgDiv.className = `message ${className}`;
+  
+  let formatted = text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/`(.*?)`/g, '<code style="background: rgba(255,255,255,0.08); padding: 2px 4px; border-radius: 4px; font-family: monospace;">$1</code>')
+    .replace(/\n/g, '<br>');
+
+  msgDiv.innerHTML = formatted;
+  messagesContainer.appendChild(msgDiv);
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+window.toggleAIChat = toggleAIChat;
+window.handleChatKey = handleChatKey;
+window.sendChatMessage = sendChatMessage;
