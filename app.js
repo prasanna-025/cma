@@ -11,7 +11,9 @@ const S = {
   xp: 0, level: 1,
   mocks: 0, apps: 0,
   weekHours: {},
-  roadmapChecks: {}
+  roadmapChecks: {},
+  roadmapNotes: {},
+  roadmapLinks: {}
 };
 
 // ── LOAD ──
@@ -23,6 +25,8 @@ function load() {
   if (!S.speakingPracticeLog) S.speakingPracticeLog = [];
   if (!S.vocabulary) S.vocabulary = [];
   if (!S.roadmapChecks) S.roadmapChecks = {};
+  if (!S.roadmapNotes) S.roadmapNotes = {};
+  if (!S.roadmapLinks) S.roadmapLinks = {};
   initStreakCheck();
 }
 
@@ -2415,19 +2419,59 @@ function renderRoadmap() {
         </div>
         <div class="subject-topic-count">${doneTopics.length} / ${topics.length} completed</div>
         
-        <div class="prog-bar" style="height: 6px; margin: 4px 0 12px 0;">
+        <div class="prog-bar" style="height: 6px; margin: 4px 0 16px 0;">
           <div class="prog-fill" style="width: ${pct}%"></div>
         </div>
 
-        <div class="subject-topics">
+        <div class="subject-topics" style="display: flex; flex-direction: column; gap: 8px;">
           ${topics.map(topic => {
             const key = `${category}_${topic}`;
             const isChecked = !!S.roadmapChecks[key];
+            const notes = S.roadmapNotes[key] || '';
+            const link = S.roadmapLinks[key] || '';
+            const safeCat = category.replace(/[^a-zA-Z0-9]/g, '');
+            const safeTopic = topic.replace(/[^a-zA-Z0-9]/g, '');
+
             return `
-              <label class="topic-item">
-                <input type="checkbox" onchange="toggleRoadmapTopic('${category.replace(/'/g, "\\'")}', '${topic.replace(/'/g, "\\'")}', this)" ${isChecked ? 'checked' : ''}>
-                <span>${topic}</span>
-              </label>
+              <div class="roadmap-topic-row" style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 8px; padding: 10px; transition: all 0.2s;">
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
+                  <label class="topic-item" style="flex: 1; display: flex; align-items: center; gap: 8px; margin: 0; cursor: pointer;">
+                    <input type="checkbox" onchange="toggleRoadmapTopic('${category.replace(/'/g, "\\'")}', '${topic.replace(/'/g, "\\'")}', this)" ${isChecked ? 'checked' : ''} style="accent-color: var(--accent2);">
+                    <span style="font-size: 13px; font-weight: 500; color: ${isChecked ? 'var(--text3)' : '#fff'}; text-decoration: ${isChecked ? 'line-through' : 'none'};">${topic}</span>
+                  </label>
+                  
+                  <div style="display: flex; gap: 4px;">
+                    <button class="btn btn-sm" onclick="toggleRoadmapNoteForm('${category.replace(/'/g, "\\'")}', '${topic.replace(/'/g, "\\'")}')" style="padding: 3px 6px; font-size: 10px;" title="Write notes">
+                      <i class="fas fa-edit"></i> Notes
+                    </button>
+                    <button class="btn btn-sm" onclick="editRoadmapTopicLink('${category.replace(/'/g, "\\'")}', '${topic.replace(/'/g, "\\'")}')" style="padding: 3px 6px; font-size: 10px; ${link ? 'border-color: var(--accent2); color: var(--accent2); background: rgba(0, 212, 170, 0.05);' : ''}" title="Link ChatGPT">
+                      <i class="fas fa-link"></i> ${link ? 'Linked 🚀' : 'Link'}
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Notes drawer -->
+                <div id="note-drawer-${safeCat}-${safeTopic}" class="note-drawer" style="display: none; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border);">
+                  <textarea id="note-textarea-${safeCat}-${safeTopic}" class="inp" style="width: 100%; height: 60px; font-size: 12px; margin-bottom: 6px; padding: 6px; background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 4px; color: #fff; resize: vertical;" placeholder="Write down your study notes...">${notes}</textarea>
+                  <button class="btn btn-sm btn-primary" onclick="saveRoadmapTopicNote('${category.replace(/'/g, "\\'")}', '${topic.replace(/'/g, "\\'")}')" style="font-size: 10px; padding: 4px 8px;">Save Note</button>
+                </div>
+
+                <!-- Render note bubble if exists -->
+                ${notes ? `
+                  <div style="margin-top: 8px; padding: 6px 10px; background: rgba(108, 99, 255, 0.04); border-left: 2px solid var(--accent); border-radius: 0 4px 4px 0; font-size: 11px; color: var(--text2); line-height: 1.4; word-break: break-word;">
+                    <strong>📝 Notes:</strong> ${notes.replace(/\n/g, '<br>')}
+                  </div>
+                ` : ''}
+
+                <!-- Render chat link if exists -->
+                ${link ? `
+                  <div style="margin-top: 6px; font-size: 11px;">
+                    <a href="${link}" target="_blank" style="color: var(--accent2); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; font-weight: 500;">
+                      <i class="fas fa-external-link-alt"></i> Open ChatGPT Note ↗
+                    </a>
+                  </div>
+                ` : ''}
+              </div>
             `;
           }).join('')}
         </div>
@@ -2465,6 +2509,39 @@ function toggleRoadmapTopic(category, topic, cb) {
   renderDashboard();
 }
 
+function toggleRoadmapNoteForm(category, topic) {
+  const safeCat = category.replace(/[^a-zA-Z0-9]/g, '');
+  const safeTopic = topic.replace(/[^a-zA-Z0-9]/g, '');
+  const drawer = document.getElementById(`note-drawer-${safeCat}-${safeTopic}`);
+  if (drawer) {
+    drawer.style.display = drawer.style.display === 'none' ? 'block' : 'none';
+  }
+}
+
+function saveRoadmapTopicNote(category, topic) {
+  const safeCat = category.replace(/[^a-zA-Z0-9]/g, '');
+  const safeTopic = topic.replace(/[^a-zA-Z0-9]/g, '');
+  const val = document.getElementById(`note-textarea-${safeCat}-${safeTopic}`)?.value.trim() || '';
+  const key = `${category}_${topic}`;
+  
+  S.roadmapNotes[key] = val;
+  save();
+  renderRoadmap();
+  toast('Notes saved successfully!');
+}
+
+function editRoadmapTopicLink(category, topic) {
+  const key = `${category}_${topic}`;
+  const current = S.roadmapLinks[key] || '';
+  const url = prompt(`Enter ChatGPT conversation or study link for "${topic}":`, current);
+  if (url === null) return;
+  
+  S.roadmapLinks[key] = url.trim();
+  save();
+  renderRoadmap();
+  toast('ChatGPT study link saved!');
+}
+
 function getRoadmapTutorPrompt(category) {
   return `Act as an expert SDE interviewer and placement tutor. I am studying the domain "${category}" from my 8-month SDE placement roadmap.
 Specifically, I need guidance and mock questions for these topics:
@@ -2496,6 +2573,9 @@ function copyRoadmapTutorPrompt(category) {
 }
 
 window.toggleRoadmapTopic = toggleRoadmapTopic;
+window.toggleRoadmapNoteForm = toggleRoadmapNoteForm;
+window.saveRoadmapTopicNote = saveRoadmapTopicNote;
+window.editRoadmapTopicLink = editRoadmapTopicLink;
 window.launchRoadmapTutor = launchRoadmapTutor;
 window.copyRoadmapTutorPrompt = copyRoadmapTutorPrompt;
 window.renderRoadmap = renderRoadmap;
