@@ -616,7 +616,10 @@
       <div class="bot-status-dot"></div>
       <span>⚡ PlacementOS AI Companion</span>
     </div>
-    <button class="chat-close-btn" onclick="toggleAIChat()"><i class="fas fa-times"></i></button>
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <button class="chat-close-btn" onclick="promptDashboardApiKey()" title="Configure AI API Key" style="padding: 2px;"><i class="fas fa-cog"></i></button>
+      <button class="chat-close-btn" onclick="toggleAIChat()" style="padding: 2px;"><i class="fas fa-times"></i></button>
+    </div>
   </div>
   <div class="ai-chat-messages" id="ai-chat-messages">
     <div class="message bot-message">

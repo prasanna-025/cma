@@ -2791,3 +2791,18 @@ function appendMessage(text, className) {
 window.toggleAIChat = toggleAIChat;
 window.handleChatKey = handleChatKey;
 window.sendChatMessage = sendChatMessage;
+
+function promptDashboardApiKey() {
+  const current = localStorage.getItem('gemini_api_key') || '';
+  const key = prompt("🔑 Configure AI API Key:\nEnter your Google Gemini (starts with AIzaSy) or OpenAI (starts with sk-) API Key to enable live AI chatbot conversations.\n\nDon't have one? You can get a free Gemini Key at: https://aistudio.google.com/\nLeave blank to clear.", current);
+  if (key === null) return;
+  
+  if (key.trim()) {
+    localStorage.setItem('gemini_api_key', key.trim());
+    alert("API Key saved! Try chatting with the AI bot again.");
+  } else {
+    localStorage.removeItem('gemini_api_key');
+    alert("API Key cleared.");
+  }
+}
+window.promptDashboardApiKey = promptDashboardApiKey;
