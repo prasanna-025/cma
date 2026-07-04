@@ -585,25 +585,27 @@ function loadState() {
   // Clone predefined problems
   allProblems = JSON.parse(JSON.stringify(dsaProblems));
   
-  // Insert custom problems at the bottom of their matching categories
+  // Insert custom problems at the bottom of their matching categories under a separate header
   S.customProblems.forEach(cp => {
     if (!allProblems.some(p => p.name.toLowerCase() === cp.name.toLowerCase())) {
       const targetCat = cp.topic || "Arrays"; // cp.topic stores category name like "Arrays"
       let insertIndex = -1;
-      let adoptedTopic = targetCat;
 
-      // Find the last problem matching this category to insert after it
+      // Find the last problem matching this category (predefined or custom) to insert after it
       for (let i = allProblems.length - 1; i >= 0; i--) {
-        if (mapTopicToCategory(allProblems[i].topic) === targetCat) {
+        const itemCat = allProblems[i].topic.startsWith("Custom - ")
+          ? allProblems[i].topic.replace("Custom - ", "")
+          : mapTopicToCategory(allProblems[i].topic);
+          
+        if (itemCat === targetCat) {
           insertIndex = i + 1;
-          adoptedTopic = allProblems[i].topic; // adopt matching topic name to group under header
           break;
         }
       }
 
       const customProblemObj = {
         name: cp.name,
-        topic: adoptedTopic,
+        topic: "Custom - " + targetCat,
         link: cp.link || "",
         solved: cp.solved || false,
         difficulty: cp.difficulty || "Medium"
