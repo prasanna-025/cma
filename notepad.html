@@ -493,7 +493,14 @@ ${currentNotes}
         });
 
         if (!response.ok) {
-          throw new Error(`API error: ${response.status}`);
+          let errorMsg = `HTTP Error ${response.status}`;
+          try {
+            const errData = await response.json();
+            if (errData.error && errData.error.message) {
+              errorMsg = errData.error.message;
+            }
+          } catch(e) {}
+          throw new Error(errorMsg);
         }
 
         const data = await response.json();
@@ -504,11 +511,18 @@ ${currentNotes}
           autoSaveNote(); // save to local storage
           showToast("✨ Notes successfully polished by AI!");
         } else {
-          throw new Error("No response parts received from API");
+          throw new Error("No response content received from API");
         }
       } catch (err) {
         console.error(err);
-        showToast("❌ Auto-polishing failed. Falling back to ChatGPT...");
+        let userMessage = err.message || "Unknown error";
+        
+        // Check for common local file CORS or network errors
+        if (err instanceof TypeError && err.message.includes("Failed to fetch")) {
+          userMessage = "Network error or CORS block. Browsers block direct API calls from local files (file://) due to security policies. Please use a local web server (like Live Server in VS Code) or use the ChatGPT fallback.";
+        }
+        
+        alert(`❌ AI Polishing Failed:\n${userMessage}\n\nFalling back to manual ChatGPT clipboard method...`);
         fallbackManualAIPrompt(currentNotes);
       } finally {
         btn.innerHTML = originalText;
