@@ -331,9 +331,9 @@ function renderDashboard() {
   // Today's DSA Progress Dashboard Card
   const dsaToday = getTodayDSACount();
   const dsaTodayChip = document.getElementById('dash-dsa-today');
-  if (dsaTodayChip) dsaTodayChip.textContent = `${dsaToday} / 7`;
+  if (dsaTodayChip) dsaTodayChip.textContent = `${dsaToday} / 5`;
   const dsaFill = document.getElementById('dash-dsa-fill');
-  if (dsaFill) dsaFill.style.width = Math.min(100, (dsaToday / 7) * 100) + '%';
+  if (dsaFill) dsaFill.style.width = Math.min(100, (dsaToday / 5) * 100) + '%';
 
   // Render recent DSA problems solved today
   const recentDsaEl = document.getElementById('dash-dsa-recent');
@@ -690,7 +690,7 @@ function addDSAProblem() {
   save();
   renderDSASection();
   renderDashboard();
-  toast(`🎯 "${name}" added — ${getTodayDSACount()}/7 today!`);
+  toast(`🎯 "${name}" added — ${getTodayDSACount()}/5 today!`);
 }
 
 function getTodayDSACount() {
@@ -711,7 +711,7 @@ function renderDSASection() {
   const todayCount = getTodayDSACount();
   const ring = document.getElementById('dsa-daily-ring');
   const circ = 201;
-  if (ring) ring.style.strokeDashoffset = circ - Math.min(1, todayCount / 7) * circ;
+  if (ring) ring.style.strokeDashoffset = circ - Math.min(1, todayCount / 5) * circ;
   const todayCountEl = document.getElementById('dsa-today-count');
   if (todayCountEl) todayCountEl.textContent = todayCount;
   const totalDisplayEl = document.getElementById('dsa-total-display');
@@ -720,11 +720,9 @@ function renderDSASection() {
   const msgs = [
     'Start strong — solve your first problem!',
     'Great start! Keep going!',
-    'Two solved! You are on a roll!',
-    'Three down, four to go!',
-    'More than halfway there!',
-    'Five solved! Almost at the target!',
-    'One more to crush today\'s goal!',
+    'Halfway there!',
+    'Almost done!',
+    'One more for the target!',
     '🔥 Target crushed! Bonus round?'
   ];
   const motivationLineEl = document.getElementById('dsa-motivation-line');
