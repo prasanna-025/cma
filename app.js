@@ -793,6 +793,13 @@ function renderProblemList() {
 }
 
 function deleteProblem(id) {
+  const problemItem = S.dsa.find(p => p.id === id);
+  if (problemItem && S.customProblems) {
+    const customP = S.customProblems.find(cp => cp.name.toLowerCase() === problemItem.name.toLowerCase());
+    if (customP) {
+      customP.solved = false;
+    }
+  }
   S.dsa = S.dsa.filter(p => p.id !== id);
   save();
   renderDSASection();

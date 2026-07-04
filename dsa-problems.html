@@ -426,6 +426,18 @@
 
       <!-- Content Area -->
       <div class="dsa-content">
+        <!-- Quick Add Box -->
+        <div class="quick-add-box" style="background: rgba(16, 20, 32, 0.45); border: 1px solid rgba(108, 99, 255, 0.2); border-radius: 12px; padding: 1.2rem; display: flex; flex-direction: column; gap: 8px; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 0.95rem; font-weight: 600; color: #00d4aa; margin: 0; display: flex; align-items: center; gap: 6px;"><i class="fas fa-bolt"></i> Quick Add LeetCode Problem</h3>
+          <div style="display: flex; gap: 10px;">
+            <input type="text" id="quickLinkInput" placeholder="Paste LeetCode link here... (e.g. https://leetcode.com/problems/two-sum/)" style="flex: 1; padding: 0.6rem 1rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; color: #fff; font-size: 13px;" oninput="handleQuickLinkInput(this.value)">
+            <button onclick="quickAddProblem()" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 13px; font-weight: 600; background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%); border: none; border-radius: 8px; color: #fff; cursor: pointer;">Add to List</button>
+          </div>
+          <div id="quickAddFeedback" style="font-size: 11.5px; color: var(--text3); margin-top: 2px; display: none;">
+            Detected: <strong id="detectedProblemName" style="color: #fff;"></strong> in <strong id="detectedProblemCategory" style="color: var(--accent2);">Arrays</strong>
+          </div>
+        </div>
+
         <!-- Search Bar -->
         <div class="search-bar">
           <input type="text" id="searchInput" placeholder="Search problems...">
@@ -457,6 +469,7 @@ let S = {
   mocks: 0, apps: 0,
   weekHours: {}
 };
+let allProblems = [];
 
 // ── INDEXEDDB FOR DSA SCREENSHOTS ──
 const dbName = "PlacementOS_DSA_DB";
@@ -567,10 +580,27 @@ function loadState() {
   
   if (!S.dsaNotes) S.dsaNotes = {};
   if (!S.dsaCodes) S.dsaCodes = {};
+  if (!S.customProblems) S.customProblems = [];
   
-  // Sync in-memory dsaProblems status
-  dsaProblems.forEach(p => {
-    p.solved = S.dsa.some(solvedProb => solvedProb.name === p.name);
+  // Clone predefined problems
+  allProblems = JSON.parse(JSON.stringify(dsaProblems));
+  
+  // Append custom problems
+  S.customProblems.forEach(cp => {
+    if (!allProblems.some(p => p.name.toLowerCase() === cp.name.toLowerCase())) {
+      allProblems.push({
+        name: cp.name,
+        topic: cp.topic || "Custom",
+        link: cp.link || "",
+        solved: cp.solved || false,
+        difficulty: cp.difficulty || "Medium"
+      });
+    }
+  });
+
+  // Sync solved status
+  allProblems.forEach(p => {
+    p.solved = S.dsa.some(solvedProb => solvedProb.name.toLowerCase() === p.name.toLowerCase());
   });
 }
 
@@ -637,8 +667,8 @@ function renderProblems() {
 
   let currentTopic = '';
 
-  dsaProblems.forEach(problem => {
-    const difficulty = mapTopicToDifficulty(problem.topic);
+  allProblems.forEach(problem => {
+    const difficulty = problem.difficulty || mapTopicToDifficulty(problem.topic);
     
     // Check filters
     let show = true;
@@ -734,6 +764,19 @@ function renderProblems() {
               `}
             </div>
           </div>
+
+          <!-- Bottom: Solved Toggle Button -->
+          <div style="width:100%; display:flex; justify-content:flex-end; border-top:1px solid rgba(255,255,255,0.04); padding-top:12px; margin-top:4px;">
+            ${problem.solved ? `
+              <button onclick="toggleProblemSolved('${problem.name.replace(/'/g, "\\'")}', false)" class="problem-link-btn" style="background:rgba(255,50,50,0.1); border-color:rgba(255,50,50,0.2); color:#ff5555; padding:6px 16px; font-weight:600; cursor:pointer;">
+                <i class="fas fa-undo"></i> Mark as Unsolved (Todo)
+              </button>
+            ` : `
+              <button onclick="toggleProblemSolved('${problem.name.replace(/'/g, "\\'")}', true)" class="problem-link-btn" style="background:rgba(0,212,170,0.1); border-color:rgba(0,212,170,0.2); color:#00d4aa; padding:6px 16px; font-weight:600; cursor:pointer;">
+                <i class="fas fa-check-circle"></i> Mark as Solved!
+              </button>
+            `}
+          </div>
         `;
         fragment.appendChild(details);
       }
@@ -747,7 +790,7 @@ function renderProblems() {
 function populateTopicFilters() {
   const topicFilters = document.getElementById('topicFilters');
   topicFilters.innerHTML = '';
-  const topics = [...new Set(dsaProblems.map(p => p.topic))];
+  const topics = [...new Set(allProblems.map(p => p.topic))];
   
   topics.forEach(topic => {
     const checkbox = document.createElement('div');
@@ -795,22 +838,31 @@ function filterProblems() {
 }
 
 function toggleProblemSolved(problemName, solved) {
-  const problem = dsaProblems.find(p => p.name === problemName);
+  const problem = allProblems.find(p => p.name === problemName);
   if (problem) {
     problem.solved = solved;
+    
+    // Also sync solved state to customProblems array if it's custom
+    if (S.customProblems) {
+      const customP = S.customProblems.find(cp => cp.name === problemName);
+      if (customP) {
+        customP.solved = solved;
+      }
+    }
     
     if (solved) {
       if (!S.dsa.some(p => p.name === problemName)) {
         S.dsa.push({
           id: Date.now() + Math.random(),
           name: problem.name,
-          cat: mapTopicToCategory(problem.topic),
-          diff: mapTopicToDifficulty(problem.topic),
+          cat: problem.topic || mapTopicToCategory(problem.topic),
+          diff: problem.difficulty || mapTopicToDifficulty(problem.topic),
           link: problem.link || "",
           date: new Date().toISOString().slice(0, 10)
         });
         
-        const points = mapTopicToDifficulty(problem.topic) === 'Easy' ? 10 : mapTopicToDifficulty(problem.topic) === 'Medium' ? 20 : 35;
+        const diff = problem.difficulty || mapTopicToDifficulty(problem.topic);
+        const points = diff === 'Easy' ? 10 : diff === 'Medium' ? 20 : 35;
         S.xp += points;
         S.level = Math.floor(S.xp / 100) + 1;
       }
@@ -832,6 +884,25 @@ function toggleProblemSolved(problemName, solved) {
       if (badge) {
         badge.className = `solved-badge ${solved ? '' : 'unsolved'}`;
         badge.innerHTML = solved ? '✅ Solved' : '⏳ Todo';
+      }
+      const chk = row.querySelector('.problem-checkbox input');
+      if (chk) chk.checked = solved;
+    }
+
+    // Update the Details Pane button directly
+    const detailsPane = row ? row.nextElementSibling : null;
+    if (detailsPane && detailsPane.classList.contains('problem-details-pane')) {
+      const btnArea = detailsPane.querySelector('div[style*="justify-content: flex-end"]');
+      if (btnArea) {
+        btnArea.innerHTML = solved ? `
+          <button onclick="toggleProblemSolved('${problemName.replace(/'/g, "\\'")}', false)" class="problem-link-btn" style="background:rgba(255,50,50,0.1); border-color:rgba(255,50,50,0.2); color:#ff5555; padding:6px 16px; font-weight:600; cursor:pointer;">
+            <i class="fas fa-undo"></i> Mark as Unsolved (Todo)
+          </button>
+        ` : `
+          <button onclick="toggleProblemSolved('${problemName.replace(/'/g, "\\'")}', true)" class="problem-link-btn" style="background:rgba(0,212,170,0.1); border-color:rgba(0,212,170,0.2); color:#00d4aa; padding:6px 16px; font-weight:600; cursor:pointer;">
+            <i class="fas fa-check-circle"></i> Mark as Solved!
+          </button>
+        `;
       }
     }
     
@@ -969,6 +1040,134 @@ function toast(msg, type = 'success') {
   t.className = `toast ${type} show`;
   setTimeout(() => t.classList.remove('show'), 3000);
 }
+
+// ── QUICK ADD LEETCODE PROBLEM HELPERS ──
+function quickAddProblem() {
+  const linkInput = document.getElementById('quickLinkInput');
+  const url = linkInput.value.trim();
+  if (!url) {
+    toast("Please paste a LeetCode URL first!", "error");
+    return;
+  }
+  
+  if (!url.includes('leetcode.com/problems/')) {
+    toast("Please enter a valid LeetCode URL", "error");
+    return;
+  }
+
+  const match = url.match(/problems\/([a-z0-9\-]+)/i);
+  if (!match || !match[1]) {
+    toast("Could not parse problem name from URL", "error");
+    return;
+  }
+
+  const slug = match[1];
+  const problemName = slug
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
+  // Check if problem already exists
+  if (allProblems.some(p => p.name.toLowerCase() === problemName.toLowerCase())) {
+    toast(`"${problemName}" is already in your tracker!`, "info");
+    // Open its pane directly!
+    const existingProb = allProblems.find(p => p.name.toLowerCase() === problemName.toLowerCase());
+    openPanes[existingProb.name] = true;
+    renderProblems();
+    
+    // Scroll to it
+    const row = Array.from(document.querySelectorAll('.problem-row')).find(r => r.querySelector('.problem-name a')?.textContent.trim().startsWith(existingProb.name));
+    if (row) row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  // Detect category
+  const category = detectCategoryFromSlug(slug);
+
+  // Initialize customProblems list if needed
+  if (!S.customProblems) S.customProblems = [];
+
+  // Create new problem
+  const newProblem = {
+    name: problemName,
+    topic: category,
+    link: url,
+    solved: false
+  };
+
+  S.customProblems.push(newProblem);
+  saveState();
+
+  // Reload state to merge customProblems
+  loadState();
+
+  // Automatically expand the details pane for the new problem
+  openPanes[problemName] = true;
+
+  // Render and clear input
+  renderProblems();
+  linkInput.value = '';
+  document.getElementById('quickAddFeedback').style.display = 'none';
+
+  toast(`✨ "${problemName}" added to tracker!`, "success");
+
+  // Scroll to new problem
+  setTimeout(() => {
+    const row = Array.from(document.querySelectorAll('.problem-row')).find(r => r.querySelector('.problem-name a')?.textContent.trim().startsWith(problemName));
+    if (row) {
+      row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Add a brief glow effect
+      row.style.background = 'rgba(108, 99, 255, 0.15)';
+      setTimeout(() => {
+        row.style.background = '';
+      }, 1500);
+    }
+  }, 100);
+}
+
+function handleQuickLinkInput(url) {
+  const feedback = document.getElementById('quickAddFeedback');
+  const nameEl = document.getElementById('detectedProblemName');
+  const catEl = document.getElementById('detectedProblemCategory');
+  
+  if (!url || !url.includes('leetcode.com/problems/')) {
+    feedback.style.display = 'none';
+    return;
+  }
+  
+  const match = url.match(/problems\/([a-z0-9\-]+)/i);
+  if (match && match[1]) {
+    const slug = match[1];
+    const problemName = slug
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+    const category = detectCategoryFromSlug(slug);
+    
+    nameEl.textContent = problemName;
+    catEl.textContent = category;
+    feedback.style.display = 'block';
+  } else {
+    feedback.style.display = 'none';
+  }
+}
+
+function detectCategoryFromSlug(slug) {
+  slug = slug.toLowerCase();
+  if (slug.includes('sum') || slug.includes('array') || slug.includes('duplicate') || slug.includes('matrix') || slug.includes('subarrays') || slug.includes('product')) return 'Arrays';
+  if (slug.includes('string') || slug.includes('anagram') || slug.includes('palindrome') || slug.includes('parentheses') || slug.includes('word')) return 'Strings';
+  if (slug.includes('tree') || slug.includes('binary-tree') || slug.includes('depth') || slug.includes('path')) return 'Trees';
+  if (slug.includes('graph') || slug.includes('island') || slug.includes('course') || slug.includes('network')) return 'Graphs';
+  if (slug.includes('list') || slug.includes('reverse') || slug.includes('merge') || slug.includes('cycle')) return 'Linked List';
+  if (slug.includes('search') || slug.includes('find') || slug.includes('binary')) return 'Binary Search';
+  if (slug.includes('stack') || slug.includes('queue') || slug.includes('calculator')) return 'Stack/Queue';
+  if (slug.includes('greedy') || slug.includes('jump') || slug.includes('gas')) return 'Greedy';
+  if (slug.includes('dp') || slug.includes('subsequence') || slug.includes('climb') || slug.includes('stock') || slug.includes('knapsack')) return 'DP';
+  return 'Arrays'; // default
+}
+
+window.quickAddProblem = quickAddProblem;
+window.handleQuickLinkInput = handleQuickLinkInput;
 </script>
 
 <!-- HIDDEN FILE INPUT -->
