@@ -876,6 +876,13 @@ function toggleProblemSolved(problemName, solved) {
         S.level = Math.floor(S.xp / 100) + 1;
       }
     } else {
+      const solvedProb = S.dsa.find(p => p.name === problemName);
+      if (solvedProb) {
+        const diff = solvedProb.diff || 'Medium';
+        const points = diff === 'Easy' ? 10 : diff === 'Medium' ? 20 : 35;
+        S.xp = Math.max(0, S.xp - points);
+        S.level = Math.floor(S.xp / 100) + 1;
+      }
       S.dsa = S.dsa.filter(p => p.name !== problemName);
     }
     saveState();

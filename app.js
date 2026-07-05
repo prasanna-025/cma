@@ -285,9 +285,9 @@ function renderDashboard() {
   // Hours
   const todayH = S.hours[TODAY_KEY] || 0;
   const weekH = getWeekHours();
-  document.getElementById('hours-today').textContent = todayH + 'h';
-  document.getElementById('hours-week').textContent = weekH + 'h';
-  document.getElementById('hours-total').textContent = totalHours() + 'h';
+  document.getElementById('hours-today').textContent = (Math.round(todayH * 100) / 100) + 'h';
+  document.getElementById('hours-week').textContent = (Math.round(weekH * 100) / 100) + 'h';
+  document.getElementById('hours-total').textContent = (Math.round(totalHours() * 100) / 100) + 'h';
 
   // Update daily checklist subject label based on rotation
   const dailySubjectSpan = document.querySelector('#daily-checklist input[data-key="daily-subject"] ~ span');
@@ -430,6 +430,8 @@ function toggleDaily(cb) {
         spawnConfetti(e.clientX, e.clientY);
       }
     }
+  } else {
+    addXP(-5);
   }
   updateDailyPct();
   save();
@@ -938,8 +940,9 @@ function renderSubjects() {
 
 function toggleTopic(sub, topic, cb) {
   if (!S.subjects[sub]) S.subjects[sub] = {};
+  const prev = !!S.subjects[sub][topic];
   S.subjects[sub][topic] = cb.checked;
-  if (cb.checked) {
+  if (cb.checked && !prev) {
     addXP(8);
     if (window.event) {
       const e = window.event;
@@ -947,6 +950,8 @@ function toggleTopic(sub, topic, cb) {
         spawnConfetti(e.clientX, e.clientY);
       }
     }
+  } else if (!cb.checked && prev) {
+    addXP(-8);
   }
   save();
   renderSubjects();
@@ -1284,7 +1289,11 @@ function setSkill(key, val) {
   const prev = S.skills[key] || 0;
   S.skills[key] = val;
   S.skills[key + '_complete'] = (val === 4);
-  if (val > prev) addXP(5);
+  if (val > prev) {
+    addXP(5);
+  } else if (val < prev) {
+    addXP(-5);
+  }
   save();
   renderCommSkills();
   renderSoftSkills();
@@ -1295,7 +1304,11 @@ function toggleSkillComplete(key, isChecked) {
   const newVal = isChecked ? 4 : 0;
   S.skills[key] = newVal;
   S.skills[key + '_complete'] = isChecked;
-  if (newVal > prev) addXP(5);
+  if (newVal > prev) {
+    addXP(5);
+  } else if (newVal < prev) {
+    addXP(-5);
+  }
   save();
   renderCommSkills();
   renderSoftSkills();
@@ -1417,8 +1430,9 @@ function restoreCheckboxes(selector, store, attr) {
 }
 
 function togglePlacement(cb) {
+  const prev = !!S.placementChecks[cb.dataset.key];
   S.placementChecks[cb.dataset.key] = cb.checked;
-  if (cb.checked) {
+  if (cb.checked && !prev) {
     addXP(10);
     if (window.event) {
       const e = window.event;
@@ -1426,6 +1440,8 @@ function togglePlacement(cb) {
         spawnConfetti(e.clientX, e.clientY);
       }
     }
+  } else if (!cb.checked && prev) {
+    addXP(-10);
   }
   save();
   renderDashboard();
@@ -1442,6 +1458,8 @@ function changeMock(delta) {
         spawnConfetti(e.clientX, e.clientY);
       }
     }
+  } else if (delta < 0) {
+    addXP(-15);
   }
   document.getElementById('mock-count').textContent = S.mocks;
   updateMockBar();
@@ -1635,7 +1653,7 @@ function renderHoursChart() {
   for (let i = 6; i >= 0; i--) {
     const d = new Date(now); d.setDate(now.getDate() - i);
     const key = d.toISOString().slice(0, 10);
-    days.push({ label: DAYS[d.getDay()], hrs: S.hours[key] || 0, key });
+    days.push({ label: DAYS[d.getDay()], hrs: Math.round((S.hours[key] || 0) * 100) / 100, key });
   }
   const max = Math.max(...days.map(d => d.hrs), 1);
   el.innerHTML = `
@@ -1886,8 +1904,13 @@ function toggleCustomTopic(skillId, topicId, isChecked) {
   const topic = skill.topics.find(t => t.id === topicId);
   if (!topic) return;
 
+  const prev = !!topic.completed;
   topic.completed = isChecked;
-  if (isChecked) addXP(5);
+  if (isChecked && !prev) {
+    addXP(5);
+  } else if (!isChecked && prev) {
+    addXP(-5);
+  }
   save();
   renderCustomSkills();
 }
@@ -2216,6 +2239,7 @@ function toggleSoftMilestone(key, milestone) {
   
   const m = S.skills[key + '_milestones'];
   m[milestone] = !m[milestone];
+  const isChecked = m[milestone];
   
   const doneCount = (m.learn ? 1 : 0) + (m.practice ? 1 : 0) + (m.interview ? 1 : 0);
   const wasCompleted = !!S.skills[key + '_complete'];
@@ -2233,11 +2257,19 @@ function toggleSoftMilestone(key, milestone) {
       }
     }
   } else {
-    addXP(3);
-    if (m[milestone] && window.event) {
-      const e = window.event;
-      if (e.clientX && e.clientY) {
-        spawnConfetti(e.clientX, e.clientY);
+    if (isChecked) {
+      addXP(3);
+      if (window.event) {
+        const e = window.event;
+        if (e.clientX && e.clientY) {
+          spawnConfetti(e.clientX, e.clientY);
+        }
+      }
+    } else {
+      addXP(-3);
+      if (wasCompleted && !isNowCompleted) {
+        addXP(-15); // Lose the bonus XP
+        toast("Topic unmastered. -15 XP bonus removed.");
       }
     }
   }
@@ -2253,22 +2285,39 @@ function toggleSoftSkillComplete(key, isChecked) {
   }
   
   const m = S.skills[key + '_milestones'];
+  const wasCompleted = !!S.skills[key + '_complete'];
+  
+  const learnWasChecked = m.learn;
+  const practiceWasChecked = m.practice;
+  const interviewWasChecked = m.interview;
+  
   m.learn = isChecked;
   m.practice = isChecked;
   m.interview = isChecked;
-  
-  const wasCompleted = !!S.skills[key + '_complete'];
   S.skills[key + '_complete'] = isChecked;
   
   if (isChecked && !wasCompleted) {
-    addXP(15);
-    toast("🏆 Topic fully mastered! +15 XP");
+    let xpToAward = 15;
+    if (!learnWasChecked) xpToAward += 3;
+    if (!practiceWasChecked) xpToAward += 3;
+    if (!interviewWasChecked) xpToAward += 3;
+    
+    addXP(xpToAward);
+    toast(`🏆 Topic fully mastered! +${xpToAward} XP`);
     if (window.event) {
       const e = window.event;
       if (e.clientX && e.clientY) {
         spawnConfetti(e.clientX, e.clientY);
       }
     }
+  } else if (!isChecked && wasCompleted) {
+    let xpToDeduct = 15;
+    if (learnWasChecked) xpToDeduct += 3;
+    if (practiceWasChecked) xpToDeduct += 3;
+    if (interviewWasChecked) xpToDeduct += 3;
+    
+    addXP(-xpToDeduct);
+    toast(`Topic uncompleted. -${xpToDeduct} XP removed.`);
   }
   
   save();
