@@ -461,7 +461,7 @@ function renderWeekGrid() {
       <div class="week-day">
         <div class="week-day-label">${DAYS[d.getDay()]}</div>
         <div class="week-day-box ${hrs > 0 ? 'has-data' : ''} ${isToday ? 'today' : ''}">
-          ${hrs > 0 ? hrs + 'h' : '—'}
+          ${hrs > 0 ? formatHoursToHm(hrs) : '—'}
         </div>
       </div>
     `;
