@@ -273,7 +273,7 @@ function renderDashboard() {
   const pct = calcReadiness();
   document.getElementById('readiness-pct').textContent = pct + '%';
   document.getElementById('r-dsa').textContent = S.dsa.length;
-  document.getElementById('r-hours').textContent = totalHours() + 'h';
+  document.getElementById('r-hours').textContent = formatHoursToHm(totalHours());
   document.getElementById('r-streak').textContent = S.streak;
   document.getElementById('r-xp').textContent = S.xp;
   document.getElementById('top-streak').textContent = S.streak;
@@ -285,9 +285,9 @@ function renderDashboard() {
   // Hours
   const todayH = S.hours[TODAY_KEY] || 0;
   const weekH = getWeekHours();
-  document.getElementById('hours-today').textContent = (Math.round(todayH * 100) / 100) + 'h';
-  document.getElementById('hours-week').textContent = (Math.round(weekH * 100) / 100) + 'h';
-  document.getElementById('hours-total').textContent = (Math.round(totalHours() * 100) / 100) + 'h';
+  document.getElementById('hours-today').textContent = formatHoursToHm(todayH);
+  document.getElementById('hours-week').textContent = formatHoursToHm(weekH);
+  document.getElementById('hours-total').textContent = formatHoursToHm(totalHours());
 
   // Update daily checklist subject label based on rotation
   const dailySubjectSpan = document.querySelector('#daily-checklist input[data-key="daily-subject"] ~ span');
@@ -659,17 +659,28 @@ function addStudyHours(hours, isTimer = false) {
   save();
   renderDashboard();
   if (isTimer) {
-    toast(`⏱️ Session logged: ${roundedHours}h! Keep it up!`);
+    toast(`⏱️ Session logged: ${formatHoursToHm(roundedHours)}! Keep it up!`);
   } else {
-    toast(`✅ ${roundedHours}h logged — keep grinding!`);
+    toast(`✅ ${formatHoursToHm(roundedHours)} logged — keep grinding!`);
   }
 }
 
 function logHours() {
-  const v = parseFloat(document.getElementById('hours-input').value);
-  if (!v || v <= 0) return toast('Enter valid hours', 'error');
-  document.getElementById('hours-input').value = '';
-  addStudyHours(v, false);
+  const hrsVal = parseInt(document.getElementById('log-hrs').value || '0', 10);
+  const minsVal = parseInt(document.getElementById('log-mins').value || '0', 10);
+  
+  if (hrsVal < 0 || minsVal < 0 || (hrsVal === 0 && minsVal === 0)) {
+    return toast('Enter a valid time duration', 'error');
+  }
+  if (minsVal >= 60) {
+    return toast('Minutes must be less than 60', 'error');
+  }
+
+  const totalHours = hrsVal + (minsVal / 60);
+  
+  document.getElementById('log-hrs').value = '';
+  document.getElementById('log-mins').value = '';
+  addStudyHours(totalHours, false);
 }
 
 // ── DSA ──
@@ -1661,7 +1672,7 @@ function renderHoursChart() {
       <div class="line-chart-bars-row">
         ${days.map(d => `
           <div class="line-day-bar">
-            <span class="line-day-value">${d.hrs > 0 ? d.hrs + 'h' : ''}</span>
+            <span class="line-day-value">${d.hrs > 0 ? formatHoursToHm(d.hrs) : ''}</span>
             <div class="line-day-bar-inner" style="height:${Math.max(4, d.hrs/max*100)}px"></div>
             <span class="line-day-label">${d.label}</span>
           </div>
@@ -2692,5 +2703,18 @@ function autoFillDSAProblemDetails(url) {
   }
 }
 
+// Format hours decimal to standard Hours and Minutes e.g. 2.5 -> 2h 30m
+function formatHoursToHm(hours) {
+  if (!hours || hours <= 0) return "0h 0m";
+  const totalMins = Math.round(hours * 60);
+  const hrs = Math.floor(totalMins / 60);
+  const mins = totalMins % 60;
+  if (hrs > 0) {
+    return `${hrs}h ${mins}m`;
+  }
+  return `${mins}m`;
+}
+
 window.addProblem = addDSAProblem;
 window.autoFillDSAProblemDetails = autoFillDSAProblemDetails;
+window.formatHoursToHm = formatHoursToHm;

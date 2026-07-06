@@ -129,9 +129,10 @@
         </div>
         
         <!-- Manual Form -->
-        <div id="logger-manual-form" class="hours-log-form">
-          <input type="number" id="hours-input" class="inp" placeholder="Hours e.g. 2.5" min="0.5" max="16" step="0.5"/>
-          <button class="btn btn-primary" onclick="logHours()"><i class="fas fa-plus"></i> Log</button>
+        <div id="logger-manual-form" class="hours-log-form" style="display: flex; gap: 6px; width: 100%;">
+          <input type="number" id="log-hrs" class="inp" placeholder="Hrs" min="0" max="23" style="flex: 1; min-width: 60px;"/>
+          <input type="number" id="log-mins" class="inp" placeholder="Mins" min="0" max="59" style="flex: 1.2; min-width: 70px;"/>
+          <button class="btn btn-primary" onclick="logHours()" style="padding: 0 16px;"><i class="fas fa-plus"></i> Log</button>
         </div>
         
         <!-- Timer Form -->
