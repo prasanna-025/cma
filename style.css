@@ -465,6 +465,51 @@ body::after {
 .week-day-box.lv3 { background: rgba(108,99,255,.45); border-color: var(--accent); color: #fff; font-weight: 700; }
 .week-day-box.today { outline: 2px solid var(--accent); outline-offset: 2px; }
 
+/* ── MONTH GRID ── */
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 6px;
+  margin-top: 10px;
+}
+.month-day-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 4px;
+  min-height: 44px;
+  font-size: 10.5px;
+  color: var(--text3);
+  text-align: center;
+  transition: all 0.3s;
+}
+.month-day-box.today {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.month-day-box.lv1 { background: rgba(108,99,255,.12); border-color: rgba(108,99,255,.2); color: rgba(108,99,255,.8); }
+.month-day-box.lv2 { background: rgba(108,99,255,.25); border-color: rgba(108,99,255,.4); color: var(--accent); }
+.month-day-box.lv3 { background: rgba(108,99,255,.45); border-color: var(--accent); color: #fff; font-weight: 700; }
+.month-day-date {
+  font-size: 8px;
+  opacity: 0.6;
+  margin-bottom: 2px;
+  font-family: var(--mono);
+}
+.month-day-hrs {
+  font-weight: 600;
+  font-size: 9.5px;
+}
+@media (max-width: 768px) {
+  .month-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
 .week-legend { display: flex; gap: 14px; margin-top: 12px; }
 .wl-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text2); }
 .wl-dot { width: 10px; height: 10px; border-radius: 3px; }

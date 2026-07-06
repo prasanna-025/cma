@@ -329,7 +329,7 @@ function renderDashboard() {
   renderBadges();
 
   // Week grid
-  renderWeekGrid();
+  renderActivityGrid();
 
   // Sidebar XP
   updateXPBar();
@@ -450,6 +450,7 @@ function renderBadges() {
 
 function renderWeekGrid() {
   const grid = document.getElementById('week-grid');
+  if (!grid) return;
   const now = new Date();
   grid.innerHTML = '';
   for (let i = 6; i >= 0; i--) {
@@ -457,16 +458,103 @@ function renderWeekGrid() {
     const key = d.toISOString().slice(0, 10);
     const hrs = S.hours[key] || 0;
     const isToday = key === TODAY_KEY;
+    
+    let colorClass = '';
+    if (hrs > 0) {
+      if (hrs <= 2) colorClass = 'lv1';
+      else if (hrs <= 4) colorClass = 'lv2';
+      else colorClass = 'lv3';
+    }
+    
     grid.innerHTML += `
       <div class="week-day">
         <div class="week-day-label">${DAYS[d.getDay()]}</div>
-        <div class="week-day-box ${hrs > 0 ? 'has-data' : ''} ${isToday ? 'today' : ''}">
+        <div class="week-day-box ${hrs > 0 ? 'has-data ' + colorClass : ''} ${isToday ? 'today' : ''}">
           ${hrs > 0 ? formatHoursToHm(hrs) : '—'}
         </div>
       </div>
     `;
   }
 }
+
+function renderMonthlyGrid() {
+  const grid = document.getElementById('week-grid');
+  if (!grid) return;
+  const now = new Date();
+  grid.innerHTML = '';
+  for (let i = 29; i >= 0; i--) {
+    const d = new Date(now); d.setDate(now.getDate() - i);
+    const key = d.toISOString().slice(0, 10);
+    const hrs = S.hours[key] || 0;
+    const isToday = key === TODAY_KEY;
+    
+    let colorClass = '';
+    if (hrs > 0) {
+      if (hrs <= 2) colorClass = 'lv1';
+      else if (hrs <= 4) colorClass = 'lv2';
+      else colorClass = 'lv3';
+    }
+    
+    const formattedVal = hrs > 0 ? formatHoursToHm(hrs) : '—';
+    const dayLabel = d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+    
+    grid.innerHTML += `
+      <div class="month-day">
+        <div class="month-day-box ${hrs > 0 ? 'has-data ' + colorClass : ''} ${isToday ? 'today' : ''}" title="${dayLabel}: ${formattedVal}">
+          <div class="month-day-date">${d.getDate()}</div>
+          <div class="month-day-hrs">${formattedVal}</div>
+        </div>
+      </div>
+    `;
+  }
+}
+
+function renderActivityGrid() {
+  const view = S.activityView || 'weekly';
+  const grid = document.getElementById('week-grid');
+  if (!grid) return;
+  
+  const tabWeekly = document.getElementById('tab-activity-weekly');
+  const tabMonthly = document.getElementById('tab-activity-monthly');
+  const title = document.getElementById('activity-header-title');
+  
+  if (view === 'weekly') {
+    if (tabWeekly) {
+      tabWeekly.classList.add('active');
+      tabWeekly.style.background = 'rgba(108,99,255,.18)';
+      tabWeekly.style.color = 'var(--accent)';
+    }
+    if (tabMonthly) {
+      tabMonthly.classList.remove('active');
+      tabMonthly.style.background = 'transparent';
+      tabMonthly.style.color = 'var(--text2)';
+    }
+    if (title) title.textContent = 'Weekly Activity — Hours Logged';
+    grid.className = 'week-grid';
+    renderWeekGrid();
+  } else {
+    if (tabMonthly) {
+      tabMonthly.classList.add('active');
+      tabMonthly.style.background = 'rgba(108,99,255,.18)';
+      tabMonthly.style.color = 'var(--accent)';
+    }
+    if (tabWeekly) {
+      tabWeekly.classList.remove('active');
+      tabWeekly.style.background = 'transparent';
+      tabWeekly.style.color = 'var(--text2)';
+    }
+    if (title) title.textContent = 'Monthly Activity — Hours Logged';
+    grid.className = 'month-grid';
+    renderMonthlyGrid();
+  }
+}
+
+function switchActivityTab(view) {
+  S.activityView = view;
+  save();
+  renderActivityGrid();
+}
+window.switchActivityTab = switchActivityTab;
 
 // ── HOURS & TIMER ──
 let swInterval = null;

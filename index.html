@@ -177,7 +177,16 @@
 
     <!-- Weekly Activity -->
     <div class="card full-card">
-      <div class="card-header"><i class="fas fa-calendar-week"></i> Weekly Activity — Hours Logged</div>
+      <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <i class="fas fa-calendar-week"></i>
+          <span id="activity-header-title">Weekly Activity — Hours Logged</span>
+        </div>
+        <div class="timer-tabs" style="display: flex; gap: 4px; background: var(--bg3); padding: 2px; border-radius: 8px; border: 1px solid var(--border); margin-left: auto;">
+          <button class="tab-btn active" onclick="switchActivityTab('weekly')" id="tab-activity-weekly" style="padding: 3px 6px; font-size: 10px; border-radius: 6px; border: none; background: rgba(108,99,255,.18); color: var(--accent); font-weight: 600; cursor: pointer; transition: all 0.2s;">Weekly</button>
+          <button class="tab-btn" onclick="switchActivityTab('monthly')" id="tab-activity-monthly" style="padding: 3px 6px; font-size: 10px; border-radius: 6px; border: none; background: transparent; color: var(--text2); font-weight: 600; cursor: pointer; transition: all 0.2s;">Monthly</button>
+        </div>
+      </div>
       <div class="week-grid" id="week-grid"></div>
       <div class="week-legend">
         <span class="wl-item"><span class="wl-dot" style="background:var(--bg3)"></span>No activity</span>
