@@ -438,6 +438,17 @@
           </div>
         </div>
 
+        <!-- Backup & Restore Box -->
+        <div class="quick-add-box" style="background: rgba(16, 20, 32, 0.45); border: 1px solid rgba(108, 99, 255, 0.2); border-radius: 12px; padding: 1.2rem; display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.2rem;">
+          <h3 style="font-size: 0.95rem; font-weight: 600; color: var(--accent); margin: 0; display: flex; align-items: center; gap: 6px;"><i class="fas fa-file-archive"></i> Backup &amp; Restore Photos &amp; Data</h3>
+          <p style="font-size: 11px; color: var(--text2); margin: 0;">Export your entire tracker state (including local solved status, notes, codes, and IndexedDB photo attachments) to a backup file, or restore from a previously saved backup.</p>
+          <div style="display: flex; gap: 10px; margin-top: 4px;">
+            <button onclick="exportBackupData()" class="btn btn-primary" style="flex:1; padding: 0.5rem 1rem; font-size: 12.5px; font-weight: 600; background: var(--accent); border: none; border-radius: 8px; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-download"></i> Export Backup</button>
+            <button onclick="document.getElementById('backupRestoreInput').click()" class="btn btn-sm" style="flex:1; padding: 0.5rem 1rem; font-size: 12.5px; font-weight: 600; background: rgba(0, 212, 170, 0.1); border: 1px solid rgba(0, 212, 170, 0.3); color:#00d4aa; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-upload"></i> Restore Backup</button>
+            <input type="file" id="backupRestoreInput" accept=".json" style="display:none;" onchange="importBackupData(event)">
+          </div>
+        </div>
+
         <!-- Search Bar -->
         <div class="search-bar">
           <input type="text" id="searchInput" placeholder="Search problems...">
@@ -1080,6 +1091,117 @@ function loadThumbnail(problemName) {
   });
 }
 window.loadThumbnail = loadThumbnail;
+
+async function exportBackupData() {
+  toast("Preparing backup file...", "info");
+  
+  const localData = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    localData[key] = localStorage.getItem(key);
+  }
+
+  const screenshots = [];
+  try {
+    const db = await getDB();
+    await new Promise((resolve, reject) => {
+      const transaction = db.transaction(storeName, "readonly");
+      const store = transaction.objectStore(storeName);
+      const request = store.openCursor();
+      request.onsuccess = (e) => {
+        const cursor = e.target.result;
+        if (cursor) {
+          screenshots.push(cursor.value);
+          cursor.continue();
+        } else {
+          resolve();
+        }
+      };
+      request.onerror = (e) => reject(e.target.error);
+    });
+  } catch (err) {
+    console.error("Failed to read screenshots for backup:", err);
+  }
+
+  const backupObject = {
+    version: 2,
+    timestamp: new Date().toISOString(),
+    localStorage: localData,
+    screenshots: screenshots
+  };
+
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backupObject));
+  const downloadAnchor = document.createElement('a');
+  downloadAnchor.setAttribute("href", dataStr);
+  downloadAnchor.setAttribute("download", `placementos_backup_${new Date().toISOString().slice(0, 10)}.json`);
+  document.body.appendChild(downloadAnchor);
+  downloadAnchor.click();
+  downloadAnchor.remove();
+
+  toast("💾 Backup downloaded successfully!");
+}
+window.exportBackupData = exportBackupData;
+
+async function importBackupData(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    try {
+      const backup = JSON.parse(e.target.result);
+      if (!backup.localStorage || !backup.screenshots) {
+        throw new Error("Invalid backup file format.");
+      }
+
+      toast("Restoring data...", "info");
+
+      Object.keys(backup.localStorage).forEach(key => {
+        localStorage.setItem(key, backup.localStorage[key]);
+      });
+
+      const db = await getDB();
+      
+      await new Promise((resolve, reject) => {
+        const transaction = db.transaction(storeName, "readwrite");
+        const store = transaction.objectStore(storeName);
+        const clearRequest = store.clear();
+        clearRequest.onsuccess = () => resolve();
+        clearRequest.onerror = (e) => reject(e.target.error);
+      });
+
+      if (backup.screenshots.length > 0) {
+        await new Promise((resolve, reject) => {
+          const transaction = db.transaction(storeName, "readwrite");
+          const store = transaction.objectStore(storeName);
+          let completed = 0;
+          
+          backup.screenshots.forEach(screenshot => {
+            const putRequest = store.put(screenshot);
+            putRequest.onsuccess = () => {
+              completed++;
+              if (completed === backup.screenshots.length) {
+                resolve();
+              }
+            };
+            putRequest.onerror = (err) => reject(err.target.error);
+          });
+        });
+      }
+
+      toast("✅ Restore complete! Reloading...", "success");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
+
+    } catch (err) {
+      toast("Restore failed: " + err.message, "error");
+      console.error(err);
+    }
+  };
+  reader.readAsText(file);
+}
+window.importBackupData = importBackupData;
 
 function openLightbox(problemName, base64Data) {
   const modal = document.getElementById('lightboxModal');
