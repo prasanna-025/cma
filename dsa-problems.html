@@ -767,32 +767,47 @@ function renderProblems() {
  
           <!-- Middle: Solution Code -->
           <div style="flex:1.5; min-width:280px; display:flex; flex-direction:column; gap:6px;">
-            <label style="font-size:11px; font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:4px;"><i class="fas fa-code" style="color:var(--accent2);"></i> Solution Code</label>
-            <textarea class="inp" placeholder="Paste your solution code here..." onchange="saveProblemCode('${problem.name.replace(/'/g, "\\'")}', this.value)" style="font-size:11.5px; font-family:'JetBrains Mono', monospace; resize:vertical; min-height:68px; background:var(--bg3); line-height:1.4; color:#00d4aa; border-color:var(--border);">${savedCode}</textarea>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <label style="font-size:11px; font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:4px;">
+                <i class="fas fa-code" style="color:var(--accent2);"></i> Solution Code
+              </label>
+              ${hasScreenshot ? `
+                <div class="timer-tabs" style="display:flex; gap:2px; background:var(--bg3); padding:2px; border-radius:6px; border:1px solid var(--border);">
+                  <button onclick="switchSolutionTab('${problem.name.replace(/'/g, "\\'")}', 'text')" id="tab-sol-text-${problem.name.replace(/\s+/g, '_')}" class="tab-btn active" style="padding:2px 8px; font-size:9.5px; border-radius:4px; border:none; background:rgba(108,99,255,.18); color:var(--accent); font-weight:600; cursor:pointer; transition:all 0.2s;">Text</button>
+                  <button onclick="switchSolutionTab('${problem.name.replace(/'/g, "\\'")}', 'image')" id="tab-sol-image-${problem.name.replace(/\s+/g, '_')}" class="tab-btn" style="padding:2px 8px; font-size:9.5px; border-radius:4px; border:none; background:transparent; color:var(--text2); font-weight:600; cursor:pointer; transition:all 0.2s;">Image</button>
+                </div>
+              ` : ''}
+            </div>
+            <textarea id="sol-text-container-${problem.name.replace(/\s+/g, '_')}" class="inp" placeholder="Paste your solution code here..." onchange="saveProblemCode('${problem.name.replace(/'/g, "\\'")}', this.value)" style="font-size:11.5px; font-family:'JetBrains Mono', monospace; resize:vertical; min-height:120px; background:var(--bg3); line-height:1.4; color:#00d4aa; border-color:var(--border); width:100%; box-sizing:border-box;">${savedCode}</textarea>
+            ${hasScreenshot ? `
+              <div id="sol-image-container-${problem.name.replace(/\s+/g, '_')}" style="display:none; min-height:120px; max-height:220px; background:var(--bg3); border:1px solid var(--border); border-radius:8px; overflow:auto; padding:6px; box-sizing:border-box; justify-content:center; align-items:center;">
+                <img id="sol-image-view-${problem.name.replace(/\s+/g, '_')}" style="max-width:100%; height:auto; border-radius:4px; object-fit:contain; cursor:zoom-in;" onclick="viewProblemScreenshot('${problem.name.replace(/'/g, "\\'")}')" title="Click to zoom in full-screen">
+              </div>
+            ` : ''}
           </div>
  
           <!-- Right: Code Screenshot -->
           <div style="flex:1; min-width:200px; display:flex; flex-direction:column; gap:6px;">
             <label style="font-size:11px; font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:4px;"><i class="fas fa-camera" style="color:var(--accent); toggle-id: 'label';"></i> Code Screenshot</label>
-            <div id="screenshot-area-${problem.name.replace(/\s+/g, '_')}" class="screenshot-dropzone" onpaste="handleScreenshotPaste(event, '${problem.name.replace(/'/g, "\\'")}')" style="border:1.5px dashed rgba(108,99,255,0.25); border-radius:8px; height:68px; display:flex; align-items:center; justify-content:center; background:rgba(108,99,255,0.02); cursor:pointer; transition:all 0.2s; outline:none; text-align:center; padding:10px; box-sizing:border-box;" onclick="triggerFileInput('${problem.name.replace(/'/g, "\\'")}')" tabindex="0">
+            <div id="screenshot-area-${problem.name.replace(/\s+/g, '_')}" class="screenshot-dropzone" onpaste="handleScreenshotPaste(event, '${problem.name.replace(/'/g, "\\'")}')" style="border:1.5px dashed rgba(108,99,255,0.25); border-radius:8px; height:120px; display:flex; align-items:center; justify-content:center; background:rgba(108,99,255,0.02); cursor:pointer; transition:all 0.2s; outline:none; text-align:center; padding:10px; box-sizing:border-box;" onclick="triggerFileInput('${problem.name.replace(/'/g, "\\'")}')" tabindex="0">
               ${hasScreenshot ? `
                 <div style="display:flex; align-items:center; gap:12px; width:100%; height:100%; box-sizing:border-box; justify-content:space-between;">
                   <!-- Left Column: Thumbnail Preview -->
-                  <div style="width:48px; height:48px; border-radius:6px; overflow:hidden; border:1px solid rgba(108,99,255,0.2); background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <div style="width:70px; height:70px; border-radius:6px; overflow:hidden; border:1px solid rgba(108,99,255,0.2); background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
                     <img id="thumb-${problem.name.replace(/\s+/g, '_')}" style="max-width:100%; max-height:100%; object-fit:cover;" alt="Preview">
                   </div>
                   
                   <!-- Right Column: Dual Options (View / Change) -->
-                  <div style="display:flex; flex-direction:column; gap:4px; flex:1; justify-content:center;">
-                    <div style="display:flex; gap:4px; width:100%;">
-                      <button onclick="event.stopPropagation(); viewProblemScreenshot('${problem.name.replace(/'/g, "\\'")}')" class="problem-link-btn" style="flex:1; padding:2px 4px; font-size:9.5px; font-weight:600; cursor:pointer; background:rgba(0,212,170,0.1); border-color:rgba(0,212,170,0.2); color:#00d4aa; height:20px; display:flex; align-items:center; justify-content:center; gap:3px;">
-                        <i class="fas fa-eye"></i> View
+                  <div style="display:flex; flex-direction:column; gap:6px; flex:1; justify-content:center;">
+                    <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
+                      <button onclick="event.stopPropagation(); viewProblemScreenshot('${problem.name.replace(/'/g, "\\'")}')" class="problem-link-btn" style="width:100%; padding:3px 4px; font-size:10px; font-weight:600; cursor:pointer; background:rgba(0,212,170,0.1); border-color:rgba(0,212,170,0.2); color:#00d4aa; height:22px; display:flex; align-items:center; justify-content:center; gap:3px;">
+                        <i class="fas fa-eye"></i> View Code
                       </button>
-                      <button onclick="event.stopPropagation(); changeProblemScreenshot('${problem.name.replace(/'/g, "\\'")}')" class="problem-link-btn" style="flex:1; padding:2px 4px; font-size:9.5px; font-weight:600; cursor:pointer; background:rgba(108,99,255,0.12); border-color:rgba(108,99,255,0.25); color:var(--accent); height:20px; display:flex; align-items:center; justify-content:center; gap:3px;">
+                      <button onclick="event.stopPropagation(); changeProblemScreenshot('${problem.name.replace(/'/g, "\\'")}')" class="problem-link-btn" style="width:100%; padding:3px 4px; font-size:10px; font-weight:600; cursor:pointer; background:rgba(108,99,255,0.12); border-color:rgba(108,99,255,0.25); color:var(--accent); height:22px; display:flex; align-items:center; justify-content:center; gap:3px;">
                         <i class="fas fa-sync-alt"></i> Change
                       </button>
                     </div>
-                    <button onclick="event.stopPropagation(); deleteProblemScreenshot('${problem.name.replace(/'/g, "\\'")}')" class="problem-link-btn" style="width:100%; padding:2px 4px; font-size:9px; font-weight:600; cursor:pointer; background:rgba(255,50,50,0.08); border-color:rgba(255,50,50,0.2); color:#ff5555; height:18px; display:flex; align-items:center; justify-content:center; gap:3px;">
+                    <button onclick="event.stopPropagation(); deleteProblemScreenshot('${problem.name.replace(/'/g, "\\'")}')" class="problem-link-btn" style="width:100%; padding:2px 4px; font-size:9.5px; font-weight:600; cursor:pointer; background:rgba(255,50,50,0.08); border-color:rgba(255,50,50,0.2); color:#ff5555; height:18px; display:flex; align-items:center; justify-content:center; gap:3px;">
                       <i class="fas fa-trash-alt"></i> Remove
                     </button>
                   </div>
@@ -1065,6 +1080,7 @@ async function deleteProblemScreenshot(problemName) {
 window.deleteProblemScreenshot = deleteProblemScreenshot;
 
 function viewProblemScreenshot(problemName) {
+  switchSolutionTab(problemName, 'image');
   getScreenshot(problemName).then(data => {
     if (data) {
       openLightbox(problemName, data);
@@ -1082,15 +1098,58 @@ function changeProblemScreenshot(problemName) {
 window.changeProblemScreenshot = changeProblemScreenshot;
 
 function loadThumbnail(problemName) {
-  const safeId = 'thumb-' + problemName.replace(/\s+/g, '_');
+  const safeId = problemName.replace(/\s+/g, '_');
   getScreenshot(problemName).then(data => {
-    const img = document.getElementById(safeId);
-    if (img && data) {
-      img.src = data;
+    const thumbImg = document.getElementById('thumb-' + safeId);
+    if (thumbImg && data) {
+      thumbImg.src = data;
+    }
+    const viewImg = document.getElementById('sol-image-view-' + safeId);
+    if (viewImg && data) {
+      viewImg.src = data;
     }
   });
 }
 window.loadThumbnail = loadThumbnail;
+
+function switchSolutionTab(problemName, tab) {
+  const safeId = problemName.replace(/\s+/g, '_');
+  const tabText = document.getElementById(`tab-sol-text-${safeId}`);
+  const tabImage = document.getElementById(`tab-sol-image-${safeId}`);
+  const containerText = document.getElementById(`sol-text-container-${safeId}`);
+  const containerImage = document.getElementById(`sol-image-container-${safeId}`);
+
+  if (!containerText || !containerImage) return;
+
+  if (tab === 'text') {
+    if (tabText) {
+      tabText.classList.add('active');
+      tabText.style.background = 'rgba(108,99,255,.18)';
+      tabText.style.color = 'var(--accent)';
+    }
+    if (tabImage) {
+      tabImage.classList.remove('active');
+      tabImage.style.background = 'transparent';
+      tabImage.style.color = 'var(--text2)';
+    }
+    containerText.style.display = 'block';
+    containerImage.style.display = 'none';
+  } else {
+    if (tabImage) {
+      tabImage.classList.add('active');
+      tabImage.style.background = 'rgba(108,99,255,.18)';
+      tabImage.style.color = 'var(--accent)';
+    }
+    if (tabText) {
+      tabText.classList.remove('active');
+      tabText.style.background = 'transparent';
+      tabText.style.color = 'var(--text2)';
+    }
+    containerText.style.display = 'none';
+    containerImage.style.display = 'flex';
+  }
+}
+window.switchSolutionTab = switchSolutionTab;
 
 async function exportBackupData() {
   toast("Preparing backup file...", "info");
