@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PlacementOS — ₹15+ LPA Dashboard</title>
+  <title>CMA Finalist OS — Premium Exam Companion</title>
   <link rel="stylesheet" href="style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
 
-<!-- SVG Gradient Defs -->
+<!-- SVG Gradient Defs for SVGs -->
 <svg style="position:absolute;width:0;height:0" aria-hidden="true">
   <defs>
     <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -23,27 +23,27 @@
 <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-logo">
-    <span class="logo-icon">⚡</span>
-    <span class="logo-text">PlacementOS</span>
+    <span class="logo-icon">⚖️</span>
+    <span class="logo-text">CMA Finalist OS</span>
   </div>
   <nav class="sidebar-nav">
     <a href="#" class="nav-item active" data-section="dashboard"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
-    <a href="#" class="nav-item" data-section="dsa"><i class="fas fa-code"></i><span>DSA Tracker</span></a>
-    <a href="#" class="nav-item" data-section="subjects"><i class="fas fa-book"></i><span>Core Subjects</span></a>
-    <a href="#" class="nav-item" data-section="communication"><i class="fas fa-comments"></i><span>Communication</span></a>
-    <a href="#" class="nav-item" data-section="softskills"><i class="fas fa-brain"></i><span>Soft Skills</span></a>
-    <a href="#" class="nav-item" data-section="projects"><i class="fas fa-folder-open"></i><span>Projects</span></a>
-    <a href="#" class="nav-item" data-section="placement"><i class="fas fa-briefcase"></i><span>Placement</span></a>
-    <a href="#" class="nav-item" data-section="roadmap"><i class="fas fa-map-signs"></i><span>8-Month Roadmap</span></a>
-    <a href="#" class="nav-item" data-section="extraskills"><i class="fas fa-cloud"></i><span>Cloud &amp; Extra Skills</span></a>
+    <a href="#" class="nav-item" data-section="syllabus"><i class="fas fa-book-open"></i><span>Syllabus Tracker</span></a>
+    <a href="#" class="nav-item" data-section="planner"><i class="fas fa-calendar-alt"></i><span>Study Planner</span></a>
+    <a href="#" class="nav-item" data-section="timer"><i class="fas fa-hourglass-half"></i><span>Focus Timer</span></a>
+    <a href="#" class="nav-item" data-section="notes"><i class="fas fa-sticky-note"></i><span>Digital Notes</span></a>
+    <a href="#" class="nav-item" data-section="revision"><i class="fas fa-history"></i><span>Revision Hub</span></a>
+    <a href="#" class="nav-item" data-section="quizzes"><i class="fas fa-tasks"></i><span>Quizzes &amp; MCQs</span></a>
+    <a href="#" class="nav-item" data-section="flashcards"><i class="fas fa-clone"></i><span>Flashcards</span></a>
+    <a href="#" class="nav-item" data-section="doubt_solver"><i class="fas fa-brain"></i><span>AI Doubt Solver</span></a>
+    <a href="#" class="nav-item" data-section="tasks"><i class="fas fa-list-check"></i><span>Task Manager</span></a>
     <a href="#" class="nav-item" data-section="analytics"><i class="fas fa-chart-line"></i><span>Analytics</span></a>
-    <a href="focus-todo.html" class="nav-item"><i class="fas fa-hourglass-half"></i><span>Focus Timer</span></a>
-    <a href="motivation.html" class="nav-item"><i class="fas fa-fire"></i><span>Grind Motivation</span></a>
+    <a href="#" class="nav-item" data-section="exampapers"><i class="fas fa-file-pdf"></i><span>PYQs &amp; Trends</span></a>
   </nav>
   <div class="sidebar-bottom">
     <div class="xp-bar-wrap">
       <div class="xp-label">
-        <span>⚔️ Level <span id="sb-level">1</span></span>
+        <span>🎓 Level <span id="sb-level">1</span></span>
         <span id="sb-xp">0 XP</span>
       </div>
       <div class="xp-bar"><div class="xp-fill" id="sb-xp-fill"></div></div>
@@ -60,36 +60,41 @@
   <div class="topbar-right">
     <div class="streak-badge"><i class="fas fa-fire"></i><span id="top-streak">0</span> day streak</div>
     <div class="date-chip" id="date-chip"></div>
+    <!-- Sync indicator -->
+    <div class="sync-status-indicator" id="syncIndicator" title="Cloud Sync Active">
+      <span class="sync-dot"></span>
+      <span id="sync-code-display" style="font-size:10px; font-family:var(--mono); opacity:0.8;">OS-XXXXXX</span>
+    </div>
     <button class="reset-btn" onclick="confirmReset()" title="Reset all data"><i class="fas fa-rotate-right"></i></button>
   </div>
 </div>
 
-<!-- MAIN -->
+<!-- MAIN CONTENT AREA -->
 <main class="main-content">
 
-  <!-- ===== DASHBOARD ===== -->
+  <!-- ===== 1. DASHBOARD ===== -->
   <section class="section active" id="section-dashboard">
     <div class="section-header">
-      <h1 id="greeting">Good morning, Coder 👋</h1>
-      <p>Your ₹15+ LPA journey — every rep counts. Let's get to work.</p>
+      <h1 id="greeting">Good morning, CMA Scholar 👋</h1>
+      <p>Your journey to the CMA credentials — consistency, precision, and governance.</p>
     </div>
 
-    <!-- Motivational Banner -->
-    <div class="motivational-banner" style="background: linear-gradient(135deg, rgba(108,99,255,0.08) 0%, rgba(0,212,170,0.04) 100%); border: 1px solid rgba(108,99,255,0.2); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+    <!-- Motivation Banner -->
+    <div class="motivational-banner">
       <div style="display: flex; align-items: center; gap: 12px;">
-        <span style="font-size: 22px;">🔥</span>
+        <span style="font-size: 22px;">💡</span>
         <div>
-          <span id="dash-quote" style="font-size: 13.5px; font-weight: 600; color: #fff; display: block; margin-bottom: 2px; transition: opacity 0.5s ease;">"Ever tried. Ever failed. No matter. Try again. Fail again. Fail better."</span>
-          <span id="dash-quote-author" style="font-size: 11px; color: var(--text2); font-weight: 500; display: block; margin-bottom: 6px; transition: opacity 0.5s ease;">— Samuel Beckett</span>
-          <span style="font-size: 11.5px; color: var(--accent2); font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">⚡ NEVER GIVE UP</span>
+          <span id="dash-quote" style="font-size: 13.5px; font-weight: 600; color: #fff; display: block; margin-bottom: 2px;">"Professional competence and integrity are the cornerstones of accounting."</span>
+          <span id="dash-quote-author" style="font-size: 11px; color: var(--text2); font-weight: 500; display: block; margin-bottom: 6px;">— ICMAI Core Values</span>
+          <span style="font-size: 11.5px; color: var(--accent2); font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">⚡ STRENGTH & SUCCESS</span>
         </div>
       </div>
-      <a href="motivation.html" style="font-size: 12px; font-weight: 700; color: var(--accent2); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: rgba(0,212,170,0.1); border-radius: 8px; border: 1px solid rgba(0,212,170,0.2); transition: all 0.2s;" onmouseover="this.style.background='rgba(0,212,170,0.2)'" onmouseout="this.style.background='rgba(0,212,170,0.1)'">
-        Get Motivated <i class="fas fa-arrow-right"></i>
-      </a>
+      <button class="btn btn-sm" onclick="rotateQuote()" style="background: rgba(108, 99, 255, 0.1); border: 1px solid rgba(108, 99, 255, 0.3);">
+        <i class="fas fa-redo"></i> Next Quote
+      </button>
     </div>
 
-    <!-- Readiness Banner -->
+    <!-- Readiness / Overall Progress Banner -->
     <div class="readiness-banner">
       <div class="readiness-ring-wrap">
         <svg class="ring-svg" viewBox="0 0 120 120">
@@ -99,68 +104,92 @@
         </svg>
         <div class="ring-label">
           <span id="readiness-pct">0%</span>
-          <small>Ready</small>
+          <small>Syllabus</small>
         </div>
       </div>
       <div class="readiness-info">
-        <div class="readiness-title">Placement Readiness</div>
-        <div class="readiness-sub">Based on DSA, hours, subjects, projects, resume &amp; mocks</div>
+        <div class="readiness-title">Exam Readiness Index</div>
+        <div class="readiness-sub">Calculated from Syllabus Tracker, Revision completion, Mock Tests, and Study Hours</div>
         <div class="readiness-stats">
-          <div class="r-stat"><span id="r-dsa">0</span><label>DSA Solved</label></div>
           <div class="r-stat"><span id="r-hours">0h</span><label>Study Hours</label></div>
           <div class="r-stat"><span id="r-streak">0</span><label>Day Streak</label></div>
           <div class="r-stat"><span id="r-xp">0</span><label>Total XP</label></div>
-          <div class="r-stat"><span id="r-projects">0</span><label>Projects</label></div>
-          <div class="r-stat"><span id="r-mocks">0</span><label>Mocks Done</label></div>
+          <div class="r-stat"><span id="r-revision">0</span><label>Revised Topics</label></div>
+          <div class="r-stat"><span id="r-quizzes">0</span><label>Quizzes Done</label></div>
+          <div class="r-stat"><span id="r-flashcards">0</span><label>Mastered Cards</label></div>
         </div>
       </div>
     </div>
 
-    <!-- Row 1 -->
+    <!-- Today's Target Card -->
+    <div class="card full-card" style="margin-bottom: 20px;" id="dashboard-todays-target-card">
+      <div class="card-header" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+        <span><i class="fas fa-bullseye"></i> Today's Study Target</span>
+        <span id="todays-target-date" style="font-size:12px; font-weight:600; color:var(--accent2);"></span>
+      </div>
+      <div style="padding:16px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; background:rgba(255,255,255,0.02); border-radius:10px; border:1px solid var(--border);" id="todays-target-container">
+        <div style="flex:1;">
+          <h3 id="todays-target-title" style="font-size:14.5px; font-weight:700; color:var(--text); line-height: 1.4;">No study target set for today.</h3>
+          <p id="todays-target-sub" style="font-size:12px; color:var(--text2); margin-top:4px;">Seed your 150-day schedule under Study Planner or create custom tasks!</p>
+        </div>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <button class="btn btn-sm" id="todays-target-note-btn" onclick="openNoteTypeModal()" style="background:var(--bg3); display:none; gap:6px; font-size:12px; padding:8px 12px; border-radius:8px; font-weight:600;"><i class="fas fa-edit"></i> Create Note</button>
+          <button class="btn btn-primary" id="todays-target-btn" onclick="completeTodaysTarget()" style="background:var(--easy); border-color:var(--easy-d); display:none; padding: 8px 16px; border-radius: 8px; font-weight: 600;"><i class="fas fa-check"></i> Mark Complete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid Layout -->
     <div class="cards-row">
       <!-- Hours Logger -->
       <div class="card">
         <div class="card-header">
-          <span><i class="fas fa-clock"></i> Study Logger</span>
-          <div class="timer-tabs" style="display: flex; gap: 4px; background: var(--bg3); padding: 2px; border-radius: 8px; border: 1px solid var(--border);">
-            <button class="tab-btn active" onclick="switchLoggerTab('manual')" id="tab-manual" style="padding: 4px 8px; font-size: 10.5px; border-radius: 6px; border: none; background: rgba(108,99,255,.18); color: var(--accent); font-weight: 600; cursor: pointer; transition: all 0.2s;">Manual</button>
-            <button class="tab-btn" onclick="switchLoggerTab('timer')" id="tab-timer" style="padding: 4px 8px; font-size: 10.5px; border-radius: 6px; border: none; background: transparent; color: var(--text2); font-weight: 600; cursor: pointer; transition: all 0.2s;">Live Timer</button>
+          <span><i class="fas fa-clock"></i> Log Study Time</span>
+          <div class="timer-tabs">
+            <button class="tab-btn active" onclick="switchLoggerTab('manual')" id="tab-manual">Manual</button>
+            <button class="tab-btn" onclick="switchLoggerTab('timer')" id="tab-timer">Stopwatch</button>
           </div>
         </div>
         
-        <!-- Manual Form -->
-        <div id="logger-manual-form" class="hours-log-form" style="display: flex; gap: 6px; width: 100%;">
-          <input type="number" id="log-hrs" class="inp" placeholder="Hrs" min="0" max="23" style="flex: 1; min-width: 60px;"/>
-          <input type="number" id="log-mins" class="inp" placeholder="Mins" min="0" max="59" style="flex: 1.2; min-width: 70px;"/>
-          <button class="btn btn-primary" onclick="logHours()" style="padding: 0 16px;"><i class="fas fa-plus"></i> Log</button>
+        <!-- Manual Logger -->
+        <div id="logger-manual-form" class="hours-log-form">
+          <select id="log-subject" class="inp" style="flex: 1.5; min-width: 120px;">
+            <!-- Loaded dynamically in app.js -->
+          </select>
+          <input type="number" id="log-hrs" class="inp" placeholder="Hrs" min="0" max="23" style="width: 60px;"/>
+          <input type="number" id="log-mins" class="inp" placeholder="Mins" min="0" max="59" style="width: 70px;"/>
+          <button class="btn btn-primary" onclick="logHours()"><i class="fas fa-plus"></i></button>
         </div>
         
-        <!-- Timer Form -->
-        <div id="logger-timer-form" style="display: none; flex-direction: column; align-items: center; gap: 10px; padding: 6px 0 12px;">
-          <div id="stopwatch-display" style="font-family: var(--mono); font-size: 28px; font-weight: 700; color: var(--accent2); letter-spacing: 1px; transition: all 0.3s;">00:00:00</div>
+        <!-- Stopwatch Logger -->
+        <div id="logger-timer-form" style="display: none; flex-direction: column; align-items: center; gap: 10px; padding: 6px 0 12px; width:100%;">
+          <select id="timer-subject" class="inp" style="width: 100%;">
+            <!-- Loaded dynamically -->
+          </select>
+          <div id="stopwatch-display" style="font-family: var(--mono); font-size: 28px; font-weight: 700; color: var(--accent2); letter-spacing: 1px;">00:00:00</div>
           <div style="display: flex; gap: 6px; width: 100%;">
-            <button id="sw-start-btn" class="btn btn-primary" onclick="toggleStopwatch()" style="flex: 1; justify-content: center; background: var(--accent);"><i class="fas fa-play"></i> Start</button>
-            <button id="sw-stop-btn" class="btn btn-sm" onclick="stopStopwatch()" disabled style="flex: 1; justify-content: center; opacity: 0.5; cursor: not-allowed; background: var(--bg3);"><i class="fas fa-stop"></i> Stop &amp; Log</button>
+            <button id="sw-start-btn" class="btn btn-primary" onclick="toggleStopwatch()" style="flex: 1; justify-content: center;"><i class="fas fa-play"></i> Start</button>
+            <button id="sw-stop-btn" class="btn btn-sm" onclick="stopStopwatch()" disabled style="flex: 1; justify-content: center; opacity: 0.5; cursor: not-allowed;"><i class="fas fa-stop"></i> Log</button>
           </div>
         </div>
 
-        <div class="hours-display" style="margin-top: 10px; border-top: 1px solid var(--border); padding-top: 12px;">
+        <div class="hours-display">
           <div class="hours-stat"><div id="hours-today">0h</div><small>Today</small></div>
           <div class="hours-stat"><div id="hours-week">0h</div><small>This Week</small></div>
-          <div class="hours-stat"><div id="hours-total">0h</div><small>All Time</small></div>
+          <div class="hours-stat"><div id="hours-total">0h</div><small>Total Study</small></div>
         </div>
       </div>
 
-      <!-- Daily Checklist -->
+      <!-- Habits and Daily Checklist -->
       <div class="card">
-        <div class="card-header"><i class="fas fa-calendar-check"></i> Daily Checklist</div>
+        <div class="card-header"><i class="fas fa-calendar-check"></i> Daily Consistency</div>
         <div id="daily-checklist">
-          <label class="check-item"><input type="checkbox" data-key="daily-dsa" onchange="toggleDaily(this)"><span>🔥 5 DSA Problems</span></label>
-          <label class="check-item"><input type="checkbox" data-key="daily-subject" onchange="toggleDaily(this)"><span>📚 Core Subject Topic</span></label>
-          <label class="check-item"><input type="checkbox" data-key="daily-softskill" onchange="toggleDaily(this)"><span>🧠 Soft Skill Topic</span></label>
-          <label class="check-item"><input type="checkbox" data-key="daily-comm" onchange="toggleDaily(this)"><span>🗣️ Communication Practice</span></label>
-          <label class="check-item"><input type="checkbox" data-key="daily-project" onchange="toggleDaily(this)"><span>🚀 Project Work</span></label>
-          <label class="check-item"><input type="checkbox" data-key="daily-reading" onchange="toggleDaily(this)"><span>📖 Read 20 mins</span></label>
+          <!-- Loaded dynamically based on settings -->
+          <label class="check-item"><input type="checkbox" data-key="daily-syllabus" onchange="toggleDaily(this)"><span>📚 Study Syllabus Topic</span></label>
+          <label class="check-item"><input type="checkbox" data-key="daily-quiz" onchange="toggleDaily(this)"><span>✏️ Solve 5 MCQs</span></label>
+          <label class="check-item"><input type="checkbox" data-key="daily-flashcard" onchange="toggleDaily(this)"><span>🃏 Review 10 Flashcards</span></label>
+          <label class="check-item"><input type="checkbox" data-key="daily-revision" onchange="toggleDaily(this)"><span>🔄 Do Due Revision</span></label>
+          <label class="check-item"><input type="checkbox" data-key="daily-hours" onchange="toggleDaily(this)"><span>⏱️ Study 4+ Hours</span></label>
         </div>
         <div class="daily-pct-row">
           <span id="daily-pct-label">0 / 5 done</span>
@@ -168,458 +197,852 @@
         </div>
       </div>
 
-      <!-- Badges -->
+      <!-- Achievements & Badges -->
       <div class="card">
         <div class="card-header"><i class="fas fa-medal"></i> Achievements</div>
-        <div class="badges-grid" id="badges-grid"></div>
+        <div class="badges-grid" id="badges-grid">
+          <!-- Generated by app.js -->
+        </div>
       </div>
     </div>
 
-    <!-- Weekly Activity -->
-    <div class="card full-card">
-      <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <i class="fas fa-calendar-week"></i>
-          <span id="activity-header-title">Weekly Activity — Hours Logged</span>
+    <!-- Bottom Row: Task summary + Spaced Repetition Due Today -->
+    <div class="cards-row">
+      <div class="card" style="flex: 1.2;">
+        <div class="card-header">
+          <span><i class="fas fa-bell"></i> Tasks &amp; Deadlines</span>
+          <button class="btn btn-sm" onclick="switchSection('tasks')">Manage</button>
         </div>
-        <div class="timer-tabs" style="display: flex; gap: 4px; background: var(--bg3); padding: 2px; border-radius: 8px; border: 1px solid var(--border); margin-left: auto;">
-          <button class="tab-btn active" onclick="switchActivityTab('weekly')" id="tab-activity-weekly" style="padding: 3px 6px; font-size: 10px; border-radius: 6px; border: none; background: rgba(108,99,255,.18); color: var(--accent); font-weight: 600; cursor: pointer; transition: all 0.2s;">Weekly</button>
-          <button class="tab-btn" onclick="switchActivityTab('monthly')" id="tab-activity-monthly" style="padding: 3px 6px; font-size: 10px; border-radius: 6px; border: none; background: transparent; color: var(--text2); font-weight: 600; cursor: pointer; transition: all 0.2s;">Monthly</button>
+        <div id="dash-tasks" class="mini-list"></div>
+      </div>
+      <div class="card" style="flex: 1.8;">
+        <div class="card-header">
+          <span><i class="fas fa-history"></i> Due for Revision Today</span>
+          <button class="btn btn-sm" onclick="switchSection('revision')">Go to Revision</button>
         </div>
+        <div id="dash-revisions" class="mini-list"></div>
       </div>
-      <div class="week-grid" id="week-grid"></div>
-      <div class="week-legend">
-        <span class="wl-item"><span class="wl-dot" style="background:var(--bg3)"></span>No activity</span>
-        <span class="wl-item"><span class="wl-dot" style="background:rgba(108,99,255,.3)"></span>1–2h</span>
-        <span class="wl-item"><span class="wl-dot" style="background:rgba(108,99,255,.6)"></span>3–4h</span>
-        <span class="wl-item"><span class="wl-dot" style="background:var(--accent)"></span>5h+</span>
-      </div>
-    </div>
-
-    <!-- Quick DSA today -->
-    <div class="card full-card">
-      <div class="card-header"><i class="fas fa-bolt"></i> Today's DSA Progress
-        <span class="dsa-today-chip" id="dash-dsa-today">0 / 5</span>
-      </div>
-      <div class="dsa-quick-bar">
-        <div class="dsa-quick-fill" id="dash-dsa-fill"></div>
-      </div>
-      <div id="dash-dsa-recent" style="margin-top:12px"></div>
     </div>
   </section>
 
-  <!-- ===== DSA TRACKER ===== -->
-  <section class="section" id="section-dsa">
+  <!-- ===== 2. SYLLABUS TRACKER ===== -->
+  <section class="section" id="section-syllabus">
     <div class="section-header">
-      <h1>DSA Tracker</h1>
-      <p>Daily target: 5 problems · Consistency builds skill.</p>
+      <h1>CMA Final Syllabus Tracker (Syllabus 2022)</h1>
+      <p>Track modules, manage milestones, and see subject-wise completion rates.</p>
     </div>
 
-    <!-- Daily Target Ring -->
-    <div class="dsa-target-banner">
-      <div class="target-ring-wrap">
-        <svg class="ring-svg sm" viewBox="0 0 80 80">
-          <circle class="ring-bg" cx="40" cy="40" r="32"/>
-          <circle class="ring-fg" id="dsa-daily-ring" cx="40" cy="40" r="32"
-                  stroke-dasharray="201" stroke-dashoffset="201" stroke="url(#ringGrad)"/>
-        </svg>
-        <div class="ring-label sm">
-          <span id="dsa-today-count">0</span>
-          <small>/5</small>
+    <div class="card full-card" style="margin-bottom: 20px;">
+      <div class="syllabus-header-settings" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+        <div>
+          <label style="font-weight:600; font-size:14px; margin-right:8px;">Your Elective Paper (Paper 20):</label>
+          <select id="elective-selector" class="inp" onchange="changeElective(this.value)" style="width:280px; display:inline-block;">
+            <option value="20A">Paper 20A: Strategic Performance Management &amp; Business Valuation (SPMBV)</option>
+            <option value="20B">Paper 20B: Risk Management in Banking and Insurance (RMBI)</option>
+            <option value="20C">Paper 20C: Entrepreneurship and Startup (ENTS)</option>
+          </select>
         </div>
-      </div>
-      <div class="target-info">
-        <h3>Today's Target</h3>
-        <p id="dsa-motivation-line">Start strong — solve your first problem!</p>
-        <div class="dsa-stats-row">
-          <div class="dsa-stat-chip">Total: <b id="dsa-total-display">0</b></div>
-          <div class="dsa-stat-chip easy">Easy: <b id="dsa-easy-count">0</b></div>
-          <div class="dsa-stat-chip med">Medium: <b id="dsa-med-count">0</b></div>
-          <div class="dsa-stat-chip hard">Hard: <b id="dsa-hard-count">0</b></div>
+        <div style="font-size:13px; color:var(--accent2); font-weight:700;">
+          Syllabus Completed: <span id="syllabus-completion-summary">0%</span>
         </div>
       </div>
     </div>
 
-    <div class="cards-row">
-      <!-- Add Problem Form -->
-      <div class="card" style="flex:1.2">
-        <div class="card-header"><i class="fas fa-plus-circle"></i> Add Problem</div>
-        <div class="form-grid">
-          <input type="text" id="prob-name" class="inp" placeholder="Problem title e.g. Two Sum" style="grid-column:1/-1"/>
-          <select id="prob-cat" class="inp">
-            <option value="Arrays">🔢 Arrays</option>
-            <option value="Strings">🔤 Strings</option>
-            <option value="Trees">🌳 Trees</option>
-            <option value="Graphs">🕸️ Graphs</option>
-            <option value="DP">🧠 Dynamic Programming</option>
-            <option value="Sorting">📊 Sorting</option>
-            <option value="Linked List">🔗 Linked List</option>
-            <option value="Binary Search">🔍 Binary Search</option>
-            <option value="Stack/Queue">📚 Stack/Queue</option>
-            <option value="Greedy">💰 Greedy</option>
-            <option value="Math">➕ Math</option>
-            <option value="Backtracking">↩️ Backtracking</option>
-          </select>
-          <select id="prob-diff" class="inp">
-            <option value="Easy">🟢 Easy</option>
-            <option value="Medium">🟡 Medium</option>
-            <option value="Hard">🔴 Hard</option>
-          </select>
-          <select id="prob-platform" class="inp">
-            <option value="LeetCode">LeetCode</option>
-            <option value="GFG">GeeksForGeeks</option>
-            <option value="Codeforces">Codeforces</option>
-            <option value="HackerRank">HackerRank</option>
-            <option value="Other">Other</option>
-          </select>
-          <input type="url" id="prob-link" class="inp" placeholder="Problem URL (optional)" oninput="autoFillDSAProblemDetails(this.value)"/>
-          <textarea id="prob-notes" class="inp" rows="2" placeholder="Notes / approach (optional)" style="grid-column:1/-1;resize:none"></textarea>
-          <textarea id="prob-code" class="inp" rows="3" placeholder="Solution Code (optional)" style="grid-column:1/-1; font-family:'JetBrains Mono', monospace; color:#00d4aa;"></textarea>
+    <!-- Groups Container -->
+    <div class="syllabus-groups">
+      <!-- Group III -->
+      <div class="card full-card">
+        <h2 class="group-title"><i class="fas fa-layer-group"></i> Group III</h2>
+        <div class="subjects-container" id="group3-subjects">
+          <!-- Loaded Dynamically -->
         </div>
-        <button class="btn btn-primary" onclick="addProblem()" style="margin-top:12px;width:100%">
-          <i class="fas fa-check"></i> Mark as Solved
+      </div>
+
+      <!-- Group IV -->
+      <div class="card full-card" style="margin-top:20px;">
+        <h2 class="group-title"><i class="fas fa-layer-group"></i> Group IV</h2>
+        <div class="subjects-container" id="group4-subjects">
+          <!-- Loaded Dynamically -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. STUDY PLANNER & CALENDAR ===== -->
+  <section class="section" id="section-planner">
+    <div class="section-header">
+      <h1>Study Planner &amp; Exam Calendar</h1>
+      <p>Map your daily/weekly goals and visualize deadlines in the study calendar.</p>
+    </div>
+
+    <!-- Group III 150-Day Prep Blueprint Card -->
+    <div class="card full-card" style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 16px; flex-direction: row;">
+      <div style="flex:1; min-width:280px;">
+        <h3 style="font-size: 15px; font-weight: 700; color: var(--accent2); margin-bottom:4px;"><i class="fas fa-calendar-check"></i> Group III 150-Day Prep Blueprint</h3>
+        <p style="font-size: 12px; color: var(--text2); line-height: 1.5;">Instantly seed a 12-week study program (July 10 – Dec 10) for CEL, SFM, DTIT, and SCM directly into your calendar goals and tasks.</p>
+      </div>
+      <button class="btn btn-primary" onclick="seedGroup3Plan()" style="background: var(--accent); border: 1px solid var(--accent-d); padding: 8px 16px; border-radius: 8px; font-weight: 600;"><i class="fas fa-magic"></i> Seed Group 3 Schedule</button>
+    </div>    <div class="cards-row">
+      <!-- Goal Configurator -->
+      <div class="card" style="flex:1;">
+        <div class="card-header"><i class="fas fa-bullseye"></i> Add Goal or Milestone</div>
+        <div class="form-grid" style="grid-template-columns: 1fr;">
+          <input type="text" id="goal-title" class="inp" placeholder="Goal Description (e.g. Complete SFM Derivatives)"/>
+          <select id="goal-type" class="inp">
+            <option value="daily">Daily Target</option>
+            <option value="weekly">Weekly Goal</option>
+            <option value="monthly">Monthly Goal</option>
+            <option value="exam">Exam Date / Milestone</option>
+          </select>
+          <input type="date" id="goal-date" class="inp"/>
+          <select id="goal-subject" class="inp">
+            <!-- Loaded dynamically -->
+          </select>
+        </div>
+        <button class="btn btn-primary" onclick="addGoal()" style="margin-top:12px; width:100%">
+          <i class="fas fa-plus"></i> Set Goal
         </button>
       </div>
 
-      <!-- Category Progress -->
-      <div class="card" style="flex:2">
-        <div class="card-header"><i class="fas fa-layer-group"></i> Category Breakdown</div>
-        <div id="dsa-cat-bars"></div>
-      </div>
-    </div>
-
-    <!-- Problem List -->
-    <div class="card full-card">
-      <div class="card-header">
-        <span><i class="fas fa-list-ul"></i> Solved Problems (<span id="prob-count">0</span>)</span>
-        <div class="filter-chips" id="dsa-filter-chips">
-          <span class="chip active" data-filter="All" onclick="filterDSA(this)">All</span>
-          <span class="chip" data-filter="Arrays" onclick="filterDSA(this)">Arrays</span>
-          <span class="chip" data-filter="Strings" onclick="filterDSA(this)">Strings</span>
-          <span class="chip" data-filter="Trees" onclick="filterDSA(this)">Trees</span>
-          <span class="chip" data-filter="Graphs" onclick="filterDSA(this)">Graphs</span>
-          <span class="chip" data-filter="DP" onclick="filterDSA(this)">DP</span>
-          <span class="chip" data-filter="Easy" onclick="filterDSA(this)">🟢 Easy</span>
-          <span class="chip" data-filter="Medium" onclick="filterDSA(this)">🟡 Medium</span>
-          <span class="chip" data-filter="Hard" onclick="filterDSA(this)">🔴 Hard</span>
+      <!-- Goals lists by group -->
+      <div class="card" style="flex:2;">
+        <div class="card-header">
+          <span><i class="fas fa-list-check"></i> Study Goals</span>
+          <div class="timer-tabs">
+            <button class="tab-btn active" onclick="switchGoalTab('active')" id="tab-goal-active">Active</button>
+            <button class="tab-btn" onclick="switchGoalTab('completed')" id="tab-goal-completed">Completed</button>
+          </div>
+        </div>
+        <div id="planner-goals-list" class="goals-list-scroll" style="max-height:260px; overflow-y:auto;">
+          <!-- Loaded dynamically -->
         </div>
       </div>
-      <div class="problem-list" id="problem-list"></div>
-    </div>
-  </section>
-
-  <!-- ===== SUBJECTS ===== -->
-  <section class="section" id="section-subjects">
-    <div class="section-header">
-      <h1>Core Subjects</h1>
-      <p>DBMS · OS · Computer Networks · OOP — every placement interview tests these.</p>
-    </div>
-    <div class="subjects-overview" id="subjects-overview"></div>
-    <div class="subjects-grid" id="subjects-grid"></div>
-  </section>
-
-  <!-- ===== COMMUNICATION ===== -->
-  <section class="section" id="section-communication">
-    <div class="section-header">
-      <h1>Communication Skills</h1>
-      <p>The soft skill that wins offers — sharpen it daily.</p>
-    </div>
-    <div class="skill-overview-row" id="comm-overview"></div>
-    <div class="skill-trackers" id="comm-trackers"></div>
-  </section>
-
-  <!-- ===== SOFT SKILLS ===== -->
-  <section class="section" id="section-softskills">
-    <div class="section-header">
-      <h1>Soft Skills &amp; Aptitude</h1>
-      <p>Master core personality traits alongside placement aptitude topics.</p>
-    </div>
-    <div class="filter-chips" id="softskills-tab-chips" style="margin-bottom: 16px;">
-      <span class="chip active" onclick="switchSoftSkillsTab('core', this)">🧠 Core Soft Skills</span>
-      <span class="chip" onclick="switchSoftSkillsTab('quant', this)">🔢 Quantitative Aptitude</span>
-      <span class="chip" onclick="switchSoftSkillsTab('logical', this)">🧩 Logical Reasoning</span>
-      <span class="chip" onclick="switchSoftSkillsTab('verbal', this)">💬 Verbal Ability</span>
-    </div>
-    <div id="soft-rotation-overview" style="margin-bottom: 16px;"></div>
-    <div class="skill-overview-row" id="soft-overview" style="margin-bottom: 16px;"></div>
-    <div class="skill-trackers" id="soft-trackers"></div>
-  </section>
-
-  <!-- ===== PROJECTS ===== -->
-  <section class="section" id="section-projects">
-    <div class="section-header">
-      <h1>Projects</h1>
-      <p>Show, don't just tell. Each project is proof of your skills.</p>
     </div>
 
-    <div class="card" style="max-width:620px;margin-bottom:20px">
-      <div class="card-header"><i class="fas fa-plus-circle"></i> Add New Project</div>
-      <div class="form-grid">
-        <input type="text" id="proj-name" class="inp" placeholder="Project name e.g. Chat Application" style="grid-column:1/-1"/>
-        <input type="text" id="proj-tech" class="inp" placeholder="Tech stack e.g. React, Node.js, MongoDB" style="grid-column:1/-1"/>
-        <input type="url" id="proj-github" class="inp" placeholder="GitHub URL"/>
-        <input type="url" id="proj-live" class="inp" placeholder="Live demo URL (optional)"/>
-        <select id="proj-status" class="inp">
-          <option>Planning</option>
-          <option>In Progress</option>
-          <option>Completed</option>
-          <option>Deployed</option>
-        </select>
-        <input type="number" id="proj-pct" class="inp" placeholder="Completion % (0–100)" min="0" max="100"/>
-        <textarea id="proj-desc" class="inp" rows="2" placeholder="Brief description" style="grid-column:1/-1;resize:none"></textarea>
+    <!-- Calendar Card -->
+    <div class="card full-card" style="margin-top:20px;">
+      <div class="card-header" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+        <span><i class="fas fa-calendar-days"></i> Study Calendar</span>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <button class="btn btn-sm" onclick="navigateCalendar(-1)"><i class="fas fa-chevron-left"></i></button>
+          <span id="calendar-month-year" style="font-weight:700; width:120px; text-align:center;"></span>
+          <button class="btn btn-sm" onclick="navigateCalendar(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
       </div>
-      <button class="btn btn-primary" onclick="addProject()" style="margin-top:12px;width:100%">
-        <i class="fas fa-rocket"></i> Add Project
-      </button>
+      <div style="overflow-x: auto; width: 100%; margin-top: 10px;">
+        <div style="min-width: 700px; padding-bottom: 8px;">
+          <div class="calendar-grid-header" style="margin-top: 0;">
+            <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+          </div>
+          <div class="calendar-grid" id="calendar-days-grid">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="projects-list" id="projects-list"></div>
   </section>
 
-  <!-- ===== PLACEMENT ===== -->
-  <section class="section" id="section-placement">
+  <!-- ===== 4. STUDY TIMER & POMODORO ===== -->
+  <section class="section" id="section-timer">
     <div class="section-header">
-      <h1>Placement Tracker</h1>
-      <p>Resume · LinkedIn · Mock Interviews · Company Applications</p>
-    </div>
-
-    <div class="placement-readiness-bar">
-      <div class="plr-label"><span>Placement Readiness Score</span><span id="plr-pct">0%</span></div>
-      <div class="prog-bar" style="height:10px"><div class="prog-fill" id="plr-bar"></div></div>
+      <h1>Pomodoro &amp; Study Hour Tracker</h1>
+      <p>Boost focus with Pomodoro timers, ambient sounds, and automated hour tracking.</p>
     </div>
 
     <div class="cards-row">
-      <!-- Resume -->
-      <div class="card">
-        <div class="card-header">
-          <span><i class="fas fa-file-alt"></i> Resume</span>
-          <span class="mini-pct" id="resume-pct">0%</span>
-        </div>
-        <div class="placement-items">
-          <label class="check-item"><input type="checkbox" data-key="resume-made" onchange="togglePlacement(this)"><span>Resume Created</span></label>
-          <label class="check-item"><input type="checkbox" data-key="resume-ats" onchange="togglePlacement(this)"><span>ATS Optimised</span></label>
-          <label class="check-item"><input type="checkbox" data-key="resume-reviewed" onchange="togglePlacement(this)"><span>Peer Reviewed</span></label>
-          <label class="check-item"><input type="checkbox" data-key="resume-1page" onchange="togglePlacement(this)"><span>1-Page Rule ✓</span></label>
-          <label class="check-item"><input type="checkbox" data-key="resume-links" onchange="togglePlacement(this)"><span>GitHub / LeetCode Links</span></label>
-          <label class="check-item"><input type="checkbox" data-key="resume-action" onchange="togglePlacement(this)"><span>Action Verbs Used</span></label>
-        </div>
-      </div>
-
-      <!-- LinkedIn -->
-      <div class="card">
-        <div class="card-header">
-          <span><i class="fab fa-linkedin"></i> LinkedIn</span>
-          <span class="mini-pct" id="li-pct">0%</span>
-        </div>
-        <div class="placement-items">
-          <label class="check-item"><input type="checkbox" data-key="li-photo" onchange="togglePlacement(this)"><span>Profile Photo</span></label>
-          <label class="check-item"><input type="checkbox" data-key="li-headline" onchange="togglePlacement(this)"><span>Strong Headline</span></label>
-          <label class="check-item"><input type="checkbox" data-key="li-about" onchange="togglePlacement(this)"><span>About Section</span></label>
-          <label class="check-item"><input type="checkbox" data-key="li-500" onchange="togglePlacement(this)"><span>500+ Connections</span></label>
-          <label class="check-item"><input type="checkbox" data-key="li-skills" onchange="togglePlacement(this)"><span>Skills Endorsed</span></label>
-          <label class="check-item"><input type="checkbox" data-key="li-projects" onchange="togglePlacement(this)"><span>Projects Listed</span></label>
-        </div>
-      </div>
-
-      <!-- 8-Month Placement Priorities -->
-      <div class="card">
-        <div class="card-header">
-          <span><i class="fas fa-bullseye"></i> 8-Month Priorities</span>
-          <span class="mini-pct" id="priorities-pct">0%</span>
-        </div>
-        <div class="placement-items">
-          <label class="check-item"><input type="checkbox" data-key="priority-dsa" onchange="togglePlacement(this)"><span>✅ DSA Mastery</span></label>
-          <label class="check-item"><input type="checkbox" data-key="priority-python" onchange="togglePlacement(this)"><span>✅ Python Programming</span></label>
-          <label class="check-item"><input type="checkbox" data-key="priority-fastapi" onchange="togglePlacement(this)"><span>✅ FastAPI Backends</span></label>
-          <label class="check-item"><input type="checkbox" data-key="priority-react" onchange="togglePlacement(this)"><span>✅ React Frontends</span></label>
-          <label class="check-item"><input type="checkbox" data-key="priority-sql" onchange="togglePlacement(this)"><span>✅ SQL Databases</span></label>
-          <label class="check-item"><input type="checkbox" data-key="priority-docker" onchange="togglePlacement(this)"><span>✅ Docker Containerization</span></label>
-          <label class="check-item"><input type="checkbox" data-key="priority-aws" onchange="togglePlacement(this)"><span>✅ AWS Cloud Services</span></label>
-          <label class="check-item"><input type="checkbox" data-key="priority-projects" onchange="togglePlacement(this)"><span>✅ 2-3 Strong Projects</span></label>
-          <label class="check-item"><input type="checkbox" data-key="priority-aiml" onchange="togglePlacement(this)"><span>✅ AI/ML Basics &amp; Integration</span></label>
-        </div>
-      </div>
-
-      <!-- Mock Interviews -->
-      <div class="card">
-        <div class="card-header"><i class="fas fa-user-tie"></i> Mock Interviews</div>
-        <div class="mock-counter">
-          <button class="counter-btn" onclick="changeMock(-1)">−</button>
-          <div class="counter-display">
-            <span id="mock-count">0</span>
-            <small>Mocks Done</small>
+      <!-- Pomodoro Card -->
+      <div class="card" style="flex:1.5; align-items:center; display:flex; flex-direction:column; justify-content:center;">
+        <div class="card-header" style="width:100%;">
+          <span><i class="fas fa-hourglass"></i> Pomodoro Arena</span>
+          <div class="timer-tabs" id="pomo-tabs">
+            <button class="tab-btn active" onclick="setPomoMode('study')">Study (25m)</button>
+            <button class="tab-btn" onclick="setPomoMode('short')">Short Break (5m)</button>
+            <button class="tab-btn" onclick="setPomoMode('long')">Long Break (15m)</button>
           </div>
-          <button class="counter-btn" onclick="changeMock(1)">+</button>
         </div>
-        <div style="margin-top:14px">
-          <div class="progress-label"><span>Target: 20 mocks</span><span id="mock-pct">0%</span></div>
-          <div class="prog-bar"><div class="prog-fill" id="mock-bar"></div></div>
+
+        <div class="pomo-timer-wrapper" style="margin:24px 0; position:relative; width:180px; height:180px; display:flex; align-items:center; justify-content:center;">
+          <!-- SVG progress ring -->
+          <svg class="pomo-ring-svg" viewBox="0 0 100 100" style="position:absolute; width:100%; height:100%; transform:rotate(-90deg);">
+            <circle cx="50" cy="50" r="45" stroke="#161a27" stroke-width="4" fill="transparent" />
+            <circle id="pomo-progress-ring" cx="50" cy="50" r="45" stroke="var(--accent)" stroke-width="4" fill="transparent" stroke-dasharray="282.7" stroke-dashoffset="0" style="transition: stroke-dashoffset 1s linear;"/>
+          </svg>
+          <div id="pomo-time-display" style="font-size:38px; font-weight:800; font-family:var(--mono);">25:00</div>
         </div>
-        <div class="mock-tips" id="mock-tip"></div>
+
+        <div style="display:flex; gap:10px; width:100%; margin-bottom: 12px;">
+          <button id="pomo-start-btn" class="btn btn-primary" style="flex:1; justify-content:center;" onclick="togglePomo()"><i class="fas fa-play"></i> Start Focus</button>
+          <button id="pomo-reset-btn" class="btn btn-sm" style="flex:1; justify-content:center;" onclick="resetPomo()"><i class="fas fa-rotate-right"></i> Reset</button>
+        </div>
+
+        <div style="width:100%; display:flex; gap:12px; margin-top:8px;">
+          <div style="flex:1;">
+            <label style="font-size:11px; color:var(--text2); display:block; margin-bottom:4px;">Ambient Audio</label>
+            <select id="pomo-sound" class="inp" onchange="playAmbientSound(this.value)" style="width:100%;">
+              <option value="none">🔇 None</option>
+              <option value="rain">🌧️ Soft Rain</option>
+              <option value="beats">🎧 Lo-fi Focus Beats</option>
+              <option value="white">⚪ White Noise</option>
+            </select>
+          </div>
+          <div style="flex:1;">
+            <label style="font-size:11px; color:var(--text2); display:block; margin-bottom:4px;">Log Session Subject</label>
+            <select id="pomo-subject" class="inp" style="width:100%;">
+              <!-- Loaded dynamically -->
+            </select>
+          </div>
+        </div>
+        <!-- Audio elements -->
+        <audio id="ambient-audio-rain" loop src="https://assets.mixkit.co/active_storage/sfx/2526/2526-84.wav"></audio>
+        <audio id="ambient-audio-beats" loop src="https://assets.mixkit.co/active_storage/sfx/123/123.wav"></audio> <!-- Mock/Lofi placeholder -->
+        <audio id="ambient-audio-white" loop src="https://assets.mixkit.co/active_storage/sfx/2568/2568-84.wav"></audio>
+        <audio id="alarm-audio" src="https://assets.mixkit.co/active_storage/sfx/911/911-84.wav"></audio>
       </div>
 
-      <!-- Applications -->
-      <div class="card">
-        <div class="card-header"><i class="fas fa-paper-plane"></i> Applications</div>
-        <div class="mock-counter">
-          <button class="counter-btn" onclick="changeApp(-1)">−</button>
-          <div class="counter-display">
-            <span id="app-count">0</span>
-            <small>Applied</small>
-          </div>
-          <button class="counter-btn" onclick="changeApp(1)">+</button>
+      <!-- History and Timer Analytics -->
+      <div class="card" style="flex:1.2;">
+        <div class="card-header"><i class="fas fa-history"></i> Focus History</div>
+        <div id="pomo-history-list" class="mini-list" style="max-height: 280px; overflow-y: auto;">
+          <!-- Populated dynamically -->
         </div>
-        <div style="margin-top:14px">
-          <input type="text" id="app-company" class="inp" placeholder="Company name"/>
-          <select id="app-status" class="inp" style="margin-top:8px">
-            <option>Applied</option>
-            <option>OA Received</option>
-            <option>Interview Scheduled</option>
-            <option>Offer</option>
-            <option>Rejected</option>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. DIGITAL NOTES ===== -->
+  <section class="section" id="section-notes">
+    <div class="section-header">
+      <h1>Digital Note-Taking Hub</h1>
+      <p>Organize concepts, tag provisions, search files, and backup notes to the cloud.</p>
+    </div>
+
+    <div class="notes-workspace" style="display:flex; gap:16px; height: calc(100vh - 200px); min-height: 500px;">
+      <!-- Folders & Notes Sidebar -->
+      <div class="card" style="width:280px; flex-shrink:0; padding:12px; display:flex; flex-direction:column; gap:12px; height:100%;">
+        <div style="display:flex; gap:6px;">
+          <input type="text" id="note-search" class="inp" placeholder="Search notes..." oninput="renderNotesList()" style="flex:1;"/>
+          <button class="btn btn-sm" onclick="clearNotesSearch()" title="Clear Search"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div>
+          <button class="btn btn-sm" onclick="promptCreateFolder()" style="width:100%; justify-content:center; background:var(--bg3);"><i class="fas fa-folder-plus"></i> New Folder</button>
+        </div>
+
+        <div id="notes-folders-list" style="max-height:120px; overflow-y:auto; border-bottom:1px solid var(--border); padding-bottom:8px;">
+          <!-- Folders render here -->
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-weight:600; font-size:13px; color:var(--text2);">Notes</span>
+          <button class="btn btn-primary btn-sm" onclick="createNewNote()"><i class="fas fa-plus"></i> Add Note</button>
+        </div>
+
+        <div id="notes-list-container" style="flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:6px;">
+          <!-- Notes items render here -->
+        </div>
+      </div>
+
+      <!-- Editor Panel -->
+      <div class="card" style="flex:1; padding:16px; display:flex; flex-direction:column; gap:12px; height:100%;">
+        <div id="note-editor-empty" style="display:flex; flex-direction:column; align-items:center; justify-content:center; flex:1; color:var(--text3);">
+          <i class="fas fa-edit" style="font-size:40px; margin-bottom:12px;"></i>
+          <p>Select a note or create a new one to start writing.</p>
+        </div>
+
+        <div id="note-editor-active" style="display:none; flex-direction:column; gap:12px; flex:1; height:100%;">
+          <div style="display:flex; gap:12px;">
+            <input type="text" id="note-title" class="inp" placeholder="Note Title..." oninput="updateActiveNote()" style="font-size:18px; font-weight:700; flex:1;"/>
+            <select id="note-folder-select" class="inp" onchange="updateActiveNote()" style="width:140px;">
+              <!-- Folders load dynamically -->
+            </select>
+          </div>
+          <div style="display:flex; gap:12px; align-items:center;">
+            <input type="text" id="note-tags" class="inp" placeholder="Tags (comma-separated)..." oninput="updateActiveNote()" style="flex:1; font-size:12px;"/>
+            <button class="btn btn-danger-solid btn-sm" onclick="deleteActiveNote()" title="Delete Note"><i class="fas fa-trash"></i></button>
+          </div>
+          <div style="display:flex; gap:10px; flex:1; height: calc(100% - 100px);">
+            <textarea id="note-content" class="inp" placeholder="Write your revision notes here... Supports plain text. Double click flashcard module keywords to highlight them." oninput="updateActiveNote()" style="flex:1; font-family:var(--font); font-size:14px; line-height:1.6; resize:none; height:100%;"></textarea>
+          </div>
+          <div style="font-size:11px; color:var(--text2); display:flex; justify-content:space-between; align-items:center;">
+            <span id="note-save-status">Saved locally</span>
+            <span id="note-word-count">Words: 0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 6. REVISION HUB (SPACED REPETITION) ===== -->
+  <section class="section" id="section-revision">
+    <div class="section-header">
+      <h1>Spaced Repetition &amp; Revision Scheduler</h1>
+      <p>Schedule topics for revision. The Leitner system flags exactly what is due for review today.</p>
+    </div>
+
+    <div class="cards-row">
+      <!-- Scheduler Form -->
+      <div class="card" style="flex:1;">
+        <div class="card-header"><i class="fas fa-history"></i> Add Spaced Revision Topic</div>
+        <div class="form-grid" style="grid-template-columns:1fr;">
+          <input type="text" id="rev-topic" class="inp" placeholder="Topic Description (e.g. Audit Reports under Sec 143)"/>
+          <select id="rev-subject" class="inp">
+            <!-- Loaded dynamically -->
           </select>
-          <input type="text" id="app-role" class="inp" style="margin-top:8px" placeholder="Role e.g. SDE-1"/>
-          <button class="btn btn-sm" onclick="addApplication()" style="margin-top:8px;width:100%">
-            <i class="fas fa-plus"></i> Track Company
+          <select id="rev-schedule" class="inp">
+            <option value="1-3-7-30">Standard (1, 3, 7, 30 days)</option>
+            <option value="1-2-4-8-16">Aggressive (1, 2, 4, 8, 16 days)</option>
+            <option value="3-10-30">Gradual (3, 10, 30 days)</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" onclick="addRevisionTopic()" style="margin-top:12px; width:100%">
+          <i class="fas fa-plus"></i> Schedule Revision
+        </button>
+      </div>
+
+      <!-- Status statistics -->
+      <div class="card" style="flex:1;">
+        <div class="card-header"><i class="fas fa-chart-pie"></i> Spaced Repetition Stats</div>
+        <div class="hours-display" style="padding-top:20px;">
+          <div class="hours-stat"><div id="rev-count-due" style="color:var(--accent3)">0</div><small>Due Today</small></div>
+          <div class="hours-stat"><div id="rev-count-active" style="color:var(--gold)">0</div><small>Active Queues</small></div>
+          <div class="hours-stat"><div id="rev-count-done" style="color:var(--accent2)">0</div><small>Completed</small></div>
+        </div>
+        <div style="font-size:12px; color:var(--text2); line-height:1.6; margin-top:20px; padding:8px; background:var(--bg3); border-radius:8px;">
+          📖 **How it works**: When you complete a due revision, click **"Pass"** to push it to the next spacing tier. If you fail to recall, click **"Reset"** to return it to day 1!
+        </div>
+      </div>
+    </div>
+
+    <!-- Revisions List -->
+    <div class="card full-card" style="margin-top:20px;">
+      <div class="card-header">
+        <span><i class="fas fa-list"></i> Revision Queue</span>
+        <div class="filter-chips" id="rev-filter-chips">
+          <span class="chip active" onclick="filterRevision('all', this)">All</span>
+          <span class="chip" onclick="filterRevision('due', this)">⚠️ Due Today</span>
+          <span class="chip" onclick="filterRevision('upcoming', this)">📅 Upcoming</span>
+          <span class="chip" onclick="filterRevision('completed', this)">✅ Completed</span>
+        </div>
+      </div>
+      <div class="revision-table-wrapper" style="overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse; font-size:13.5px; text-align:left;">
+          <thead>
+            <tr style="border-bottom:1px solid var(--border); color:var(--text2);">
+              <th style="padding:12px 8px;">Topic</th>
+              <th style="padding:12px 8px;">Subject</th>
+              <th style="padding:12px 8px;">Leitner Level</th>
+              <th style="padding:12px 8px;">Next Due</th>
+              <th style="padding:12px 8px;">Last Action</th>
+              <th style="padding:12px 8px; text-align:right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="revision-queue-tbody">
+            <!-- Loaded dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7. MCQ & QUIZ ARENA ===== -->
+  <section class="section" id="section-quizzes">
+    <div class="section-header">
+      <h1>Daily Quizzes &amp; MCQs</h1>
+      <p>Practice past year questions, direct tax cases, laws provisions, and financial models.</p>
+    </div>
+
+    <div class="cards-row">
+      <!-- Setup Quiz -->
+      <div class="card" style="flex:1;" id="quiz-setup-panel">
+        <div class="card-header"><i class="fas fa-gamepad"></i> Select Quiz Subject</div>
+        <div class="form-grid" style="grid-template-columns:1fr; margin-bottom:12px;">
+          <select id="quiz-subject-select" class="inp">
+            <option value="ALL">All Subjects Mix</option>
+            <option value="CEL">Paper 13: Corporate &amp; Economic Laws</option>
+            <option value="SFM">Paper 14: Strategic Financial Management</option>
+            <option value="DTIT">Paper 15: Direct Taxes &amp; International Taxation</option>
+            <option value="SCM">Paper 16: Strategic Cost Management</option>
+          </select>
+          <select id="quiz-count-select" class="inp">
+            <option value="5">5 Questions Quiz</option>
+            <option value="10">10 Questions Quiz</option>
+            <option value="20">20 Questions Mock Test</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" onclick="startQuiz()" style="width:100%; justify-content:center;">
+          <i class="fas fa-play"></i> Start Quiz Arena
+        </button>
+      </div>
+
+      <!-- Quiz Window (Hidden by default) -->
+      <div class="card" style="flex:2; display:none;" id="quiz-active-panel">
+        <div class="card-header" style="display:flex; justify-content:space-between; align-items:center;">
+          <span id="quiz-progress-text">Question 1 of 5</span>
+          <span id="quiz-timer-display" style="font-family:var(--mono); color:var(--accent3); font-weight:700;">Time: 00:00</span>
+        </div>
+        
+        <div class="quiz-question-box" style="margin:16px 0;">
+          <div id="quiz-question" style="font-size:15px; font-weight:600; line-height:1.6; margin-bottom:14px; min-height:48px;">
+            Question text loading...
+          </div>
+          <div class="quiz-options-container" id="quiz-options" style="display:flex; flex-direction:column; gap:8px;">
+            <!-- Quiz choices -->
+          </div>
+        </div>
+
+        <div class="quiz-feedback-box" id="quiz-feedback" style="display:none; padding:12px; border-radius:8px; font-size:13px; line-height:1.5; margin-bottom:12px;">
+          <!-- Correct/Incorrect explanation -->
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border); padding-top:12px;">
+          <button class="btn btn-sm" onclick="quitQuiz()" style="background:var(--bg3);"><i class="fas fa-times"></i> Quit</button>
+          <button class="btn btn-primary" id="quiz-next-btn" onclick="nextQuizQuestion()" disabled>Next Question <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <!-- Quiz Results Summary -->
+      <div class="card" style="flex:2; display:none;" id="quiz-results-panel">
+        <div class="card-header"><i class="fas fa-trophy"></i> Quiz Results</div>
+        <div style="text-align:center; padding:20px 0;">
+          <div style="font-size:48px; font-weight:800; color:var(--accent2);" id="result-score">4/5</div>
+          <div style="font-size:16px; font-weight:600; margin:8px 0;" id="result-greeting">Outstanding Job!</div>
+          <div style="font-size:12px; color:var(--text2);" id="result-xp-reward">+40 XP Awarded</div>
+        </div>
+
+        <div style="margin-top:10px;">
+          <h4 style="font-size:13px; font-weight:600; margin-bottom:8px; border-bottom:1px solid var(--border); padding-bottom:6px;">Weak Topics Identified</h4>
+          <ul id="result-weak-topics" style="font-size:12px; color:var(--accent3); padding-left:16px; line-height:1.6;">
+            <!-- List of topics -->
+          </ul>
+        </div>
+
+        <button class="btn btn-primary" onclick="showQuizSetup()" style="width:100%; justify-content:center; margin-top:20px;">
+          <i class="fas fa-redo"></i> Study Again
+        </button>
+      </div>
+
+      <!-- Quiz history / scoreboard -->
+      <div class="card" style="flex:1.2;">
+        <div class="card-header"><i class="fas fa-award"></i> Quiz History &amp; Score Logs</div>
+        <div id="quiz-history-list" class="mini-list" style="max-height:280px; overflow-y:auto;">
+          <!-- Loaded dynamically -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 8. FLASHCARD DECK ===== -->
+  <section class="section" id="section-flashcards">
+    <div class="section-header">
+      <h1>CMA Provision &amp; Formula Flashcards</h1>
+      <p>Memorize critical cost accounting formulas, direct tax provisions, and board meeting regulations.</p>
+    </div>
+
+    <div class="cards-row">
+      <!-- Flashcards display -->
+      <div class="card" style="flex:1.8; align-items:center; justify-content:center; display:flex; flex-direction:column; min-height:360px;">
+        <div class="card-header" style="width:100%; display:flex; justify-content:space-between; align-items:center;">
+          <span><i class="fas fa-clone"></i> Card Deck</span>
+          <select id="flash-subject-filter" class="inp" onchange="renderFlashcards()" style="width:150px;">
+            <option value="ALL">All Subjects</option>
+            <option value="CEL">Corporate Laws</option>
+            <option value="SFM">Financial Mgmt</option>
+            <option value="DTIT">Direct Taxes</option>
+            <option value="SCM">Strategic Costs</option>
+          </select>
+        </div>
+
+        <!-- 3D Flip Card Container -->
+        <div class="flashcard-container" onclick="flipFlashcard()">
+          <div class="flashcard-inner" id="flashcard-inner">
+            <!-- Front -->
+            <div class="flashcard-front">
+              <div class="fc-subject" id="fc-subject">Strategic Financial Management</div>
+              <div class="fc-content" id="fc-front-text">Capital Asset Pricing Model (CAPM) Formula</div>
+              <div class="fc-instruction">Click card to reveal concept</div>
+            </div>
+            <!-- Back -->
+            <div class="flashcard-back">
+              <div class="fc-subject" style="color:var(--accent2);">Solution / Provision Details</div>
+              <div class="fc-content" id="fc-back-text">Expected Return = Rf + Beta * (Rm - Rf)</div>
+              <div class="fc-instruction">Click to flip back</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flashcard Controller -->
+        <div style="display:flex; justify-content:space-between; align-items:center; width:100%; max-width:320px; gap:8px;">
+          <button class="btn btn-sm" onclick="prevFlashcard()"><i class="fas fa-chevron-left"></i> Previous</button>
+          <span style="font-size:12px; color:var(--text2);" id="fc-index-display">1 of 15</span>
+          <button class="btn btn-sm" onclick="nextFlashcard()">Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+
+        <div style="display:flex; gap:10px; width:100%; max-width:320px; margin-top:16px;">
+          <button class="btn btn-sm" id="fc-need-practice-btn" onclick="markCardMastery(false)" style="flex:1; background:rgba(255, 107, 107, 0.1); border: 1px solid rgba(255,107,107,0.3); color:var(--accent3);">
+            <i class="fas fa-times-circle"></i> Review Needed
+          </button>
+          <button class="btn btn-sm" id="fc-mastered-btn" onclick="markCardMastery(true)" style="flex:1; background:rgba(0, 212, 170, 0.1); border: 1px solid rgba(0,212,170,0.3); color:var(--accent2);">
+            <i class="fas fa-check-circle"></i> Mastered ✓
           </button>
         </div>
       </div>
-    </div>
 
-    <!-- Pipeline -->
-    <div class="card full-card">
-      <div class="card-header">
-        <span><i class="fas fa-stream"></i> Company Pipeline</span>
-        <div class="pipeline-filter-chips">
-          <span class="chip active" data-pf="All" onclick="filterPipeline(this)">All</span>
-          <span class="chip" data-pf="Applied" onclick="filterPipeline(this)">Applied</span>
-          <span class="chip" data-pf="OA Received" onclick="filterPipeline(this)">OA</span>
-          <span class="chip" data-pf="Interview Scheduled" onclick="filterPipeline(this)">Interview</span>
-          <span class="chip" data-pf="Offer" onclick="filterPipeline(this)">Offer 🎉</span>
-          <span class="chip" data-pf="Rejected" onclick="filterPipeline(this)">Rejected</span>
+      <!-- Add Custom Card -->
+      <div class="card" style="flex:1.2;">
+        <div class="card-header"><i class="fas fa-plus-circle"></i> Create Custom Flashcard</div>
+        <div class="form-grid" style="grid-template-columns:1fr; gap:10px;">
+          <select id="new-fc-subject" class="inp">
+            <option value="CEL">Paper 13: Corporate &amp; Economic Laws</option>
+            <option value="SFM">Paper 14: Strategic Financial Management</option>
+            <option value="DTIT">Paper 15: Direct Taxes &amp; International Taxation</option>
+            <option value="SCM">Paper 16: Strategic Cost Management</option>
+          </select>
+          <input type="text" id="new-fc-front" class="inp" placeholder="Front Side Question/Formula name"/>
+          <textarea id="new-fc-back" class="inp" rows="3" placeholder="Back Side Explanation/Formula solution details..." style="resize:none;"></textarea>
         </div>
-      </div>
-      <div class="company-pipeline" id="company-pipeline"></div>
-    </div>
-  </section>
-
-  <!-- ===== CLOUD & EXTRA SKILLS ===== -->
-  <section class="section" id="section-extraskills">
-    <div class="section-header">
-      <h1>Cloud &amp; Extra Skills</h1>
-      <p>Log your custom skill paths (e.g. AWS, GCP, Cloud Computing) and track your notes and study links.</p>
-    </div>
-
-    <div class="cards-row">
-      <!-- Add Skill Form -->
-      <div class="card" style="flex:1; max-width:360px;">
-        <div class="card-header"><i class="fas fa-folder-plus"></i> Create Custom Skill</div>
-        <div class="form-grid" style="grid-template-columns:1fr;">
-          <input type="text" id="custom-skill-name" class="inp" placeholder="e.g. Cloud Computing, DevOps"/>
-        </div>
-        <button class="btn btn-primary" onclick="addCustomSkill()" style="margin-top:12px;width:100%">
-          <i class="fas fa-plus"></i> Create Skill
+        <button class="btn btn-primary" onclick="addCustomFlashcard()" style="margin-top:12px; width:100%">
+          <i class="fas fa-plus"></i> Add Card
         </button>
-      </div>
 
-      <!-- General Info/Stats -->
-      <div class="card" style="flex:2;">
-        <div class="card-header"><i class="fas fa-info-circle"></i> Tracking Progress</div>
-        <p style="font-size:13px; color:var(--text2); line-height:1.6; margin-bottom:12px;">
-          Build your custom curriculum. Enter topics you learn, describe what you studied, and attach your ChatGPT link for quick access later.
-        </p>
-        <div id="extraskills-summary-stats" style="display:flex; gap:12px; flex-wrap:wrap;"></div>
+        <div style="margin-top:20px; border-top: 1px solid var(--border); padding-top:14px;">
+          <h4 style="font-size:12px; font-weight:600; margin-bottom:8px;">Deck Statistics</h4>
+          <div style="display:flex; justify-content:space-between; font-size:11.5px; color:var(--text2); line-height:1.8;">
+            <span>Total Cards:</span><span id="fc-stats-total">0</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:11.5px; color:var(--text2); line-height:1.8;">
+            <span>Mastered Cards:</span><span id="fc-stats-mastered" style="color:var(--accent2)">0</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:11.5px; color:var(--text2); line-height:1.8;">
+            <span>Needs Practice:</span><span id="fc-stats-practice" style="color:var(--accent3)">0</span>
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- Skills List Container -->
-    <div id="custom-skills-container" style="display:grid; grid-template-columns:1fr; gap:20px; margin-top:20px;"></div>
   </section>
 
-  <!-- ===== 8-MONTH PLACEMENT ROADMAP ===== -->
-  <section class="section" id="section-roadmap">
+  <!-- ===== 9. AI DOUBT SOLVER ===== -->
+  <section class="section" id="section-doubt_solver">
     <div class="section-header">
-      <h1>8-Month Placement Roadmap</h1>
-      <p>Master these core domains step-by-step to secure a premium SDE role.</p>
+      <h1>AI Doubt Solver Chat</h1>
+      <p>Ask doubts on corporate regulations, audit reports, direct tax codes, SCM pricing, etc. Get simulated conceptual breakdowns.</p>
     </div>
 
-    <!-- Roadmap Overall Progress -->
-    <div class="placement-readiness-bar">
-      <div class="plr-label">
-        <span>Roadmap Completion Progress</span>
-        <span id="roadmap-pct">0%</span>
-      </div>
-      <div class="prog-bar" style="height:10px">
-        <div class="prog-fill" id="roadmap-bar"></div>
-      </div>
-    </div>
+    <div class="doubt-solver-layout" style="display:flex; gap:16px; height: calc(100vh - 220px); min-height:480px;">
+      <!-- Main Chat Card -->
+      <div class="card" style="flex:2; display:flex; flex-direction:column; justify-content:space-between; padding:16px; height:100%;">
+        <div id="chat-messages-container" style="flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:12px; margin-bottom:12px; padding-right:6px;">
+          <!-- Mock messages will load here -->
+        </div>
 
-    <!-- Roadmap Cards Grid -->
-    <div class="subjects-grid" id="roadmap-grid">
-      <!-- Generated dynamically by app.js -->
+        <!-- Loading animation -->
+        <div id="chat-typing-indicator" style="display:none; align-items:center; gap:8px; padding-left:12px; margin-bottom:12px; font-size:11.5px; color:var(--text2);">
+          <i class="fas fa-circle-notch fa-spin"></i> CMA AI is formulating answers...
+        </div>
+
+        <div style="display:flex; gap:8px; border-top:1px solid var(--border); padding-top:12px;">
+          <input type="text" id="chat-input" class="inp" placeholder="Type your CMA doubt here (e.g. transfer pricing methods, board quorum under Companies Act)..." onkeydown="handleChatSubmit(event)" style="flex:1;"/>
+          <button class="btn btn-primary" onclick="sendChat()" style="padding:0 20px;"><i class="fas fa-paper-plane"></i></button>
+        </div>
+      </div>
+
+      <!-- Quick prompts sidebar -->
+      <div class="card" style="flex:1; max-width:300px; padding:14px; height:100%; display:flex; flex-direction:column;">
+        <h4 style="font-size:13px; font-weight:600; margin-bottom:10px; border-bottom:1px solid var(--border); padding-bottom:6px;">Quick Conceptual Queries</h4>
+        <div class="quick-prompts-list" style="display:flex; flex-direction:column; gap:8px; overflow-y:auto; flex:1;">
+          <button class="prompt-btn" onclick="sendQuickPrompt('Explain transfer pricing arm\'s length principle')">⚖️ Transfer Pricing Principle</button>
+          <button class="prompt-btn" onclick="sendQuickPrompt('What is the board meeting quorum under Companies Act 2013?')">👔 Board Quorum Regulations</button>
+          <button class="prompt-btn" onclick="sendQuickPrompt('What is capital asset pricing model SFM?')">📈 CAPM explanation in SFM</button>
+          <button class="prompt-btn" onclick="sendQuickPrompt('Explain strategic cost management value chain analysis')">💰 SCM Value Chain Analysis</button>
+          <button class="prompt-btn" onclick="sendQuickPrompt('How is corporate tax calculated in India?')">🏛️ Corporate Tax Overview</button>
+          <button class="prompt-btn" onclick="sendQuickPrompt('What is Cost Audit report Rules?')">📊 Cost Audit Report Mandate</button>
+        </div>
+        <div style="font-size:11px; color:var(--text2); line-height:1.5; margin-top:12px; border-top:1px solid var(--border); padding-top:10px;">
+          💡 **Tip**: Double-click any key term in the AI answer to automatically copy it to your study planner or task lists.
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ===== ANALYTICS ===== -->
+  <!-- ===== 10. TASK MANAGER ===== -->
+  <section class="section" id="section-tasks">
+    <div class="section-header">
+      <h1>Task Manager &amp; Deadlines</h1>
+      <p>Log revision milestones, assignments, and practical training goals. Track priorities and status.</p>
+    </div>
+
+    <!-- Add Task Card -->
+    <div class="card" style="max-width:620px; margin-bottom:20px;">
+      <div class="card-header"><i class="fas fa-plus-circle"></i> Create New Task</div>
+      <div class="form-grid">
+        <input type="text" id="task-title" class="inp" placeholder="Task description..." style="grid-column:1/-1"/>
+        <select id="task-priority" class="inp">
+          <option value="High">🔴 High Priority</option>
+          <option value="Medium">🟡 Medium Priority</option>
+          <option value="Low">🟢 Low Priority</option>
+        </select>
+        <input type="date" id="task-deadline" class="inp"/>
+        <select id="task-subject" class="inp">
+          <!-- Loaded dynamically -->
+        </select>
+      </div>
+      <button class="btn btn-primary" onclick="addTask()" style="margin-top:12px; width:100%">
+        <i class="fas fa-plus"></i> Save Task
+      </button>
+    </div>
+
+    <!-- Kanban / Grid List of Tasks -->
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:18px;">
+      <!-- To Do -->
+      <div class="card" style="min-height:300px;">
+        <div class="card-header" style="border-bottom:2px solid var(--accent3);">
+          <span>📌 To Do</span>
+          <span class="badge-count" id="task-todo-count">0</span>
+        </div>
+        <div id="tasks-todo" class="task-bucket" style="margin-top:12px; display:flex; flex-direction:column; gap:8px;">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- In Progress -->
+      <div class="card" style="min-height:300px;">
+        <div class="card-header" style="border-bottom:2px solid var(--gold);">
+          <span>⚡ In Progress</span>
+          <span class="badge-count" id="task-progress-count">0</span>
+        </div>
+        <div id="tasks-inprogress" class="task-bucket" style="margin-top:12px; display:flex; flex-direction:column; gap:8px;">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Completed -->
+      <div class="card" style="min-height:300px;">
+        <div class="card-header" style="border-bottom:2px solid var(--accent2);">
+          <span>✓ Completed</span>
+          <span class="badge-count" id="task-completed-count">0</span>
+        </div>
+        <div id="tasks-completed" class="task-bucket" style="margin-top:12px; display:flex; flex-direction:column; gap:8px;">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 11. ANALYTICS & INSIGHTS ===== -->
   <section class="section" id="section-analytics">
     <div class="section-header">
-      <h1>Analytics</h1>
-      <p>Data doesn't lie — see your growth in numbers.</p>
+      <h1>Study Hours &amp; Performance Analytics</h1>
+      <p>Analyze subject strengths, syllabus metrics, daily study curves, and quiz progress.</p>
     </div>
 
-    <!-- Summary cards -->
-    <div class="analytics-summary" id="analytics-summary"></div>
-
-    <div class="cards-row">
-      <div class="card" style="flex:1">
-        <div class="card-header"><i class="fas fa-chart-bar"></i> DSA by Category</div>
-        <div class="bar-chart" id="cat-chart"></div>
-      </div>
-      <div class="card" style="flex:1">
-        <div class="card-header"><i class="fas fa-graduation-cap"></i> Subject Completion</div>
-        <div class="bar-chart" id="subj-chart"></div>
-      </div>
+    <!-- Statistics Cards -->
+    <div class="analytics-summary" id="analytics-summary">
+      <div class="analy-card"><span id="a-hours-total">0h</span><label>Total Hours Logged</label></div>
+      <div class="analy-card"><span id="a-hours-today">0h</span><label>Today Study Hours</label></div>
+      <div class="analy-card"><span id="a-quiz-pct">0%</span><label>Quiz Accuracy</label></div>
+      <div class="analy-card"><span id="a-syllabus-pct">0%</span><label>Syllabus Completion</label></div>
     </div>
 
     <div class="cards-row">
-      <div class="card" style="flex:1">
-        <div class="card-header"><i class="fas fa-fire"></i> DSA Difficulty Split</div>
-        <div class="diff-split" id="diff-split"></div>
+      <!-- Hours by Subject -->
+      <div class="card" style="flex:1;">
+        <div class="card-header"><i class="fas fa-chart-pie"></i> Study Hours Distribution</div>
+        <div class="bar-chart" id="subj-chart" style="margin-top:12px;">
+          <!-- Custom HTML charts generated dynamically -->
+        </div>
       </div>
-      <div class="card" style="flex:1">
-        <div class="card-header"><i class="fas fa-tasks"></i> Placement Checklist Score</div>
-        <div class="placement-score-chart" id="placement-score-chart"></div>
+
+      <!-- Syllabus Progress by Paper -->
+      <div class="card" style="flex:1;">
+        <div class="card-header"><i class="fas fa-chart-bar"></i> Syllabus Progress per Paper</div>
+        <div class="bar-chart" id="cat-chart" style="margin-top:12px;">
+          <!-- Custom HTML charts generated dynamically -->
+        </div>
       </div>
     </div>
 
-    <div class="card full-card">
-      <div class="card-header"><i class="fas fa-chart-area"></i> Study Hours — Last 14 Days</div>
-      <div class="line-chart-wrap" id="hours-chart"></div>
+    <!-- Weekly Study Hours Heatmap / Bar Distribution -->
+    <div class="card full-card" style="margin-top:20px;">
+      <div class="card-header"><i class="fas fa-chart-area"></i> Study History — Last 14 Days</div>
+      <div class="line-chart-wrap" id="hours-chart" style="margin-top:12px;">
+        <!-- Custom bar chart -->
+      </div>
+    </div>
+
+    <div class="card full-card" style="margin-top:20px;">
+      <div class="card-header"><i class="fas fa-lightbulb"></i> Study Insights &amp; Recommendations</div>
+      <div style="font-size:13.5px; color:var(--text); line-height:1.7; display:flex; flex-direction:column; gap:10px; margin-top:8px;" id="study-insights-container">
+        <!-- Loaded dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 12. EXAM PAPERS & CURRENT TRENDS ===== -->
+  <section class="section" id="section-exampapers">
+    <div class="section-header">
+      <h1>Exam Papers &amp; Current Trends</h1>
+      <p>Solve official previous year question papers, track your prep milestones, and read current trends &amp; amendments.</p>
+    </div>
+
+    <!-- Subject Filters for PYQ -->
+    <div class="card full-card" style="margin-bottom: 20px;">
+      <div class="card-header" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+        <span><i class="fas fa-filter"></i> Subject Papers Filter</span>
+        <select id="pyq-subject-filter" class="inp" onchange="renderPYQTracker()" style="width:250px;">
+          <option value="ALL">All Papers</option>
+          <option value="CEL">Paper 13: Corporate &amp; Economic Laws</option>
+          <option value="SFM">Paper 14: Strategic Financial Management</option>
+          <option value="DTIT">Paper 15: Direct Taxes &amp; International Tax</option>
+          <option value="SCM">Paper 16: Strategic Cost Management</option>
+          <option value="CMAD">Paper 17: Cost &amp; Management Audit</option>
+          <option value="CFR">Paper 18: Corporate Financial Reporting</option>
+          <option value="ITLP">Paper 19: Indirect Tax Laws</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="cards-row">
+      <!-- Question Papers Solved Checklist -->
+      <div class="card" style="flex:1.8;">
+        <div class="card-header"><i class="fas fa-file-circle-check"></i> Previous Year Question Papers (PYQ)</div>
+        <div class="pyq-list" id="pyq-papers-list" style="display:flex; flex-direction:column; gap:10px; margin-top:12px;">
+          <!-- Loaded dynamically -->
+        </div>
+      </div>
+
+      <!-- Quick stats/summary -->
+      <div class="card" style="flex:1.2;">
+        <div class="card-header"><i class="fas fa-chart-line"></i> PYQ Solved Status</div>
+        <div class="hours-display" style="padding-top:20px; border-bottom:1px solid var(--border); padding-bottom:16px;">
+          <div class="hours-stat"><div id="pyq-solved-count" style="color:var(--accent2)">0</div><small>Solved</small></div>
+          <div class="hours-stat"><div id="pyq-total-count" style="color:var(--text2)">0</div><small>Total Papers</small></div>
+          <div class="hours-stat"><div id="pyq-completed-pct" style="color:var(--gold)">0%</div><small>Complete</small></div>
+        </div>
+        
+        <div style="font-size:12px; color:var(--text2); line-height:1.6; margin-top:16px;">
+          💡 **Exam Tip**: Solving at least 3 previous terms under actual exam conditions (3 hours, silent space) increases passing probability by **80%**!
+        </div>
+      </div>
+    </div>
+
+    <!-- Current Trends and Tax Amendments -->
+    <div class="card full-card" style="margin-top:20px;">
+      <div class="card-header"><i class="fas fa-book-bookmark"></i> Direct Tax Recent Trends &amp; Amendments</div>
+      <div class="amendments-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:16px; margin-top:12px;">
+        <!-- Concessional tax -->
+        <div style="background:var(--bg2); border:1px solid var(--border); padding:14px; border-radius:10px; border-left:4px solid var(--accent);">
+          <h4 style="font-size:13.5px; color:var(--accent2); margin-bottom:6px;">🏢 Concessional Corporate Tax Rates (Sec 115BAA &amp; 115BAB)</h4>
+          <p style="font-size:12px; color:var(--text2); line-height:1.6;">
+            - **Section 115BAA**: Existing domestic companies can opt for a **22%** tax rate (effective rate ~25.17% including surcharge & cess) by waiving specific incentives/MAT credit.
+            <br/>
+            - **Section 115BAB**: New manufacturing domestic companies incorporated on or after Oct 1, 2019 can opt for a **15%** tax rate (effective rate ~17.16%).
+            <br/>
+            - **Note**: Once selected, this option cannot be withdrawn in subsequent assessment years.
+          </p>
+        </div>
+        <!-- MAT credit -->
+        <div style="background:var(--bg2); border:1px solid var(--border); padding:14px; border-radius:10px; border-left:4px solid var(--gold);">
+          <h4 style="font-size:13.5px; color:var(--accent2); margin-bottom:6px;">📈 Minimum Alternate Tax (MAT) Updates (Sec 115JB)</h4>
+          <p style="font-size:12px; color:var(--text2); line-height:1.6;">
+            - The basic rate of MAT is **15%** (previously 18.5%) on book profits.
+            <br/>
+            - MAT credit can be carried forward up to **15 Assessment Years** (AY).
+            <br/>
+            - MAT is **not applicable** to companies opting for the concessional tax regime under Section 115BAA or 115BAB.
+          </p>
+        </div>
+        <!-- Transfer Pricing -->
+        <div style="background:var(--bg2); border:1px solid var(--border); padding:14px; border-radius:10px; border-left:4px solid var(--accent3);">
+          <h4 style="font-size:13.5px; color:var(--accent2); margin-bottom:6px;">⚖️ Transfer Pricing &amp; Safe Harbour Rules</h4>
+          <p style="font-size:12px; color:var(--text2); line-height:1.6;">
+            - Safe harbour margins are defined for outbound software services, research & development, and low-risk manufacturing.
+            <br/>
+            - Arm's Length Range is applicable if the number of comparables is **6 or more**. The 35th and 65th percentile range is used for calculations.
+            <br/>
+            - Secondary adjustment under Section 92CE is mandatory if primary transfer pricing adjustment exceeds INR 1 Crore.
+          </p>
+        </div>
+        <!-- Equalisation levy -->
+        <div style="background:var(--bg2); border:1px solid var(--border); padding:14px; border-radius:10px; border-left:4px solid var(--accent);">
+          <h4 style="font-size:13.5px; color:var(--accent2); margin-bottom:6px;">🌐 Equalisation Levy &amp; Digital Commerce</h4>
+          <p style="font-size:12px; color:var(--text2); line-height:1.6;">
+            - **6% Equalisation Levy** applies to consideration paid to non-residents for digital advertising services exceeding INR 1 Lakh.
+            <br/>
+            - **2% Equalisation Levy** applies to e-commerce operators on e-commerce supply/services provided to residents.
+            <br/>
+            - Strict compliance timelines apply: Payments must be deposited monthly by the 7th of the following month.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- GST Trends -->
+    <div class="card full-card" style="margin-top:20px;">
+      <div class="card-header"><i class="fas fa-wallet"></i> GST &amp; Cost Audit Regulatory Trends</div>
+      <div class="amendments-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:16px; margin-top:12px;">
+        <div style="background:var(--bg2); border:1px solid var(--border); padding:14px; border-radius:10px; border-left:4px solid var(--easy);">
+          <h4 style="font-size:13.5px; color:var(--accent2); margin-bottom:6px;">⚡ GST ITC Matching &amp; GSTR-2B Mandate</h4>
+          <p style="font-size:12px; color:var(--text2); line-height:1.6;">
+            - Under CGST Section 16(2)(aa), Input Tax Credit can only be claimed if the supplier has uploaded the details in GSTR-1, and it is reflected in GSTR-2B.
+            <br/>
+            - The previous **5% provisional ITC** buffer has been reduced to **0%**. Strictly match invoices with GSTR-2B to avoid tax penalties.
+          </p>
+        </div>
+        <div style="background:var(--bg2); border:1px solid var(--border); padding:14px; border-radius:10px; border-left:4px solid var(--accent);">
+          <h4 style="font-size:13.5px; color:var(--accent2); margin-bottom:6px;">🧾 E-Invoicing Threshold Extensions</h4>
+          <p style="font-size:12px; color:var(--text2); line-height:1.6;">
+            - E-invoicing is mandatory for all taxpayers whose aggregate turnover in any preceding financial year (from 2017-18 onwards) exceeds **INR 5 Crore**.
+            <br/>
+            - Failure to issue IRN (Invoice Reference Number) renders the invoice invalid for ITC claims by the buyer.
+          </p>
+        </div>
+        <div style="background:var(--bg2); border:1px solid var(--border); padding:14px; border-radius:10px; border-left:4px solid var(--gold);">
+          <h4 style="font-size:13.5px; color:var(--accent2); margin-bottom:6px;">📊 ESG Reporting &amp; Cost Records Integration</h4>
+          <p style="font-size:12px; color:var(--text2); line-height:1.6;">
+            - Modern cost audit guidelines focus on **Environmental, Social, Governance (ESG)** reporting.
+            <br/>
+            - Cost auditors must review carbon emission credits, water footprints, and resource usage patterns as part of the efficiency audit under Cost Audit Rules.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
 </main>
 
-<!-- TOAST -->
+<!-- TOAST NOTIFICATION CONTAINER -->
 <div class="toast" id="toast"></div>
 
-<!-- CONFIRM MODAL -->
+<!-- RESET CONFIRMATION MODAL -->
 <div class="modal-overlay" id="modal-overlay" onclick="closeModal()">
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-icon">⚠️</div>
-    <h3>Reset All Data?</h3>
-    <p>This will permanently delete everything — DSA problems, hours, projects, and all progress. This cannot be undone.</p>
+    <h3>Reset CMA Finalist OS?</h3>
+    <p>This will permanently wipe all local study progress, logs, planner items, quizzes completed, custom flashcards, and notes. This cannot be undone.</p>
     <div class="modal-btns">
-      <button class="btn btn-danger-solid" onclick="doReset()">Yes, Reset Everything</button>
+      <button class="btn btn-danger-solid" onclick="doReset()">Wipe Everything</button>
       <button class="btn btn-sm" onclick="closeModal()">Cancel</button>
     </div>
   </div>
 </div>
 
+<!-- NOTE TYPE SELECTION MODAL -->
+<div class="modal-overlay" id="note-type-modal-overlay" onclick="closeNoteTypeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-icon">📝</div>
+    <h3>Create Study Note</h3>
+    <p>Is this note focused on <strong>Theory</strong> concepts or practicing practical <strong>Sums (Problems)</strong>?</p>
+    <div class="modal-btns" style="display:flex; gap:10px; width:100%; justify-content:center; margin-top: 15px;">
+      <button class="btn btn-primary" onclick="createTargetStudyNote('Theory')" style="background:var(--accent); border-color:var(--accent-d); flex:1; justify-content:center;"><i class="fas fa-book"></i> Theory</button>
+      <button class="btn btn-primary" onclick="createTargetStudyNote('Sum')" style="background:var(--accent2); border-color:var(--accent2); flex:1; justify-content:center;"><i class="fas fa-calculator"></i> Sums/Sums Practice</button>
+    </div>
+    <button class="btn btn-sm" onclick="closeNoteTypeModal()" style="margin-top:16px; width:100%;">Cancel</button>
+  </div>
+</div>
+
+<!-- Firebase SDK (For background sync compatibility) -->
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 <script src="sync.js"></script>
-<script src="recovered_data.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

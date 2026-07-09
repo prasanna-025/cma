@@ -1,5 +1,5 @@
 /* ========================================
-   PlacementOS — sync.js
+   CMA Finalist OS — sync.js
    Frictionless background syncing
 ======================================== */
 
@@ -22,14 +22,14 @@ function normalizeSyncCode(code) {
 }
 
 let db = null;
-let syncCode = localStorage.getItem('placementOS_sync_code');
+let syncCode = localStorage.getItem('CMA_FinalistOS_sync_code');
 
 if (syncCode) {
   syncCode = normalizeSyncCode(syncCode);
-  localStorage.setItem('placementOS_sync_code', syncCode);
+  localStorage.setItem('CMA_FinalistOS_sync_code', syncCode);
 } else {
   syncCode = generateSyncCode();
-  localStorage.setItem('placementOS_sync_code', syncCode);
+  localStorage.setItem('CMA_FinalistOS_sync_code', syncCode);
 }
 
 // Initialize Firebase
@@ -69,7 +69,7 @@ function syncPull(isManual = false) {
   db.collection('sync_states').doc(syncCode).get().then(doc => {
     if (doc.exists) {
       const serverData = doc.data();
-      const localSaved = localStorage.getItem('placementOS_v2');
+      const localSaved = localStorage.getItem('CMA_FinalistOS_v1');
       let localState = {};
       try {
         localState = localSaved ? JSON.parse(localSaved) : {};
@@ -85,7 +85,7 @@ function syncPull(isManual = false) {
             const parsedServer = JSON.parse(serverData.data);
             
             // Merge server data into local
-            localStorage.setItem('placementOS_v2', serverData.data);
+            localStorage.setItem('CMA_FinalistOS_v1', serverData.data);
             
             if (typeof S !== 'undefined') {
               Object.assign(S, parsedServer);
@@ -110,7 +110,7 @@ function syncPull(isManual = false) {
       }
     } else {
       // First time sync for this code, push local data
-      const localSaved = localStorage.getItem('placementOS_v2');
+      const localSaved = localStorage.getItem('CMA_FinalistOS_v1');
       if (localSaved) {
         try {
           syncPush(JSON.parse(localSaved));
@@ -156,18 +156,18 @@ function changeSyncCode(newCode) {
   if (newCode === syncCode) return;
   
   syncCode = newCode;
-  localStorage.setItem('placementOS_sync_code', syncCode);
+  localStorage.setItem('CMA_FinalistOS_sync_code', syncCode);
   
   // Pull the data immediately
   if (db) {
     db.collection('sync_states').doc(syncCode).get().then(doc => {
       if (doc.exists) {
         const serverData = doc.data();
-        localStorage.setItem('placementOS_v2', serverData.data);
+        localStorage.setItem('CMA_FinalistOS_v1', serverData.data);
         location.reload();
       } else {
         // If no doc exists on server, push our current local data
-        const localSaved = localStorage.getItem('placementOS_v2');
+        const localSaved = localStorage.getItem('CMA_FinalistOS_v1');
         if (localSaved) {
           try {
             syncPush(JSON.parse(localSaved));
@@ -188,9 +188,7 @@ function changeSyncCode(newCode) {
 }
 
 // Render the sync code in the UI
-// Render the sync code in the UI
 function renderSyncUI() {
-  // Try to find a place to render the sync status (e.g. sidebar or footer)
   let sidebar = document.getElementById('sidebar');
   if (sidebar) {
     let syncPill = document.getElementById('sync-pill');
@@ -231,3 +229,6 @@ window.syncPush = syncPush;
 window.syncPull = syncPull;
 window.promptSyncCode = promptSyncCode;
 window.manualSyncTrigger = manualSyncTrigger;
+window.normalizeSyncCode = normalizeSyncCode;
+window.changeSyncCode = changeSyncCode;
+window.generateSyncCode = generateSyncCode;

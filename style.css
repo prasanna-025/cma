@@ -1067,3 +1067,488 @@ body::after {
   100% { transform: translate(8vw, 5vw) scale(1.15) rotate(360deg); }
 }
 
+/* ====================================================
+   CMA Finalist OS — New Module Styling
+   ==================================================== */
+
+/* ── 3D FLASHCARDS ── */
+.flashcard-container {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 480px;
+  height: 240px;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flashcard-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.flashcard-front {
+  background: linear-gradient(135deg, rgba(16, 19, 28, 0.9) 0%, rgba(28, 32, 48, 0.8) 100%);
+}
+
+.flashcard-back {
+  background: linear-gradient(135deg, rgba(22, 26, 39, 0.95) 0%, rgba(11, 13, 20, 0.95) 100%);
+  transform: rotateY(180deg);
+  border-color: rgba(0, 212, 170, 0.3);
+}
+
+.fc-subject {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.fc-content {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.6;
+  max-width: 90%;
+  margin: auto;
+}
+
+.fc-instruction {
+  font-size: 11px;
+  color: var(--text2);
+  opacity: 0.7;
+}
+
+/* ── CALENDAR ── */
+.calendar-grid-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text2);
+  margin-top: 10px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.calendar-cell {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  min-height: 80px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.calendar-cell:hover {
+  border-color: var(--border2);
+  background: var(--bg3);
+}
+
+.calendar-cell.inactive {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.calendar-cell.today {
+  border-color: var(--accent);
+  background: rgba(108, 99, 255, 0.05);
+}
+
+.cell-day-num {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text2);
+}
+
+.calendar-cell.today .cell-day-num {
+  color: var(--accent);
+}
+
+.cell-events {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.calendar-event-badge {
+  font-size: 9px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: #fff;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-weight: 600;
+}
+
+.calendar-event-badge.daily { background: rgba(0, 212, 170, 0.8); }
+.calendar-event-badge.weekly { background: rgba(108, 99, 255, 0.8); }
+.calendar-event-badge.monthly { background: rgba(247, 201, 72, 0.8); }
+.calendar-event-badge.exam { background: rgba(255, 107, 107, 0.9); }
+
+/* ── KANBAN / TASK CARDS ── */
+.task-bucket {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.task-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s, border-color 0.2s;
+  cursor: grab;
+  position: relative;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border2);
+}
+
+.task-card.priority-High { border-left: 4px solid var(--hard); }
+.task-card.priority-Medium { border-left: 4px solid var(--med); }
+.task-card.priority-Low { border-left: 4px solid var(--easy); }
+
+.task-card-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.task-card-subject {
+  font-size: 10px;
+  color: var(--accent2);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.task-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10.5px;
+  color: var(--text2);
+}
+
+.task-card-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.task-card-actions button {
+  background: transparent;
+  border: none;
+  color: var(--text2);
+  cursor: pointer;
+  padding: 2px 4px;
+  font-size: 11px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.task-card-actions button:hover {
+  color: var(--text);
+  background: var(--bg4);
+}
+
+.badge-count {
+  font-size: 10px;
+  background: var(--border2);
+  color: var(--text2);
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+/* ── MOCK AI CHAT ── */
+#chat-messages-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chat-bubble {
+  max-width: 80%;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  animation: bubble-fade 0.25s ease-out forwards;
+}
+
+@keyframes bubble-fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-bubble.user {
+  background: var(--accent);
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
+}
+
+.chat-bubble.ai {
+  background: var(--bg3);
+  color: var(--text);
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
+  border: 1px solid var(--border);
+}
+
+.chat-bubble pre {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 8px;
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  overflow-x: auto;
+  margin-top: 8px;
+  color: var(--accent2);
+}
+
+.chat-bubble code {
+  font-family: var(--mono);
+  color: var(--accent2);
+  background: rgba(0,212,170,0.08);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.prompt-btn {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.prompt-btn:hover {
+  background: var(--bg3);
+  border-color: var(--accent);
+  transform: translateX(4px);
+}
+
+/* ── NOTES FOLDERS AND LIST ── */
+.note-folder-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text2);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.note-folder-item:hover, .note-folder-item.active {
+  background: rgba(108,99,255,0.08);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.note-list-item {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.note-list-item:hover, .note-list-item.active {
+  border-color: var(--accent);
+  background: var(--bg3);
+}
+
+.note-list-item-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-list-item-meta {
+  font-size: 10px;
+  color: var(--text2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note-tag-pill {
+  background: rgba(108,99,255,0.12);
+  color: var(--accent);
+  padding: 1px 4px;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+/* ── DYNAMIC SYLLABUS LIST ── */
+.subject-collapse-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: all 0.2s;
+}
+
+.subject-collapse-header:hover {
+  background: var(--bg4);
+  border-color: var(--border2);
+}
+
+.subject-collapse-content {
+  padding: 10px 14px 18px;
+  border: 1px solid var(--border);
+  border-top: none;
+  background: rgba(22, 26, 39, 0.4);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-top: -12px;
+  margin-bottom: 12px;
+  display: none;
+}
+
+.subject-collapse-content.open {
+  display: block;
+}
+
+.module-row {
+  margin-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 10px;
+}
+
+.module-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text2);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.chapter-checkbox-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  padding: 4px 0;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.chapter-checkbox-item input {
+  margin-top: 3px;
+}
+
+/* ── QUIZ OPTION BUTTONS ── */
+.quiz-opt-btn {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.quiz-opt-btn:hover {
+  background: var(--bg3);
+  border-color: var(--accent);
+}
+
+.quiz-opt-btn.correct {
+  border-color: var(--accent2) !important;
+  background: rgba(0, 212, 170, 0.08) !important;
+  color: var(--accent2);
+}
+
+.quiz-opt-btn.incorrect {
+  border-color: var(--accent3) !important;
+  background: rgba(255, 107, 107, 0.08) !important;
+  color: var(--accent3);
+}
+
+.quiz-opt-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* ── TIMER RING PROGRESS ── */
+#pomo-progress-ring {
+  transform: rotate(0deg);
+  transform-origin: 50px 50px;
+}
+
+
