@@ -1027,10 +1027,18 @@ function handleFileSelect(e) {
 
   const reader = new FileReader();
   reader.onload = async (event) => {
-    const base64 = event.target.result;
-    await saveScreenshot(currentUploadProblemName, base64);
-    renderProblems();
-    toast("Screenshot uploaded successfully!");
+    try {
+      const base64 = event.target.result;
+      await saveScreenshot(currentUploadProblemName, base64);
+      renderProblems();
+      toast("Screenshot uploaded successfully!");
+    } catch (err) {
+      toast("Upload failed: " + err.message, "error");
+      console.error(err);
+    }
+  };
+  reader.onerror = () => {
+    toast("File read failed", "error");
   };
   reader.readAsDataURL(file);
   e.target.value = '';
