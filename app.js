@@ -293,7 +293,21 @@ const PREPOPULATED_FLASHCARDS = [
   { id: "fc_blocked_credits", subject: "ITLP", front: "GST Blocked Credits under Section 17(5)", back: "No Input Tax Credit (ITC) allowed for:\n- Motor vehicles (exceptions apply)\n- Food & beverages, outdoor catering, beauty treatments\n- Club memberships\n- Travel benefits to employees\n- Lost/stolen/destroyed goods or goods given as free gifts" },
   { id: "fc_mos", subject: "SCM", front: "Margin of Safety (MoS) Formula", back: "MoS = Actual Sales - Break-Even Sales\nOR\nMoS = Profit / PV Ratio\n\nRepresents the sales volume cushion before a company starts incurring losses." },
   { id: "fc_put_call", subject: "SFM", front: "Put-Call Parity Theorem Formula", back: "Stock Price (S) + Put Price (P) = Call Price (C) + Present Value of Strike Price (K * e^-rt)\n\nEnsures arbitrage-free pricing of options." },
-  { id: "fc_mat", subject: "DTIT", front: "Minimum Alternate Tax (MAT) Rate Section 115JB", back: "15% of the book profits of the company (plus applicable surcharge and health/education cess).\n\nNot applicable to foreign companies under specific treaties." }
+  { id: "fc_mat", subject: "DTIT", front: "Minimum Alternate Tax (MAT) Rate Section 115JB", back: "15% of the book profits of the company (plus applicable surcharge and health/education cess).\n\nNot applicable to foreign companies under specific treaties." },
+  { id: "fc_115baa", subject: "DTIT", front: "Section 115BAA Concessional Tax Rate", back: "Tax rate is 22% (effective rate is 25.17% including 10% surcharge and 4% cess).\n\nRequires domestic companies to waive specified incentives/deductions and MAT credit. MAT is not applicable once opted." },
+  { id: "fc_115bab", subject: "DTIT", front: "Section 115BAB Concessional Tax Rate for New Manufacturers", back: "Tax rate is 15% (effective rate is 17.16% including 10% surcharge and 4% cess).\n\nFor domestic companies incorporated on or after Oct 1, 2019, commencing manufacturing before March 31, 2024. Waives incentives & MAT." },
+  { id: "fc_secondary_tp", subject: "DTIT", front: "Secondary Adjustment in Transfer Pricing (Sec 92CE)", back: "Applicable if primary adjustment exceeds INR 1 Crore AND relates to AY 2017-18 onwards.\n\nRequires the excess money to be repatriated to India within 90 days, failing which it is treated as an advance and interest is charged." },
+  { id: "fc_black_scholes", subject: "SFM", front: "Black-Scholes Option Pricing Variables", back: "Determines Call Option Price using 5 inputs:\n1. Current Stock Price (S)\n2. Strike Price (K)\n3. Risk-free interest rate (r)\n4. Time to expiration (t)\n5. Volatility / standard deviation of stock return (σ)" },
+  { id: "fc_beta_portfolio", subject: "SFM", front: "Portfolio Beta Formula", back: "Beta of Portfolio (βp) = Weighted average of individual asset betas.\n\nβp = Σ (wi * βi)\nWhere wi is the weight of asset i and βi is its beta." },
+  { id: "fc_bond_duration", subject: "SFM", front: "Macaulay Duration of a Bond", back: "Measures the weighted average time to receive all cash flows.\n\nDuration = Σ [t * PV(CFt)] / Current Bond Price\n\nIndicates bond price price sensitivity to interest rate changes." },
+  { id: "fc_six_sigma", subject: "SCM", front: "Six Sigma Quality DMAIC Phases", back: "DMAIC stands for:\n1. Define: Project goals & customer requirements.\n2. Measure: Process performance.\n3. Analyze: Root causes of defects.\n4. Improve: Process optimization.\n5. Control: Process standardization & monitoring." },
+  { id: "fc_balanced_scorecard", subject: "SCM", front: "Balanced Scorecard (BSC) 4 Perspectives", back: "1. Financial: How do we look to shareholders?\n2. Customer: How do customers see us?\n3. Internal Business Processes: What must we excel at?\n4. Learning & Growth: How can we continue to improve & create value?" },
+  { id: "fc_transfer_pricing_scm", subject: "SCM", front: "SCM Transfer Pricing: Minimum Transfer Price", back: "Minimum TP = Variable Cost of transferring division + Opportunity Cost for the company.\n\nOpportunity Cost = 0 if there is excess capacity, or Contribution lost if operating at full capacity." },
+  { id: "fc_directors_sec149", subject: "CEL", front: "Independent Director Qualifications (Section 149(6))", back: "An ID is a director other than a nominee/managing/whole-time director who:\n- Is a person of integrity & possesses relevant expertise.\n- Is not a promoter or related to promoters of the company/subsidiaries." },
+  { id: "fc_directors_sec164", subject: "CEL", front: "Director Disqualifications under Section 164(2)", back: "A person is disqualified if a company they are a director of:\n1. Fails to file financial statements/annual returns for 3 consecutive financial years, OR\n2. Fails to repay deposits/interests or redeem debentures for 1 year." },
+  { id: "fc_board_loans", subject: "CEL", front: "Loans to Directors under Section 185", back: "Directly or indirectly providing loans, book debts, or guarantees to directors, their relatives, or partner firms is generally PROHIBITED.\n\nExceptions apply for MD/WTD as part of service conditions." },
+  { id: "fc_gstr_2b", subject: "ITLP", front: "GSTR-2B Input Tax Credit Mandate", back: "GSTR-2B is an auto-drafted, static ITC statement.\n\nUnder CGST Section 16(2)(aa), ITC can only be claimed if matching invoices are uploaded by suppliers in GSTR-1 and reflected in buyer's GSTR-2B. 0% provisional buffer." },
+  { id: "fc_e_invoicing", subject: "ITLP", front: "E-Invoicing Threshold (GST Rule 48(4))", back: "Mandatory for taxpayers with aggregate annual turnover exceeding INR 5 Crore in any preceding financial year (from 2017-18 onwards).\n\nRequires uploading B2B invoices to Invoice Registration Portal (IRP) to get IRN." }
 ];
 
 const PREPOPULATED_MCQS = [
@@ -400,6 +414,214 @@ const PREPOPULATED_MCQS = [
     ],
     correct: 2,
     explanation: "BEP (units) = Fixed Cost / Contribution Margin per unit = $50,000 / ($25 - $15) = $50,000 / $10 = 5,000 units."
+  },
+  {
+    id: "mcq_9",
+    subject: "DTIT",
+    question: "What is the rate of secondary transfer pricing interest surcharge if the primary adjustment is not repatriated to India?",
+    options: [
+      "No separate surcharge, added as interest on normal tax",
+      "Treated as deemed dividend taxed at 20% if not repatriated within 90 days",
+      "Interest calculated at SBI one-year MCLR + 3.25% (for INR transactions) or SOFR + 3% (for foreign currency)",
+      "Direct penalty of 30% on the un-repatriated amount"
+    ],
+    correct: 2,
+    explanation: "If the primary transfer pricing adjustment is not repatriated to India within 90 days, interest is computed at SBI one-year MCLR + 3.25% (if transaction is in INR) or LIBOR/SOFR + 3% (for foreign currency)."
+  },
+  {
+    id: "mcq_10",
+    subject: "DTIT",
+    question: "Under Section 115JB, which of the following is ADDED back to net profit to compute Book Profits for MAT?",
+    options: [
+      "Amount of income-tax paid or payable including interest, surcharge & cess",
+      "Amount of transfer from reserves or provisions",
+      "Amount of dividends received from domestic companies",
+      "Share of profit from a partnership firm"
+    ],
+    correct: 0,
+    explanation: "Income-tax paid or payable, including interest, surcharges, and cesses, must be added back to net profit when calculating Book Profits under Section 115JB."
+  },
+  {
+    id: "mcq_11",
+    subject: "DTIT",
+    question: "In a transfer pricing audit, the Arm's Length Range percentile method is applicable if the number of comparables is:",
+    options: [
+      "3 or more",
+      "6 or more",
+      "10 or more",
+      "Exactly 5"
+    ],
+    correct: 1,
+    explanation: "Under Indian transfer pricing rules, the percentile range method (35th to 65th percentile) is applicable only if there are 6 or more comparable entities."
+  },
+  {
+    id: "mcq_12",
+    subject: "SFM",
+    question: "In Black-Scholes Option Pricing, if volatility (standard deviation) increases, what is the effect on Call and Put Option prices?",
+    options: [
+      "Call price increases, Put price decreases",
+      "Call price decreases, Put price increases",
+      "Both Call and Put prices increase",
+      "Both Call and Put prices decrease"
+    ],
+    correct: 2,
+    explanation: "An increase in volatility increases the probability of extreme price movements, which makes options more valuable. Therefore, both call and put option values increase."
+  },
+  {
+    id: "mcq_13",
+    subject: "SFM",
+    question: "Under the Sharpe Single Index Model, what does the Beta of a security represent?",
+    options: [
+      "The unsystematic or firm-specific risk",
+      "The systematic risk relative to the market index",
+      "The standard deviation of historical prices",
+      "The alpha intercept of returns"
+    ],
+    correct: 1,
+    explanation: "Beta measures the security's volatility or systematic risk relative to the overall market portfolio or index."
+  },
+  {
+    id: "mcq_14",
+    subject: "SFM",
+    question: "If a bond's coupon rate is equal to its Yield to Maturity (YTM), the bond will trade at:",
+    options: [
+      "A premium above face value",
+      "A discount below face value",
+      "Its par value (face value)",
+      "Its Macaulay duration value"
+    ],
+    correct: 2,
+    explanation: "When the coupon rate matches the required rate of return (YTM), the present value of all coupon and principal cash flows equals the par value."
+  },
+  {
+    id: "mcq_15",
+    subject: "SCM",
+    question: "In target costing, how is the target cost calculated?",
+    options: [
+      "Target Cost = Estimated Cost + Desired Profit Margin",
+      "Target Cost = Competitive Target Selling Price - Desired Profit Margin",
+      "Target Cost = Standard Cost * PV Ratio",
+      "Target Cost = Opportunity Cost + Variable Cost"
+    ],
+    correct: 1,
+    explanation: "Target Costing works backwards from market conditions: Target Cost = Competitive Target Selling Price - Desired Profit Margin."
+  },
+  {
+    id: "mcq_16",
+    subject: "SCM",
+    question: "Which variance is calculated as (Actual Mix Quantity - Revised Standard Mix Quantity) * Standard Price?",
+    options: [
+      "Material Price Variance",
+      "Material Yield Variance",
+      "Material Mix Variance",
+      "Material Usage Variance"
+    ],
+    correct: 2,
+    explanation: "Material Mix Variance measures the deviation in the proportions of inputs used: (Actual Quantity in Actual Mix - Actual Quantity in Standard Mix) * Standard Price."
+  },
+  {
+    id: "mcq_17",
+    subject: "SCM",
+    question: "In a transfer pricing scenario with excess capacity in the transferring division, what is the minimum transfer price?",
+    options: [
+      "Full standard manufacturing cost",
+      "Incremental variable cost of transfer only",
+      "Variable cost + contribution lost from external sales",
+      "Market price of the product"
+    ],
+    correct: 1,
+    explanation: "If there is excess capacity, there is no opportunity cost from lost external sales. Therefore, the minimum transfer price is the incremental variable cost of producing the transferred unit."
+  },
+  {
+    id: "mcq_18",
+    subject: "CEL",
+    question: "According to Section 188 of the Companies Act 2013, related party transactions exceeding specified limits require:",
+    options: [
+      "Approval by the Central Government",
+      "Unanimous approval of all directors",
+      "Prior approval of the company by an Ordinary Resolution in general meeting",
+      "Special Resolution with 75% majority"
+    ],
+    correct: 2,
+    explanation: "Transactions with related parties that exceed prescribed limits under Section 188 require prior approval by Ordinary Resolution, and interested shareholders cannot vote."
+  },
+  {
+    id: "mcq_19",
+    subject: "CEL",
+    question: "What is the maximum number of directorships (including alternate directorships) a person can hold at any one time?",
+    options: [
+      "10 directorships",
+      "20 directorships (out of which max 10 in public companies)",
+      "15 directorships",
+      "Unlimited for private companies"
+    ],
+    correct: 1,
+    explanation: "Section 165 limits directorships to 20 companies, with a maximum of 10 in public companies."
+  },
+  {
+    id: "mcq_20",
+    subject: "CEL",
+    question: "An Independent Director can be appointed for a maximum of how many consecutive terms?",
+    options: [
+      "Up to 3 terms of 3 years each",
+      "Up to 2 terms of 5 years each",
+      "Up to 5 terms of 1 year each",
+      "Unlimited subject to shareholder approval every year"
+    ],
+    correct: 1,
+    explanation: "Section 149(11) states that an Independent Director can hold office for up to two consecutive terms of up to five years each."
+  },
+  {
+    id: "mcq_21",
+    subject: "ITLP",
+    question: "Input Tax Credit (ITC) under GST is completely BLOCKED for which of the following goods or services?",
+    options: [
+      "Motor vehicles used for transportation of goods",
+      "Food and beverages provided as part of commercial catering business",
+      "Goods given as free gifts or free samples",
+      "Raw materials purchased for manufacturing taxable products"
+    ],
+    correct: 2,
+    explanation: "Under Section 17(5)(h), ITC is blocked for goods lost, stolen, destroyed, written off, or disposed of by way of gift or free samples."
+  },
+  {
+    id: "mcq_22",
+    subject: "ITLP",
+    question: "Which of the following is a mandatory condition under CGST Section 16(2) to claim Input Tax Credit?",
+    options: [
+      "The buyer has received the goods or services",
+      "The supplier has paid the tax to the government",
+      "The invoice details are uploaded by the supplier in GSTR-1 and reflected in GSTR-2B",
+      "All of the above"
+    ],
+    correct: 3,
+    explanation: "Section 16(2) lists multiple concurrent conditions: possession of tax invoice, physical receipt of goods/services, payment of tax by supplier, filing of returns, and GSTR-2B matching."
+  },
+  {
+    id: "mcq_23",
+    subject: "CMAD",
+    question: "Form CRA-1 under the Cost Records and Audit Rules 2014 specifies the format for:",
+    options: [
+      "Filing the cost audit report to Central Govt",
+      "Maintenance of Cost Records by the company",
+      "Appointment of the cost auditor",
+      "Cost Audit Report by the auditor"
+    ],
+    correct: 1,
+    explanation: "CRA-1 outlines the guidelines and format for maintaining Cost Records. CRA-2 is for auditor appointment, CRA-3 is the auditor's report, and CRA-4 is the filing form."
+  },
+  {
+    id: "mcq_24",
+    subject: "CFR",
+    question: "Which of the following Ind AS deals with Financial Instruments (Presentation)?",
+    options: [
+      "Ind AS 109",
+      "Ind AS 32",
+      "Ind AS 115",
+      "Ind AS 103"
+    ],
+    correct: 1,
+    explanation: "Ind AS 32 deals with presentation of Financial Instruments. Ind AS 109 deals with classification and measurement, and Ind AS 115 deals with Revenue from Contracts."
   }
 ];
 
@@ -410,7 +632,14 @@ const DOUBT_SOLVER_MAP = {
   "value chain": "In SCM, Michael Porter's **Value Chain Analysis (VCA)** evaluates activities to build competitive advantage.\n\nActivities split:\n- **Primary Activities**: Inbound Logistics, Operations, Outbound Logistics, Marketing & Sales, Service.\n- **Support Activities**: Procurement, Human Resource Management, Technology Development, Firm Infrastructure.",
   "corporate tax": "Corporate tax in India depends on the chosen regime:\n- **Domestic Company (Normal)**: 30% (or 25% if turnover is within INR 400 Cr in baseline year).\n- **Section 115BAA**: Option to pay **22%** (effective ~25.17% with cess) if exemptions & MAT are waived.\n- **Section 115BAB**: Option for new manufacturing companies to pay **15%** (effective ~17.16%).\n\n**MAT (Minimum Alternate Tax)** is 15% under Section 115JB on book profits, if normal tax liability falls below it.",
   "cost audit": "Under Section 148 of Companies Act 2013 and Cost Records and Audit Rules 2014, cost audits are mandatory for companies meeting turnover limits:\n- **Regulated Sectors** (Telecom, Power, Sugar, etc.): Overall turnover >= INR 50 Cr, and product turnover >= INR 25 Cr.\n- **Non-Regulated Sectors** (Steel, Pharma, Cement, etc.): Overall turnover >= INR 100 Cr, and product turnover >= INR 35 Cr.\n\nReports are drafted in Form **CRA-3** and submitted to company. Company files CRA-4 to Central Govt within 30 days.",
-  "fema": "The **Foreign Exchange Management Act (FEMA), 1999** governs currency and cross-border trade transactions in India.\n- **Residential Status (Sec 2(v))**: Dependent on stay in India during previous FY (> 182 days) and purpose of stay.\n- **Current Account Transactions (Sec 5)**: Freely permitted unless restricted under schedules.\n- **Capital Account Transactions (Sec 6)**: Regulated/Restricted by RBI (e.g., FDI, ECB, Overseas Investments)."
+  "fema": "The **Foreign Exchange Management Act (FEMA), 1999** governs currency and cross-border trade transactions in India.\n- **Residential Status (Sec 2(v))**: Dependent on stay in India during previous FY (> 182 days) and purpose of stay.\n- **Current Account Transactions (Sec 5)**: Freely permitted unless restricted under schedules.\n- **Capital Account Transactions (Sec 6)**: Regulated/Restricted by RBI (e.g., FDI, ECB, Overseas Investments).",
+  "mat": "**Minimum Alternate Tax (MAT)** is governed by Section 115JB of the Income Tax Act.\n- **Rate**: 15% of Book Profits (10% under Section 115BAA/BAB normal regimes, but MAT does not apply once you opt into Section 115BAA/BAB concessional rates).\n- **Applicability**: If normal income-tax payable by a company is less than 15% of its book profits, the book profit is deemed to be the total income, and the company pays 15% tax.\n- **MAT Credit**: Credit can be carried forward for up to 15 Assessment Years.",
+  "concessional": "**Concessional Tax Regimes** for domestic companies:\n- **Section 115BAA**: Tax rate of **22%** (effective rate ~25.17% with surcharge & cess). Applicable to all domestic companies if they waive specific exemptions and MAT credit.\n- **Section 115BAB**: Tax rate of **15%** (effective rate ~17.16% with surcharge & cess). For new domestic manufacturing companies incorporated on/after Oct 1, 2019, which commence manufacturing before March 31, 2024.",
+  "six sigma": "**Six Sigma** is a data-driven quality framework targeting no more than **3.4 defects per million opportunities (DPMO)**.\nIt uses the **DMAIC** methodology:\n1. **Define** goals and customer requirements.\n2. **Measure** current process performance.\n3. **Analyze** root causes of defects.\n4. **Improve** processes by removing root causes.\n5. **Control** future process performance.",
+  "balanced scorecard": "The **Balanced Scorecard (BSC)** is a strategic performance management tool that tracks financial and non-financial metrics across four perspectives:\n1. **Financial**: Profitability, ROI, cost reduction.\n2. **Customer**: Customer satisfaction, retention, market share.\n3. **Internal Processes**: Quality, cycle time, efficiency.\n4. **Learning & Growth**: Employee training, corporate culture, knowledge management.",
+  "directors": "**Directors Regulations under Companies Act 2013**:\n- **Section 149(4)**: Public listed companies must have at least **1/3rd Independent Directors**.\n- **Section 149(6)**: Independent Director qualifications (no promoter/financial interest).\n- **Section 164(2)**: Disqualification rules (failure to file financial statements for 3 years, default on deposits/debentures for 1 year).\n- **Section 185**: Prohibition on loans, guarantees, or security to directors or their relatives.",
+  "gst": "**Key GST Regulations**:\n- **Input Tax Credit (ITC)**: Governed by Section 16 & 17. Blocked credits under **Section 17(5)** include motor vehicles, food & beverages, gifts, and personal consumption.\n- **GSTR-2B Matching**: ITC can only be claimed if invoices are uploaded by suppliers in GSTR-1 and are visible in the buyer's auto-generated, static GSTR-2B statement.\n- **E-Invoicing**: Mandated for taxpayers with turnover exceeding **INR 5 Crore** in any preceding FY.",
+  "ibc": "The **Insolvency and Bankruptcy Code (IBC), 2016**:\n- **Corporate Insolvency Resolution Process (CIRP)**: Can be initiated by Financial Creditors (Sec 7), Operational Creditors (Sec 9), or Corporate Applicant (Sec 10) on default threshold of **INR 1 Crore**.\n- **Moratorium (Sec 14)**: Suspends all debt collection actions, suits, foreclosure during the resolution period.\n- **Committee of Creditors (CoC)**: Consists of financial creditors, takes decisions by 66% majority vote (except routine items at 51%)."
 };
 
 const BADGES = [
