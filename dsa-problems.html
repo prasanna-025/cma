@@ -646,8 +646,9 @@ function mapTopicToDifficulty(topic) {
   return 'Medium';
 }
 
-function initPage() {
+async function initPage() {
   if (typeof dsaProblems !== 'undefined') {
+    await loadScreenshotCache();
     loadState();
     populateTopicFilters();
     setupFilters();
