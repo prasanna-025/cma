@@ -442,6 +442,9 @@
         <div class="quick-add-box" style="background: rgba(16, 20, 32, 0.45); border: 1px solid rgba(108, 99, 255, 0.2); border-radius: 12px; padding: 1.2rem; display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.2rem;">
           <h3 style="font-size: 0.95rem; font-weight: 600; color: var(--accent); margin: 0; display: flex; align-items: center; gap: 6px;"><i class="fas fa-file-archive"></i> Backup &amp; Restore Photos &amp; Data</h3>
           <p style="font-size: 11px; color: var(--text2); margin: 0;">Export your entire tracker state (including local solved status, notes, codes, and IndexedDB photo attachments) to a backup file, or restore from a previously saved backup.</p>
+          <div style="font-size: 11px; color: var(--text3); margin-top: 2px;">
+            Status: <span id="backup-db-status" style="color: #00d4aa; font-weight: 600;">Checking browser database...</span>
+          </div>
           <div style="display: flex; gap: 10px; margin-top: 4px;">
             <button onclick="exportBackupData()" class="btn btn-primary" style="flex:1; padding: 0.5rem 1rem; font-size: 12.5px; font-weight: 600; background: var(--accent); border: none; border-radius: 8px; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-download"></i> Export Backup</button>
             <button onclick="document.getElementById('backupRestoreInput').click()" class="btn btn-sm" style="flex:1; padding: 0.5rem 1rem; font-size: 12.5px; font-weight: 600; background: rgba(0, 212, 170, 0.1); border: 1px solid rgba(0, 212, 170, 0.3); color:#00d4aa; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"><i class="fas fa-upload"></i> Restore Backup</button>
@@ -508,6 +511,7 @@ async function saveScreenshot(problemName, base64Data) {
     store.put({ problemName, base64Data });
     transaction.oncomplete = () => {
       screenshotCache[problemName] = true;
+      updateDatabaseStatus();
       resolve();
     };
     transaction.onerror = (e) => reject(e.target.error);
@@ -533,6 +537,7 @@ async function deleteScreenshot(problemName) {
     store.delete(problemName);
     transaction.oncomplete = () => {
       delete screenshotCache[problemName];
+      updateDatabaseStatus();
       resolve();
     };
     transaction.onerror = (e) => reject(e.target.error);
@@ -563,6 +568,26 @@ async function loadScreenshotCache() {
   } catch (err) {
     console.error("IndexedDB error:", err);
     screenshotCache = {};
+  }
+}
+
+async function updateDatabaseStatus() {
+  const statusEl = document.getElementById('backup-db-status');
+  if (!statusEl) return;
+  try {
+    const db = await getDB();
+    const transaction = db.transaction(storeName, "readonly");
+    const store = transaction.objectStore(storeName);
+    const request = store.getAllKeys();
+    request.onsuccess = (e) => {
+      const count = e.target.result.length;
+      statusEl.textContent = `${count} saved screenshot(s) found in browser`;
+    };
+    request.onerror = () => {
+      statusEl.textContent = "Error reading database";
+    };
+  } catch (err) {
+    statusEl.textContent = "Error: " + err.message;
   }
 }
 
@@ -664,6 +689,7 @@ async function initPage() {
     populateTopicFilters();
     setupFilters();
     renderProblems();
+    updateDatabaseStatus();
   } else {
     setTimeout(initPage, 100);
   }
