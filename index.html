@@ -7,6 +7,26 @@
   <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <!-- Placement OS Vercel Deploy Trigger -->
+  <script>
+    (function() {
+      const wallpaper = localStorage.getItem('placementos_wallpaper');
+      if (wallpaper) {
+        const style = document.createElement('style');
+        style.id = 'dynamic-wallpaper-style';
+        style.innerHTML = `
+          body {
+            background-image: linear-gradient(rgba(10, 15, 30, 0.82), rgba(10, 15, 30, 0.82)), url(${wallpaper}) !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-attachment: fixed !important;
+            background-repeat: no-repeat !important;
+          }
+        `;
+        document.head.appendChild(style);
+      }
+    })();
+  </script>
 </head>
 <body>
 
@@ -38,7 +58,8 @@
     <a href="#" class="nav-item" data-section="doubt_solver"><i class="fas fa-brain"></i><span>AI Doubt Solver</span></a>
     <a href="#" class="nav-item" data-section="tasks"><i class="fas fa-list-check"></i><span>Task Manager</span></a>
     <a href="#" class="nav-item" data-section="analytics"><i class="fas fa-chart-line"></i><span>Analytics</span></a>
-    <a href="#" class="nav-item" data-section="exampapers"><i class="fas fa-file-pdf"></i><span>PYQs &amp; Trends</span></a>
+    <a href="#" class="nav-item" data-section="cheatsheet"><i class="fas fa-file-invoice"></i><span>Formula &amp; Section Guide</span></a>
+    <a href="#" class="nav-item" onclick="openWallpaperModal(); return false;"><i class="fas fa-image"></i><span>Change Wallpaper</span></a>
   </nav>
   <div class="sidebar-bottom">
     <div class="xp-bar-wrap">
@@ -1007,6 +1028,121 @@
     </div>
   </section>
 
+  <!-- ===== 13. FORMULA & SECTION GUIDE (CHEAT SHEET) ===== -->
+  <section class="section" id="section-cheatsheet">
+    <div class="section-header">
+      <h1>CMA Final Group III — Formulas, Sections &amp; Weightage</h1>
+      <p>Instant lookup of critical formulas, sections, and historical exam weightage for Group III.</p>
+    </div>
+
+    <!-- Search & Quick Navigation -->
+    <div class="card full-card" style="margin-bottom: 20px;">
+      <div style="display:flex; gap:16px; align-items:center; flex-wrap:wrap; width:100%;">
+        <div style="flex:1; min-width:260px; position:relative;">
+          <input type="text" id="cheatsheet-search" class="inp" placeholder="🔍 Search formulas, sections, or standards (e.g., CAPM, MAT, CSR)..." oninput="filterCheatSheet()" style="width:100%; padding-left:12px;"/>
+        </div>
+        <div class="filter-chips" id="cheatsheet-filter-chips" style="margin:0;">
+          <span class="chip active" onclick="filterCheatSheetSubject('ALL', this)">All Papers</span>
+          <span class="chip" onclick="filterCheatSheetSubject('CEL', this)">CEL (P13)</span>
+          <span class="chip" onclick="filterCheatSheetSubject('SFM', this)">SFM (P14)</span>
+          <span class="chip" onclick="filterCheatSheetSubject('DTIT', this)">DTIT (P15)</span>
+          <span class="chip" onclick="filterCheatSheetSubject('SCM', this)">SCM (P16)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards-row">
+      <!-- Left Column: Weightage Analysis -->
+      <div class="card" style="flex:1.2; max-height: 600px; overflow-y: auto;">
+        <div class="card-header"><i class="fas fa-chart-bar"></i> Group 3 Exam Weightage Analyser</div>
+        <p style="font-size:12px; color:var(--text2); margin-bottom:14px; line-height:1.5;">Average marks allocation based on historical ICMAI Group III exams. Focus on high-yield sections first.</p>
+        
+        <!-- CEL Weightage -->
+        <div style="margin-bottom:16px;">
+          <div style="display:flex; justify-content:space-between; font-size:12.5px; font-weight:600; margin-bottom:4px;">
+            <span>Paper 13: Corporate &amp; Economic Laws</span>
+            <span style="color:var(--accent);">100 Marks</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px; background:rgba(255,255,255,0.02); padding:10px; border-radius:8px; border:1px solid var(--border);">
+            <div style="font-size:11.5px; display:flex; justify-content:space-between;"><span>👔 Directors &amp; Board Processes (Sec 149-195)</span><strong>30-35%</strong></div>
+            <div class="mini-bar" style="height:6px;"><div class="mini-fill" style="width:33%; background:var(--accent);"></div></div>
+            <div style="font-size:11.5px; display:flex; justify-content:space-between;"><span>⚖️ IBC, 2016 Insolvency Procedures</span><strong>15-20%</strong></div>
+            <div class="mini-bar" style="height:6px;"><div class="mini-fill" style="width:18%; background:var(--accent);"></div></div>
+            <div style="font-size:11.5px; display:flex; justify-content:space-between;"><span>💵 FEMA &amp; SEBI Economic Regulations</span><strong>15-20%</strong></div>
+            <div class="mini-bar" style="height:6px;"><div class="mini-fill" style="width:18%; background:var(--accent);"></div></div>
+            <div style="font-size:11.5px; display:flex; justify-content:space-between;"><span>🏢 General Companies Act &amp; CSR (Sec 1-148)</span><strong>25-30%</strong></div>
+            <div class="mini-bar" style="height:6px;"><div class="mini-fill" style="width:28%; background:var(--accent);"></div></div>
+          </div>
+        </div>
+
+        <!-- SFM Weightage -->
+        <div style="margin-bottom:16px;">
+          <div style="display:flex; justify-content:space-between; font-size:12.5px; font-weight:600; margin-bottom:4px;">
+            <span>Paper 14: Strategic Financial Management</span>
+            <span style="color:var(--accent2);">100 Marks</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px; background:rgba(255,255,255,0.02); padding:10px; border-radius:8px; border:1px solid var(--border);">
+            <div style="font-size:11.5px; display:flex; justify-content:space-between;"><span>📈 Portfolio Management &amp; CAPM</span><strong>20-25%</strong></div>
+            <div class="mini-bar" style="height:6px;"><div class="mini-fill" style="width:22%; background:var(--accent2);"></div></div>
+            <div style="font-size:11.5px; display:flex; justify-content:space-between;"><span>🔄 Derivatives (Futures, Options, Black-Scholes)</span><strong>20-25%</strong></div>
+            <div class="mini-bar" style="height:6px;"><div class="mini-fill" style="width:23%; background:var(--accent2);"></div></div>
+            <div style="font-size:11.5px; display:flex; justify-content:space-between;"><span>✈️ Forex Management &amp; Arbitrage</span><strong>15-20%</strong></div>
+            <div class="mini-bar" style="height:6px;"><div class="mini-fill" style="width:18%; background:var(--accent2);"></div></div>
+            <div style="font-size:11.5px; display:flex; justify-content:space-between;"><span>💼 Capital Budgeting &amp; Leasing Decisions</span><strong>15-20%</strong></div>
+            <div class="mini-bar" style="height:6px;"><div class="mini-fill" style="width:17%; background:var(--accent2);"></div></div>
+          </div>
+        </div>
+
+        <!-- DTIT Weightage -->
+        <div style="margin-bottom:16px;">
+          <div style="display:flex; justify-content:space-between; font-size:12.5px; font-weight:600; margin-bottom:4px;">
+            <span>Paper 15: Direct Tax &amp; International Taxation</span>
+            <span style="color:var(--easy);">100 Marks</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px; background:rgba(255,255,255,0.02); padding:10px; border-radius:8px; border:1px solid var(--border);">
+            <div style="font-size:11.5px; display:flex; justify-content:space-between;"><span>🌍 International Tax &amp; Transfer Pricing (ALP/Sec 92)</span><strong>30%</strong></div>
+            <div class="mini-bar" style="height:6px;"><div class="mini-fill" style="width:30%; background:var(--easy);"></div></div>
+            <div style="font-size:11.5px; display:flex; justify-content:space-between;"><span>🏛️ Assessment of Corporates (MAT Sec 115JB / 115BAA)</span><strong>25-30%</strong></div>
+            <div class="mini-bar" style="height:6px;"><div class="mini-fill" style="width:28%; background:var(--easy);"></div></div>
+            <div style="font-size:11.5px; display:flex; justify-content:space-between;"><span>👥 Assessment of Firms, AOP/BOI, Trusts</span><strong>15-20%</strong></div>
+            <div class="mini-bar" style="height:6px;"><div class="mini-fill" style="width:18%; background:var(--easy);"></div></div>
+            <div style="font-size:11.5px; display:flex; justify-content:space-between;"><span>✍️ Tax Administration, Assessment &amp; Appeals</span><strong>15-20%</strong></div>
+            <div class="mini-bar" style="height:6px;"><div class="mini-fill" style="width:17%; background:var(--easy);"></div></div>
+          </div>
+        </div>
+
+        <!-- SCM Weightage -->
+        <div>
+          <div style="display:flex; justify-content:space-between; font-size:12.5px; font-weight:600; margin-bottom:4px;">
+            <span>Paper 16: Strategic Cost Management</span>
+            <span style="color:var(--gold);">100 Marks</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px; background:rgba(255,255,255,0.02); padding:10px; border-radius:8px; border:1px solid var(--border);">
+            <div style="font-size:11.5px; display:flex; justify-content:space-between;"><span>⚙️ Costing for Decision Making &amp; Margins</span><strong>25-30%</strong></div>
+            <div class="mini-bar" style="height:6px;"><div class="mini-fill" style="width:28%; background:var(--gold);"></div></div>
+            <div style="font-size:11.5px; display:flex; justify-content:space-between;"><span>📊 Standard Costing &amp; Variance Analysis</span><strong>15-20%</strong></div>
+            <div class="mini-bar" style="height:6px;"><div class="mini-fill" style="width:18%; background:var(--gold);"></div></div>
+            <div style="font-size:11.5px; display:flex; justify-content:space-between;"><span>🚛 Transfer Pricing &amp; Division Profitability</span><strong>10-15%</strong></div>
+            <div class="mini-bar" style="height:6px;"><div class="mini-fill" style="width:12%; background:var(--gold);"></div></div>
+            <div style="font-size:11.5px; display:flex; justify-content:space-between;"><span>🔄 Quality Control &amp; Lean Frameworks (Six Sigma)</span><strong>15-20%</strong></div>
+            <div class="mini-bar" style="height:6px;"><div class="mini-fill" style="width:17%; background:var(--gold);"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Cheat Sheets Lists -->
+      <div class="card" style="flex:2;">
+        <div class="card-header" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+          <span><i class="fas fa-list-ul"></i> Quick Reference Guides</span>
+          <span style="font-size:11px; color:var(--text3);" id="cheatsheet-count">Showing all guides</span>
+        </div>
+        <div id="cheatsheet-guides-container" style="display:flex; flex-direction:column; gap:12px; max-height:560px; overflow-y:auto; padding-right:6px; margin-top:12px;">
+          <!-- Dynamically populated from JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <!-- TOAST NOTIFICATION CONTAINER -->
@@ -1044,5 +1180,94 @@
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 <script src="sync.js"></script>
 <script src="app.js"></script>
+
+<!-- WALLPAPER MODAL -->
+<div class="modal-overlay" id="wallpaper-modal-overlay" onclick="closeWallpaperModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-icon">🖼️</div>
+    <h3>Custom Wallpaper</h3>
+    <p>Choose a custom background wallpaper for your dashboard and tracker.</p>
+    <div class="modal-btns" style="display:flex; flex-direction:column; gap:8px; width:100%; margin-top: 15px;">
+      <button class="btn btn-primary" onclick="document.getElementById('wallpaperInput').click()" style="background:var(--accent); border-color:var(--accent-d); justify-content:center;"><i class="fas fa-upload"></i> Upload Wallpaper</button>
+      <button class="btn btn-danger-solid" onclick="doRemoveWallpaper()" style="justify-content:center;"><i class="fas fa-trash-alt"></i> Remove Wallpaper</button>
+    </div>
+    <button class="btn btn-sm" onclick="closeWallpaperModal()" style="margin-top:16px; width:100%;">Cancel</button>
+  </div>
+</div>
+<input type="file" id="wallpaperInput" accept="image/*" style="display:none;" onchange="handleWallpaperUpload(event)">
+
+<script>
+function openWallpaperModal() {
+  document.getElementById('wallpaper-modal-overlay').classList.add('show');
+}
+function closeWallpaperModal() {
+  document.getElementById('wallpaper-modal-overlay').classList.remove('show');
+}
+function setWallpaper(base64) {
+  localStorage.setItem('placementos_wallpaper', base64);
+  
+  // Apply immediately to current page
+  let style = document.getElementById('dynamic-wallpaper-style');
+  if (!style) {
+    style = document.createElement('style');
+    style.id = 'dynamic-wallpaper-style';
+    document.head.appendChild(style);
+  }
+  style.innerHTML = `
+    body {
+      background-image: linear-gradient(rgba(10, 15, 30, 0.82), rgba(10, 15, 30, 0.82)), url(${base64}) !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-attachment: fixed !important;
+      background-repeat: no-repeat !important;
+    }
+  `;
+}
+function doRemoveWallpaper() {
+  localStorage.removeItem('placementos_wallpaper');
+  const style = document.getElementById('dynamic-wallpaper-style');
+  if (style) style.remove();
+  closeWallpaperModal();
+  if (typeof toast === 'function') toast('Wallpaper removed');
+}
+function handleWallpaperUpload(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    const img = new Image();
+    img.onload = function() {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const maxDim = 1920;
+      let width = img.width;
+      let height = img.height;
+      
+      if (width > maxDim || height > maxDim) {
+        if (width > height) {
+          height = Math.round((height * maxDim) / width);
+          width = maxDim;
+        } else {
+          width = Math.round((width * maxDim) / height);
+          height = maxDim;
+        }
+      }
+      
+      canvas.width = width;
+      canvas.height = height;
+      ctx.drawImage(img, 0, 0, width, height);
+      
+      const compressedBase64 = canvas.toDataURL('image/jpeg', 0.7);
+      setWallpaper(compressedBase64);
+      closeWallpaperModal();
+      if (typeof toast === 'function') toast('Wallpaper updated!');
+    };
+    img.src = event.target.result;
+  };
+  reader.readAsDataURL(file);
+  e.target.value = '';
+}
+</script>
 </body>
 </html>
